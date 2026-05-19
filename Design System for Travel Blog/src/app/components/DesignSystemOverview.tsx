@@ -100,7 +100,7 @@ export function DesignSystemOverview() {
         {/* Color System */}
         <Section title="Color System" id="colors">
           <ColorPalette
-            title="Primary Colors (Lonely Planet Blue)"
+            title="Primary Colors (Stanton Cobalt)"
             colors={[
               { name: '50', var: '--color-primary-50' },
               { name: '100', var: '--color-primary-100' },
@@ -116,7 +116,7 @@ export function DesignSystemOverview() {
           />
 
           <ColorPalette
-            title="Secondary Colors (Sunset & Adventure)"
+            title="Secondary Colors (Pyro Magma)"
             colors={[
               { name: '50', var: '--color-secondary-50' },
               { name: '100', var: '--color-secondary-100' },
@@ -327,6 +327,24 @@ export function DesignSystemOverview() {
         {/* Badges & Pills */}
         <Section title="Badges & Pills" id="badges">
           <div className="space-y-6">
+            <div>
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-heading-sm)',
+                fontWeight: 'var(--font-weight-semibold)',
+                marginBottom: 'var(--space-4)',
+                color: 'var(--color-neutral-900)'
+              }}>
+                POI Type Badges (Star Citizen)
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                <Badge variant="easter-egg" rounded>🎄 Easter Egg</Badge>
+                <Badge variant="natural-wonder" rounded>🏔️ Natural Wonder</Badge>
+                <Badge variant="urban-sight" rounded>🏢 Urban Sight</Badge>
+                <Badge variant="technical" rounded>🛸 Technical Curiosity</Badge>
+              </div>
+            </div>
+
             <div>
               <h3 style={{
                 fontFamily: 'var(--font-display)',
@@ -1192,7 +1210,7 @@ function Button({ variant, size = 'medium', icon, children }: ButtonProps) {
 }
 
 interface BadgeProps {
-  variant: 'primary' | 'secondary' | 'success' | 'neutral' | 'accent-coral' | 'accent-emerald';
+  variant: 'primary' | 'secondary' | 'success' | 'neutral' | 'accent-coral' | 'accent-emerald' | 'easter-egg' | 'natural-wonder' | 'urban-sight' | 'technical';
   rounded?: boolean;
   children: React.ReactNode;
 }
@@ -1200,11 +1218,16 @@ interface BadgeProps {
 function Badge({ variant, rounded = false, children }: BadgeProps) {
   const variantColors = {
     primary: { bg: 'var(--color-primary-100)', text: 'var(--color-primary-700)' },
-    secondary: { bg: 'var(--color-secondary-100)', text: 'var(--color-secondary-800)' },
+    secondary: { bg: 'var(--color-secondary-100)', text: 'var(--color-secondary-700)' },
     success: { bg: '#d1fae5', text: '#065f46' },
     neutral: { bg: 'var(--color-neutral-200)', text: 'var(--color-neutral-700)' },
     'accent-coral': { bg: '#ffe4e6', text: '#9f1239' },
     'accent-emerald': { bg: '#d1fae5', text: '#047857' },
+    // SC-specific POI types
+    'easter-egg': { bg: '#7c3aed', text: '#ffffff' },
+    'natural-wonder': { bg: '#059669', text: '#ffffff' },
+    'urban-sight': { bg: 'var(--color-primary-600)', text: '#ffffff' },
+    'technical': { bg: '#d97706', text: '#ffffff' },
   };
 
   const colors = variantColors[variant];
@@ -1639,7 +1662,8 @@ function TravelGuidePage() {
         <div className="space-y-6">
           {/* Quick Facts */}
           <div style={{
-            backgroundColor: 'var(--color-primary-50)',
+            backgroundColor: 'var(--color-surface-paper)',
+            borderLeft: '4px solid var(--color-primary-600)',
             padding: 'var(--space-6)',
             borderRadius: 'var(--radius-lg)',
           }}>

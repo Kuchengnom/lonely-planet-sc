@@ -12,29 +12,29 @@
        COLOR SYSTEM
        =================================== */
 
-    /* Primary Colors - Lonely Planet Blue/Teal */
-    --color-primary-900: #0a3d62;
-    --color-primary-800: #0f4c75;
-    --color-primary-700: #1b6ca8;
-    --color-primary-600: #2089dc;
-    --color-primary-500: #3498db;
-    --color-primary-400: #5dade2;
-    --color-primary-300: #85c1e9;
-    --color-primary-200: #aed6f1;
-    --color-primary-100: #d6eaf8;
-    --color-primary-50: #ebf5fb;
+    /* Primary Colors - Stanton Cobalt */
+    --color-primary-900: #09142d;
+    --color-primary-800: #10204c;
+    --color-primary-700: #172d6b;
+    --color-primary-600: #1e3a8a;
+    --color-primary-500: #2d5fab;
+    --color-primary-400: #557fc3;
+    --color-primary-300: #7f9fd2;
+    --color-primary-200: #aabfe1;
+    --color-primary-100: #d4dff0;
+    --color-primary-50: #eef2f8;
 
-    /* Secondary Colors - Sunset & Adventure */
-    --color-secondary-900: #b83a00;
-    --color-secondary-800: #d84a1b;
-    --color-secondary-700: #e67e22;
-    --color-secondary-600: #f39c12;
-    --color-secondary-500: #f8b739;
-    --color-secondary-400: #fac55e;
-    --color-secondary-300: #fcd885;
-    --color-secondary-200: #fde8ac;
-    --color-secondary-100: #fef3d2;
-    --color-secondary-50: #fffbf0;
+    /* Secondary Colors - Pyro Magma */
+    --color-secondary-900: #450a0a;
+    --color-secondary-800: #7f1d1d;
+    --color-secondary-700: #991b1b;
+    --color-secondary-600: #b91c1c;
+    --color-secondary-500: #dc2626;
+    --color-secondary-400: #ef4444;
+    --color-secondary-300: #fca5a5;
+    --color-secondary-200: #fecaca;
+    --color-secondary-100: #fee2e2;
+    --color-secondary-50: #fff5f5;
 
     /* Accent Colors - Cultural Vibrancy */
     --color-accent-coral: #ff6b6b;
@@ -57,19 +57,22 @@
     --color-neutral-50: #fafafa;
     --color-white: #ffffff;
 
+    /* Surface Colors */
+    --color-surface-paper: #E5E2D9;  /* Page Edge — FastFact sidebar, card borders */
+
     /* Semantic Colors */
     --color-success: #27ae60;
-    --color-warning: #f39c12;
-    --color-error: #e74c3c;
-    --color-info: #3498db;
+    --color-warning: #b91c1c;
+    --color-error: #b91c1c;
+    --color-info: #1e3a8a;
 
     /* ===================================
        TYPOGRAPHY
        =================================== */
 
     /* Font Families */
-    --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Archivo Narrow', Arial Narrow, sans-serif;
+    --font-body: 'Merriweather', Georgia, serif;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
     /* Type Scale */
