@@ -25,6 +25,8 @@ const {
   vitals_best_for, vitals_climate, vitals_hub, vitals_currency, vitals_ship,
   getting_there,
 } = Astro.props.frontmatter;
+
+const hasExplorer = Astro.slots.has('explorer');
 ---
 
 <!doctype html>
@@ -43,20 +45,40 @@ const {
       type="urban-sight"
     />
 
-    <div class="planet-hero">
-      <img src={hero_image} alt={`${title}, ${system} system`} class="planet-hero__image" />
-      <div class="planet-hero__overlay" aria-hidden="true"></div>
-      <div class="planet-hero__text container mx-auto px-6">
-        <p class="planet-hero__eyebrow">{system} System · Stanton IV</p>
-        <h1 class="planet-hero__title">{title}</h1>
-      </div>
-    </div>
+    <div class="page-container">
 
-    <div class="container mx-auto px-6 py-10">
+      <header class="page-header">
+        <div class="page-header__left">
+          <div class="page-header__title-row">
+            <svg class="page-header__pin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <h1 class="page-header__title">{title}</h1>
+          </div>
+          <p class="page-header__sub">{system} System · Stanton IV</p>
+        </div>
+        <div class="page-header__best-for" aria-label={`Best for: ${vitals_best_for}`}>
+          <div class="page-header__best-for-value">{vitals_best_for}</div>
+          <div class="page-header__best-for-label">Best For</div>
+        </div>
+      </header>
 
-      <div class="planet-intro">
-        <p class="planet-lead">{lead}</p>
-        <div class="planet-vitals">
+      <div class="page-grid">
+
+        <main class="page-main">
+          <div class="main-hero">
+            <img src={hero_image} alt={`${title}, ${system} system`} class="main-hero__image" />
+          </div>
+          <p class="main-lead">{lead}</p>
+          <h2 class="main-section-heading">Sights &amp; Highlights</h2>
+          <div class="main-attractions">
+            <slot />
+          </div>
+        </main>
+
+        <aside class="page-sidebar">
+
           <VitalStats
             best_for={vitals_best_for}
             climate={vitals_climate}
@@ -64,160 +86,217 @@ const {
             currency={vitals_currency}
             ship_class={vitals_ship}
           />
-        </div>
+
+          <div class="sidebar-card sidebar-card--getting-there">
+            <h3 class="sidebar-card__label">Getting There</h3>
+            <p class="sidebar-card__body">{getting_there}</p>
+          </div>
+
+          {hasExplorer && (
+            <slot name="explorer" />
+          )}
+
+        </aside>
+
       </div>
-
-      <div class="planet-category-legend" aria-label="Category guide">
-        <span class="legend-item" style="color:#059669">● Natural Wonder</span>
-        <span class="legend-item" style="color:#7c3aed">● Hidden Find</span>
-        <span class="legend-item" style="color:var(--color-primary-600)">● Settlement</span>
-        <span class="legend-item" style="color:#d97706">● Getting Around</span>
-      </div>
-
-      <main class="planet-attractions">
-        <slot />
-      </main>
-
-      <section class="planet-getting-there">
-        <h2 class="getting-there__title">Getting There</h2>
-        <p class="getting-there__body">{getting_there}</p>
-      </section>
-
     </div>
   </body>
 </html>
 
 <style>
-  .planet-hero {
-    position: relative;
-    height: 560px;
-    overflow: hidden;
+  /* ── Container ──────────────────────────────── */
+
+  .page-container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
 
-  .planet-hero__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
+  /* ── Page Header ──────────────────────────────── */
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0 0.875rem;
+    border-bottom: 3px solid var(--color-primary-600);
+    margin-bottom: 1.5rem;
   }
 
-  .planet-hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.72) 0%,
-      rgba(0, 0, 0, 0.2) 45%,
-      transparent 100%
-    );
+  .page-header__title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 0.25rem;
   }
 
-  .planet-hero__text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-bottom: 2.5rem;
+  .page-header__pin {
+    width: 22px;
+    height: 22px;
+    color: var(--color-primary-600);
+    flex-shrink: 0;
   }
 
-  .planet-hero__eyebrow {
+  .page-header__title {
     font-family: var(--font-display);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0 0 0.25rem;
-  }
-
-  .planet-hero__title {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 700;
-    color: white;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: var(--color-neutral-900);
     margin: 0;
-    line-height: 0.95;
+    line-height: 1;
     text-transform: uppercase;
     letter-spacing: -0.01em;
   }
 
-  .planet-intro {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    padding-bottom: 2rem;
-    border-bottom: 2px solid var(--color-neutral-200);
-    margin-bottom: 1.5rem;
+  .page-header__sub {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-neutral-600);
+    margin: 0;
+    padding-left: calc(22px + 0.625rem);
   }
 
-  .planet-lead {
+  .page-header__best-for {
+    flex-shrink: 0;
+    background: #fffbeb;
+    border-radius: var(--radius-lg, 0.75rem);
+    padding: 0.625rem 1rem;
+    text-align: center;
+  }
+
+  .page-header__best-for-value {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #b45309;
+    line-height: 1.3;
+  }
+
+  .page-header__best-for-label {
     font-family: var(--font-body);
-    font-size: 1.1875rem;
+    font-size: 0.625rem;
+    color: #78716c;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.125rem;
+  }
+
+  /* ── Main Grid ──────────────────────────────── */
+
+  .page-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding-bottom: 3rem;
+  }
+
+  /* ── Main Column ──────────────────────────────── */
+
+  .main-hero {
+    margin-bottom: 1.25rem;
+    border-radius: var(--radius-lg, 0.75rem);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+
+  .main-hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .main-lead {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
     font-style: italic;
     line-height: var(--line-height-relaxed);
     color: var(--color-neutral-700);
-    margin: 0;
+    margin: 0 0 1.25rem;
   }
 
-  .planet-category-legend {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    padding: 0.75rem 0 1.5rem;
-    border-bottom: 1px solid var(--color-neutral-200);
-    margin-bottom: 0.5rem;
-  }
-
-  .legend-item {
+  .main-section-heading {
     font-family: var(--font-display);
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .planet-attractions {
-    padding-top: 0.5rem;
-  }
-
-  .planet-getting-there {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--color-neutral-200);
-  }
-
-  .getting-there__title {
-    font-family: var(--font-display);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-primary-600);
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.875rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-neutral-200);
   }
 
-  .getting-there__body {
+  .main-attractions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* ── Sidebar ──────────────────────────────── */
+
+  .page-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+  }
+
+  .sidebar-card {
+    border-radius: var(--radius-md, 0.5rem);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .sidebar-card--getting-there {
+    background: #fffbeb;
+    border-left: 4px solid #d97706;
+  }
+
+  .sidebar-card__label {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #92400e;
+    margin: 0 0 0.625rem;
+  }
+
+  .sidebar-card__body {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.8125rem;
     line-height: var(--line-height-relaxed);
     color: var(--color-neutral-700);
     margin: 0;
-    max-width: 68ch;
   }
 
+  /* ── Responsive ──────────────────────────────── */
+
   @media (max-width: 768px) {
-    .planet-hero { height: 320px; }
+    .page-container {
+      padding: 0 1rem;
+    }
 
-    .planet-hero__title { font-size: 3rem; }
+    .page-header {
+      flex-wrap: wrap;
+    }
 
-    .planet-intro {
+    .page-header__best-for {
+      display: none;
+    }
+
+    .page-grid {
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
 
-    .planet-vitals { order: -1; }
-
-    .planet-category-legend { gap: 1rem; }
+    .page-sidebar {
+      position: static;
+    }
   }
 </style>
