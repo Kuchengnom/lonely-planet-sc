@@ -3,7 +3,7 @@ import '../styles/global.css';
 import SystemHeader from '../components/SystemHeader.astro';
 import FastFactSidebar from '../components/FastFactSidebar.astro';
 
-interface Props {
+interface Frontmatter {
   title: string;
   system: string;
   planet: string;
@@ -17,11 +17,15 @@ interface Props {
   hero_image: string;
 }
 
+interface Props {
+  frontmatter: Frontmatter;
+}
+
 const {
   title, system, planet, region, type,
   difficulty, coordinates, required_gear,
   vibe, rating, hero_image,
-} = Astro.props;
+} = Astro.props.frontmatter;
 ---
 
 <!doctype html>
