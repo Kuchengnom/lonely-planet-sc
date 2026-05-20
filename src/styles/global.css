@@ -1,0 +1,12 @@
+@import './design-system.css';
+@import 'tailwindcss';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-neutral-800);
+}
