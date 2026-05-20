@@ -1,0 +1,154 @@
+---
+interface Props {
+  number: number;
+  title: string;
+  category: 'natural-wonder' | 'hidden-find' | 'settlement' | 'practical';
+  image?: string;
+  imageAlt?: string;
+}
+
+const { number, title, category, image, imageAlt } = Astro.props;
+
+const CATEGORY_CONFIG = {
+  'natural-wonder': { label: 'Natural Wonder', color: '#059669' },
+  'hidden-find':    { label: 'Hidden Find',    color: '#7c3aed' },
+  'settlement':     { label: 'Settlement',     color: 'var(--color-primary-600)' },
+  'practical':      { label: 'Getting Around', color: '#d97706' },
+} as const;
+
+const cat = CATEGORY_CONFIG[category];
+const num = String(number).padStart(2, '0');
+---
+
+<article class="attraction">
+  <div class="attraction__header">
+    <span class="attraction__number" style={`background: ${cat.color};`}>{num}</span>
+    <div class="attraction__meta">
+      <span class="attraction__category" style={`color: ${cat.color};`}>{cat.label}</span>
+      <h2 class="attraction__title">{title}</h2>
+    </div>
+  </div>
+
+  <div class={`attraction__body${image ? ' attraction__body--with-image' : ''}`}>
+    <div class="attraction__text">
+      <slot />
+    </div>
+    {image && (
+      <figure class="attraction__figure">
+        <img src={image} alt={imageAlt ?? title} class="attraction__image" loading="lazy" />
+      </figure>
+    )}
+  </div>
+</article>
+
+<style>
+  .attraction {
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .attraction:last-of-type {
+    border-bottom: none;
+  }
+
+  .attraction__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .attraction__number {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: white;
+    margin-top: 0.2rem;
+  }
+
+  .attraction__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .attraction__category {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .attraction__title {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .attraction__body {
+    padding-left: 3rem;
+  }
+
+  .attraction__body--with-image {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .attraction__text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-800);
+  }
+
+  .attraction__text :global(p) {
+    margin: 0 0 1rem;
+  }
+
+  .attraction__text :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .attraction__text :global(strong) {
+    color: var(--color-neutral-900);
+  }
+
+  .attraction__figure {
+    margin: 0;
+  }
+
+  .attraction__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .attraction__body {
+      padding-left: 0;
+    }
+
+    .attraction__body--with-image {
+      grid-template-columns: 1fr;
+    }
+
+    .attraction__figure {
+      order: -1;
+    }
+  }
+</style>

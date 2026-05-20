@@ -1,0 +1,223 @@
+---
+import '../styles/global.css';
+import SystemHeader from '../components/SystemHeader.astro';
+import VitalStats from '../components/VitalStats.astro';
+
+interface Frontmatter {
+  title: string;
+  system: string;
+  hero_image: string;
+  lead: string;
+  vitals_best_for: string;
+  vitals_climate: string;
+  vitals_hub: string;
+  vitals_currency: string;
+  vitals_ship: string;
+  getting_there: string;
+}
+
+interface Props {
+  frontmatter: Frontmatter;
+}
+
+const {
+  title, system, hero_image, lead,
+  vitals_best_for, vitals_climate, vitals_hub, vitals_currency, vitals_ship,
+  getting_there,
+} = Astro.props.frontmatter;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — {system} Edition</title>
+  </head>
+  <body>
+    <SystemHeader
+      system={system}
+      planet={title}
+      region=""
+      title={title}
+      type="urban-sight"
+    />
+
+    <div class="planet-hero">
+      <img src={hero_image} alt={`${title}, ${system} system`} class="planet-hero__image" />
+      <div class="planet-hero__overlay" aria-hidden="true"></div>
+      <div class="planet-hero__text container mx-auto px-6">
+        <p class="planet-hero__eyebrow">{system} System · Stanton IV</p>
+        <h1 class="planet-hero__title">{title}</h1>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-6 py-10">
+
+      <div class="planet-intro">
+        <p class="planet-lead">{lead}</p>
+        <div class="planet-vitals">
+          <VitalStats
+            best_for={vitals_best_for}
+            climate={vitals_climate}
+            hub={vitals_hub}
+            currency={vitals_currency}
+            ship_class={vitals_ship}
+          />
+        </div>
+      </div>
+
+      <div class="planet-category-legend" aria-label="Category guide">
+        <span class="legend-item" style="color:#059669">● Natural Wonder</span>
+        <span class="legend-item" style="color:#7c3aed">● Hidden Find</span>
+        <span class="legend-item" style="color:var(--color-primary-600)">● Settlement</span>
+        <span class="legend-item" style="color:#d97706">● Getting Around</span>
+      </div>
+
+      <main class="planet-attractions">
+        <slot />
+      </main>
+
+      <section class="planet-getting-there">
+        <h2 class="getting-there__title">Getting There</h2>
+        <p class="getting-there__body">{getting_there}</p>
+      </section>
+
+    </div>
+  </body>
+</html>
+
+<style>
+  .planet-hero {
+    position: relative;
+    height: 560px;
+    overflow: hidden;
+  }
+
+  .planet-hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .planet-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.2) 45%,
+      transparent 100%
+    );
+  }
+
+  .planet-hero__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 2.5rem;
+  }
+
+  .planet-hero__eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 0.25rem;
+  }
+
+  .planet-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .planet-intro {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--color-neutral-200);
+    margin-bottom: 1.5rem;
+  }
+
+  .planet-lead {
+    font-family: var(--font-body);
+    font-size: 1.1875rem;
+    font-style: italic;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0;
+  }
+
+  .planet-category-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0.75rem 0 1.5rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+    margin-bottom: 0.5rem;
+  }
+
+  .legend-item {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .planet-attractions {
+    padding-top: 0.5rem;
+  }
+
+  .planet-getting-there {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-neutral-200);
+  }
+
+  .getting-there__title {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-600);
+    margin: 0 0 0.75rem;
+  }
+
+  .getting-there__body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0;
+    max-width: 68ch;
+  }
+
+  @media (max-width: 768px) {
+    .planet-hero { height: 320px; }
+
+    .planet-hero__title { font-size: 3rem; }
+
+    .planet-intro {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .planet-vitals { order: -1; }
+
+    .planet-category-legend { gap: 1rem; }
+  }
+</style>
