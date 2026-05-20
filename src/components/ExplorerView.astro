@@ -5,46 +5,59 @@ interface Props {
 const { author } = Astro.props;
 ---
 
-<aside class="explorer-view">
-  <div class="explorer-view__label">The Explorer's View</div>
-  <blockquote class="explorer-view__quote">
+<div class="explorer-note">
+  <div class="explorer-note__header">
+    <svg class="explorer-note__star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    Explorer Note
+  </div>
+  <blockquote class="explorer-note__quote">
     <slot />
   </blockquote>
-  <cite class="explorer-view__author">— {author}</cite>
-</aside>
+  <cite class="explorer-note__author">— {author}</cite>
+</div>
 
 <style>
-  .explorer-view {
-    background: #EEF2FF;
-    border-left: 4px solid #7c3aed;
+  .explorer-note {
+    background: #065f46;
+    border-radius: var(--radius-md, 0.5rem);
     padding: 1.25rem 1.5rem;
-    margin: 2rem 0;
   }
 
-  .explorer-view__label {
+  .explorer-note__header {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
     font-family: var(--font-display);
     font-size: 0.625rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #7c3aed;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 0.75rem;
   }
 
-  .explorer-view__quote {
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-style: italic;
-    line-height: var(--line-height-relaxed);
-    color: var(--color-neutral-800);
-    margin: 0 0 0.75rem;
+  .explorer-note__star {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
   }
 
-  .explorer-view__author {
+  .explorer-note__quote {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-style: italic;
+    line-height: var(--line-height-relaxed);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 0.625rem;
+  }
+
+  .explorer-note__author {
     font-family: var(--font-display);
     font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-neutral-600);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
     font-style: normal;
+    display: block;
   }
 </style>
