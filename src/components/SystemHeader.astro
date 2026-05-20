@@ -1,0 +1,63 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import POIBadge from './POIBadge.astro';
+
+interface Props {
+  system: string;
+  planet: string;
+  region: string;
+  title: string;
+  type: 'natural-wonder' | 'easter-egg' | 'urban-sight' | 'technical';
+}
+
+const { system, planet, region, title, type } = Astro.props;
+---
+
+<header class="system-header">
+  <div class="container mx-auto px-6">
+    <div class="system-header__inner">
+      <div class="system-header__left">
+        <span class="system-header__edition">{system} Edition</span>
+        <Breadcrumb
+          system={system}
+          planet={planet}
+          region={region}
+          title={title}
+        />
+      </div>
+      <POIBadge type={type} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .system-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-primary-600);
+    padding: 0.625rem 0;
+  }
+
+  .system-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .system-header__left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .system-header__edition {
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+</style>
