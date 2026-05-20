@@ -1,0 +1,35 @@
+---
+interface Props {
+  type: 'natural-wonder' | 'easter-egg' | 'urban-sight' | 'technical';
+}
+
+const { type } = Astro.props;
+
+const BADGE_CONFIG = {
+  'natural-wonder': { label: 'Natural Wonder', emoji: '🏔️', bg: '#059669' },
+  'easter-egg':     { label: 'Easter Egg',     emoji: '🎄', bg: '#7c3aed' },
+  'urban-sight':    { label: 'Urban Sight',    emoji: '🏢', bg: 'var(--color-primary-600)' },
+  'technical':      { label: 'Technical',      emoji: '🛸', bg: '#d97706' },
+} as const;
+
+const config = BADGE_CONFIG[type];
+---
+
+<span class="poi-badge" style={`background-color: ${config.bg};`}>
+  {config.emoji} {config.label}
+</span>
+
+<style>
+  .poi-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+</style>
