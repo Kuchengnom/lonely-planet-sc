@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>microTech Rivers and Lakes Field Guide | Star Citizen</title>
+  <meta name="description" content="A static field guide for finding the known rivers and lake areas on microTech in Star Citizen.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #081013;
+      --panel: #111d20;
+      --panel-2: #172629;
+      --ink: #eef7f4;
+      --muted: #a9bbb7;
+      --line: #314346;
+      --blue: #78c7ff;
+      --green: #8ce3af;
+      --amber: #f4c96a;
+      --red: #ff9b8f;
+      --shadow: 0 24px 60px rgba(0, 0, 0, .34);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 16, 19, .35), var(--bg) 82%),
+        url("https://starcitizen.tools/Special:Redirect/file/Microtech-frozen-lake-01.jpg") center top / cover fixed;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: var(--blue); }
+
+    img, iframe { max-width: 100%; }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      align-items: end;
+      padding: 34px clamp(18px, 4vw, 64px);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34vh;
+      background: linear-gradient(180deg, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(1120px, 100%);
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin-top: 12px;
+      font-size: clamp(2.75rem, 8vw, 7.2rem);
+      text-wrap: balance;
+    }
+
+    .lede {
+      max-width: 780px;
+      margin: 22px 0 0;
+      color: #dce8e5;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    .hero-actions, .source-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid rgba(238, 247, 244, .25);
+      border-radius: 6px;
+      background: rgba(8, 16, 19, .62);
+      color: var(--ink);
+      font-weight: 800;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .button.primary {
+      border-color: rgba(140, 227, 175, .85);
+      background: rgba(50, 114, 79, .72);
+    }
+
+    main {
+      background: var(--bg);
+      padding: 12px clamp(18px, 4vw, 64px) 64px;
+    }
+
+    .wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: -22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .route-card, .section, .note, .video-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(17, 29, 32, .94);
+      box-shadow: var(--shadow);
+    }
+
+    .route-card { overflow: hidden; }
+
+    .route-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #0b1518;
+    }
+
+    .route-body { padding: 18px; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      min-height: 26px;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #203236;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .tag.hot { color: #121510; background: var(--amber); }
+    .tag.good { color: #08130d; background: var(--green); }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .fact {
+      border-left: 3px solid var(--blue);
+      padding-left: 10px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: .78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .fact span {
+      display: block;
+      margin-top: 2px;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: clamp(20px, 4vw, 34px);
+      box-shadow: none;
+    }
+
+    .section h2 {
+      font-size: clamp(1.65rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+
+    .section h3 {
+      color: var(--green);
+      font-size: 1.05rem;
+      margin: 24px 0 8px;
+      text-transform: uppercase;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    ol, ul { padding-left: 1.25rem; }
+    li + li { margin-top: 10px; }
+
+    code {
+      padding: 2px 6px;
+      border: 1px solid rgba(238, 247, 244, .16);
+      border-radius: 5px;
+      background: #0b1518;
+      color: #d8ffea;
+      font-size: .95em;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 16px;
+      background: #132124;
+      box-shadow: none;
+    }
+
+    .note.warning {
+      border-color: rgba(255, 155, 143, .55);
+    }
+
+    .mini-map {
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0b1518;
+    }
+
+    .map-row {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .compass {
+      position: relative;
+      width: 78px;
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #122024;
+    }
+
+    .needle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 3px;
+      height: 32px;
+      transform-origin: 50% 100%;
+      background: var(--amber);
+    }
+
+    .needle.h205 { transform: translate(-50%, -100%) rotate(205deg); }
+    .needle.h027 { transform: translate(-50%, -100%) rotate(27deg); }
+    .needle.h265 { transform: translate(-50%, -100%) rotate(265deg); }
+
+    .compass span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .image-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    figure {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0b1518;
+    }
+
+    figure img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .video-panel {
+      overflow: hidden;
+      box-shadow: none;
+    }
+
+    .video-frame {
+      aspect-ratio: 16 / 9;
+      background: #05090a;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-panel .route-body { padding: 16px; }
+
+    .source-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .source {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .source strong { display: block; }
+    .source span { color: var(--muted); }
+
+    footer {
+      padding: 34px clamp(18px, 4vw, 64px);
+      background: #05090a;
+      color: var(--muted);
+    }
+
+    @media (max-width: 820px) {
+      body { background-attachment: scroll; }
+      .hero { min-height: 82vh; }
+      .route-grid, .split, .video-grid, .image-strip { grid-template-columns: 1fr; }
+      .route-grid { margin-top: -12px; }
+      .facts { grid-template-columns: 1fr; }
+      .map-row { grid-template-columns: 70px 1fr; }
+      .compass { width: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Star Citizen field guide</div>
+      <h1>Find microTech's Rivers and Lake Areas</h1>
+      <p class="lede">A practical static guide for locating the known microTech river routes: the original New Babbage river and lake area, plus the canyon river route added later. Keep it open on a second screen, follow the headings, and expect small terrain or marker changes after patches.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#quick-routes">Quick Routes</a>
+        <a class="button" href="#videos">Video References</a>
+        <a class="button" href="#sources">Sources</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section id="quick-routes" class="route-grid" aria-label="Quick route cards">
+        <article class="route-card">
+          <img src="https://img.youtube.com/vi/DDwoVwF4VG0/maxresdefault.jpg" alt="YouTube thumbnail for the original microTech river route video">
+          <div class="route-body">
+            <div class="tag-row">
+              <span class="tag good">Fastest route</span>
+              <span class="tag">Original river</span>
+              <span class="tag">Lake basin</span>
+            </div>
+            <h2>New Babbage to First River</h2>
+            <p>Start at New Babbage, aim heading <code>205</code>, quantum toward <code>MT DataCenter E2Q-NSG-Y</code>, and cancel the jump when the target distance reads about <code>900 km</code>. The river sits below in a dry, greener patch surrounded by snow.</p>
+            <div class="facts">
+              <div class="fact"><strong>Known wiki fix</strong><span>205 for 440 km</span></div>
+              <div class="fact"><strong>Fast-video trick</strong><span>Cancel at 900 km</span></div>
+              <div class="fact"><strong>Visual cue</strong><span>Dry thawed valley</span></div>
+              <div class="fact"><strong>Nearby marker</strong><span>E2Q-NSG-Y</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <img src="https://img.youtube.com/vi/tzoi3PjCNkM/maxresdefault.jpg" alt="YouTube thumbnail for a canyon river exploration video">
+          <div class="route-body">
+            <div class="tag-row">
+              <span class="tag hot">Long scenic route</span>
+              <span class="tag">Canyon river</span>
+              <span class="tag">Lake stop</span>
+            </div>
+            <h2>DataCenter KH3-AAE-L to Canyon River</h2>
+            <p>Start at <code>MT DataCenter KH3-AAE-L</code> and fly heading <code>027</code> for roughly <code>440 km</code>. The wiki also gives two alternates: look midway between <code>OM-6</code> and <code>OM-3</code>, or fly heading <code>265</code> for about <code>60 km</code> from Dunboro.</p>
+            <div class="facts">
+              <div class="fact"><strong>Main route</strong><span>027 for 440 km</span></div>
+              <div class="fact"><strong>Alternate</strong><span>OM-6 to OM-3 midpoint</span></div>
+              <div class="fact"><strong>Short hop</strong><span>Dunboro 265 / 60 km</span></div>
+              <div class="fact"><strong>Visual cue</strong><span>Cut canyon walls</span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="preflight">
+        <div class="split">
+          <div>
+            <h2>Before You Fly</h2>
+            <p>Bring a ship that can hover cleanly in atmosphere and descend slowly. A Pisces, Cutter, 100i, Nomad, or similar small craft is more comfortable than a heavy hauler when you are hunting terrain by eye.</p>
+            <ul>
+              <li>Set your respawn and refuel at Port Tressler or New Babbage before you leave.</li>
+              <li>Use daylight if possible. microTech storms and night passes can hide the dry river valleys.</li>
+              <li>Keep a screenshot key ready. These locations are easy to lose once you leave the pilot seat.</li>
+              <li>Remember that patches can shift terrain, marker names, or route accuracy. Treat headings as field bearings, not perfect coordinates.</li>
+            </ul>
+          </div>
+          <div class="mini-map" aria-label="Heading reference">
+            <div class="map-row">
+              <div class="compass"><div class="needle h205"></div><span>205</span></div>
+              <p><strong>First River:</strong> from New Babbage, this bearing takes you into the thawed region near the original river and lake basin.</p>
+            </div>
+            <div class="map-row">
+              <div class="compass"><div class="needle h027"></div><span>027</span></div>
+              <p><strong>Canyon River:</strong> from MT DataCenter KH3-AAE-L, hold this bearing and watch distance traveled.</p>
+            </div>
+            <div class="map-row">
+              <div class="compass"><div class="needle h265"></div><span>265</span></div>
+              <p><strong>Dunboro alternate:</strong> short route toward the canyon river area, roughly 60 km out.</p>
+            </div>
+          </div>
+        </div>
+        <div class="note warning">
+          <strong>How to cancel quantum safely:</strong> the RSI community guide says to press <code>U</code> to cut power when the E2Q-NSG-Y target reads about 900 km away. Be ready to regain control, level out, and descend; you may exit quantum at speed or in poor weather.
+        </div>
+      </section>
+
+      <section class="section" id="first-river">
+        <h2>Route 1: First River and Lake Basin</h2>
+        <div class="split">
+          <div>
+            <h3>Fast 30-second method</h3>
+            <ol>
+              <li>Spawn or land at <code>New Babbage</code> on microTech.</li>
+              <li>Point your ship to heading <code>205</code>.</li>
+              <li>Quantum travel toward <code>MT DataCenter E2Q-NSG-Y</code>.</li>
+              <li>Cancel quantum when the remaining distance to the data center is about <code>900 km</code>.</li>
+              <li>Look down for a dry patch where the snow breaks. Descend and search the thawed valley floor.</li>
+            </ol>
+          </div>
+          <div>
+            <h3>Manual bearing method</h3>
+            <ol>
+              <li>Start at New Babbage and climb high enough to clear terrain, ideally several kilometers up.</li>
+              <li>Hold heading <code>205</code> and fly about <code>440 km</code>.</li>
+              <li>At the biome transition, reduce speed and scan left and right for water, darker ground, and green-brown terrain.</li>
+              <li>The lake/basin area is easiest to spot from altitude; the river channel is easier to follow once you are lower.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="image-strip">
+          <figure>
+            <img src="https://starcitizen.tools/Special:Redirect/file/Microtech-new-babbage-cityscape-01.jpg" alt="New Babbage skyline on microTech">
+            <figcaption>New Babbage is the easiest start point for the first river route.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://starcitizen.tools/Special:Redirect/file/MT%20DataCenter%20E2Q-NSG-Y,%20microTech.webp" alt="MT DataCenter E2Q-NSG-Y on microTech">
+            <figcaption>Use E2Q-NSG-Y as a quantum reference, then cancel before arrival.</figcaption>
+          </figure>
+          <figure>
+            <img src="https://starcitizen.tools/Special:Redirect/file/400i-microtech-lake.jpg" alt="Ship over a lake on microTech">
+            <figcaption>Expect reflective water in a thawed zone, often near greener ground.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="canyon-river">
+        <h2>Route 2: Canyon River</h2>
+        <p>The canyon river is a better sightseeing route than a pure speed run. Give yourself more altitude, and once you are close, let the canyon shape guide you. The channel is easier to follow visually than by instruments.</p>
+        <div class="split">
+          <div>
+            <h3>Primary method</h3>
+            <ol>
+              <li>Quantum to <code>MT DataCenter KH3-AAE-L</code>.</li>
+              <li>Set your ship nose to heading <code>027</code>.</li>
+              <li>Fly roughly <code>440 km</code> while keeping enough altitude to see the valley forms.</li>
+              <li>When the terrain starts showing deeper cuts and exposed canyon walls, slow down and descend.</li>
+            </ol>
+          </div>
+          <div>
+            <h3>Alternate fixes</h3>
+            <ol>
+              <li>Use the orbital-marker method: search the planet-facing midpoint between <code>OM-6</code> and <code>OM-3</code>.</li>
+              <li>Use the settlement method: start at <code>Dunboro</code>, then fly heading <code>265</code> for about <code>60 km</code>.</li>
+              <li>If clouds hide the ground, climb until the terrain silhouette reads clearly, then descend along the cut.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="note">
+          <strong>What you are looking for:</strong> a river channel in a deeper canyon system, with water and occasional lake-like widened sections. If you see only flat snowfields, you are probably too high-latitude, off bearing, or above a storm layer.
+        </div>
+      </section>
+
+      <section class="section" id="spotting">
+        <h2>Spotting Water on microTech</h2>
+        <div class="split">
+          <div>
+            <p>microTech is mostly cold, mountainous, and snowy, so liquid water stands out by contrast. The most reliable clue is not the water itself; it is the landscape around it.</p>
+            <ul>
+              <li><strong>Dry or greener patches:</strong> the river areas often sit in thawed terrain surrounded by snow.</li>
+              <li><strong>Long dark channels:</strong> from altitude, river beds can look like shadow lines before the water renders clearly.</li>
+              <li><strong>Biome transition:</strong> snow giving way to tundra, grass, trees, or darker soil is your cue to slow down.</li>
+              <li><strong>Altitude discipline:</strong> search high, confirm low. Too low too early makes you miss the larger shape.</li>
+            </ul>
+          </div>
+          <figure>
+            <img src="https://starcitizen.tools/Special:Redirect/file/Microtech-fields-biome-04.png" alt="Green field biome on microTech">
+            <figcaption>Greener terrain is a useful clue when searching for thawed valleys and water.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="videos">
+        <h2>Video References</h2>
+        <p>These are included for quick replay later. If an embed fails because of privacy or browser settings, use the source links beneath each video.</p>
+        <div class="video-grid">
+          <article class="video-panel">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/DDwoVwF4VG0" title="Find river in 30 seconds fastest way Star Citizen 3.17" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="route-body">
+              <h3>First River: Fast New Babbage Route</h3>
+              <p>Best reference for the 205 heading, E2Q-NSG-Y quantum jump, and 900 km cancel method.</p>
+              <a href="https://youtu.be/DDwoVwF4VG0">Open on YouTube</a>
+            </div>
+          </article>
+          <article class="video-panel">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/tzoi3PjCNkM" title="Relaxing longplay new canyon river exploration" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="route-body">
+              <h3>Canyon River: Longform Visual Reference</h3>
+              <p>Useful for recognizing the canyon-river terrain and the feel of the approach once you are in the right area.</p>
+              <a href="https://youtu.be/tzoi3PjCNkM">Open on YouTube</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="sources">
+        <h2>Sources and Patch Notes</h2>
+        <p>This guide was assembled on May 20, 2026. Star Citizen terrain and navigation markers can change, so check the linked pages if a route suddenly feels wrong after a patch.</p>
+        <div class="source-list">
+          <div class="source">
+            <strong><a href="https://starcitizen.tools/Rivers">Star Citizen Wiki: Rivers</a></strong>
+            <span>Primary route data for the first river and canyon river, including headings and distances. Page last edited April 19, 2026.</span>
+          </div>
+          <div class="source">
+            <strong><a href="https://starcitizen.tools/MicroTech_(planet)">Star Citizen Wiki: microTech</a></strong>
+            <span>Planet environment, atmosphere, landmark list, and microTech image references.</span>
+          </div>
+          <div class="source">
+            <strong><a href="https://robertsspaceindustries.com/community-hub/post/find-river-in-30-seconds-fastest-way-star-citizen-3-17-eexrwrkzzymbo">RSI Community Hub: Find River in 30 Seconds</a></strong>
+            <span>Source for the fast New Babbage to E2Q-NSG-Y jump-cancel method and embedded YouTube video.</span>
+          </div>
+          <div class="source">
+            <strong><a href="https://robertsspaceindustries.com/community-hub/post/relaxing-longplay-new-canyon-river-exploration-s9K9lrK91ljf5">RSI Community Hub: New Canyon River Exploration</a></strong>
+            <span>Longform canyon-river video reference from Star Citizen 3.18 PTU.</span>
+          </div>
+          <div class="source">
+            <strong><a href="https://www.starzen.space/t/guide-how-to-find-canyon-river-on-microtech-star-citizen-3-18/7134">StarZen: Canyon River Guide Post</a></strong>
+            <span>Community pointer to a canyon-river video guide for Star Citizen 3.18 PTU.</span>
+          </div>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="#quick-routes">Back to Route Cards</a>
+          <a class="button" href="#videos">Replay Videos</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Fan-made reference guide. Star Citizen, Squadron 42, Roberts Space Industries, Cloud Imperium, and related marks belong to Cloud Imperium Rights LLC and Cloud Imperium Rights Ltd. Images and videos remain with their respective creators and sources.
+    </div>
+  </footer>
+</body>
+</html>
