@@ -1,0 +1,35 @@
+---
+// Slot-based. Usage in MDX: <TouristTip>Your tip here.</TouristTip>
+---
+
+<div class="tourist-tip">
+  <span class="tourist-tip__icon" aria-hidden="true">💡</span>
+  <p class="tourist-tip__text"><slot /></p>
+</div>
+
+<style>
+  .tourist-tip {
+    background: #FEFCE8;
+    border: 1px dashed #ca8a04;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin: 1.5rem 0;
+  }
+
+  .tourist-tip__icon {
+    font-size: 1.125rem;
+    flex-shrink: 0;
+    line-height: 1.6;
+  }
+
+  .tourist-tip__text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    color: #78350f;
+    margin: 0;
+  }
+</style>
