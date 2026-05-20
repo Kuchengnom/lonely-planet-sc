@@ -1,0 +1,42 @@
+---
+interface Props {
+  system: string;
+  planet: string;
+  region: string;
+  title: string;
+}
+
+const { system, planet, region, title } = Astro.props;
+const crumbs = [system, planet, region];
+---
+
+<nav class="breadcrumb" aria-label="Location breadcrumb">
+  {crumbs.map((crumb) => (
+    <>
+      <span class="breadcrumb__item">{crumb}</span>
+      <span class="breadcrumb__sep" aria-hidden="true">›</span>
+    </>
+  ))}
+  <span class="breadcrumb__item breadcrumb__item--current">{title}</span>
+</nav>
+
+<style>
+  .breadcrumb {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.65);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb__sep {
+    opacity: 0.45;
+  }
+
+  .breadcrumb__item--current {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+  }
+</style>
