@@ -1,0 +1,169 @@
+---
+import '../styles/global.css';
+import SystemHeader from '../components/SystemHeader.astro';
+import FastFactSidebar from '../components/FastFactSidebar.astro';
+
+interface Props {
+  title: string;
+  system: string;
+  planet: string;
+  region: string;
+  type: 'natural-wonder' | 'easter-egg' | 'urban-sight' | 'technical';
+  difficulty: 'Easy' | 'Moderate' | 'Hard' | 'Extreme';
+  coordinates: string;
+  required_gear: string[];
+  vibe: string;
+  rating: number;
+  hero_image: string;
+}
+
+const {
+  title, system, planet, region, type,
+  difficulty, coordinates, required_gear,
+  vibe, rating, hero_image,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — {planet}, {system}</title>
+  </head>
+  <body>
+    <SystemHeader
+      system={system}
+      planet={planet}
+      region={region}
+      title={title}
+      type={type}
+    />
+
+    <div class="poi-hero">
+      <img
+        src={hero_image}
+        alt={`${title} on ${planet}`}
+        class="poi-hero__image"
+      />
+      <div class="poi-hero__overlay" aria-hidden="true"></div>
+      <div class="poi-hero__text container mx-auto px-6">
+        <h1 class="poi-hero__title">{title}</h1>
+        <p class="poi-hero__subtitle">{planet} · {region}</p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-6 py-10">
+      <div class="poi-grid">
+        <main class="poi-grid__main">
+          <slot />
+        </main>
+        <div class="poi-grid__sidebar">
+          <FastFactSidebar
+            rating={rating}
+            vibe={vibe}
+            difficulty={difficulty}
+            required_gear={required_gear}
+            coordinates={coordinates}
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .poi-hero {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .poi-hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .poi-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.15) 50%,
+      transparent 100%
+    );
+  }
+
+  .poi-hero__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 2rem;
+  }
+
+  .poi-hero__title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.25rem;
+    line-height: var(--line-height-tight);
+  }
+
+  .poi-hero__subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .poi-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .poi-grid__main {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-800);
+  }
+
+  .poi-grid__main :global(p) {
+    margin: 0 0 1.25rem;
+  }
+
+  .poi-grid__main :global(h2) {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-700);
+    margin: 2rem 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 768px) {
+    .poi-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .poi-grid__sidebar {
+      order: -1;
+    }
+
+    .poi-hero {
+      height: 250px;
+    }
+
+    .poi-hero__title {
+      font-size: 2rem;
+    }
+  }
+</style>
