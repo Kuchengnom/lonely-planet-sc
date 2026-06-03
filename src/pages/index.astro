@@ -1,17 +1,640 @@
 ---
+import '../styles/global.css';
 
+interface SystemEdition {
+  name: string;
+  subtitle: string;
+  status: 'available' | 'coming-soon';
+  image: string;
+  imageAlt: string;
+  href: string;
+  planetCount: number;
+  accentColor: string;
+}
+
+const EDITIONS: SystemEdition[] = [
+  {
+    name: 'Stanton',
+    subtitle: 'The Corporate Core',
+    status: 'available',
+    image: '/images/microtech/panoramic-lake.jpeg',
+    imageAlt: 'Panoramic view of a lake on microTech, Stanton system',
+    href: '/stanton/microtech/',
+    planetCount: 4,
+    accentColor: 'var(--color-primary-600)',
+  },
+  {
+    name: 'Pyro',
+    subtitle: 'The Unstable Frontier',
+    status: 'coming-soon',
+    image: 'https://starcitizen.tools/Special:Redirect/file/Pyro-system-01.jpg',
+    imageAlt: 'The unstable Pyro system',
+    href: '#',
+    planetCount: 0,
+    accentColor: 'var(--color-secondary-600)',
+  },
+];
+
+const planets = [
+  { name: 'microTech', system: 'Stanton', label: 'Stanton IV', tag: 'Live', href: '/stanton/microtech/' },
+  { name: 'Crusader', system: 'Stanton', label: 'Stanton II', tag: 'Soon', href: '#' },
+  { name: 'Hurston', system: 'Stanton', label: 'Stanton I', tag: 'Soon', href: '#' },
+  { name: 'ArcCorp', system: 'Stanton', label: 'Stanton III', tag: 'Soon', href: '#' },
+];
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lonely Planet: Star Citizen</title>
+    <meta name="description" content="Unofficial travel guides to the Star Citizen universe. Curated attractions, hidden gems, and essential travel tips." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    {/* ── Hero ──────────────────────────────── */}
+    <header class="hero">
+      <div class="hero__pattern"></div>
+      <div class="hero__inner">
+        <div class="hero__pin" aria-hidden="true">&#9733;</div>
+        <h1 class="hero__title">Lonely Planet</h1>
+        <p class="hero__subtitle">Star Citizen</p>
+        <p class="hero__lede">
+          Unofficial travel guides to the 'Verse. Curated attractions, hidden gems,
+          and essential travel tips for the systems you fly through.
+        </p>
+        <div class="hero__scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      {/* ── System Editions ─────────────────── */}
+      <section class="editions" aria-labelledby="editions-heading">
+        <div class="container">
+          <h2 id="editions-heading" class="section-heading">System Editions</h2>
+
+          <div class="editions-grid">
+            {EDITIONS.map((edition) => (
+              <article
+                class={`edition-card ${edition.status === 'coming-soon' ? 'edition-card--soon' : ''}`}
+                style={`--card-accent: ${edition.accentColor};`}
+              >
+                <div class="edition-card__thumb">
+                  <img src={edition.image} alt={edition.imageAlt} loading="lazy" />
+                  <span class="edition-card__status">{edition.status === 'available' ? 'Available Now' : 'Coming Soon'}</span>
+                </div>
+                <div class="edition-card__body">
+                  <p class="edition-card__subtitle">{edition.subtitle}</p>
+                  <h3 class="edition-card__name">{edition.name} Edition</h3>
+                  <p class="edition-card__meta">
+                    {edition.status === 'available' ? `${edition.planetCount} planets · 7+ attractions` : 'Details arriving with Alpha 4.0'}
+                  </p>
+                  <a
+                    href={edition.href}
+                    class={`edition-card__cta ${edition.status === 'coming-soon' ? 'edition-card__cta--disabled' : ''}`}
+                    aria-disabled={edition.status === 'coming-soon'}
+                  >
+                    {edition.status === 'available' ? 'Explore →' : 'Stay tuned'}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Planet Quick-Nav ────────────────── */}
+      <section class="quick-nav" aria-labelledby="planets-heading">
+        <div class="container">
+          <h2 id="planets-heading" class="section-heading">Planets</h2>
+
+          <ul class="planet-list">
+            {planets.map((planet) => (
+              <li class="planet-item">
+                <a href={planet.href} class={`planet-link ${planet.tag === 'Soon' ? 'planet-link--disabled' : ''}`}>
+                  <span class="planet-link__name">{planet.name}</span>
+                  <span class="planet-link__label">{planet.label}</span>
+                  <span class={`planet-link__tag ${planet.tag === 'Live' ? 'planet-link__tag--live' : ''}`}>{planet.tag}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── About / Manifesto ───────────────── */}
+      <section class="about" aria-labelledby="about-heading">
+        <div class="container about-grid">
+          <div class="about-image">
+            <img src="/images/microtech/flying-over-mountains.jpeg" alt="Small exploration ship flying over microTech's snowy mountain ranges" loading="lazy" />
+          </div>
+          <div class="about-text">
+            <h2 id="about-heading" class="about-heading">For the Explorer</h2>
+            <p class="about-lede">
+              The 'Verse is vast, cold, and spectacular. These are the places that make the journey worth it.
+            </p>
+            <p>
+              This is an unofficial fan guide inspired by the spirit of classic travel writing.
+              We focus on the atmospheric and the hidden — the rivers that shouldn't flow,
+              the caves that glow, and the silence between ice storms.
+            </p>
+            <p>All content is community-driven. Found a new spot? Help us map the 'Verse.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {/* ── Footer ──────────────────────────── */}
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="footer-title">Editions</p>
+          <ul class="footer-links">
+            <li><a href="/stanton/microtech/">Stanton</a></li>
+            <li><a href="#" aria-disabled="true">Pyro</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Community</p>
+          <ul class="footer-links">
+            <li><a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Star Citizen</a></li>
+            <li><a href="https://starcitizen.tools/" target="_blank" rel="noopener">Star Citizen Wiki</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-wide">
+          <p class="footer-small">Fan-made reference guide. Star Citizen and related marks belong to Cloud Imperium Rights LLC and Cloud Imperium Rights Ltd.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>
+
+<style>
+  /* ── Base / Typography ─────────────────── */
+  body {
+    background: #f5f0ea;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-neutral-500);
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  /* ── Hero ──────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background:
+      linear-gradient(180deg, rgba(9,20,45,.78), rgba(9,20,45,.48)),
+      url('/images/microtech/panoramic-lake.jpeg') center / cover no-repeat;
+    color: #fff;
+  }
+
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,.04) 2px,
+      rgba(0,0,0,.04) 4px
+    );
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .hero__pin {
+    font-size: 2.5rem;
+    line-height: 1;
+    opacity: .6;
+    margin-bottom: .5rem;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: .9;
+    margin: 0;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,.65);
+    margin: .625rem 0 1.5rem;
+  }
+
+  .hero__lede {
+    font-family: var(--font-body);
+    font-size: clamp(0.9375rem, 2vw, 1.125rem);
+    line-height: var(--line-height-relaxed);
+    color: rgba(255,255,255,.75);
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .hero__scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .375rem;
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-size: .625rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+  }
+
+  .hero__scroll svg {
+    width: 20px;
+    height: 20px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ── Editions Section ──────────────────── */
+  .editions {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .editions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .edition-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: var(--radius-md, 0.5rem);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    transition: box-shadow .3s ease, transform .3s ease;
+  }
+
+  .edition-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    transform: translateY(-2px);
+  }
+
+  .edition-card--soon {
+    opacity: .8;
+  }
+
+  .edition-card__thumb {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .edition-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+  }
+
+  .edition-card:hover .edition-card__thumb img {
+    transform: scale(1.04);
+  }
+
+  .edition-card__status {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--card-accent, var(--color-primary-600));
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: .625rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .25rem .625rem;
+    border-radius: var(--radius-sm, 0.25rem);
+  }
+
+  .edition-card__body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .edition-card__subtitle {
+    font-family: var(--font-body);
+    font-size: .8125rem;
+    font-style: italic;
+    color: var(--color-neutral-500);
+    margin: 0 0 .25rem;
+  }
+
+  .edition-card__name {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    margin: 0 0 .5rem;
+    line-height: 1.1;
+  }
+
+  .edition-card__meta {
+    font-family: var(--font-body);
+    font-size: .8125rem;
+    color: var(--color-neutral-600);
+    margin: 0 0 1.25rem;
+    flex: 1;
+  }
+
+  .edition-card__cta {
+    display: inline-flex;
+    align-self: flex-start;
+    font-family: var(--font-display);
+    font-size: .8125rem;
+    font-weight: 700;
+    color: var(--card-accent, var(--color-primary-600));
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity .2s ease;
+  }
+
+  .edition-card__cta:hover {
+    opacity: .7;
+  }
+
+  .edition-card__cta--disabled {
+    pointer-events: none;
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-300);
+  }
+
+  /* ── Quick-Nav ─────────────────────────── */
+  .quick-nav {
+    padding: 0 0 4rem;
+  }
+
+  .planet-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .planet-item {
+    border-top: 1px solid var(--color-neutral-200);
+  }
+
+  .planet-item:last-child {
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .planet-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .875rem 0;
+    text-decoration: none;
+    color: inherit;
+    transition: background .15s ease;
+  }
+
+  .planet-link:hover {
+    background: rgba(0,0,0,.02);
+  }
+
+  .planet-link--disabled {
+    pointer-events: none;
+    opacity: .55;
+  }
+
+  .planet-link__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    min-width: 120px;
+  }
+
+  .planet-link__label {
+    font-family: var(--font-body);
+    font-size: .8125rem;
+    color: var(--color-neutral-600);
+    flex: 1;
+  }
+
+  .planet-link__tag {
+    font-family: var(--font-display);
+    font-size: .625rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .125rem .5rem;
+    border-radius: var(--radius-sm, .25rem);
+    background: var(--color-neutral-200);
+    color: var(--color-neutral-600);
+  }
+
+  .planet-link__tag--live {
+    background: var(--color-primary-50);
+    color: var(--color-primary-700);
+  }
+
+  /* ── About / Manifesto ─────────────────── */
+  .about {
+    background: #fff;
+    padding: 4rem 0;
+    border-top: 1px solid var(--color-neutral-200);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-image {
+    border-radius: var(--radius-md, .5rem);
+    overflow: hidden;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-heading {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    margin: 0 0 .75rem;
+  }
+
+  .about-lede {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    font-style: italic;
+    color: var(--color-neutral-700);
+    line-height: var(--line-height-relaxed);
+    margin: 0 0 1.25rem;
+  }
+
+  .about-text p {
+    font-family: var(--font-body);
+    font-size: .9375rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0 0 .75rem;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Footer ────────────────────────────── */
+  .site-footer {
+    background: var(--color-neutral-900);
+    color: #a0aec0;
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .footer-title {
+    font-family: var(--font-display);
+    font-size: .625rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    margin: 0 0 .75rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: .375rem;
+  }
+
+  .footer-links a {
+    color: #a0aec0;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: .8125rem;
+    transition: color .2s ease;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+  }
+
+  .footer-col-wide {
+    align-self: end;
+  }
+
+  .footer-small {
+    font-family: var(--font-body);
+    font-size: .6875rem;
+    color: #718096;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Responsive ────────────────────────── */
+  @media (max-width: 768px) {
+    .editions-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-image {
+      order: -1;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-col-wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .planet-link {
+      flex-wrap: wrap;
+      gap: .25rem .75rem;
+    }
+
+    .planet-link__label {
+      order: 3;
+      width: 100%;
+    }
+  }
+</style>
