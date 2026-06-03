@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Benny Henge",
+    "system": "Stanton",
+    "planet/moon": "Daymar",
+    "coordinates": "-275.6, 24.4, 762.5",
+    "description": "Ancient stone circle structure, likely an easter egg referencing Stonehenge. A mysterious archaeological site with standing stones arranged in a circle pattern.",
+    "how_to_reach": "Fly to Daymar, look near the coordinates. Location is on the surface.",
+    "what_makes_it_special": "Mysterious ancient ruins, very atmospheric, great for photos",
+    "lore": "Origin unknown, possibly ancient alien civilization or precursor to current species",
+    "visitor_tips": "Best viewed at sunrise/sunset. Bring a rover for easier exploration."
+  },
+  {
+    "name": "The River",
+    "system": "Stanton",
+    "planet/moon": "MicroTech",
+    "coordinates": "Near Port Tressler area",
+    "description": "A flowing river canyon cutting through the frozen landscape of MicroTech, one of the few liquid water features visible.",
+    "how_to_reach": "Land near Port Tressler and traverse the frozen canyons",
+    "what_makes_it_special": "Rare liquid water on a frozen moon, dramatic canyon landscapes",
+    "lore": "Geological anomaly bringing liquid water to the surface",
+    "visitor_tips": "Watch your speed in the canyon. Great opportunity for glider flights."
+  },
+  {
+    "name": "MicroTech Christmas Tree",
+    "system": "Stanton",
+    "planet/moon": "MicroTech",
+    "coordinates": "Near Orison",
+    "description": "A conical mountain formation that resembles a decorated Christmas tree when viewed from above.",
+    "how_to_reach": "Fly over the mountains near Orison and look down",
+    "what_makes_it_special": "Natural rock formation creating holiday imagery, great for photos",
+    "lore": "Purely geological coincidence, though locals embrace it as a seasonal landmark",
+    "visitor_tips": "Best viewed during the holiday season in-game. Higher altitude recommended."
+  },
+  {
+    "name": "Kudre Ore Mine Hidden Facility",
+    "system": "Stanton",
+    "planet/moon": "Aberdeen",
+    "coordinates": "Mining sector coordinates vary",
+    "description": "Abandoned mining facility with underground tunnels and remnants of old mining operations.",
+    "how_to_reach": "Navigate to Aberdeen's mining zones, look for tunnel entrances",
+    "what_makes_it_special": "Industrial archaeology, abandoned structures, underground exploration",
+    "lore": "Failed mining operation from early colonization era",
+    "visitor_tips": "Bring lights - underground is dark. Watch for unstable structures."
+  },
+  {
+    "name": "Everus Harbor Crash Site",
+    "system": "Stanton",
+    "planet/moon": "Hurston",
+    "coordinates": "Near Everus Harbor",
+    "description": "Wreckage of a large spacecraft scattered across the surface, remnants of a catastrophic crash.",
+    "how_to_reach": "Land near Everus Harbor and investigate the crash zones",
+    "what_makes_it_special": "Massive ship debris field, eerie atmosphere, salvage opportunities",
+    "lore": "Site of a major transport disaster during the expansion era",
+    "visitor_tips": "Requires ship with scanning equipment. Be cautious of radiation zones."
+  },
+  {
+    "name": "Orison Floating Temples",
+    "system": "Stanton",
+    "planet/moon": "Crusader",
+    "coordinates": "Cloud layer, various temples",
+    "description": "Small floating temples/platforms suspended in Crusader's upper atmosphere, accessible by ship.",
+    "how_to_reach": "Navigate Crusader's cloud layer, look for floating structures",
+    "what_makes_it_special": "Unique architecture, atmospheric flight experience, spiritual atmosphere",
+    "lore": "Local religious sites maintained by monks and isolationist communities",
+    "visitor_tips": "Requires precise flight control. Atmospheric scramble recommended."
+  },
+  {
+    "name": "Shubin Mining Station Remnants",
+    "system": "Stanton",
+    "planet/moon": "Yela",
+    "coordinates": "Various locations in asteroid belt",
+    "description": "Abandoned Shubin Mining facilities scattered throughout Yela's asteroid belt",
+    "how_to_reach": "Navigate the asteroid belt around Yela",
+    "what_makes_it_special": "Zero-G exploration, abandoned industrial sites, asteroid field navigation",
+    "lore": "Remnants of the first major mining operations in Stanton",
+    "visitor_tips": "EVA required for full exploration. Watch for mining laser hazards."
+  },
+  {
+    "name": "Spider's Graveyard",
+    "system": "Pyro",
+    "planet/moon": "Pyro I/Surfside",
+    "coordinates": "Orbital debris field",
+    "description": "Massive collection of destroyed ships and stations, a testament to Pyro's dangerous nature.",
+    "how_to_reach": "Navigate the debris fields around Pyro I",
+    "what_makes_it_special": "Spectacular ship graveyard, scavenging opportunities, danger",
+    "lore": "Site of multiple major battles and pirate conflicts",
+    "visitor_tips": "High danger zone. Come armed and with friends. Salvage equipment essential."
+  },
+  {
+    "name": "Nyx Archaeological Dig Site",
+    "system": "Nyx",
+    "planet/moon": "NyX",
+    "coordinates": "Surface coordinates TBD",
+    "description": "Active archaeological excavation site uncovering ancient ruins of unknown origin.",
+    "how_to_reach": "Navigate Nyx surface near the dig site markers",
+    "what_makes_it_special": "Ongoing scientific discovery, ancient artifacts, alien architecture",
+    "lore": "Potentially related to the precursor civilization that built the Hadesian artifacts",
+    "visitor_tips": "Restricted area - may need diplomatic access. Photography restricted."
+  },
+  {
+    "name": "Tram & Mine CA 4 Henge",
+    "system": "Stanton",
+    "planet/moon": "Cellin",
+    "coordinates": "Near Tram and Mine CA 4",
+    "description": "Stone circle formation similar to Benny Henge, possibly another ancient site.",
+    "how_to_reach": "Navigate to the mining outpost CA 4, search nearby",
+    "what_makes_it_special": "Another mysterious stone circle, different from Benny Henge's design",
+    "lore": "Possible connection to the same builders as Benny Henge",
+    "visitor_tips": "Coordinates less precise - requires exploration by rover."
+  },
+  {
+    "name": "The Gunk (Oil Fields)",
+    "system": "Stanton",
+    "planet/moon": "Lyria",
+    "coordinates": "Industrial zones near refineries",
+    "description": "Massive industrial oil extraction and processing facilities with dramatic flame stacks.",
+    "how_to_reach": "Fly toward the industrial regions of Lyria's processing plants",
+    "what_makes_it_special": "Impressive industrial scale, dramatic lighting at night, labyrinthine structures",
+    "lore": "Major source of refined fuel for the system",
+    "visitor_tips": "Atmospheric pollution - keep helmets sealed. Avoid flame stacks."
+  },
+  {
+    "name": "Salvation Junkyard",
+    "system": "Pyro",
+    "planet/moon": "Salvation/Gray",
+    "coordinates": "Junkyard zone",
+    "description": "Massive junkyard facility where decommissioned ships and equipment are processed.",
+    "how_to_reach": "Fly to Salvation junkyard coordinates",
+    "what_makes_it_special": "Ship boneyard atmosphere, rusting hulks, industrial scale",
+    "lore": "The final resting place for thousands of ships across Stanton and Pyro",
+    "visitor_tips": "Asking before entering recommended - this is active business territory."
+  },
+  {
+    "name": "Cave of the Ancients",
+    "system": "Stanton",
+    "planet/moon": "Selene",
+    "coordinates": "Cave entrance coordinates TBD",
+    "description": "Deep underground cave system with bioluminescent flora and unusual rock formations.",
+    "how_to_reach": "Find cave entrance in Selene's mountain regions",
+    "what_makes_it_special": "Beautiful natural formations, bioluminescence, spelunking adventure",
+    "lore": "Local legends speak of healing properties in the cave's waters",
+    "visitor_tips": "Strong light sources essential. Cave diving skills required for full exploration."
+  },
+  {
+    "name": "Shattered Moon Debris Ring",
+    "system": "Stanton",
+    "planet/moon": "YC - Yela's moon",
+    "coordinates": "Debris ring coordinates",
+    "description": "Constantly shifting ring of debris surrounding Yela, evidence of a shattered satellite.",
+    "how_to_reach": "Navigate Yela's orbit, enter the debris field",
+    "what_makes_it_special": "Dynamic environment, salvage opportunities, space navigation challenge",
+    "lore": "Multiple theories about what caused the moon to break apart",
+    "visitor_tips": "Extremely hazardous navigation. Tractor beam small pilot recommended."
+  },
+  {
+    "name": "Jump Point Observation Deck",
+    "system": "Multiple",
+    "planet/moon": "Various jump points",
+    "coordinates": "Near jump point entry",
+    "description": "Natural snail point markings - observe the star-streaking effect approaching jump points from a distance.",
+    "how_to_reach": "Navigate near but not through jump points",
+    "what_makes_it_special": "Edge-of-space visual effect, star-streaking, jump point mechanics",
+    "lore": "The gateway to new systems, no artificial construction required",
+    "visitor_tips": "Maintain safe distance - jump points can destabilize with close approach."
+  },
+  {
+    "name": "Terraforming Stagnation Zones",
+    "system": "Stanton",
+    "planet/moon": "Various planets",
+    "coordinates": "Unfinished terraforming sectors",
+    "description": "Areas where terraforming was abandoned mid-process, showing half-formed environments.",
+    "how_to_reach": "Scan surface for incomplete terraforming signatures",
+    "what_makes_it_special": "Surreal partial landscapes, environmental contrast, abandoned equipment",
+    "lore": "Reminders of the UEE's failed or paused colonization projects",
+    "visitor_tips": "Environmental hazards common in transition zones. Full EVA suit required."
+  }
+]
