@@ -1,12 +1,4 @@
 ---
-interface Props {
-  number: number;
-  title: string;
-  category: 'natural-wonder' | 'hidden-find' | 'settlement' | 'practical';
-  image?: string;
-  imageAlt?: string;
-}
-
 const { number, title, category, image, imageAlt } = Astro.props;
 
 const CATEGORY_CONFIG = {
@@ -14,6 +6,7 @@ const CATEGORY_CONFIG = {
   'hidden-find':    { label: 'Hidden Find',    color: '#7c3aed' },
   'settlement':     { label: 'Settlement',     color: 'var(--color-primary-600)' },
   'practical':      { label: 'Getting Around', color: '#d97706' },
+  'urban-sight':    { label: 'Urban Sight',    color: '#0891b2' },
 } as const;
 
 const cat = CATEGORY_CONFIG[category];
