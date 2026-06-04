@@ -1,0 +1,61 @@
+---
+interface Props {
+  title: string
+  category: 'landing-zone' | 'habitation' | 'rest-stop'
+  image: string
+  imageAlt: string
+}
+
+const { title, category, image, imageAlt } = Astro.props
+
+const categoryLabels = {
+  'landing-zone': '🛬 Landing Zone',
+  'habitation': '🏠 Habitation',
+  'rest-stop': '☕ Rest Stop'
+}
+---
+
+<section class="where-to-docks-entry">
+  <div class="docks-marker">
+    <span class="docks-category">{categoryLabels[category]}</span>
+  </div>
+  <div class="docks-content">
+    <h3 class="docks-title">{title}</h3>
+    <div class="docks-image">
+      <img src={image} alt={imageAlt} loading="lazy" />
+    </div>
+    <div class="docks-description">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .where-to-docks-entry {
+    @apply my-8 border-b border-stone-200 pb-8 last:border-b-0;
+  }
+
+  .docks-marker {
+    @apply mb-3;
+  }
+
+  .docks-category {
+    @apply text-xs font-semibold tracking-wider uppercase text-stone-500;
+  }
+
+  .docks-title {
+    @apply text-2xl font-semibold text-stone-800 mb-4 font-serif;
+  }
+
+  .docks-image {
+    @apply mb-4 rounded-lg overflow-hidden;
+  }
+
+  .docks-image img {
+    @apply w-full h-48 object-cover;
+  }
+
+  .docks-description {
+    @apply text-stone-700 leading-relaxed;
+  }
+</style>

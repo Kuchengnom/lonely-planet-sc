@@ -1,0 +1,28 @@
+---
+interface Props {
+  number: number
+}
+
+const { number } = Astro.props
+---
+
+<section class="eating-drinking-section">
+  <div class="section-number">{number}</div>
+  <div class="section-content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .eating-drinking-section {
+    @apply my-8 border-l-4 border-stone-300 pl-6 py-4 bg-stone-50 -mx-4 px-4 sm:-mx-8 sm:px-8;
+  }
+
+  .section-number {
+    @apply text-6xl font-bold text-stone-200 leading-none mb-2;
+  }
+
+  .section-content {
+    @apply text-stone-700;
+  }
+</style>

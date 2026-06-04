@@ -1,0 +1,69 @@
+---
+interface Props {
+  title: string
+  category: 'mining' | 'hunting' | 'exploration' | 'mission'
+  image: string
+  imageAlt: string
+}
+
+const { title, category, image, imageAlt } = Astro.props
+
+const categoryLabels = {
+  'mining': '⛏️ Mining',
+  'hunting': '🎯 Hunting',
+  'exploration': '🔭 Exploration',
+  'mission': '📋 Mission'
+}
+
+const categoryColors = {
+  'mining': 'bg-orange-100 text-orange-700',
+  'hunting': 'bg-red-100 text-red-700',
+  'exploration': 'bg-blue-100 text-blue-700',
+  'mission': 'bg-green-100 text-green-700'
+}
+---
+
+<section class="activity-entry">
+  <div class="activity-header">
+    <span class={`activity-category ${categoryColors[category]}`}>
+      {categoryLabels[category]}
+    </span>
+  </div>
+  <h3 class="activity-title">{title}</h3>
+  <div class="activity-image">
+    <img src={image} alt={imageAlt} loading="lazy" />
+  </div>
+  <div class="activity-description">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .activity-entry {
+    @apply my-8 border rounded-lg p-6 shadow-sm;
+  }
+
+  .activity-header {
+    @apply mb-3;
+  }
+
+  .activity-category {
+    @apply text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full;
+  }
+
+  .activity-title {
+    @apply text-2xl font-semibold text-stone-800 mb-4 font-serif;
+  }
+
+  .activity-image {
+    @apply mb-4 rounded-lg overflow-hidden;
+  }
+
+  .activity-image img {
+    @apply w-full h-48 object-cover;
+  }
+
+  .activity-description {
+    @apply text-stone-700 leading-relaxed;
+  }
+</style>
