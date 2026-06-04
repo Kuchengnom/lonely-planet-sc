@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+.superpowers/
+
+# Build outputs
+dist/
+.astro/
+--output/
+
+# Generated / temp files
+inbox/
+*.png
+*.zip
