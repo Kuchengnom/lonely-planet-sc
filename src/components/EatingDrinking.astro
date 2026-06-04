@@ -6,23 +6,30 @@ interface Props {
 const { number } = Astro.props
 ---
 
-<section class="eating-drinking-section">
-  <div class="section-number">{number}</div>
-  <div class="section-content">
+<section class="eating-section">
+  <div class="eating-number">{number}</div>
+  <div class="eating-content">
     <slot />
   </div>
 </section>
 
 <style>
-  .eating-drinking-section {
-    @apply my-8 border-l-4 border-stone-300 pl-6 py-4 bg-stone-50 -mx-4 px-4 sm:-mx-8 sm:px-8;
+  .eating-section {
+    margin: 2rem 0;
+    border-left: 4px solid #d1d5db;
+    padding: 1rem;
+    background-color: #fafaf9;
   }
 
-  .section-number {
-    @apply text-6xl font-bold text-stone-200 leading-none mb-2;
+  .eating-number {
+    font-size: 3.75rem;
+    font-weight: 700;
+    color: #e5e7eb;
+    line-height: 1;
+    margin-bottom: 0.5rem;
   }
 
-  .section-content {
-    @apply text-stone-700;
+  .eating-content {
+    color: #44403c;
   }
 </style>
