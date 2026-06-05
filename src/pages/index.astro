@@ -12,14 +12,16 @@ interface SystemEdition {
   accentColor: string;
 }
 
+const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
+
 const EDITIONS: SystemEdition[] = [
   {
     name: 'Stanton',
     subtitle: 'The Corporate Core',
     status: 'available',
-    image: '/images/microtech/panoramic-lake.jpeg',
+    image: `${base}images/microtech/panoramic-lake.jpeg`,
     imageAlt: 'Panoramic view of a lake on microTech, Stanton system',
-    href: '/stanton/',
+    href: `${base}stanton/`,
     planetCount: 4,
     accentColor: 'var(--color-primary-600)',
   },
@@ -36,10 +38,10 @@ const EDITIONS: SystemEdition[] = [
 ];
 
 const planets = [
-  { name: 'microTech', system: 'Stanton', label: 'Stanton IV', tag: 'Live', href: '/stanton/microtech/' },
-  { name: 'Crusader', system: 'Stanton', label: 'Stanton II', tag: 'Live', href: '/stanton/crusader/' },
-  { name: 'Hurston', system: 'Stanton', label: 'Stanton I', tag: 'Live', href: '/stanton/hurston/' },
-  { name: 'ArcCorp', system: 'Stanton', label: 'Stanton III', tag: 'Live', href: '/stanton/arccorp/' },
+  { name: 'microTech', system: 'Stanton', label: 'Stanton IV', tag: 'Live', href: `${base}stanton/microtech/` },
+  { name: 'Crusader', system: 'Stanton', label: 'Stanton II', tag: 'Live', href: `${base}stanton/crusader/` },
+  { name: 'Hurston', system: 'Stanton', label: 'Stanton I', tag: 'Live', href: `${base}stanton/hurston/` },
+  { name: 'ArcCorp', system: 'Stanton', label: 'Stanton III', tag: 'Live', href: `${base}stanton/arccorp/` },
 ];
 ---
 
@@ -57,7 +59,7 @@ const planets = [
 
   <body>
     {/* ── Hero ──────────────────────────────── */}
-    <header class="hero">
+    <header class="hero", style={`background: linear-gradient(180deg, rgba(9,20,45,.78), rgba(9,20,45,.48)), url(${base}images/microtech/panoramic-lake.jpeg) center / cover no-repeat`}>
       <div class="hero__pattern"></div>
       <div class="hero__inner">
         <div class="hero__pin" aria-hidden="true">&#9733;</div>
@@ -133,7 +135,7 @@ const planets = [
       <section class="about" aria-labelledby="about-heading">
         <div class="container about-grid">
           <div class="about-image">
-            <img src="/images/microtech/flying-over-mountains.jpeg" alt="Small exploration ship flying over microTech's snowy mountain ranges" loading="lazy" />
+            <img src={`${base}images/microtech/flying-over-mountains.jpeg`} alt="Small exploration ship flying over microTech's snowy mountain ranges" loading="lazy" />
           </div>
           <div class="about-text">
             <h2 id="about-heading" class="about-heading">For the Explorer</h2>
@@ -157,7 +159,7 @@ const planets = [
         <div>
           <p class="footer-title">Editions</p>
           <ul class="footer-links">
-            <li><a href="/stanton/microtech/">Stanton</a></li>
+            <li><a href={`${base}stanton/microtech/`}>Stanton</a></li>
             <li><a href="#" aria-disabled="true">Pyro</a></li>
           </ul>
         </div>
@@ -213,8 +215,7 @@ const planets = [
     text-align: center;
     padding: 2rem;
     background:
-      linear-gradient(180deg, rgba(9,20,45,.78), rgba(9,20,45,.48)),
-      url('/images/microtech/panoramic-lake.jpeg') center / cover no-repeat;
+      linear-gradient(180deg, rgba(9,20,45,.78), rgba(9,20,45,.48)) center / cover no-repeat;
     color: #fff;
   }
 

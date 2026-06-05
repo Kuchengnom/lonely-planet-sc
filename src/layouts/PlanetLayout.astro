@@ -26,6 +26,11 @@ const {
   getting_there,
 } = Astro.props.frontmatter;
 
+const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
+const heroUrl = hero_image && !hero_image.startsWith('http')
+  ? `${base}${hero_image.startsWith('/') ? hero_image.slice(1) : hero_image}`
+  : hero_image;
+
 const hasExplorer = Astro.slots.has('explorer');
 ---
 
@@ -68,7 +73,7 @@ const hasExplorer = Astro.slots.has('explorer');
 
         <main class="page-main">
           <div class="main-hero">
-            <img src={hero_image} alt={`${title}, ${system} system`} class="main-hero__image" />
+            <img src={heroUrl} alt={`${title}, ${system} system`} class="main-hero__image" />
           </div>
           <p class="main-lead">{lead}</p>
           <h2 class="main-section-heading">Sights &amp; Highlights</h2>

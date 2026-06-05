@@ -1,15 +1,15 @@
 ---
-
+const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
 ---
 
 <h1>The Stanton System</h1>
 <p>Stanton is the corporate heart of the UEE. Four privately owned planets, four corporations, four visions of humanity under profit.</p>
 
 <ul>
-  <li><a href="/stanton/hurston/">Hurston — The Polluted Super-Earth</a></li>
-  <li><a href="/stanton/crusader/">Crusader — City in the Clouds</a></li>
-  <li><a href="/stanton/arccorp/">ArcCorp — The Factory World</a></li>
-  <li><a href="/stanton/microtech/">microTech — The Frozen Colony</a></li>
+  <li><a href={`${base}stanton/hurston/`}>Hurston — The Polluted Super-Earth</a></li>
+  <li><a href={`${base}stanton/crusader/`}>Crusader — City in the Clouds</a></li>
+  <li><a href={`${base}stanton/arccorp/`}>ArcCorp — The Factory World</a></li>
+  <li><a href={`${base}stanton/microtech/`}>microTech — The Frozen Colony</a></li>
 </ul>
 
 <h2>System Overview</h2>
@@ -46,8 +46,8 @@
 
 <h3>Further Reading</h3>
 <ul>
-  <li><a href="/stanton/hurston/">Hurston Planet Guide</a></li>
-  <li><a href="/stanton/crusader/">Crusader Planet Guide</a></li>
-  <li><a href="/stanton/arccorp/">ArcCorp Planet Guide</a></li>
-  <li><a href="/stanton/microtech/">microTech Planet Guide</a></li>
+  <li><a href={`${base}stanton/hurston/`}>Hurston Planet Guide</a></li>
+  <li><a href={`${base}stanton/crusader/`}>Crusader Planet Guide</a></li>
+  <li><a href={`${base}stanton/arccorp/`}>ArcCorp Planet Guide</a></li>
+  <li><a href={`${base}stanton/microtech/`}>microTech Planet Guide</a></li>
 </ul>
