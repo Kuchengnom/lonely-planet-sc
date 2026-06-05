@@ -1,6 +1,27 @@
 ---
+import '../../styles/global.css';
 const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
 ---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stanton System — Lonely Planet: Star Citizen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  </head>
+  <body style="background: #f5f0ea; font-family: var(--font-body); color: var(--color-neutral-800);">
+    <div style="max-width: 1024px; margin: 0 auto; padding: 0 1.5rem;">
+      <header style="padding: 1.5rem 0 1rem; border-bottom: 3px solid var(--color-primary-600); margin-bottom: 1.5rem;">
+        <nav style="font-family: var(--font-display); font-size: 0.75rem; margin-bottom: 0.75rem;">
+          <a href={base} style="color: var(--color-primary-600); text-decoration: none;">← Lonely Planet</a>
+        </nav>
+        <h1 style="font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 800; color: var(--color-neutral-900); margin: 0; line-height: 1; text-transform: uppercase; letter-spacing: -0.01em;">Stanton System</h1>
+      </header>
+      <main style="padding-bottom: 3rem;">
 
 <h1>The Stanton System</h1>
 <p>Stanton is the corporate heart of the UEE. Four privately owned planets, four corporations, four visions of humanity under profit.</p>
@@ -49,5 +70,9 @@ const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') 
   <li><a href={`${base}stanton/hurston/`}>Hurston Planet Guide</a></li>
   <li><a href={`${base}stanton/crusader/`}>Crusader Planet Guide</a></li>
   <li><a href={`${base}stanton/arccorp/`}>ArcCorp Planet Guide</a></li>
-  <li><a href={`${base}stanton/microtech/`}>microTech Planet Guide</a></li>
-</ul>
+        <li><a href={`${base}stanton/microtech/`}>microTech Planet Guide</a></li>
+        </ul>
+      </main>
+    </div>
+  </body>
+</html>
