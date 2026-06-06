@@ -3,55 +3,54 @@ layout: '../../../../layouts/PlanetLayout.astro'
 title: "Ruin Station"
 system: "Pyro (Pyro Station)"
 hero_image: "/images/pyro/ruin-station-hero.webp"
-lead: "Ruin Station is the closest thing Pyro has to a capital. It is a makeshift space station assembled from the wreks of at least a dozen derelict ships, bolted together with a combination of engineering and reckless optimism. If Pyro has a center, this is it."
+lead: "Ruin Station is the closest thing Pyro has to a capital. It is a makeshift space station assembled from the wrecks of at least a dozen derelict ships, bolted together with a combination of engineering and reckless optimism. If Pyro has a center, this is it — a place where neutral ground is worth more than any cargo manifest, and where the only law is the Ruin Council's ability to enforce it."
+vitals_best_for: "Trading, information gathering, neutral ground"
+vitals_climate: "Controlled — station atmosphere maintained by duct tape and ambition"
+vitals_hub: "Ruin Station (this is the hub)"
+vitals_currency: "UEC · credits · cargo"
+vitals_ship: "All classes welcome at appropriate docking fees"
+getting_there: "Ruin Station sits at Pyro's Lagrange Point 1, making it the natural first stop for anyone entering the system from the Stanton jump point. The station broadcasts a docking beacon on all standard frequencies. Approach protocols are loose by comparison to civilized space — announce your ship class and wait for a docking bay assignment. Don't cut in the queue. The station's defense systems are better than they look."
 ---
 
-import AttractionEntry from '../../../../components/AttractionEntry.astro';
+import AttractionEntry from '../../../../components/AttractionEntry.astro'
+import ExplorerView from '../../../../components/ExplorerView.astro'
+import TouristTip from '../../../../components/TouristTip.astro'
 
-## Vital Stats
+Ruin Station is not a single structure but a cluster of interconnected hulks — derelict ships, cargo containers, and purpose-built modules welded together into a sprawling, asymmetrical whole. The station has no unified design philosophy; each section was added by whoever had the resources and the audacity to attach it. The result is a labyrinth of corridors, hubs, and dead ends that even longtime residents get lost in. The Ruin Council maintains order through mutual interest: a station at war with itself is a station that stops generating docking fees.
 
-| Attribute | Detail |
-|-----------|--------|
-| **Type** | Orbital Space Station (Assembly) |
-| **Location** | Pyro Lagrange Point 1 |
-| **Ownership** | None (de facto: Ruin Council) |
-| **Population** | ~15,000 permanent; up to 30,000 transient |
-| **Primary Function** | Trading post, refuel, neutral ground |
+<AttractionEntry number={1} title="The Grand Market" category="settlement" image="/images/pyro/ruin-station-market.webp" imageAlt="The bustling Grand Market bazaar of Ruin Station">
 
-## The Station
+The Grand Market is Ruin Station's beating heart — a multi-level bazaar that occupies the central cargo holds of the Old Hub. Here, you can buy anything from fresh produce to military-grade weapons, provided you have the credits and the courage to haggle with people who don't appreciate being lowballed.
 
-Ruin Station is not a single structure but a cluster of interconnected hulks — derelict ships, cargo containers, and purpose-built modules welded together into a sprawling, asymmetrical whole. The station has no unified design philosophy; each section was added by whoever had the resources and the audacity to attach it. The result is a labyrinth of corridors, hubs, and dead ends that even longtime residents get lost in.
+The market is divided into lanes — narrow corridors lined with stalls — and its most important rule is unwritten but universally understood: no violence within the Grand Market. This rule is enforced by the Market Guard, a private security force paid directly by the merchants. Violations result in immediate ejection, permanent ban, and the occasional spacing. The rule works.
 
-## Highlights
-
-### The Grand Market
-
-<AttractionEntry category="settlement">
-A sprawling bazaar where everything is for sale and everything is negotiable.
-
-The Grand Market is Ruin Station's beating heart — a multi-level bazaar that occupies the central cargo holds of the Old Hub. Here, you can buy anything from fresh produce to military-grade weapons, provided you have the credits and the courage to haggle with people who don't appreciate being haggled with.
-
-The market is divided into lanes — narrow corridors lined with stalls. The market's most important rule is unwritten but universally understood: no violence within the Grand Market.
 </AttractionEntry>
 
-### The Broken Deck
-
-<AttractionEntry category="hidden-find">
-A lower-level section structurally compromised but still inhabited.
+<AttractionEntry number={2} title="The Broken Deck" category="hidden-find" image="/images/pyro/ruin-station-broken-deck.webp" imageAlt="The structurally compromised but inhabited lower section of Ruin Station">
 
 The Broken Deck was originally a cargo hold that suffered a hull breach decades ago. The emergency seals held, mostly, but the section was depressurized and abandoned. Over time, squatters moved in — people with nowhere else to go, who built airtight habitats inside the wreckage.
 
-The Broken Deck is where the poorest residents live and where the black market operates with minimal interference. It is also dangerous — the hull is unstable, the air is thin, and the residents are not particular about who they rob.
+The Broken Deck is where the poorest residents live and where the black market operates with minimal interference. It is also dangerous — the hull is unstable, the air is thin, and the residents are not particular about who they rob. If you need information that you cannot get through official channels, the Broken Deck is where you go. The residents see everything and forget nothing, provided you can pay their price.
 
-*Insider tip: If you need information that you cannot get through official channels, the Broken Deck is where you go. The residents see everything and forget nothing — provided you can pay their price.*
 </AttractionEntry>
 
-### The Lookout
+<AttractionEntry number={3} title="The Lookout" category="natural-wonder" image="/images/pyro/ruin-station-lookout.webp" imageAlt="Panoramic view of the Pyro system from the station's observation deck">
 
-<AttractionEntry category="natural-wonder">
-A viewing platform offering an unobstructed panorama of the Pyro system.
+The Lookout is an observation deck on the station's highest point — a repurposed sensor array that offers a panoramic view of the Pyro system. On a clear day, you can see Pyro I's volcanic glow, the storms of Pyro VI, and the endless expanse of the asteroid belt.
 
-The Lookout is an observation deck on the station's highest point — a repurposed sensor array that offers a panoramic view of the Pyro system. On a clear day, you can see Pyro I's volcanic glow, the storms of Pyro VI, and the endless expanse of the system's asteroid belt.
+The Lookout is maintained by a small group of volunteers who keep the viewport clean and the atmosphere scrubbers running. The view is spectacular — a reminder of why people come to the frontier in the first place. It is also the best place on the station to think, because it is the one space where no one is trying to sell you anything.
 
-The Lookout is maintained by a small group of volunteers who keep the viewport clean and the atmosphere scrubbers running. The view is spectacular — a reminder of why people come to the frontier in the first place.
 </AttractionEntry>
+
+<ExplorerView slot="explorer" author="Mira, Ruin Council Member">
+People always ask how we keep order here. The answer is simple: everyone on this station needs it to work. The pirates need a place to sell. The miners need a place to refuel. The traders need neutral ground. Nobody wants to blow up the one place in Pyro where you can get a hot meal and a fair deal. Self-interest is the best security system ever invented.
+</ExplorerView>
+
+<TouristTip>
+
+- **Dock First**: Always dock at Ruin Station when you enter Pyro. Get local intel, refuel, and assess conditions before heading deeper into the system. The information you gather here is worth more than the docking fees.
+- **Market Rules**: The no-violence rule in the Grand Market is real and enforced. Outside the market, carry what you'd carry anywhere in Pyro.
+- **The Broken Deck**: Visitors are not advised to enter the Broken Deck alone, ever. The residents are not hostile by default, but they are territorial and the structure is genuinely dangerous.
+- **Currency**: UEC is the default, but cargo trades are common and often favored. Show up with fuel cells, medical supplies, or food and you'll find people willing to deal.
+
+</TouristTip>

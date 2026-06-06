@@ -1,54 +1,48 @@
 ---
 layout: '../../../layouts/PlanetLayout.astro'
 title: "Pyro II"
-system: "Frontier System"
+system: "Pyro"
 hero_image: "/images/pyro/pyro-2-hero.webp"
-lead: "Pyro II wears its history on its sleeve — or rather, on its surface. The planet is a patchwork of ancient lava flows frozen mid-surge, impact craters that tell stories of a system that has never been particularly safe, and volcanic spires that jut from the ground like the ribs of some vast, petrified beast. It is Pyro I's slighter calmer sibling, but only just."
+lead: "Pyro II wears its history on its sleeve — or rather, on its surface. The planet is a patchwork of ancient lava flows frozen mid-surge, impact craters that tell stories of a system that has never been particularly safe, and volcanic spires that jut from the ground like the ribs of some vast, petrified beast. It is Pyro I's slightly calmer sibling, but only just."
+vitals_best_for: "Geological exploration, volcanic glass photography"
+vitals_climate: "Hot; thin toxic atmosphere; frequent seismic activity"
+vitals_hub: "No formal port — Spine Ridge habs (independent)"
+vitals_currency: "UEC"
+vitals_ship: "Any small craft; land on hardened basalt flats"
+getting_there: "Pyro II has no dedicated spaceport. Most pilots approach from Ruin Station's traffic corridor, then make a direct quantum run. Landing requires identifying hardened basalt flats — avoid the glass fields and crater rims, which are structurally unstable. The Spine Ridge habs are the closest thing to a waypoint; transmit on the independent frequency before approach and someone will usually respond with current landing conditions."
 ---
 
-import AttractionEntry from '../../../components/AttractionEntry.astro';
-import ExplorerView from '../../../components/ExplorerView.astro';
+import AttractionEntry from '../../../components/AttractionEntry.astro'
+import ExplorerView from '../../../components/ExplorerView.astro'
+import TouristTip from '../../../components/TouristTip.astro'
 
-## Vital Stats
+Pyro II's surface is a geologist's fever dream. Massive lava plains stretch for hundreds of kilometers, their surfaces cracked and cooled into intricate patterns that look almost deliberate from orbit. Ancient lava tubes snake beneath the surface, some large enough to fly a small ship through. The real danger, though, is the seismic activity — surface quakes are common enough that most outposts are built on shock-absorbing foundations.
 
-| Attribute | Detail |
-|-----------|--------|
-| **Type** | Terrestrial |
-| **Atmosphere** | Thin, toxic |
-| **Gravity** | 0.86 G |
-| **Temperature** | Hot |
-| **Landing Difficulty** | Moderate |
-
-## The Surface
-
-Pyro II's surface is a geologist's fever dream. Massive lava plains stretch for hundreds of kilometers, their surfaces cracked and cooled into intricate patterns that look almost deliberate from orbit. Ancient lava tubes snake beneath the surface, some large enough to fly a small ship through — though the UEE doesn't recommend it, and neither do we.
-
-The real danger, though, is the seismic activity. The planet's core is restless, and surface quakes are common enough that most outposts are built on shock-absorbing foundations. One mining station, Crimson Hollow, was abandoned after a particularly violent quake cracked its main habitation dome. The station is still there, a skeletal reminder of the planet's indifference to human ambition.
-
-## Attractions
-
-### The Glass Fields
-
-<AttractionEntry category="natural-wonder">
-Where lava meets crystal — Pyro II's most beautiful death trap.
+<AttractionEntry number={1} title="The Glass Fields" category="natural-wonder" image="/images/pyro/pyro-2-glass.webp" imageAlt="Vast volcanic glass fields of Pyro II reflecting the red star">
 
 The Glass Fields are exactly what they sound like: vast expanses of volcanic glass, formed when lava flows met ancient lakebeds and cooled instantly. The result is a landscape of shimmering, razor-sharp obsidian that reflects the system's red star in a thousand directions. It is breathtaking and lethal in equal measure.
 
-The glass is sharp enough to shred most EVA suits, and the reflective surface can disorient pilots who try to land without proper terrain mapping. But for those who come prepared, the Glass Fields are one of the most visually stunning landscapes in the system. Some ultra-luxury tourism companies have started offering "glass-walk excursions" — guided walks across specially treated paths, complete with champagne service. The locals laugh at this, but they cash the checks.
+The glass is sharp enough to shred most EVA suits, and the reflective surface can disorient pilots who try to land without proper terrain mapping. But for those who come prepared, the Glass Fields are one of the most visually stunning landscapes in the system. Some ultra-luxury tourism companies have started offering guided walks across specially treated paths. The locals laugh at this, but they cash the checks.
+
 </AttractionEntry>
 
-### The Spine
+<AttractionEntry number={2} title="The Spine" category="natural-wonder" image="/images/pyro/pyro-2-spine.webp" imageAlt="Volcanic spire ridge of the Spine cutting across Pyro II's northern hemisphere">
 
-<AttractionEntry category="natural-wonder">
-A ridge of volcanic spires that cuts across the northern hemisphere like a giant's backbone.
+The Spine is a geological anomaly — a chain of volcanic spires that stretches for over 4,000 kilometers across the northern hemisphere. The spires range from a few hundred meters to over two kilometers in height, and their bases are honeycombed with lava tubes and caves. Some of these caves have been expanded by miners and smugglers into makeshift bases and hideouts.
 
-The Spine is a geological anomaly — a chain of volcanic spires that stretches for over 4,000 kilometers. The spires range from a few hundred meters to over two kilometers in height, and their bases are honeycombed with lava tubes and caves. Some of these caves have been expanded by miners and smugglers into makeshift bases and hideouts.
+The Spine is also a navigational landmark. Pilots use it to orient themselves when approaching Pyro II, and its distinctive profile is visible from orbit. "Follow the Spine to the Heart" is a common saying among Pyro pilots, referring to the planet's most active volcanic region at the spine's southern terminus. The Spine Ridge habs, built into the rock itself, are the closest thing the planet has to permanent civilization.
 
-The Spine is also a navigational landmark. Pilots use it to orient themselves when approaching Pyro II, and its distinctive profile is visible from orbit. "Follow the Spine to the Heart" is a common saying among Pyro pilots, referring to the planet's most active volcanic region, which lies at the spine's southern terminus.
 </AttractionEntry>
 
-## Where to Stay
+<ExplorerView slot="explorer" author="Tarn Voss, Independent Miner">
+I run a small refueling depot at the base of the Spine. It's not pretty, but the view is spectacular and the company is select. I get a lot of interesting characters passing through — researchers, salvage crews, the occasional fugitive. Everyone needs fuel, and everyone has a story. That's why I stay.
+</ExplorerView>
 
-<ExplorerView category="explorer" name="Tarn Voss, Independent Miner" quote="I run a small refueling depot at the base of the Spine. It's not pretty, but the view is spectacular and the company is... select. I get a lot of interesting characters passing through — researchers, salvage crews, the occasional fugitive. Everyone needs fuel, and everyone has a story. That's why I stay." />
+<TouristTip>
 
-The Spine Ridge offers shockweb-shielded habs with views of the volcanic spires. They're built into the rock itself, and the earthquakes are frequent but usually mild. The food is reconstituted protein and whatever the hydroponic gardens can manage, but the sunsets — a red star setting behind black volcanic spires — make up for a lot.
+- **Glass Field Navigation**: Never attempt to cross the Glass Fields without terrain mapping loaded. The reflective surface creates visual confusion, and a wrong step means shredded suit seals.
+- **Seismic Awareness**: Ground quakes are frequent and largely unpredictable. Anchor your ship to hardened basalt, not volcanic soil. What holds you today may crack open tomorrow.
+- **The Spine Habs**: Transmit on the independent frequency before approaching Spine Ridge. The hab operators are welcoming, but unannounced arrivals occasionally get shot at by nervous neighbors.
+- **Lava Tubes**: Tempting for exploration, genuinely dangerous. Many connect to active magma systems deeper down. If the air smells of sulfur inside a tube, back out immediately.
+
+</TouristTip>

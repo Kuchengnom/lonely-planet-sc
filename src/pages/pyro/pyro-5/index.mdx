@@ -1,61 +1,56 @@
 ---
 layout: '../../../layouts/PlanetLayout.astro'
 title: "Pyro V"
-system: "Frontier System"
+system: "Pyro"
 hero_image: "/images/pyro/pyro-5-hero.webp"
 lead: "Pyro V is the system's cold, quiet end. A frozen world with a thin atmosphere and a surface locked in permanent winter, it is the kind of planet that most travelers avoid. Ships don't stop at Pyro V unless they have to — their engines need to cool, their supplies are running low, or they've been chased here by something worse. It is the final outpost before the void, and it knows it."
+vitals_best_for: "Ice photography, scientific research, solitude"
+vitals_climate: "Frozen; very thin toxic atmosphere; extreme cold"
+vitals_hub: "Pole Station (south magnetic pole)"
+vitals_currency: "UEC"
+vitals_ship: "Thermally rated vessel; landing gear heating recommended"
+getting_there: "Pyro V sits at the far edge of the system's habitable zone, which means it requires a significant quantum burn from Ruin Station. The Pole Station broadcasts a navigation beacon on the scientific frequency — lock onto it before approach, as the planet's magnetic anomalies can interfere with standard nav systems. Land on the hardened ice plains near the station, not on the frozen methane lakes, which are structurally unreliable."
 ---
 
-import AttractionEntry from '../../../components/AttractionEntry.astro';
+import AttractionEntry from '../../../components/AttractionEntry.astro'
+import ExplorerView from '../../../components/ExplorerView.astro'
+import TouristTip from '../../../components/TouristTip.astro'
 
-## Vital Stats
+Pyro V's surface is a frozen wasteland — a mix of ice plains, frozen methane lakes, and low mountain ranges that look like they were carved by a sculptor who gave up halfway through. The atmosphere is thin and contains trace amounts of toxic gases, making prolonged exposure dangerous without an EVA suit. The planet's most striking feature is its network of frozen methane lakes — vast, shallow depressions that fill with liquid methane during the brief summer period, then freeze solid, creating mirror-like surfaces that reflect the sky with eerie clarity.
 
-| Attribute | Detail |
-|-----------|--------|
-| **Type** | Terrestrial (Frozen) |
-| **Atmosphere** | Very thin, toxic |
-| **Gravity** | 0.67 G |
-| **Temperature** | Cold to extremely cold |
-| **Landing Difficulty** | Moderate |
-
-## The Surface
-
-Pyro V's surface is a frozen wasteland — a mix of ice plains, frozen methane lakes, and low mountain ranges that look like they were carved by a sculptor who gave up halfway through. The atmosphere is thin and contains trace amounts of toxic gases, making prolonged exposure dangerous without an EVA suit.
-
-The planet's most striking feature is its network of frozen methane lakes — vast, shallow depressions that fill with liquid methane during the brief (relatively speaking) summer period, and then freeze solid, creating mirror-like surfaces that reflect the sky with eerie clarity. In the light of the system's red star, the lakes appear to glow with a faint amber light, like pools of frozen honey.
-
-## Highlights
-
-### The Amber Lakes
-
-<AttractionEntry category="natural-wonder">
-Frozen methane lakes that reflect the red star in shades of amber and gold.
+<AttractionEntry number={1} title="The Amber Lakes" category="natural-wonder" image="/images/pyro/pyro-5-amber-lakes.webp" imageAlt="Frozen amber methane lakes glowing in Pyro's red starlight">
 
 The Amber Lakes are Pyro V's most beautiful feature — a series of frozen methane lakes that stretch across the planet's equatorial region. In the light of the red star, the frozen surfaces glow with a warm, amber light that looks like liquid gold. It is a sight that has made many a jaded pilot catch their breath.
 
-The lakes are also dangerous. The ice is thin in places, and the frozen methane can be unstable. Several ships have landed on what looked like solid ground, only to sink through the ice into freezing liquid below. The locals have learned to test the ice before landing, but the occasional reminder that the planet is not to be trusted keeps everyone cautious.
+The lakes are also dangerous. The ice is thin in places, and the frozen methane can be unstable. Several ships have landed on what looked like solid ground, only to sink through the ice into freezing liquid below. The best views are from the rim of the great equatorial rift — a canyon system that cuts across the planet's midsection — where the lakes spread out below like a mosaic of amber tiles.
 
-*InsiderEGO tip: The best views of the Amber Lakes are from the rim of the great equatorial rift — a canyon system that cuts across the planet's midsection. The rift walls are sheer cliffs of ice and rock, and from their edge, the lakes spread out below like a mosaic of amber tiles. The view is spectacular and the landing is... exciting.*
 </AttractionEntry>
 
-### The Pole Station
+<AttractionEntry number={2} title="The Pole Station" category="settlement" image="/images/pyro/pyro-5-pole-station.webp" imageAlt="The research outpost cluster at Pyro V's south magnetic pole">
 
-<AttractionEntry category="settlement">
-A research outpost at the planet's south pole, studying the unique magnetic anomalies.
+The Pole Station is a small research outpost at Pyro V's south magnetic pole, established by an independent research collective to study the planet's unusual magnetic field. The station is modest — a cluster of prefab habs connected by pressurized corridors — but the research it produces is surprisingly important. The magnetic anomalies here have implications for ship navigation throughout the system, and the data collected is used by pilots across Pyro.
 
-The Pole Station is a small research outpost at Pyro V's south magnetic pole, established by an independent research collective to study the planet's unusual magnetic field. The station is modest — a cluster of prefab habs connected by pressurized corridors — but the research it produces is surprisingly important. The magnetic anomalies at the pole have implications for ship navigation throughout the system, and the data collected here is used by pilots and navigators across Pyro.
+The station's residents are scientists, graduate students, and support staff who have chosen to live in one of the system's least hospitable locations. They are generally welcoming to visitors, though they tend to judge you based on how much you know about magnetohydrodynamics. The station's common room has a small bar that serves what might be the best hot chocolate in the system — a closely guarded recipe rumored to involve real cacao.
 
-The station's residents are a mix of scientists, graduate students, and support staff who have chosen to live in one of the system's least hospitable locations. They are generally welcoming to visitors, though they tend to judge you based on how much you know about magnetohydrodynamics. The less you know, the more likely they are to explain it to you at length.
-
-*Insider tip: The station's common room has a small bar that serves what might be the best hot chocolate in the system. The recipe is a closely guarded secret, but it's rumored to involve real cacao, which is worth more per gram than the researchers' salaries.*
 </AttractionEntry>
 
-### The Frozen City
+<AttractionEntry number={3} title="The Frozen City" category="hidden-find" image="/images/pyro/pyro-5-frozen-city.webp" imageAlt="Mysterious ancient ruins frozen in the northern hemisphere of Pyro V">
 
-<AttractionEntry category="hidden-find">
-Abandoned ruins whose origin remains a mystery.
-
-The Frozen City is a collection of ruins located in the planet's northern hemisphere — structures made of an unknown material that have survived exposure to the elements for an unknown length of time. The ruins are not particularly large — perhaps the size of a small town — but their origin is a mystery. They are too old to be human, and their design doesn't match any known alien architecture.
+The Frozen City is a collection of ruins in the planet's northern hemisphere — structures made of an unknown material that have survived exposure to the elements for an unknown length of time. The ruins are not particularly large — perhaps the size of a small town — but their origin is a mystery. They are too old to be human, and their design doesn't match any known alien architecture.
 
 The ruins have attracted a small but dedicated community of researchers, treasure hunters, and conspiracy theorists. Some believe the city predates the system itself. Others think it was built by a lost human colony. Everyone agrees that it is eerie, fascinating, and probably not entirely safe to explore alone.
+
 </AttractionEntry>
+
+<ExplorerView slot="explorer" author="Dr. Chen, Magnetohydrodynamics Researcher, Pole Station">
+People ask why I chose to spend three years at the coldest point on the coldest planet in a lawless system. The magnetic data here is unlike anything recorded anywhere else. Every morning I run the sensors and find something the models don't predict. That's not a problem — that's the whole point. Pyro V is the universe being honest with us.
+</ExplorerView>
+
+<TouristTip>
+
+- **Ice Landing**: Never land on the methane lakes. They look solid and are not. Use the hardened plains near the Pole Station or the rocky plateaus above the equatorial rift.
+- **Thermal Management**: The temperature on Pyro V will find every weak point in your ship's insulation. Landing gear heating is not optional — frozen gear means you're staying until someone comes to get you.
+- **Magnetic Interference**: The planetary magnetic anomalies will interfere with standard navigation systems in the polar regions. The Pole Station beacon is your primary nav reference; don't rely on your onboard compass.
+- **The Frozen City**: Never explore the ruins alone. The structures are unstable in ways that aren't obvious until something falls on you, and no one will hear you call for help.
+
+</TouristTip>

@@ -4,58 +4,53 @@ title: "The Pyro Belt"
 system: "Pyro (Asteroid Belt)"
 hero_image: "/images/pyro/belt-hero.webp"
 lead: "The Pyro Belt is the system's wild west — a vast ring of asteroids, debris, and ancient rock that encircles the inner planets like a cosmic junkyard. It is rich in minerals and poor in law, a place where miners strike it rich and pirates strike it richer. The Belt is not a destination so much as a condition: a state of being that defines everything about life in Pyro."
+vitals_best_for: "Asteroid mining, salvage, piracy (both directions)"
+vitals_climate: "Hard vacuum; high debris density; asteroid navigation required"
+vitals_hub: "The Outpost (Outer Belt asteroid station)"
+vitals_currency: "UEC · ore credits · cargo"
+vitals_ship: "Maneuverable small craft; shield generators strongly recommended"
+getting_there: "The Belt spans the zone between Pyro III and Pyro IV — a broad, chaotic band that you can enter from almost any approach vector. The Outpost station transmits a beacon, but its signal is frequently jammed by natural asteroid interference. Most Belt regulars navigate by landmark and ion trail. If you're new to asteroid navigation, hire a local guide at Ruin Station before heading in."
 ---
 
-import AttractionEntry from '../../../../components/AttractionEntry.astro';
+import AttractionEntry from '../../../../components/AttractionEntry.astro'
+import ExplorerView from '../../../../components/ExplorerView.astro'
+import TouristTip from '../../../../components/TouristTip.astro'
 
-## Vital Stats
+The Pyro Belt is a vast ring of rock and ice stretching from the orbit of Pyro III to just inside the orbit of Pyro IV. It is composed of everything from dust-sized particles to asteroids the size of small cities, and it is in constant motion — a celestial ballet of rock and metal that is as dangerous as it is beautiful. The Belt is divided into zones: the Inner Belt, closest to Pyro III, is the most heavily mined and the most dangerous. The Outer Belt, closer to Pyro IV, is quieter but not safer — the asteroids are larger and the gravity wells more complex.
 
-| Attribute | Detail |
-|-----------|--------|
-| **Type** | Asteroid Belt |
-| **Location** | Between Pyro III and Pyro IV |
-| **Ownership** | None |
-| **Population** | ~5,000 transient miners and pirates |
-| **Primary Function** | Mining, smuggling, activities of interest |
-
-## The Belt
-
-The Pyro Belt is a vast ring of rock and ice that stretches from the orbit of Pyro III to just inside the orbit of Pyro IV. It is composed of everything from dust-sized particles to asteroids the size of small cities, and it is in constant motion — a celestial ballet of rock and metal that is as dangerous as it is beautiful.
-
-The Belt is divided into zones, each with its own character and reputation. The Inner Belt, closest to Pyro III, is the most heavily mined and the most dangerous. The Outer Belt, closer to Pyro IV, is quieter but not safer — the asteroids are larger and the gravity wells more complex, making navigation a challenge even for experienced pilots.
-
-## Highlights
-
-### The Maze
-
-<AttractionEntry category="hidden-find">
-A dense cluster of asteroids that is a navigational nightmare and a pilot's dream.
+<AttractionEntry number={1} title="The Maze" category="hidden-find" image="/images/pyro/belt-maze.webp" imageAlt="Dense asteroid cluster forming a navigational maze in the Pyro Belt">
 
 The Maze is a region of the Inner Belt where the asteroids are so densely packed that navigation requires more luck than skill. It is a three-dimensional labyrinth of rock, debris, and dead ships that have become part of the landscape. The Maze is a favorite hiding spot for pirates, smugglers, and anyone who would rather not be found.
 
-The Maze is also rich in minerals — the dense clustering of asteroids has created unique geological conditions that have concentrated valuable ores in specific locations. Finding these concentrations is a matter of experience, intuition, and a willingness to risk your ship in a place where a wrong turn means a collision.
+The Maze is also rich in minerals — the dense clustering has created unique geological conditions that concentrated valuable ores in specific locations. Finding these concentrations is a matter of experience, intuition, and a willingness to risk your ship. The safest way to navigate is to follow the ghost trails — faint ion signatures left by previous ships — which show up on short-range sensors. Experienced pilots learn to read them like a map.
 
-*Insider tip: The safest way to navigate the Maze is to follow the ghost trails — faint ion signatures left by previous ships that have passed through. The trails are invisible to the naked eye but show up on short-range sensors. Experienced pilots learn to read them like a map.*
 </AttractionEntry>
 
-### The Outpost
-
-<AttractionEntry category="settlement">
-An unofficial station carved into a large asteroid, serving as a neutral meeting ground.
+<AttractionEntry number={2} title="The Outpost" category="settlement" image="/images/pyro/belt-outpost.webp" imageAlt="The unofficial station carved into a large Outer Belt asteroid">
 
 The Outpost is a station carved into one of the largest asteroids in the Outer Belt — a massive rock roughly fifty kilometers across that has been hollowed out and fitted with life support, docking bays, and a surprisingly sophisticated communications array. It serves as an unofficial meeting ground for miners, traders, and the occasional pirate who wants to negotiate without weapons drawn.
 
-The Outpost is run by a rotating council of miners and traders who maintain the station in exchange for a cut of all transactions. It is not affiliated with Ruin Station, though they have a mutual understanding: the Outpost stays out of Ruin's business, and Ruin stays out of the Belt.
+The Outpost is run by a rotating council of miners and traders who maintain the station in exchange for a cut of all transactions. It is not affiliated with Ruin Station, though they have a mutual understanding: the Outpost stays out of Ruin's business, and Ruin stays out of the Belt. The station bar is an intelligence clearinghouse — patience and a few rounds of drinks can yield more useful information than a month of official reports.
 
-The station is also a haven for information. Miners talk — about new ore concentrations, about pirated routes, about the movements of UEE patrols. Patience and a few rounds of drinks at the Outpost's bar can yield more intelligence than a month of official reports.
 </AttractionEntry>
 
-### The Graveyard
+<AttractionEntry number={3} title="The Graveyard" category="natural-wonder" image="/images/pyro/belt-graveyard.webp" imageAlt="Field of derelict ships accumulated in the Outer Belt Graveyard">
 
-<AttractionEntry category="natural-wonder">
-A field of derelict ships that have become part of the Belt's landscape.
+The Graveyard is a section of the Outer Belt where the wreckage of dozens of ships has accumulated over decades. Some are the victims of piracy. Others are miners who pushed their luck too far. A few are ships that simply malfunctioned and were abandoned, their crews rescued or not, their hulls left to drift until they became one with the Belt.
 
-The Graveyard is a section of theede Outer Belt where the wreckage of dozens of ships has accumulated. Some are the victims of piracy. Others are miners who pushed their luck too far. A few are ships that simply malfunctioned and were abandoned, their crews rescued or not, their hulls left to drift until they collided with an asteroid and became one with the Belt.
+The Graveyard is a somber place. The wrecks are frozen in time, preserved by the cold of space, and in some cases the bodies of their crews are still inside. Salvage crews work the Graveyard carefully — not just because of the physical danger, but because there is a general understanding that the dead should not be disturbed without reason.
 
-The Graveyard is a somber place. The wrecks are frozen in place, preserved by the cold of space, and in some cases, the bodies of their crews are still inside. Salvage crews work the Graveyard carefully — not just because of the danger, but because there is a general understanding that the dead should not be disturbed.
 </AttractionEntry>
+
+<ExplorerView slot="explorer" author="Lena, Outer Belt Miner">
+The Belt is alive. I don't mean that metaphorically — I mean the rocks move, the gravity wells shift, the debris field rearranges itself on a timescale you can actually observe. I've been coming here for eight years and my charts from last year are already wrong. That's not a bug. That's what makes it interesting.
+</ExplorerView>
+
+<TouristTip>
+
+- **Navigation**: Don't rely on standard charts in the Inner Belt — they're outdated the moment they're published. Use short-range sensors, watch for ion trails, and fly slow enough to react.
+- **The Maze**: Only enter the Maze if you know what you're doing, and even then, bring a good reason. It is not a sightseeing destination.
+- **Graveyard Protocol**: The informal rule about the Graveyard is to salvage respectfully and leave anything that looks like a crew quarters intact. Violating this rule earns lasting hostility from Belt regulars.
+- **Shield Generators**: Not optional. The debris density in the Inner Belt will sand your hull down to nothing over a few passes. Shields are the difference between coming home and being added to the Graveyard.
+
+</TouristTip>

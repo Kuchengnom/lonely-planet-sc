@@ -1,61 +1,56 @@
 ---
 layout: '../../../layouts/PlanetLayout.astro'
 title: "Pyro IV"
-system: "Frontier System"
+system: "Pyro"
 hero_image: "/images/pyro/pyro-4-hero.webp"
 lead: "Pyro IV is the system's middle child — not as violently hostile as the inner worlds, not as barren as the outer reaches. It is a planet of extremes: temperate highlands that could almost be called pleasant, and arid lowlands where the sun turns the surface into a skillet. The equatorial regions are a patchwork of scrubland and desert, and the poles are ice-capped but not frozen solid. By frontier standards, it is almost livable."
+vitals_best_for: "Salvage operations, frontier trading"
+vitals_climate: "Thin, marginally breathable; temperate highlands; arid lowlands; dust storms"
+vitals_hub: "The Salvage Yards (northern hemisphere)"
+vitals_currency: "UEC · barter common"
+vitals_ship: "Any atmospheric craft; dust intake guards recommended"
+getting_there: "Pyro IV is one of the easier landings in the system — broad plains and temperate highlands provide plenty of flat ground. The Salvage Yards has a makeshift beacon, but approach from the north to avoid the equatorial dust bands. If you're coming from Ruin Station, the standard approach corridor takes you over the Mud Flats first — good for orientation, bad for engine intakes if you fly low."
 ---
 
-import AttractionEntry from '../../../components/AttractionEntry.astro';
+import AttractionEntry from '../../../components/AttractionEntry.astro'
+import ExplorerView from '../../../components/ExplorerView.astro'
+import TouristTip from '../../../components/TouristTip.astro'
 
-## Vital Stats
+Pyro IV's surface is a study in contrasts. The northern hemisphere is dominated by temperate highlands — rolling plains of iron-rich soil that support a sparse but tenacious ecosystem of lichens and scrub. The southern hemisphere, by contrast, is a wasteland of cracked mud flats and salt pans, baked by the system's red star. Travel between the two is done either by ship or by the ancient rail lines that cross the equator — relics of a brief period when Pyro IV was seriously considered for colonization.
 
-| Attribute | Detail |
-|-----------|--------|
-| **Type** | Terrestrial |
-| **Atmosphere** | Thin, marginally breathable |
-| **Gravity** | 0.88 G |
-| **Temperature** | Variable — temperate to arid |
-| **Landing Difficulty** | Easy to moderate |
-
-## The Surface
-
-Pyro IV's surface is a study in contrasts. The northern hemisphere is dominated by temperate highlands — rolling plains of iron-rich soil that support a sparse but tenacious ecosystem of lichens and scrub. The southern hemisphere, by contrast, is a wasteland of cracked mud flats and salt pans, baked by the system's red star.
-
-Travel between the two hemispheres is done either by ship or by the ancient rail lines that cross the equator. The rail lines are a relic of a brief period when Pyro IV was seriously considered for colonization. The project was abandoned after the first test settlement was buried in a dust storm, but the rails remain — a monument to frontier optimism.
-
-## Highlights
-
-### The Mud Flats
-
-<AttractionEntry category="natural-wonder">
-Vast expanses of dried mud that crack into intricate geometric patterns.
+<AttractionEntry number={1} title="The Mud Flats" category="natural-wonder" image="/images/pyro/pyro-4-mud-flats.webp" imageAlt="Geometric cracked mud flat patterns on Pyro IV viewed from low orbit">
 
 The Mud Flats are Pyro IV's most distinctive feature — a region the size of a small continent where the soil is so rich in iron oxide that it looks rust-red from orbit. When the occasional rain falls, the flats turn into a mirror of liquid copper. When they dry, they crack into geometric patterns that look almost deliberate.
 
-The flats are also treacherous. The surface looks solid but can be a thin crust over thick mud. Several ships have landed only to sink up to their landing gear. The locals mark safe landing zones with signal buoys, but the markers get stolen or moved.
+The flats are also treacherous. The surface looks solid but can be a thin crust over thick mud. Several ships have landed only to sink up to their landing gear. The locals mark safe landing zones with signal buoys, but the markers get stolen or moved. Never trust a signal buoy you didn't place yourself.
+
 </AttractionEntry>
 
-### The Overlook
+<AttractionEntry number={2} title="The Overlook" category="hidden-find" image="/images/pyro/pyro-4-overlook.webp" imageAlt="View from the Overlook plateau spanning both hemispheres of Pyro IV">
 
-<AttractionEntry category="hidden-find">
-A natural plateau at the planet's highest point, offering a view across both hemispheres.
+The Overlook is a natural plateau at the highest point on Pyro IV — a flat-topped mesa that rises above the surrounding highlands. From its edge, you can see both the temperate north and the arid south: a line drawn across the landscape like a border between two worlds.
 
-The Overlook is a natural plateau at the highest point on Pyro IV, a flat-topped mesa that rises above the surrounding highlands. From its edge, you can see both the temperate north and the arid south — a line drawn across the landscape like a border between two worlds.
+The plateau has no official name, no structures, and no infrastructure. It is just a flat piece of high ground with a spectacular view. The best time to visit is during the planet's red hour — the brief period each day when the red star is low on the horizon and the entire landscape turns the color of rust. It only lasts about twenty minutes, but it is the closest thing Pyro has to a reliable attraction.
 
-The plateau has no official name (The Overlook is what the locals call it), no structures, and no infrastructure. It is just a flat piece of high ground with a spectacular view. And in a system where everything is trying to kill you, a place that offers nothing but a view is a luxury worth seeking out.
-
-*Insider tip: The best time to visit is during the planet's red hour — the brief period each day when the red star is low on the horizon and the entire landscape turns the color of rust. It only lasts for about twenty minutes, but it is the closest thing Pyro has to a reliable attraction.*
 </AttractionEntry>
 
-### The Salvage Yards
-
-<AttractionEntry category="settlement">
-A sprawling depot of scrap and salvaged ships, Pyro IV's most colorful settlement.
+<AttractionEntry number={3} title="The Salvage Yards" category="settlement" image="/images/pyro/pyro-4-salvage-yards.webp" imageAlt="The sprawling Salvage Yards trading post spread across a valley on Pyro IV">
 
 The Salvage Yards are not a single settlement but a patchwork of interconnected scrap heaps, workshops, and black-market trading posts spread across a broad valley in the northern hemisphere. It is said that you can build an entire ship from the parts in the Yards, given enough time, money, and tolerance for things that might explode.
 
-The Yards are run by a loose council of salvage captains and scrap dealers who maintain order through a combination of mutual interest and the understanding that the Yards are only useful if they stay open. Disputes are settled by verbal duels — formal, public arguments that serve as the Yards' primary form of entertainment.
+The Yards are run by a loose council of salvage captains and scrap dealers who maintain order through mutual interest. Disputes are settled by verbal duels — formal, public arguments that serve as the Yards' primary form of entertainment. The best deals are not at the main market but at the back row, where dealers sell items that are technically illegal, morally questionable, or both.
 
-*Insider tip: The best deals at the Yards are not at the main market but at the back row — a series of smaller, less reputable stalls that operate on the edge of the Yards. Here, the dealers sell items that are technically illegal, morally questionable, or both.*
 </AttractionEntry>
+
+<ExplorerView slot="explorer" author="Dax, Salvage Captain, Pyro IV">
+People think the Yards are chaos. They're not. There's a logic to it — you just have to learn the language. That pile of oxidized hull panels? It's someone's retirement plan. That wrecked Cutlass? Three families live off the parts. Come in here trying to lowball and you'll leave with nothing. Come in with respect and a fair offer and you'll leave with half a ship for what it'd cost you to park at New Babbage.
+</ExplorerView>
+
+<TouristTip>
+
+- **Mud Flat Landings**: Never land on the Mud Flats without a ground survey. Probe the surface before committing your landing gear. The flats have swallowed ships.
+- **The Yards Protocol**: Don't touch anything at the Salvage Yards that isn't in front of a stall. Picking up items without permission is considered theft. Theft is dealt with directly, without involving anyone with a badge.
+- **Water**: Pyro IV has trace surface water in the highland regions during the wet season, but it's not potable without heavy filtration. Bring your own supply.
+- **Rail Lines**: The old colonial rail lines still function, after a fashion. They're slower than flying and more dangerous than walking, but they'll get you across the equator if your ship is grounded.
+
+</TouristTip>
