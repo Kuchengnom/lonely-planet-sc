@@ -4,38 +4,17 @@ title: "Lyria"
 system: "Stanton (ArcCorp)"
 hero_image: "/images/lyria/cryovolcanoes.webp"
 lead: "Lyria is ArcCorp's moon, and it resents the association. While ArcCorp proper is a world of steel and neon, Lyria is a world of ice and fire — or rather, ice and cryovolcanoes, which is the same thing if you're patient enough to wait for the thaw. The moon's surface is a canvas of purple and blue, where cryovolcanoes erupt not with molten rock but with supercooled gases and frozen hydrocarbons. It's beautiful in the way that only something actively trying to kill you can be."
+vitals_best_for: "Cryovolcano photography, geological research"
+vitals_climate: "Cryogenic hard vacuum; -180°C to -140°C"
+vitals_hub: "No formal port — ArcCorp Research Outpost Alpha (surface)"
+vitals_currency: "UEC"
+vitals_ship: "Cryogenic-rated vessel; small craft preferred"
+getting_there: "Lyria orbits ArcCorp at a distance that makes it the outermost of the planet's two moons. The approach from Area18 is straightforward — a short quantum jump followed by a sub-light deceleration into orbital insertion. The moon's gravity is low enough that landing is effortless; the challenge is the cold. There is no spaceport, no landing beacon, no welcome committee. Most pilots set down near the cryovolcanic fields, where the geothermal activity creates localized warm zones. The ice is treacherous — Lyria's surface is a maze of frozen hydrocarbon deposits that look solid from orbit but may conceal caverns and voids beneath. Approach with caution, land with precision, and never trust the ground."
 ---
 
 import AttractionEntry from '../../../components/AttractionEntry.astro'
 import ExplorerView from '../../../components/ExplorerView.astro'
 import TouristTip from '../../../components/TouristTip.astro'
-
-## Vitals
-
-- **Type**: Moon (Cryovolcanic)
-- **Orbits**: ArcCorp (Stanton III)
-- **Atmosphere**: Very thin, mostly nitrogen with trace hydrocarbons
-- **Average Temperature**: -180°C to -140°C
-- **Gravity**: 0.27 G
-- **Day Length**: ~22 Standard Hours
-
-## Getting Here
-
-Lyria orbits ArcCorp at a distance that makes it the outermost of the planet's two moons. The approach from Area18 is straightforward — a short quantum jump followed by a sub-light deceleration into orbital insertion. The moon's gravity is low enough that landing is effortless; the challenge is the cold.
-
-There is no spaceport. No landing beacon. No welcome committee. ArcCorp's official stance is that Lyria is a "research and industrial zone with no civilian facilities." Which is corporate speak for "we know you're coming anyway, but we're not going to make it easy."
-
-Most pilots set down near the cryovolcanic fields, where the geothermal — or rather, cryovolcanic — activity creates localized warm zones that are slightly less likely to kill you than the rest of the moon. The ice, however, is treacherous. Lyria's surface is a maze of frozen hydrocarbon deposits that look solid from orbit but may conceal caverns and voids beneath. Approach with caution, land with precision, and never trust the ground.
-
-<ExplorerView category="explorer" name="Dr. Aris Thorne, Exolanetary Geologist" quote="I've studied cryovolcanoes across three systems, and Lyria's are unique. The eruption mechanics are fundamentally different from magma volcanoes. Instead of heat, you get pressure. The cryomagma isn't molten — it's a slurry of frozen gases and liquid hydrocarbons kept mobile by tidal flexing from ArcCorp. When it erupts, it doesn't flow. It shatters. And the sound — imagine a glacier collapsing into an cathedral made of crystal. That's a Lyria eruption." />
-
-## The Landscape
-
-Lyria's surface is a study in contradictions. The moon is cold — cryogenically, murderously cold — and yet it is geologically active. The cryovolcanoes are not volcanoes in the traditional sense. They erupt not with molten rock but with supercooled gases, liquid hydrocarbons, and frozen chemicals that flash-freeze on contact with the atmosphere (such as it is), creating formations that are equal parts glacier and sculpture.
-
-The ground is a mixture of water-ice, frozen methane, and hydrocarbon deposits that have settled over millions of years. In low light, the surface appears almost black. In direct starlight, it reflects in shades of deep purple and midnight blue. And near the cryovolcanoes, the fresh deposits glow with a faint phosphorescence — organic compounds in the cryomagma that react with the vacuum.
-
-### 1. The Cryovolcano Fields
 
 <AttractionEntry number={1} title="The Cryovolcano Fields" category="natural-wonder" image="/images/lyria/cryovolcano-fields.webp" imageAlt="Active cryovolcanoes on Lyria's surface">
 
@@ -46,8 +25,6 @@ The **Aurora Caldera** is the most active — and most dangerous — of Lyria's 
 The **Purple Spires** are a related phenomenon — crystalline formations that grow around cryovolcanic vents. They are composed of frozen hydrocarbons and water ice, deposited layer by layer over centuries by the slow, continuous venting of gases. The result is a forest of purple and blue crystal formations that reach heights of fifty meters. They are also razor-sharp and structurally unstable. A friend of mine touched one once. She still has the scar.
 
 </AttractionEntry>
-
-### 2. ArcCorp Research Outpost Alpha
 
 <AttractionEntry number={2} title="Research Outpost Alpha" category="settlement" image="/images/lyria/research-outpost.webp" imageAlt="ArcCorp's research outpost on Lyria">
 
@@ -61,8 +38,6 @@ Visitors are not welcome, but they're not entirely unwelcome either. The scienti
 
 </AttractionEntry>
 
-### 3. The Purple Ice Cliffs
-
 <AttractionEntry number={3} title="The Purple Ice Cliffs" category="natural-wonder" image="/images/lyria/purple-cliffs.webp" imageAlt="The glowing purple ice cliffs of Lyria">
 
 On Lyria's southern hemisphere, the moon's cryovolcanic activity has created a series of cliffs that defy conventional geology. They are not — despite appearances — carved by wind or water. They are formed by the slow, continuous deposition of frozen hydrocarbons from cryovolcanic vents, layer upon layer, over millions of years. The result is a wall of purple and blue ice that glows with an internal luminescence.
@@ -72,8 +47,6 @@ The cliffs are called the **Lilac Ramparts** by the researchers at Outpost Alpha
 The ice of the Lilac Ramparts is not water-ice, or not entirely. It is a mixture of frozen water, methane, ammonia, and more exotic hydrocarbons that give it both its color and its fragility. The crystal structure is complex and beautiful, but a single miscalculation in temperature or pressure can cause entire sections to fracture. The sound of a section calving — a deep, resonant crack that echoes across the plain — is both magnificent and terrifying.
 
 </AttractionEntry>
-
-### 4. Frozen Geyser Fields
 
 <AttractionEntry number={4} title="Frozen Geyser Fields" category="natural-wonder" image="/images/lyria/frozen-geysers.webp" imageAlt="Frozen hydrocarbon geysers on Lyria">
 
@@ -85,8 +58,6 @@ The largest geyser field, the **Frost Garden** (another Outpost Alpha coinage; t
 
 </AttractionEntry>
 
-### 5. The Subsurface Ocean
-
 <AttractionEntry number={5} title="The Subsurface Ocean" category="hidden-find" image="/images/lyria/subsurface-ocean.webp" imageAlt="Theorized subsurface ocean beneath Lyria's ice crust">
 
 It is widely believed — though not yet proven conclusively — that Lyria harbors a subsurface ocean of liquid water and hydrocarbons beneath its frozen crust. The evidence is circumstantial but compelling: cryovolcanic eruptions that contain water in proportions inconsistent with surface ice, subsurface radar anomalies, and tidal flexing data that suggests a liquid layer.
@@ -97,19 +68,22 @@ Whatever is down there — water, hydrocarbons, or something else entirely — i
 
 </AttractionEntry>
 
+<ExplorerView slot="explorer" author="Dr. Aris Thorne, Exolanetary Geologist">
+I've studied cryovolcanoes across three systems, and Lyria's are unique. The eruption mechanics are fundamentally different from magma volcanoes. Instead of heat, you get pressure. The cryomagma isn't molten — it's a slurry of frozen gases and liquid hydrocarbons kept mobile by tidal flexing from ArcCorp. When it erupts, it doesn't flow. It shatters. And the sound — imagine a glacier collapsing into a cathedral made of crystal. That's a Lyria eruption.
+</ExplorerView>
+
 ## Getting Around
 
 There is no formal transport on Lyria. The moon's surface is not suitable for standard ground vehicles — the ice is too unpredictable, the hydrocarbon deposits too sticky, and the temperature too extreme for anything without specialized heating. Most exploration is done by light ship, hopping between sites, or by specialized rovers designed for cryogenic environments.
 
 ArcCorp Research Outpost Alpha is the closest thing to a hub. From there, the researchers can provide — for a "materials donation" — basic supplies, emergency shelter, and the occasional meal that doesn't come from a packet. Do not rely on them. The outpost is not a hotel, and the scientists are not concierges.
 
-<TouristTip number={6}>
+<TouristTip>
 
 - **Thermal Management**: Lyria's surface temperature will freeze standard EVA suit components in minutes. You need a suit rated for cryogenic environments. If your suit doesn't have a label that says "rated to -200°C," don't get out of the ship.
 - **Cryomagma Awareness**: Cryovolcanic eruptions don't announce themselves with smoke. The ground may vibrate slightly, or the air pressure may drop, or you may notice nothing at all until the plume hits. Maintain distance from active calderas.
 - **Ice Integrity**: The surface ice may conceal voids, caverns, or hydrocarbon deposits that are structurally weak. Ground-penetrating radar is not optional — it is survival equipment.
 - **Emergency Protocol**: If stranded, find a cryovolcanic vent. The geothermal activity creates localized warm zones. You will still freeze, but it will take longer.
 - **Geysers**: The frozen geyser fields are beautiful but dangerous. Do not approach within fifty meters of an active geyser. The frozen spray moves fast enough to damage suit visors and ship hulls.
-- **Communication**: Lylust a communication shadow for approximately four hours every rotation. Plan accordingly. Being out of contact on a moon where the ground can erupt without warning is not a position you want to be in.
 
 </TouristTip>
