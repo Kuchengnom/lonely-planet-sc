@@ -4,36 +4,17 @@ title: "Daymar"
 system: "Stanton (Crusader)"
 hero_image: "/images/daymar/dust-dunes.webp"
 lead: "Daymar is the moon that forgot it was supposed to be dead. The largest of Crusader's three children, it hangs in its slightly eccentric orbit like a discarded thought — present but not fully acknowledged. Its surface is a sea of rust-colored dust and basalt rock, punctuated by canyon walls that rise like the ribs of some ancient fossil. There are no cities here. No ports. Just the wind, the dust, and the ghosts of a mining operation that believed, briefly, that Daymar had something worth extracting."
+vitals_best_for: "Exploration, canyon flying, salvage"
+vitals_climate: "Very thin atmosphere; dust storms frequent; -30°C to 30°C"
+vitals_hub: "No formal port — Shallow Fields Station (nearby Lagrangian)"
+vitals_currency: "UEC"
+vitals_ship: "Any small craft with dust-resistant intakes; Pisces or Cutter ideal"
+getting_there: "There is no 'here' on Daymar in the conventional sense — no spaceport, no landing beacon, no welcome committee. The moon sits in a slightly eccentric orbit around Crusader, which means transit windows are irregular and quantum drive alignment can be finicky. Most pilots approach from Crusader's L2 Lagrangian point (Shallow Fields Station), then make a short sub-light burn to Daymar's trailing hemisphere. The lack of atmosphere means you can land anywhere your ship can touch down. The dust is fine enough to infiltrate engine intakes, and the temperature swings between shadow and sunlight are violent enough to crack inadequate landing gear. Choose your touchdown point carefully."
 ---
 
 import AttractionEntry from '../../../components/AttractionEntry.astro'
 import ExplorerView from '../../../components/ExplorerView.astro'
 import TouristTip from '../../../components/TouristTip.astro'
-
-## Vitals
-
-- **Type**: Moon (Desert / Rocky)
-- **Orbits**: Crusader (Stanton II)
-- **Atmosphere**: Very thin — enough to produce dust storms, not enough to breathe
-- **Average Temperature**: -30°C to 10°C (surface), up to 30°C in direct sunlight
-- **Gravity**: 0.36 G
-- **Day Length**: ~29 Standard Hours
-
-## Getting Here
-
-There is no "here" on Daymar in the conventional sense — no spaceport, no landing beacon, no welcome committee. The moon sits in a slightly eccentric orbit around Crusader, which means transit windows are irregular and quantum drive alignment can be finicky. Most pilots approach from Crusader's L2 Lagrangian point (Shallow Fields Station), then make a short sub-light burn to Daymar's trailing hemisphere.
-
-The lack of atmosphere means you can land anywhere your ship can touch down, which is both liberating and terrifying. The dust is fine enough to infiltrate engine intakes, and the temperature swings between shadow and sunlight are violent enough to crack inadequate landing gear. Choose your touchdown point carefully — a flat-looking dust pan might conceal a boulder field, and the low gravity means a hard landing will send you bouncing for kilometers.
-
-<ExplorerView category="explorer" name="Marta D., Independent Geologist" quote="I spent three weeks in the Daymar highlands and saw my own shadow exactly twice. The dust doesn't just obscure visibility — it erases perspective. You can walk for hours thinking you're crossing a flat plain and suddenly find yourself at the edge of a canyon you never saw coming. Daymar lies to you, constantly. That's its nature." />
-
-## The Landscape
-
-Daymar's surface is the color of dried blood and old iron — a rust-pink dust that swirls in perpetual low-gravity storms, never quite settling. The moon's thin atmosphere is just thick enough to carry particulates, creating the worst of both worlds: enough air to make dust storms a constant hazard, not enough to breathe or provide any meaningful thermal protection.
-
-The topography is deceptive. Low-gravity dunes rise in gentle slopes that seem climbable until you realize each dune is the height of a small building. Canyon walls tower over dry riverbeds that haven't seen water in millennia. And everywhere, the dust — fine as talc, electrostatically charged, infiltrating every seal and joint.
-
-### 1. The Covalex Ruins
 
 <AttractionEntry number={1} title="Covalex Hub Gundo" category="hidden-find" image="/images/daymar/covalex-ruins.webp" imageAlt="The collapsed remains of the Covalex mining hub">
 
@@ -45,8 +26,6 @@ The real prize for salvage operators is the processing equipment. Covalex cut co
 
 </AttractionEntry>
 
-### 2. The Shifting Dunes
-
 <AttractionEntry number={2} title="The Shifting Dunes" category="natural-wonder" image="/images/daymar/shifting-dunes.webp" imageAlt="Vast rust-colored dunes stretching to the horizon">
 
 Daymar's most persistent feature is also its most disorienting. The moon's low gravity and thin atmosphere create dust formations that behave like no geology textbook describes. Dunes migrate across the surface at rates that would be alarming on a planetary scale but are merely inconvenient at a human scale — a well-marked landing zone can be buried in a matter of days.
@@ -57,8 +36,6 @@ The largest dune field, known locally as "The Red Sleep," covers an area roughly
 
 </AttractionEntry>
 
-### 3. The Canyons of Klescher
-
 <AttractionEntry number={3} title="The Canyons of Klescher" category="natural-wonder" image="/images/daymar/canyons.webp" imageAlt="A deep canyon on Daymar with layered rock walls">
 
 Named after the security corporation that briefly considered establishing a penal facility here (they abandoned the plan when they realized the escape rate would be approximately zero — not because the facility would be secure, but because there was nowhere to escape *to*), these canyons are among the most dramatic features on any of Crusader's moons.
@@ -68,8 +45,6 @@ The canyons cut through basalt formations that date back to Daymar's volcanic yo
 The canyon floors are flat enough for ship landings, and several pilots have established semi-permanent camps in the deeper formations. These camps offer nothing in the way of amenities but provide natural shelter from the wind and a view that no luxury hotel in Area18 can match.
 
 </AttractionEntry>
-
-### 4. The Derelict Flotilla
 
 <AttractionEntry number={4} title="The Derelict Flotilla" category="hidden-find" image="/images/daymar/derelict-ships.webp" imageAlt="A cluster of abandoned ships on Daymar's surface">
 
@@ -83,8 +58,6 @@ The result is a ghost fleet on a ghost moon — seven ships with their doors unl
 
 </AttractionEntry>
 
-### 5. Dust Storm Survival
-
 <AttractionEntry number={5} title="Surviving the Storms" category="practical" image="/images/daymar/dust-storm.webp" imageAlt="A massive dust storm rolling across the Daymar plain">
 
 Daymar's dust storms are low-gravity phenomena — the particles don't hit you so much as envelope you, creating a red-brown fog that reduces visibility to arm's length and seeps into every seal, joint, and filter. A ship caught on the surface during a storm can expect its external sensors to be blinded and its intakes to see flow rates drop by 80% within minutes.
@@ -93,9 +66,11 @@ The storms are predictable in the broad sense — they tend to align with Daymar
 
 Survival strategy is straightforward: don't be on the surface when the storm hits. If your ship has enough fuel, lift off and wait in orbit. If not, seal everything, turn off non-essential systems to reduce intake draw, and wait. The storms typically last 2-4 hours. The dust is fine enough that it won't damage your hull, but it will clog anything that draws air — engines, life support, cooling systems. Post-storm maintenance is non-negotiable.
 
-Several entrepreneurial types have begun offering "storm bunkers" — reinforced shipping containers buried in the dunes, stocked with basic supplies and communication equipment. The quality varies according to the provider's life expectancy. Do your homework before paying for one.
-
 </AttractionEntry>
+
+<ExplorerView slot="explorer" author="Marta D., Independent Geologist">
+I spent three weeks in the Daymar highlands and saw my own shadow exactly twice. The dust doesn't just obscure visibility — it erases perspective. You can walk for hours thinking you're crossing a flat plain and suddenly find yourself at the edge of a canyon you never saw coming. Daymar lies to you, constantly. That's its nature.
+</ExplorerView>
 
 ## Getting Around
 
@@ -103,9 +78,7 @@ There is no formal transport network on Daymar. You either fly yourself or hire 
 
 Surface transport is best accomplished with a sturdy, short-field-capable ship. The low gravity means takeoffs are easy — you don't need much thrust to get airborne. The challenge is dust: the electrostatically charged particles will infiltrate engine intakes if you aren't running with filters. Several pilots have learned this lesson the expensive way.
 
-For ground travel, standard rovers function adequately on the firmer surfaces near the canyon systems but struggle in the deep dunes, where the fine dust can immobilize even tracked vehicles. The most reliable transport is a light ship that can hop between sites — Daymar's low gravity makes this fuel-efficient, if not exactly thrilling.
-
-<TouristTip number={6}>
+<TouristTip>
 
 - **Be Dust-Ready**: Carry spare air filters. Lots of them. Daymar's dust will clog standard filtration in hours, not days.
 - **Electronics Shielding**: The electrostatic charge in the dust can interfere with unshielded electronics. If your nav system starts providing directions in an archaic language, it's probably the dust, not you. Probably.
