@@ -1,6 +1,6 @@
 ---
 interface Props {
-  type: 'natural-wonder' | 'easter-egg' | 'urban-sight' | 'technical';
+  type: 'natural-wonder' | 'easter-egg' | 'urban-sight' | 'technical' | 'photo-spot';
 }
 
 const { type } = Astro.props;
@@ -10,6 +10,7 @@ const BADGE_CONFIG = {
   'easter-egg':     { label: 'Easter Egg',     emoji: '🎄', bg: '#7c3aed' },
   'urban-sight':    { label: 'Urban Sight',    emoji: '🏢', bg: 'var(--color-primary-600)' },
   'technical':      { label: 'Technical',      emoji: '🛸', bg: '#d97706' },
+  'photo-spot':     { label: 'Photo Spot',     emoji: '📸',  bg: '#db2777' },
 } as const;
 
 const config = BADGE_CONFIG[type];
