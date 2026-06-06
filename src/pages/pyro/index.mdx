@@ -4,70 +4,63 @@ title: "Pyro"
 system: "Frontier System"
 hero_image: "/images/pyro/pyro-hero.webp"
 lead: "Welcome to Pyro — the system they warned you about. Six planets of volatile hostility, a rogue's gallery of moons, and a near-total absence of anything resembling law enforcement. In Pyro, your ship's guns are your passport, your cargo is your currency, and your word is only as good as your willingness to enforce it."
+vitals_best_for: "Frontier exploration, high-risk commerce"
+vitals_climate: "Six planets, six threats — varies from volcanic to frozen"
+vitals_hub: "Ruin Station · Pyro Belt Outpost"
+vitals_currency: "UEC (de facto: anything with value)"
+vitals_ship: "Armed vessel recommended; insurance optional but advisable"
+getting_there: "Enter the Pyro system from the Stanton-Pyro jump point and do not stop moving. Ruin Station at Lagrange Point 1 is your first waypoint — dock there to calibrate your situational awareness before heading deeper. Pyro does not have a visitor center, a welcome committee, or meaningful law enforcement. What it has is six planets, a belt, and more ways to die than any sane guide should enumerate. Proceed accordingly."
 ---
 
-## Planets
+import AttractionEntry from '../../components/AttractionEntry.astro'
+import ExplorerView from '../../components/ExplorerView.astro'
+import TouristTip from '../../components/TouristTip.astro'
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+<AttractionEntry number={1} title="Pyro I — The Hellscape" category="natural-wonder" image="/images/pyro/pyro-1-hero.webp" imageAlt="Molten volcanic surface of Pyro I">
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0;">
-  <h3 style="margin-top: 0;"><a href="./pyro-1/" style="color: #1f2937; text-decoration: none;">Pyro I</a></h3>
-  <p style="color: #4b5563; margin-bottom: 0;">Volcanic hellscape where the surface is lava and the air is poison. Home to the system's most profitable — and most dangerous — mining operations.</p>
-</div>
+The innermost world is a threat. Molten rock, corrosive atmosphere, and volcanic activity so constant that the surface changes faster than cartographers can map it. Home to some of the most profitable — and most dangerous — mining operations in the frontier. Check your insurance, update your will, and bring a spare EVA suit.
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Pyro II</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">Geologically active, scarred with ancient lava flows. Less hostile than Pyro I, but only just.</p>
-</div>
+</AttractionEntry>
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Pyro III</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">By Pyro standards, almost habitable. A temperate world with a thin atmosphere and scattered outposts.</p>
-</div>
+<AttractionEntry number={2} title="Pyro II — The Glass World" category="natural-wonder" image="/images/pyro/pyro-2-hero.webp" imageAlt="Volcanic glass fields of Pyro II">
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Pyro IV</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">Mid-system planet with varied terrain. Rumors of hidden settlements and pirate bases.</p>
-</div>
+Ancient lava flows have frozen into vast Glass Fields of razor-edged obsidian, and a ridge of volcanic spires — the Spine — cuts across the northern hemisphere like a giant's backbone. Pyro I's calmer sibling, but only just. Geologically restless and visually stunning.
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Pyro V</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">The outermost terrestrial world. Cold by Pyro standards, but still warmer than you'd expect.</p>
-</div>
+</AttractionEntry>
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Pyro VI</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">The system's gas giant. Massive, turbulent, and home to spectacular storms. No breathable atmosphere.</p>
-</div>
+<AttractionEntry number={3} title="Pyro III — The Garden" category="settlement" image="/images/pyro/pyro-3-hero.webp" imageAlt="The irrigated Garden oasis on Pyro III">
 
-</div>
+By Pyro standards, practically a resort. The atmosphere is thin enough to breathe at low altitude, and the Old Serpent Channel hosts the Garden — the system's closest thing to normal life. Serpent's Rest Outpost is the unofficial capital. The best hand-pressed coffee in Pyro is here.
 
-## Stations & Points of Interest
+</AttractionEntry>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+<AttractionEntry number={4} title="Pyro IV — The Salvage Yards" category="settlement" image="/images/pyro/pyro-4-hero.webp" imageAlt="The sprawling Salvage Yards on Pyro IV">
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Ruin Station</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">The closest thing Pyro has to a capital. A makeshift station welded together from shipping containers and hope.</p>
-</div>
+The system's middle child. Temperate highlands, arid lowlands, and the Salvage Yards: a sprawling patchwork of scrap, workshops, and black-market trading posts where you can build an entire ship if you have enough time, money, and tolerance for things that might explode.
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">The Pyro Belt</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">The system's asteroid belt — rich in minerals, richer in pirates. The Wild West of space.</p>
-</div>
+</AttractionEntry>
 
-<div style="background: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0; opacity: 0.7;">
-  <h3 style="margin-top: 0;">Lagrangian Points</h3>
-  <p style="color: #4b5563; margin-bottom: 0;">Various rest stops and outposts at Pyro's Lagrangian points. Some are safe. Most aren't.</p>
-</div>
+<AttractionEntry number={5} title="Pyro V — The Frozen End" category="natural-wonder" image="/images/pyro/pyro-5-hero.webp" imageAlt="Frozen amber methane lakes of Pyro V">
 
-</div>
+The system's cold, quiet terminus. Most ships stop here only because they have to. The Amber Lakes glow with frozen methane in the star's red light, the Pole Station conducts research nobody else would do, and the Frozen City in the northern hemisphere raises questions nobody has answered.
 
-## About This Guide
+</AttractionEntry>
 
-This edition covers the Pyro System — six planets of varying hostility, a rogue's gallery of moons, and more ways to die than any sane traveler should encounter. The information herein is compiled from UEE surveys, independent scouting reports, and the occasional properly-monitored distress transmission.
+<AttractionEntry number={6} title="Pyro VI — The Giant" category="natural-wonder" image="/images/pyro/pyro-6-hero.webp" imageAlt="Pyro VI's ring system lit by the red star">
 
-<div style="background: color-mix(in srgb, #red 10%, white); border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #fee2e2; margin-top: 2rem;">
-  <p style="font-weight: 600; color: color-mix(in srgb, #red 70%, black); margin-bottom: 0.5rem;">⚠️ Travel Advisory</p>
-  <p style="color: #dc2626; font-size: 0.875rem; margin: 0;">The Pyro system is currently designated as a frontier zone with limited UEE presence. Travel is at your own risk. Insurance claims for incidents in Pyro may be denied or subject to extended review periods. The Lonely Planet Editors strongly recommend comprehensive weapons coverage and a reliable escape plan.</p>
-</div>
+The outer system's dominant presence — a gas giant wrapped in ammonia storm bands, its Great Scarlet Spot visible from Pyro V on a clear day. Gas mining platforms float in the upper atmosphere, a spectacular ring system surrounds the planet, and everything about it will kill you if you get too close.
+
+</AttractionEntry>
+
+<ExplorerView slot="explorer" author="Independent Hauler, Ruin Station">
+Everyone who comes to Pyro for the first time thinks they understand the risk. They've read the advisories, checked the insurance exclusions, talked to people who've been here. None of that prepares you for the first time a ship drops off your scanner and you realize there's no one to call. Pyro doesn't frighten you all at once. It does it slowly, one small realisation at a time.
+</ExplorerView>
+
+<TouristTip>
+
+- **Ruin Station First**: Always dock at Ruin Station on arrival. It's neutral ground, has fuel and repairs, and the traders there will tell you what's actually happening in the system.
+- **Travel Advisory**: The UEE designates Pyro a frontier zone with limited presence. Insurance claims may be denied. Comprehensive weapons coverage and a reliable escape plan are strongly recommended.
+- **No Lone Flying**: Single-ship travel in Pyro is statistically poor judgement. Travel with a wingman or stay near established traffic corridors.
+- **Credits vs. Cargo**: In Pyro, cargo sometimes speaks louder than UEC. Fuel cells, medical supplies, and food all trade at premium rates. Arrive with something useful.
+
+</TouristTip>
