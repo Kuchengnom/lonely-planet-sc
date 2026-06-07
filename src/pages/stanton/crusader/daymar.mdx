@@ -15,6 +15,9 @@ getting_there: "There is no 'here' on Daymar in the conventional sense — no sp
 import AttractionEntry from '../../../components/AttractionEntry.astro'
 import ExplorerView from '../../../components/ExplorerView.astro'
 import TouristTip from '../../../components/TouristTip.astro'
+import WhereToDock from '../../../components/WhereToDock.astro'
+import EatingDrinking from '../../../components/EatingDrinking.astro'
+import ActivityEntry from '../../../components/ActivityEntry.astro'
 
 <AttractionEntry number={1} title="Covalex Hub Gundo" category="hidden-find" image="/images/daymar/covalex-ruins.webp" imageAlt="The collapsed remains of the Covalex mining hub">
 
@@ -72,18 +75,60 @@ Survival strategy is straightforward: don't be on the surface when the storm hit
 I spent three weeks in the Daymar highlands and saw my own shadow exactly twice. The dust doesn't just obscure visibility — it erases perspective. You can walk for hours thinking you're crossing a flat plain and suddenly find yourself at the edge of a canyon you never saw coming. Daymar lies to you, constantly. That's its nature.
 </ExplorerView>
 
+## Where to Dock & Sleep
+
+<WhereToDock title="Shallow Fields Station (Nearby)" category="landing-zone" image="/images/daymar/shallow-fields.webp" imageAlt="A space station in orbit near Daymar">
+Not technically on Daymar, but close enough to serve as the de facto clearing house for anyone foolish enough to visit. Shallow Fields is a Crusader Industries fueling depot and transit hub, sitting at the L2 Lagrangian point between Crusader and Daymar. Most pilots refuel here before attempting the Daymar descent, and many linger afterward to swap stories about what they saw in the dust. The facilities are basic but clean — you can get a decent shower, a hot meal, and a secure berth for your ship while you plan your next move.
+</WhereToDock>
+
+<WhereToDock title="Derelict Outpost Bunkers" category="habitation" image="/images/daymar/outpost-bunkers.webp" imageAlt="Rugged concrete bunkers built into a Daymar canyon wall">
+Several of the abandoned mining outposts around the Covalex ruins have been repurposed by independent operators as safe havens for Daymar explorers. These aren't advertised facilities — you find them by word of mouth or by spotting the well-concealed landing pads. The accommodations range from "barely livable" to "surprisingly comfortable," depending on who's running them. Most offer emergency shelter, basic life support, and a place to recharge your equipment in exchange for a percentage of any ores you extract or salvage you recover.
+</WhereToDock>
+
+<WhereToDock title="Storm Shelter Entrepreneurs" category="rest-stop" image="/images/daymar/dust-shelter.webp" imageAlt="A fortified shelter half-buried in Daymar dunes">
+A recent development on Daymar is the emergence of storm shelter operators — enterprising types who bury reinforced containers in the dunes, stock them with emergency supplies, and rent limited-access coordinates for a modest fee. The quality varies wildly, but a good storm shelter is literally the difference between life and death if you're caught outside in a Daymar dust storm. Most veteran Daymar travelers recommend signing up with a reputable operator before you arrive.
+</WhereToDock>
+
+## Where to Eat & Drink
+
+<EatingDrinking number={1}>
+**The Ramen Stand at Covalex Ruins** — Operating out of a converted shipping container near the main excavation site, this unassuming food stall serves the only hot food within 200,000 kilometers. The proprietor is a retired space trucker named Jin, who claims his grandmother's recipe has been through three star systems and two corporate bankruptcies. Food is nutrient-paste based but seasoned with actual spices, a luxury out here. Expect to eat while covered in dust, surrounded by salvagers who measure their life in credits per load.
+</EatingDrinking>
+
+<EatingDrinking number={2}>
+**Makeshift Cantinas in Canyon Camps** — Several of the semi-permanent camps established in the more stable canyon formations have basic dining setups. Food is dehydrated or ration-bar based, but it's hot and there's usually liquor. The alcohol selection tends toward the industrial — whatever can be manufactured on-site or smuggled in without attracting too much attention. The real value here is intelligence. Canyon cantinas are information clearinghouses — you'll hear about new salvage sites and mining discoveries before they show up on any scanner.
+</EatingDrinking>
+
+<EatingDrinking number={3}>
+**Shipboard Provisions — Reality Check** — There is no fine dining on Daymar. If you're not eating at one of the dust-covered ground establishments above, you're eating shipboard rations. Plan accordingly. If you plan to spend more than a day on Daymar, bring your own food supplies. The exception is water — several enterprising salvagers have set up water purification rigs that sell recycled drinking water.
+</EatingDrinking>
+
+## What to Do
+
+<ActivityEntry title="Mining in the Covalez Ruins" category="mining" image="/images/daymar/covalex-mining.webp" imageAlt="A miner operating a hand-held mining laser on Daymar">
+The Covalez Hub Gundo ruins are active mining sites for independent operators with the right equipment. The collapsed processing tower and outbuildings contain recoverable ore pockets that never made it to the refinement stage before the collapse. Hand-held mining lasers and low-gravity extraction equipment are essential. Experienced operators focus on the secondary storage facilities and the main tower rubble, where the highest concentrations of valuable minerals can be found.
+</ActivityEntry>
+
+<ActivityEntry title="Flotilla Salvage Operations" category="exploration" image="/images/daymar/flotilla-salvage.webp" imageAlt="A salvage operator examining components from the Derelict Flotilla">
+The Derelict Flotilla represents some of the most accessible ship salvage in the Stanton system. Seven vessels ranging from fighters to mid-sized frigates are parked intact, with their systems cold but potentially recoverable. The challenge is speed and precision — the ships are technically listed as owned by defunct corporations. Work quickly, work quietly, and have your escape route plotted.
+</ActivityEntry>
+
+<ActivityEntry title="Canyon System Mapping and Survey" category="mission" image="/images/daymar/canyon-mapping.webp" imageAlt="A survey rover mapping canyon walls from a Daymar canyon rim">
+The canyon systems of Klescher and surrounding regions contain unmapped cave systems, mineral deposits, and potentially valuable archaeological sites. Several organizations offer bounties for detailed canyon mapping, mineral surveys, and site documentation. Work requires ground-penetrating radar, surveying equipment, and the ability to navigate complex three-dimensional terrain.
+</ActivityEntry>
+
 ## Getting Around
 
-There is no formal transport network on Daymar. You either fly yourself or hire someone who does. Several independent pilots based at GrimHEX (yes, that GrimHEX — even Daymar is within its operational sphere) offer surface shuttle services, though their definition of "shuttle" sometimes includes "modified mining barge with questionable life support."
+There is no formal transport network on Daymar. You either fly yourself or hire someone who does. Several independent pilots based at GrimHEX offer surface shuttle services, though their definition of "shuttle" sometimes includes "modified mining barge with questionable life support."
 
-Surface transport is best accomplished with a sturdy, short-field-capable ship. The low gravity means takeoffs are easy — you don't need much thrust to get airborne. The challenge is dust: the electrostatically charged particles will infiltrate engine intakes if you aren't running with filters. Several pilots have learned this lesson the expensive way.
+Surface transport is best accomplished with a sturdy, short-field-capable ship. The low gravity means takeoffs are easy — you don't need much thrust to get airborne. The challenge is dust: the electrostatically charged particles will infiltrate engine intakes if you aren't running with filters.
 
 <TouristTip>
 
 - **Be Dust-Ready**: Carry spare air filters. Lots of them. Daymar's dust will clog standard filtration in hours, not days.
 - **Electronics Shielding**: The electrostatic charge in the dust can interfere with unshielded electronics. If your nav system starts providing directions in an archaic language, it's probably the dust, not you. Probably.
-- **Water Discipline**: There is no surface water on Daymar. None. What looks like a dry riverbed has been dry for tens of thousands of years. The moisture in your suit's reclamation system is the only water you'll see.
-- **Pick Your Landing Zone Carefully**: A flat-looking surface might be hard-packed dust over a boulder, or it might be soft enough to swallow your landing gear. When in doubt, the canyon floors are generally the most stable — they're made of actual rock, not compacted dust.
-- **The View**: If you survive the dust, the storms, and the loneliness, Daymar offers something no other moon in the system can: the view of Crusader from Daymar's surface. The gas giant fills half the sky, its cloud bands swirling in colors that don't exist in any color palette. It's worth the trip. It's worth the dust. Just bring extra filters.
+- **Water Discipline**: There is no surface water on Daymar. None. What looks like a dry riverbed has been dry for tens of thousands of years.
+- **Pick Your Landing Zone Carefully**: A flat-looking surface might be hard-packed dust over a boulder, or it might be soft enough to swallow your landing gear. When in doubt, the canyon floors are generally the most stable.
+- **The View**: If you survive the dust, the storms, and the loneliness, Daymar offers something no other moon in the system can: the view of Crusader from Daymar's surface. The gas giant fills half the sky, its cloud bands swirling in colors that don't exist in any color palette.
 
 </TouristTip>
