@@ -14,6 +14,7 @@ interface Frontmatter {
   vitals_currency: string;
   vitals_ship: string;
   getting_there: string;
+  region?: string;
 }
 
 interface Props {
@@ -23,7 +24,7 @@ interface Props {
 const {
   title, system, hero_image, lead,
   vitals_best_for, vitals_climate, vitals_hub, vitals_currency, vitals_ship,
-  getting_there,
+  getting_there, region,
 } = Astro.props.frontmatter;
 
 const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
@@ -44,7 +45,7 @@ const hasExplorer = Astro.slots.has('explorer');
   <body>
     <SystemHeader
       system={system}
-      planet={title}
+      planet=""
       region=""
       title={title}
       type="urban-sight"
@@ -61,7 +62,7 @@ const hasExplorer = Astro.slots.has('explorer');
             </svg>
             <h1 class="page-header__title">{title}</h1>
           </div>
-          <p class="page-header__sub">{system} System · Stanton IV</p>
+          <p class="page-header__sub">{system}{region ? ` · ${region}` : ''}</p>
         </div>
         <div class="page-header__best-for" aria-label={`Best for: ${vitals_best_for}`}>
           <div class="page-header__best-for-value">{vitals_best_for}</div>

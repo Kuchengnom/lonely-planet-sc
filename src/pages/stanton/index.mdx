@@ -1,0 +1,56 @@
+---
+layout: '../../layouts/PlanetLayout.astro'
+title: "Stanton"
+system: "UEE Corporate Territory"
+region: "4 Planets"
+hero_image: "/images/microtech/panoramic-lake.jpeg"
+lead: "Four planets. Four corporations. One system where the currency is power and the air is a product. Stanton is where the UEE tested what happens when capital runs the government — and where travelers come to see what that actually costs the people living inside it."
+vitals_best_for: "Corporate intrigue, frontier trade, dark tourism, urban exploration"
+vitals_climate: "Varies by planet — industrial haze, perpetual cloud, engineered heat, arctic freeze"
+vitals_hub: "Lorville · Orison · Area18 · New Babbage"
+vitals_currency: "UEC"
+vitals_ship: "Any class — well-developed quantum infrastructure throughout"
+getting_there: "Stanton connects via jump points from Terra, Pyro, and Magnus. Once inside, quantum travel links all four planets with their orbital stations. Port Olisar and Seraphim Station serve as waypoints for cross-system hauls. Each planet maintains a primary surface landing zone and orbital hub. First-time visitors should calibrate at any major orbital station before descending — the transition from clean space to each planet's atmosphere is an education."
+---
+
+import AttractionEntry from '../../components/AttractionEntry.astro'
+import ExplorerView from '../../components/ExplorerView.astro'
+import TouristTip from '../../components/TouristTip.astro'
+
+<AttractionEntry number={1} title="Hurston — The Strip Mine" category="settlement" image="/images/microtech/canyon-river-aerial.jpeg" imageAlt="Lorville rising from the devastated Hurston savannah">
+
+Hurston Dynamics stripped a savannah world to its bones and built a company town on what was left. Lorville is the result: a city of recycled air, industrial runoff, and people who have learned to find beauty in the Hurston Glow — the particular quality of light that happens when a polluted atmosphere catches the star at the right angle. The Workers District has a pulse. The strip mine biomes have a strange, devastating grandeur. The sunsets are genuinely spectacular, which is perhaps the most damning thing about the place.
+
+</AttractionEntry>
+
+<AttractionEntry number={2} title="Crusader — City in the Clouds" category="natural-wonder" image="/images/microtech/flying-over-mountains.jpeg" imageAlt="Ship approaching cloud platforms above Crusader">
+
+Crusader Industries solved the problem of an uninhabitable gas giant by building a city 80 kilometers above the surface and calling it Orison. The shipyards are the largest in the system, the upper atmosphere is breathable at altitude, and the views across the cloud platforms are the kind that make you forget you are standing in someone else's industrial operation. Cellin, Daymar, and Yela orbit below — each worth a visit, one worth getting deliberately lost in.
+
+</AttractionEntry>
+
+<AttractionEntry number={3} title="ArcCorp — The Factory World" category="settlement" image="/images/microtech/surface-outpost.jpeg" imageAlt="The dense industrial skyline of Area18">
+
+The most urbanized planet in human space. ArcCorp is a super-earth covered from pole to equator in factory floor, retail outlet, and habitation block. Area18 is the commercial center: neon, transit infrastructure, and the kind of density that makes you feel simultaneously very small and very watched. Lyria and Wala orbit nearby — one a mining moon with actual geological interest, the other a misshapen body that ArcCorp's gravity has been slowly deforming for centuries.
+
+</AttractionEntry>
+
+<AttractionEntry number={4} title="microTech — The Frozen Colony" category="natural-wonder" image="/images/microtech/panoramic-lake.jpeg" imageAlt="Panoramic frozen lake district of microTech">
+
+A terraforming error turned microTech into permanent winter. The corporation found this acceptable and built New Babbage anyway — a gleaming city of white and glass surrounded by tundra that will kill you efficiently and without malice. The northern wastes reward exploration: river canyons, bioluminescent cave systems, ice formations that shouldn't exist by any standard geological logic. If you can handle the cold, microTech is the most visually spectacular planet in the system.
+
+</AttractionEntry>
+
+<ExplorerView slot="explorer" author="Freelance Hauler, Port Olisar">
+People think Stanton is about the corporations. It isn't. It's about the distance between what the corporations promised and what they delivered. Hurston promised employment. ArcCorp promised commerce. microTech promised innovation. They all delivered — just not to the people who needed it most. That gap between the promise and the reality is where the interesting people live. That's where the guide is actually useful.
+</ExplorerView>
+
+<TouristTip>
+
+- **Entry**: No visa required for UEE citizens. Corporate security maintains jurisdiction on each planet — rules and enforcement thresholds vary significantly between them.
+- **CrimeStat**: Your criminal status follows you system-wide. Clean it before you land somewhere it matters. Lorville and New Babbage have notably stricter checkpoints than Area18.
+- **Currency**: UEC accepted universally. Corporate scrip circulates on Hurston and microTech at slightly disadvantageous exchange rates. Decline it and ask for UEC.
+- **Health**: Filter mask for Hurston — the air is technically breathable but practically unpleasant. Insulated survival gear for microTech surface operations. Crusader requires atmospheric rating confirmation before you descend. ArcCorp needs nothing but patience.
+- **Ground Transport**: Metro rail connects districts on Hurston and microTech. Personal ground vehicles are practical on Hurston's surface and microTech's wastes. Crusader requires VTOL-capable craft. ArcCorp's tram grid covers Area18 efficiently enough that a ground vehicle is more hindrance than help.
+
+</TouristTip>

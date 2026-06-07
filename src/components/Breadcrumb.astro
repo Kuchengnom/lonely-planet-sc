@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { system, planet, region, title } = Astro.props;
-const crumbs = [system, planet, region];
+const crumbs = [system, planet, region].filter(Boolean);
 ---
 
 <nav class="breadcrumb" aria-label="Location breadcrumb">
