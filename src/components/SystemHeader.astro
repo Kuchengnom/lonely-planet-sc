@@ -11,6 +11,40 @@ interface Props {
 }
 
 const { system, planet, region, title, type } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+type Crumb = { label: string; href: string | null };
+
+// Compound system values expand into multiple crumbs (system + planet).
+// Simple system values produce one crumb.
+const systemExpansions: Record<string, Crumb[]> = {
+  'Stanton':                   [{ label: 'Stanton',    href: `${base}stanton/` }],
+  'Pyro':                      [{ label: 'Pyro',       href: `${base}pyro/` }],
+  'UEE Corporate Territory':   [{ label: 'Stanton',    href: `${base}stanton/` }],
+  'Stanton (Hurston)':         [{ label: 'Stanton',    href: `${base}stanton/` },
+                                { label: 'Hurston',    href: `${base}stanton/hurston/` }],
+  'Stanton (Crusader)':        [{ label: 'Stanton',    href: `${base}stanton/` },
+                                { label: 'Crusader',   href: `${base}stanton/crusader/` }],
+  'Stanton (ArcCorp)':         [{ label: 'Stanton',    href: `${base}stanton/` },
+                                { label: 'ArcCorp',    href: `${base}stanton/arccorp/` }],
+  'Stanton (microTech)':       [{ label: 'Stanton',    href: `${base}stanton/` },
+                                { label: 'microTech',  href: `${base}stanton/microtech/` }],
+};
+
+const planetHrefs: Record<string, string> = {
+  'Hurston':      `${base}stanton/hurston/`,
+  'Crusader':     `${base}stanton/crusader/`,
+  'ArcCorp':      `${base}stanton/arccorp/`,
+  'MicroTech':    `${base}stanton/microtech/`,
+  'System-wide':  `${base}stanton/phds/`,
+};
+
+const crumbs: Crumb[] = [
+  ...(systemExpansions[system] ?? [{ label: system, href: null }]),
+  ...(planet ? [{ label: planet, href: planetHrefs[planet] ?? null }] : []),
+  ...(region ? [{ label: region, href: null }] : []),
+];
 ---
 
 <header class="system-header">
@@ -18,12 +52,7 @@ const { system, planet, region, title, type } = Astro.props;
     <div class="system-header__inner">
       <div class="system-header__left">
         <span class="system-header__edition">{system} Edition</span>
-        <Breadcrumb
-          system={system}
-          planet={planet}
-          region={region}
-          title={title}
-        />
+        <Breadcrumb crumbs={crumbs} title={title} />
       </div>
       <POIBadge type={type} />
     </div>
