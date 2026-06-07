@@ -48,12 +48,12 @@ const EDITIONS: Edition[] = [
 ];
 
 const POIS = [
-  { num: '01', name: 'The First River',      tag: 'Natural Wonder', desc: 'Open water on a permafrost world. The anomaly that has no satisfying explanation.',             planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
-  { num: '02', name: 'Bioluminescent Caves', tag: 'Hidden Find',    desc: 'Blue-cyan ceilings that look like an inverted starfield. Not on any official map.',            planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
-  { num: '03', name: 'New Babbage Commons',  tag: 'Settlement',     desc: 'Corporate grandeur bordering on absurdist. The warmest welcome on the coldest planet.',        planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
-  { num: '04', name: 'The Canyon River',     tag: 'Natural Wonder', desc: 'Canyon walls and a colour palette that screenshots struggle to convey. Fly it slowly.',         planet: 'microTech · Stanton', href: `${base}stanton/microtech/northern-wastes/canyon-river` },
-  { num: '05', name: 'Orison',               tag: 'Settlement',     desc: "A city built on platforms in the clouds of a gas giant. Nowhere else in the 'Verse like it.",  planet: 'Crusader · Stanton',  href: `${base}stanton/crusader/` },
-  { num: '06', name: 'Frozen Lakes',         tag: 'Natural Wonder', desc: 'Arches and columns of compressed blue-white ice. Walk them carefully — the footing is uneven.', planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '01', name: 'The First River',      tag: 'Natural Wonder', desc: 'Open water on a permafrost world. The anomaly that has no satisfying explanation.',             planet: 'microTech · Stanton', href: `${base}stanton/microtech/`,                                        img: `${base}images/microtech/ships-on-lake.jpeg`,        alt: 'Ships parked at the edge of the first river lake basin' },
+  { num: '02', name: 'Bioluminescent Caves', tag: 'Hidden Find',    desc: 'Blue-cyan ceilings that look like an inverted starfield. Not on any official map.',            planet: 'microTech · Stanton', href: `${base}stanton/microtech/`,                                        img: `${base}images/microtech/bioluminescent-cave.jpeg`,  alt: 'Bioluminescent cave ceiling covered in blue-cyan glowing organisms' },
+  { num: '03', name: 'New Babbage Commons',  tag: 'Settlement',     desc: 'Corporate grandeur bordering on absurdist. The warmest welcome on the coldest planet.',        planet: 'microTech · Stanton', href: `${base}stanton/microtech/`,                                        img: `${base}images/microtech/flying-over-mountains.jpeg`, alt: 'Small ship approaching New Babbage over snowy mountain ranges' },
+  { num: '04', name: 'The Canyon River',     tag: 'Natural Wonder', desc: 'Canyon walls and a colour palette that screenshots struggle to convey. Fly it slowly.',         planet: 'microTech · Stanton', href: `${base}stanton/microtech/northern-wastes/canyon-river`,           img: `${base}images/microtech/canyon-river-aerial.jpeg`,  alt: 'Aerial view of the canyon river winding through autumn forest' },
+  { num: '05', name: 'Orison',               tag: 'Settlement',     desc: "A city built on platforms in the clouds of a gas giant. Nowhere else in the 'Verse like it.",  planet: 'Crusader · Stanton',  href: `${base}stanton/crusader/`,                                         img: `${base}images/microtech/panoramic-lake.jpeg`,       alt: 'Panoramic view of the Stanton system landscape' },
+  { num: '06', name: 'Frozen Lakes',         tag: 'Natural Wonder', desc: 'Arches and columns of compressed blue-white ice. Walk them carefully — the footing is uneven.', planet: 'microTech · Stanton', href: `${base}stanton/microtech/`,                                        img: `${base}images/microtech/ice-arch.jpeg`,             alt: 'Ice arch formation rising from a frozen lake on MicroTech' },
 ];
 ---
 
@@ -208,17 +208,59 @@ const POIS = [
           <h2 id="attractions-heading" class="section-heading">Top Attractions</h2>
           <div class="poi-grid">
             {POIS.map((poi) => (
-              <a href={poi.href} class="poi-card">
-                <span class="poi-card__num">{poi.num}</span>
-                <h3 class="poi-card__name">{poi.name}</h3>
-                <span class="poi-card__tag">{poi.tag}</span>
-                <p class="poi-card__desc">{poi.desc}</p>
-                <span class="poi-card__planet">{poi.planet}</span>
-              </a>
+              <div class="poi-card">
+                <button
+                  class="poi-card__img-btn"
+                  data-img={poi.img}
+                  data-alt={poi.alt}
+                  data-name={poi.name}
+                  aria-label={`View full image: ${poi.alt}`}
+                >
+                  <img src={poi.img} alt={poi.alt} loading="lazy" />
+                  <div class="poi-card__img-overlay">
+                    <span class="poi-card__num">{poi.num}</span>
+                    <span class="poi-card__tag-badge">{poi.tag}</span>
+                  </div>
+                  <span class="poi-card__zoom-hint" aria-hidden="true">⊕</span>
+                </button>
+                <div class="poi-card__body">
+                  <a href={poi.href} class="poi-card__name">{poi.name}</a>
+                  <p class="poi-card__desc">{poi.desc}</p>
+                  <span class="poi-card__planet">{poi.planet}</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
+
+      <!-- Lightbox -->
+      <dialog class="lightbox" id="lightbox" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox__close" id="lightbox-close" aria-label="Close">✕</button>
+        <figure class="lightbox__figure">
+          <img class="lightbox__img" id="lightbox-img" src="" alt="" />
+          <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+        </figure>
+      </dialog>
+
+      <script>
+        const dialog = document.getElementById('lightbox') as HTMLDialogElement;
+        const lbImg = document.getElementById('lightbox-img') as HTMLImageElement;
+        const lbCaption = document.getElementById('lightbox-caption') as HTMLElement;
+        const closeBtn = document.getElementById('lightbox-close') as HTMLButtonElement;
+
+        document.querySelectorAll<HTMLButtonElement>('.poi-card__img-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            lbImg.src = btn.dataset.img ?? '';
+            lbImg.alt = btn.dataset.alt ?? '';
+            lbCaption.textContent = btn.dataset.name ?? '';
+            dialog.showModal();
+          });
+        });
+
+        closeBtn.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+      </script>
 
       <!-- Community manifesto -->
       <section class="manifesto" id="about">
@@ -755,64 +797,182 @@ const POIS = [
 
   .poi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    border: 1px solid var(--color-neutral-200);
-    gap: 1px;
-    background: var(--color-neutral-200);
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-5);
   }
 
   .poi-card {
     background: var(--color-white);
-    padding: var(--space-6) var(--space-5);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
-    text-decoration: none;
-    color: inherit;
-    transition: background var(--duration-fast) var(--ease-out);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
   }
-  .poi-card:hover { background: var(--color-neutral-50); }
+  .poi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .poi-card__img-btn {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    background: var(--color-neutral-900);
+    cursor: zoom-in;
+  }
+  .poi-card__img-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--duration-slow) var(--ease-out),
+                opacity var(--duration-normal) var(--ease-out);
+  }
+  .poi-card__img-btn:hover img {
+    transform: scale(1.04);
+    opacity: 0.88;
+  }
+
+  .poi-card__img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(9,20,45,0.72) 0%, transparent 55%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    pointer-events: none;
+  }
 
   .poi-card__num {
     font-family: var(--font-display);
     font-size: 0.625rem;
     font-weight: var(--font-weight-bold);
     letter-spacing: 0.14em;
-    color: var(--color-primary-500);
+    color: rgba(255,255,255,0.7);
   }
+
+  .poi-card__tag-badge {
+    font-family: var(--font-display);
+    font-size: 0.5rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    text-transform: uppercase;
+    color: var(--color-white);
+    background: rgba(30,58,138,0.8);
+    padding: 3px 7px;
+    border-radius: var(--radius-sm);
+  }
+
+  .poi-card__zoom-hint {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1;
+    transition: color var(--duration-fast);
+    pointer-events: none;
+  }
+  .poi-card__img-btn:hover .poi-card__zoom-hint { color: rgba(255,255,255,0.9); }
+
+  .poi-card__body {
+    padding: var(--space-4) var(--space-5) var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+  }
+
   .poi-card__name {
     font-family: var(--font-display);
     font-size: 1rem;
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-snug);
     color: var(--color-neutral-900);
-    margin: 0;
+    text-decoration: none;
   }
-  .poi-card__tag {
-    font-family: var(--font-display);
-    font-size: 0.5625rem;
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: var(--letter-spacing-widest);
-    text-transform: uppercase;
-    color: var(--color-neutral-500);
-  }
+  .poi-card__name:hover { color: var(--color-primary-600); }
+
   .poi-card__desc {
     font-family: var(--font-body);
     font-size: 0.8125rem;
     line-height: var(--line-height-relaxed);
     color: var(--color-neutral-600);
-    margin: var(--space-1) 0 0;
+    margin: 0;
+    flex: 1;
   }
   .poi-card__planet {
     font-family: var(--font-display);
-    font-size: 0.625rem;
+    font-size: 0.5625rem;
     font-weight: var(--font-weight-semibold);
     letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
     color: var(--color-neutral-400);
-    margin-top: auto;
     padding-top: var(--space-3);
     border-top: 1px solid var(--color-neutral-200);
+  }
+
+  /* ── Lightbox ──────────────────────────────────────── */
+  .lightbox {
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: 0;
+    background: var(--color-neutral-900);
+    max-width: min(90vw, 1100px);
+    max-height: 90vh;
+    width: 100%;
+    box-shadow: var(--shadow-2xl);
+  }
+  .lightbox::backdrop {
+    background: rgba(0,0,0,0.82);
+    backdrop-filter: blur(4px);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: var(--color-white);
+    font-size: 1rem;
+    width: 36px; height: 36px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background var(--duration-fast);
+    z-index: 10;
+  }
+  .lightbox__close:hover { background: rgba(255,255,255,0.24); }
+
+  .lightbox__figure { margin: 0; display: flex; flex-direction: column; }
+
+  .lightbox__img {
+    display: block;
+    width: 100%;
+    max-height: calc(90vh - 56px);
+    object-fit: contain;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .lightbox__caption {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-widest);
+    text-transform: uppercase;
+    color: var(--color-neutral-400);
+    padding: var(--space-3) var(--space-6);
+    text-align: center;
   }
 
   /* ── Community manifesto ───────────────────────────── */
