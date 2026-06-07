@@ -1,47 +1,79 @@
 ---
 import '../styles/global.css';
 
-interface SystemEdition {
-  name: string;
-  subtitle: string;
-  status: 'available' | 'coming-soon';
-  image: string;
-  imageAlt: string;
-  href: string;
-  planetCount: number;
-  accentColor: string;
-}
-
 const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
 
-const EDITIONS: SystemEdition[] = [
+interface Edition {
+  name: string;
+  subtitle: string;
+  tagline: string;
+  status: 'available' | 'coming-soon';
+  href: string;
+  theme: 'stanton' | 'pyro' | 'terra' | 'nyx';
+}
+
+const EDITIONS: Edition[] = [
   {
     name: 'Stanton',
     subtitle: 'The Corporate Core',
+    tagline: 'Four planets. Four corporations. One system where power is the currency.',
     status: 'available',
-    image: `${base}images/microtech/panoramic-lake.jpeg`,
-    imageAlt: 'Panoramic view of a lake on microTech, Stanton system',
     href: `${base}stanton/`,
-    planetCount: 4,
-    accentColor: 'var(--color-primary-600)',
+    theme: 'stanton',
   },
   {
     name: 'Pyro',
     subtitle: 'The Unstable Frontier',
+    tagline: 'Six planets of volatile hostility and a near-total absence of law.',
+    status: 'available',
+    href: `${base}pyro/`,
+    theme: 'pyro',
+  },
+  {
+    name: 'Terra',
+    subtitle: 'The Capital World',
+    tagline: 'The cultural and political heart of the UEE — cosmopolitan, ambitious, complicated.',
     status: 'coming-soon',
-    image: 'https://starcitizen.tools/Special:Redirect/file/Pyro-system-01.jpg',
-    imageAlt: 'The unstable Pyro system',
     href: '#',
-    planetCount: 0,
-    accentColor: 'var(--color-secondary-600)',
+    theme: 'terra',
+  },
+  {
+    name: 'Nyx',
+    subtitle: 'The Lawless Fringe',
+    tagline: 'Home of Delamar and Levski. The rebel answer to Pyro\'s chaos.',
+    status: 'coming-soon',
+    href: '#',
+    theme: 'nyx',
   },
 ];
 
-const planets = [
-  { name: 'microTech', system: 'Stanton', label: 'Stanton IV', tag: 'Live', href: `${base}stanton/microtech/` },
-  { name: 'Crusader', system: 'Stanton', label: 'Stanton II', tag: 'Live', href: `${base}stanton/crusader/` },
-  { name: 'Hurston', system: 'Stanton', label: 'Stanton I', tag: 'Live', href: `${base}stanton/hurston/` },
-  { name: 'ArcCorp', system: 'Stanton', label: 'Stanton III', tag: 'Live', href: `${base}stanton/arccorp/` },
+interface Destination {
+  name: string;
+  label: string;
+  href: string;
+  system: 'stanton' | 'pyro';
+}
+
+const DESTINATIONS: { system: string; color: string; items: Destination[] }[] = [
+  {
+    system: 'Stanton',
+    color: 'var(--color-primary-600)',
+    items: [
+      { name: 'Hurston',  label: 'Stanton I',   href: `${base}stanton/hurston/`,   system: 'stanton' },
+      { name: 'Crusader', label: 'Stanton II',  href: `${base}stanton/crusader/`,  system: 'stanton' },
+      { name: 'ArcCorp',  label: 'Stanton III', href: `${base}stanton/arccorp/`,   system: 'stanton' },
+      { name: 'microTech',label: 'Stanton IV',  href: `${base}stanton/microtech/`, system: 'stanton' },
+    ],
+  },
+  {
+    system: 'Pyro',
+    color: '#c2410c',
+    items: [
+      { name: 'Pyro I–VI',      label: 'All Planets',     href: `${base}pyro/`,                        system: 'pyro' },
+      { name: 'Ruin Station',   label: 'Lagrange Point 1',href: `${base}pyro/stations/ruin-station/`,  system: 'pyro' },
+      { name: 'Pyro Belt',      label: 'Asteroid Field',  href: `${base}pyro/stations/pyro-belt/`,     system: 'pyro' },
+    ],
+  },
 ];
 ---
 
@@ -83,28 +115,28 @@ const planets = [
           <h2 id="editions-heading" class="section-heading">System Editions</h2>
 
           <div class="editions-grid">
-            {EDITIONS.map((edition) => (
-              <article
-                class={`edition-card ${edition.status === 'coming-soon' ? 'edition-card--soon' : ''}`}
-                style={`--card-accent: ${edition.accentColor};`}
-              >
+            {EDITIONS.map((ed) => (
+              <article class={`edition-card edition-card--${ed.theme} ${ed.status === 'coming-soon' ? 'edition-card--soon' : ''}`}>
                 <div class="edition-card__thumb">
-                  <img src={edition.image} alt={edition.imageAlt} loading="lazy" />
-                  <span class="edition-card__status">{edition.status === 'available' ? 'Available Now' : 'Coming Soon'}</span>
+                  <div class="edition-card__planet" aria-hidden="true"></div>
+                  <div class="edition-card__overlay"></div>
+                  <span class={`edition-card__status-badge ${ed.status === 'available' ? 'edition-card__status-badge--live' : ''}`}>
+                    {ed.status === 'available' ? 'Available Now' : 'Coming Soon'}
+                  </span>
+                  <span class="edition-card__lp-badge">LP</span>
+                  <div class="edition-card__thumb-text">
+                    <span class="edition-card__eyebrow">Star Citizen</span>
+                    <h3 class="edition-card__name">{ed.name}</h3>
+                  </div>
                 </div>
                 <div class="edition-card__body">
-                  <p class="edition-card__subtitle">{edition.subtitle}</p>
-                  <h3 class="edition-card__name">{edition.name} Edition</h3>
-                  <p class="edition-card__meta">
-                    {edition.status === 'available' ? `${edition.planetCount} planets · 7+ attractions` : 'Details arriving with Alpha 4.0'}
-                  </p>
-                  <a
-                    href={edition.href}
-                    class={`edition-card__cta ${edition.status === 'coming-soon' ? 'edition-card__cta--disabled' : ''}`}
-                    aria-disabled={edition.status === 'coming-soon'}
-                  >
-                    {edition.status === 'available' ? 'Explore →' : 'Stay tuned'}
-                  </a>
+                  <p class="edition-card__subtitle">{ed.subtitle}</p>
+                  <p class="edition-card__tagline">{ed.tagline}</p>
+                  {ed.status === 'available' ? (
+                    <a href={ed.href} class="edition-card__cta">Explore →</a>
+                  ) : (
+                    <span class="edition-card__cta edition-card__cta--disabled">Coming soon</span>
+                  )}
                 </div>
               </article>
             ))}
@@ -112,22 +144,29 @@ const planets = [
         </div>
       </section>
 
-      {/* ── Planet Quick-Nav ────────────────── */}
-      <section class="quick-nav" aria-labelledby="planets-heading">
+      {/* ── Destinations Quick-Nav ──────────── */}
+      <section class="quick-nav" aria-labelledby="destinations-heading">
         <div class="container">
-          <h2 id="planets-heading" class="section-heading">Planets</h2>
+          <h2 id="destinations-heading" class="section-heading">Destinations</h2>
 
-          <ul class="planet-list">
-            {planets.map((planet) => (
-              <li class="planet-item">
-                <a href={planet.href} class={`planet-link ${planet.tag === 'Soon' ? 'planet-link--disabled' : ''}`}>
-                  <span class="planet-link__name">{planet.name}</span>
-                  <span class="planet-link__label">{planet.label}</span>
-                  <span class={`planet-link__tag ${planet.tag === 'Live' ? 'planet-link__tag--live' : ''}`}>{planet.tag}</span>
-                </a>
-              </li>
+          <div class="dest-grid">
+            {DESTINATIONS.map((group) => (
+              <div class="dest-group">
+                <p class="dest-group__label" style={`color: ${group.color};`}>{group.system}</p>
+                <ul class="dest-list">
+                  {group.items.map((dest) => (
+                    <li class="dest-item">
+                      <a href={dest.href} class={`dest-link dest-link--${dest.system}`}>
+                        <span class="dest-link__name">{dest.name}</span>
+                        <span class="dest-link__label">{dest.label}</span>
+                        <span class={`dest-link__tag dest-link__tag--${dest.system}`}>Live</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -159,8 +198,10 @@ const planets = [
         <div>
           <p class="footer-title">Editions</p>
           <ul class="footer-links">
-            <li><a href={`${base}stanton/microtech/`}>Stanton</a></li>
-            <li><a href="#" aria-disabled="true">Pyro</a></li>
+            <li><a href={`${base}stanton/`}>Stanton</a></li>
+            <li><a href={`${base}pyro/`}>Pyro</a></li>
+            <li><a href="#" style="opacity:0.45;pointer-events:none;">Terra</a></li>
+            <li><a href="#" style="opacity:0.45;pointer-events:none;">Nyx</a></li>
           </ul>
         </div>
         <div>
@@ -300,194 +341,173 @@ const planets = [
   }
 
   /* ── Editions Section ──────────────────── */
-  .editions {
-    padding: 3.5rem 0 4rem;
-  }
+  .editions { padding: 3.5rem 0 4rem; }
 
   .editions-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
 
   .edition-card {
     display: flex;
     flex-direction: column;
-    background: #fff;
     border-radius: var(--radius-md, 0.5rem);
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,.06);
-    transition: box-shadow .3s ease, transform .3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+    background: #fff;
   }
 
-  .edition-card:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
-    transform: translateY(-2px);
-  }
+  .edition-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,.13); }
+  .edition-card--soon { opacity: .85; }
+  .edition-card--soon:hover { transform: none; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 
-  .edition-card--soon {
-    opacity: .8;
-  }
-
+  /* Thumb */
   .edition-card__thumb {
     position: relative;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
   }
 
-  .edition-card__thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .5s ease;
-  }
+  /* Theme backgrounds */
+  .edition-card--stanton .edition-card__thumb { background: linear-gradient(160deg, #1e3a5c 0%, #0d1f35 55%, #040c18 100%); }
+  .edition-card--pyro    .edition-card__thumb { background: linear-gradient(160deg, #3a1a0a 0%, #1e0d04 55%, #0a0400 100%); }
+  .edition-card--terra   .edition-card__thumb { background: linear-gradient(160deg, #0a2a1a 0%, #051510 55%, #020a06 100%); }
+  .edition-card--nyx     .edition-card__thumb { background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1e 55%, #050510 100%); }
 
-  .edition-card:hover .edition-card__thumb img {
-    transform: scale(1.04);
-  }
-
-  .edition-card__status {
+  /* CSS planets */
+  .edition-card__planet {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--card-accent, var(--color-primary-600));
-    color: #fff;
+    bottom: -20px; right: -20px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+  }
+  .edition-card--stanton .edition-card__planet { background: radial-gradient(circle at 30% 30%, #4a8be5, #1a3a6c, #040c18); box-shadow: inset -14px -10px 35px rgba(0,0,0,.8), 0 0 50px rgba(58,123,213,.25); }
+  .edition-card--pyro    .edition-card__planet { background: radial-gradient(circle at 30% 30%, #e55a1a, #8b2500, #1a0500); box-shadow: inset -14px -10px 35px rgba(0,0,0,.7), 0 0 60px rgba(229,90,26,.35); }
+  .edition-card--terra   .edition-card__planet { background: radial-gradient(circle at 30% 30%, #2aaa6a, #0d5530, #020f08); box-shadow: inset -14px -10px 35px rgba(0,0,0,.7), 0 0 50px rgba(42,170,106,.2); }
+  .edition-card--nyx     .edition-card__planet { background: radial-gradient(circle at 30% 30%, #7a4aaa, #3a1a5c, #0a0518); box-shadow: inset -14px -10px 35px rgba(0,0,0,.8), 0 0 50px rgba(122,74,170,.2); }
+
+  .edition-card__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, transparent 40%, rgba(0,0,0,.65) 85%);
+  }
+
+  /* Badges */
+  .edition-card__lp-badge {
+    position: absolute; top: .625rem; right: .625rem;
+    background: #f5c518;
     font-family: var(--font-display);
-    font-size: .625rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    padding: .25rem .625rem;
-    border-radius: var(--radius-sm, 0.25rem);
+    font-size: .5625rem; font-weight: 900;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: #1a1a1a; padding: .1875rem .4375rem;
+    line-height: 1.4;
   }
-
-  .edition-card__body {
-    padding: 1.25rem 1.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  .edition-card__status-badge {
+    position: absolute; top: .625rem; left: .625rem;
+    font-family: var(--font-display);
+    font-size: .5rem; font-weight: 800;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #fff; padding: .1875rem .5rem;
+    border-radius: 2px;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(4px);
   }
+  .edition-card__status-badge--live { background: #059669; backdrop-filter: none; }
 
-  .edition-card__subtitle {
-    font-family: var(--font-body);
-    font-size: .8125rem;
-    font-style: italic;
-    color: var(--color-neutral-500);
-    margin: 0 0 .25rem;
+  /* Title block inside thumb */
+  .edition-card__thumb-text {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: .875rem .75rem .75rem;
   }
-
+  .edition-card__eyebrow {
+    display: block;
+    font-family: var(--font-display);
+    font-size: .5rem; font-weight: 700;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: rgba(255,255,255,.5); margin-bottom: .1875rem;
+  }
   .edition-card__name {
     font-family: var(--font-display);
-    font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--color-neutral-900);
-    margin: 0 0 .5rem;
-    line-height: 1.1;
+    font-size: 1.75rem; font-weight: 900;
+    line-height: .9; letter-spacing: -.02em;
+    text-transform: uppercase; color: #fff; margin: 0;
   }
 
-  .edition-card__meta {
+  /* Card body */
+  .edition-card__body {
+    padding: .75rem 1rem 1rem;
+    display: flex; flex-direction: column; flex: 1;
+    background: #fff;
+  }
+  .edition-card__subtitle {
     font-family: var(--font-body);
-    font-size: .8125rem;
-    color: var(--color-neutral-600);
-    margin: 0 0 1.25rem;
-    flex: 1;
+    font-size: .75rem; font-style: italic;
+    color: var(--color-neutral-500); margin: 0 0 .375rem;
   }
-
+  .edition-card__tagline {
+    font-family: var(--font-body);
+    font-size: .75rem; color: var(--color-neutral-600);
+    line-height: 1.4; flex: 1; margin: 0 0 .75rem;
+  }
   .edition-card__cta {
-    display: inline-flex;
-    align-self: flex-start;
+    display: inline-block; align-self: flex-start;
     font-family: var(--font-display);
-    font-size: .8125rem;
-    font-weight: 700;
-    color: var(--card-accent, var(--color-primary-600));
-    text-decoration: none;
-    border-bottom: 2px solid currentColor;
-    padding-bottom: 2px;
-    transition: opacity .2s ease;
-  }
-
-  .edition-card__cta:hover {
-    opacity: .7;
-  }
-
-  .edition-card__cta--disabled {
-    pointer-events: none;
-    color: var(--color-neutral-400);
-    border-color: var(--color-neutral-300);
-  }
-
-  /* ── Quick-Nav ─────────────────────────── */
-  .quick-nav {
-    padding: 0 0 4rem;
-  }
-
-  .planet-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .planet-item {
-    border-top: 1px solid var(--color-neutral-200);
-  }
-
-  .planet-item:last-child {
-    border-bottom: 1px solid var(--color-neutral-200);
-  }
-
-  .planet-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: .875rem 0;
-    text-decoration: none;
-    color: inherit;
-    transition: background .15s ease;
-  }
-
-  .planet-link:hover {
-    background: rgba(0,0,0,.02);
-  }
-
-  .planet-link--disabled {
-    pointer-events: none;
-    opacity: .55;
-  }
-
-  .planet-link__name {
-    font-family: var(--font-display);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-neutral-900);
-    min-width: 120px;
-  }
-
-  .planet-link__label {
-    font-family: var(--font-body);
-    font-size: .8125rem;
-    color: var(--color-neutral-600);
-    flex: 1;
-  }
-
-  .planet-link__tag {
-    font-family: var(--font-display);
-    font-size: .625rem;
-    font-weight: 700;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: .125rem .5rem;
-    border-radius: var(--radius-sm, .25rem);
-    background: var(--color-neutral-200);
-    color: var(--color-neutral-600);
-  }
-
-  .planet-link__tag--live {
-    background: var(--color-primary-50);
+    font-size: .6875rem; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
     color: var(--color-primary-700);
+    text-decoration: none;
+    border-bottom: 2px solid currentColor; padding-bottom: 1px;
+    transition: opacity .2s;
   }
+  .edition-card__cta:hover { opacity: .7; }
+  .edition-card__cta--disabled { pointer-events: none; color: var(--color-neutral-400); border-color: var(--color-neutral-300); }
+
+  /* ── Destinations Nav ──────────────────── */
+  .quick-nav { padding: 0 0 4rem; }
+
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .dest-group__label {
+    font-family: var(--font-display);
+    font-size: .625rem; font-weight: 800;
+    letter-spacing: .12em; text-transform: uppercase;
+    margin: 0 0 .5rem;
+  }
+
+  .dest-list { list-style: none; margin: 0; padding: 0; }
+
+  .dest-item { border-top: 1px solid var(--color-neutral-200); }
+  .dest-item:last-child { border-bottom: 1px solid var(--color-neutral-200); }
+
+  .dest-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: .75rem 0; text-decoration: none; color: inherit;
+    transition: background .15s;
+  }
+  .dest-link:hover { background: rgba(0,0,0,.02); }
+
+  .dest-link__name {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 700;
+    color: var(--color-neutral-900); min-width: 130px;
+  }
+  .dest-link__label {
+    font-family: var(--font-body);
+    font-size: .8125rem; color: var(--color-neutral-500); flex: 1;
+  }
+  .dest-link__tag {
+    font-family: var(--font-display);
+    font-size: .5625rem; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: .125rem .4375rem; border-radius: var(--radius-sm, .25rem);
+  }
+  .dest-link__tag--stanton { background: #eff6ff; color: var(--color-primary-700); }
+  .dest-link__tag--pyro    { background: #fff7ed; color: #c2410c; }
 
   /* ── About / Manifesto ─────────────────── */
   .about {
@@ -605,10 +625,13 @@ const planets = [
   }
 
   /* ── Responsive ────────────────────────── */
+  @media (max-width: 900px) {
+    .editions-grid { grid-template-columns: repeat(2, 1fr); }
+    .dest-grid { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 768px) {
-    .editions-grid {
-      grid-template-columns: 1fr;
-    }
+    .editions-grid { grid-template-columns: repeat(2, 1fr); }
 
     .about-grid {
       grid-template-columns: 1fr;
