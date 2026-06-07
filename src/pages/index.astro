@@ -10,23 +10,16 @@ interface Edition {
   status: 'available' | 'coming-soon';
   href: string;
   theme: 'stanton' | 'pyro' | 'terra' | 'nyx';
-  coverBg: string;
-  coverImg?: string;
-  coverImgFilter?: string;
-  coverLabel: string;
 }
 
 const EDITIONS: Edition[] = [
   {
     name: 'Stanton',
     subtitle: 'The Corporate Core',
-    tagline: 'Four planets. Four corporations. One system where power is the only currency.',
+    tagline: 'Four planets. Four corporations. One system where power is the currency.',
     status: 'available',
     href: `${base}stanton/`,
     theme: 'stanton',
-    coverBg: '#0d1f3a',
-    coverImg: `${base}images/microtech/panoramic-lake.jpeg`,
-    coverLabel: 'UEE Territory',
   },
   {
     name: 'Pyro',
@@ -35,40 +28,32 @@ const EDITIONS: Edition[] = [
     status: 'available',
     href: `${base}pyro/`,
     theme: 'pyro',
-    coverBg: '#2e1507',
-    coverImg: `${base}images/microtech/canyon-forest.jpeg`,
-    coverImgFilter: 'hue-rotate(180deg) saturate(1.3) brightness(0.6)',
-    coverLabel: 'Contested Space',
   },
   {
     name: 'Terra',
     subtitle: 'The Capital World',
-    tagline: 'Cultural and political heart of the UEE — cosmopolitan, ambitious, complicated.',
+    tagline: 'The cultural and political heart of the UEE — cosmopolitan, ambitious, complicated.',
     status: 'coming-soon',
     href: '#',
     theme: 'terra',
-    coverBg: '#0a2a1a',
-    coverLabel: 'UEE Capital',
   },
   {
     name: 'Nyx',
     subtitle: 'The Lawless Fringe',
-    tagline: 'Home of Delamar and Levski. The rebel answer to Pyro\'s chaos.',
+    tagline: "Home of Delamar and Levski. The rebel answer to Pyro's chaos.",
     status: 'coming-soon',
     href: '#',
     theme: 'nyx',
-    coverBg: '#0f0f1e',
-    coverLabel: 'Contested Space',
   },
 ];
 
 const POIS = [
-  { num: '01', name: 'The First River',        tag: 'Natural Wonder', desc: 'Open water on a permafrost world. The anomaly that has no satisfying explanation.',            planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
-  { num: '02', name: 'Bioluminescent Caves',   tag: 'Hidden Find',    desc: 'Blue-cyan ceilings that look like an inverted starfield. Not on any official map.',           planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
-  { num: '03', name: 'New Babbage Commons',    tag: 'Settlement',     desc: 'Corporate grandeur bordering on absurdist. The warmest welcome on the coldest planet.',       planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
-  { num: '04', name: 'The Canyon River',       tag: 'Natural Wonder', desc: 'Canyon walls and a colour palette that screenshots struggle to convey. Fly it slowly.',        planet: 'microTech · Stanton', href: `${base}stanton/microtech/northern-wastes/canyon-river` },
-  { num: '05', name: 'Orison',                 tag: 'Settlement',     desc: 'A city built on platforms in the clouds of a gas giant. Nowhere else in the \'Verse like it.', planet: 'Crusader · Stanton',  href: `${base}stanton/crusader/` },
-  { num: '06', name: 'Frozen Lakes',           tag: 'Natural Wonder', desc: 'Arches and columns of compressed blue-white ice. Walk them carefully — the footing is uneven.', planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '01', name: 'The First River',      tag: 'Natural Wonder', desc: 'Open water on a permafrost world. The anomaly that has no satisfying explanation.',             planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '02', name: 'Bioluminescent Caves', tag: 'Hidden Find',    desc: 'Blue-cyan ceilings that look like an inverted starfield. Not on any official map.',            planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '03', name: 'New Babbage Commons',  tag: 'Settlement',     desc: 'Corporate grandeur bordering on absurdist. The warmest welcome on the coldest planet.',        planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '04', name: 'The Canyon River',     tag: 'Natural Wonder', desc: 'Canyon walls and a colour palette that screenshots struggle to convey. Fly it slowly.',         planet: 'microTech · Stanton', href: `${base}stanton/microtech/northern-wastes/canyon-river` },
+  { num: '05', name: 'Orison',               tag: 'Settlement',     desc: "A city built on platforms in the clouds of a gas giant. Nowhere else in the 'Verse like it.",  planet: 'Crusader · Stanton',  href: `${base}stanton/crusader/` },
+  { num: '06', name: 'Frozen Lakes',         tag: 'Natural Wonder', desc: 'Arches and columns of compressed blue-white ice. Walk them carefully — the footing is uneven.', planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
 ];
 ---
 
@@ -81,31 +66,31 @@ const POIS = [
     <meta name="description" content="Unofficial travel guides to the Star Citizen universe. Curated attractions, hidden gems, and essential travel tips." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,500;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet" />
   </head>
 
   <body>
 
-    <!-- Top announcement strip -->
+    <!-- Top strip -->
     <div class="top-strip">
       All Star Citizen editions are <strong>completely free</strong> — community-written, forever open access
     </div>
 
     <!-- Sticky header -->
     <header class="site-header">
-      <div class="header-inner">
-        <nav class="nav-left">
+      <div class="site-header__inner">
+        <nav class="site-header__nav-left">
           <a href="#editions">Editions</a>
           <a href="#attractions">Attractions</a>
           <a href="#about">About</a>
         </nav>
 
-        <a href={base} class="logo">
-          <span class="logo-lp">Lonely <span>Planet</span></span>
-          <span class="logo-sub">Star Citizen Edition</span>
+        <a href={base} class="site-header__logo">
+          <span class="site-header__logo-name">Lonely Planet</span>
+          <span class="site-header__logo-sub">Star Citizen Edition</span>
         </a>
 
-        <nav class="nav-right">
+        <nav class="site-header__nav-right">
           <a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">Contribute</a>
           <a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Community</a>
         </nav>
@@ -113,146 +98,158 @@ const POIS = [
     </header>
 
     <!-- Hero -->
-    <section class="hero">
-      <div class="hero-bg" style={`background-image: url(${base}images/microtech/flying-over-mountains.jpeg)`}></div>
-      <div class="hero-inner">
-        <p class="hero-eyebrow">New Edition Available</p>
-        <h1>The&nbsp;'Verse<br>awaits.<br><em>No ticket needed.</em></h1>
-        <p class="hero-lead">Unofficial travel guides to Star Citizen — written by explorers, for explorers. Curated attractions, navigation notes, and hidden gems. Every edition, completely free.</p>
-        <div class="hero-ctas">
-          <a href={`${base}stanton/microtech/`} class="btn-primary">Explore microTech →</a>
-          <a href="#editions" class="btn-ghost">Browse Editions</a>
+    <header class="hero" style={`background-image: url(${base}images/microtech/panoramic-lake.jpeg)`}>
+      <div class="hero__pattern"></div>
+      <div class="hero__inner">
+        <p class="hero__eyebrow">New Edition Available</p>
+        <h1 class="hero__title">The&nbsp;'Verse<br>awaits.<br><em>No ticket<br>needed.</em></h1>
+        <p class="hero__lede">
+          Unofficial travel guides to Star Citizen — written by explorers, for explorers.
+          Curated attractions, hidden gems, and navigation notes for the systems you fly through.
+        </p>
+        <div class="hero__ctas">
+          <a href={`${base}stanton/microtech/`} class="btn btn--primary">Explore microTech →</a>
+          <a href="#editions" class="btn btn--ghost">Browse Editions</a>
         </div>
       </div>
-      <div class="hero-book" aria-hidden="true">
-        <div class="book-cover-mock" style="--cover-bg:#0d1f3a;">
-          <div class="cover-img-area">
-            <img src={`${base}images/microtech/panoramic-lake.jpeg`} alt="" />
-          </div>
-          <div class="cover-orange-bar"></div>
-          <div class="cover-lp-label">Lonely Planet</div>
-          <div class="cover-title-area">
-            <div class="cover-planet-name">micro<br>Tech</div>
-            <div class="cover-system">Stanton Edition</div>
+
+      <!-- Floating edition card -->
+      <div class="hero__floating-card" aria-hidden="true">
+        <div class="edition-card edition-card--stanton">
+          <div class="edition-card__thumb">
+            <div class="edition-card__planet"></div>
+            <div class="edition-card__overlay"></div>
+            <span class="edition-card__lp-badge">LP</span>
+            <div class="edition-card__thumb-text">
+              <span class="edition-card__eyebrow">Star Citizen</span>
+              <h3 class="edition-card__name">Stanton</h3>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </header>
 
     <main>
 
-      <!-- Editions -->
-      <section class="editions-section" id="editions">
-        <div class="section-header">
-          <h2>System Editions</h2>
-        </div>
-        <div class="editions-grid">
-          {EDITIONS.map((ed) => (
-            <article class={`book-card ${ed.status === 'coming-soon' ? 'book-card--soon' : ''}`}>
-              <a href={ed.href} class="book-cover-wrap" tabindex={ed.status === 'coming-soon' ? -1 : 0}>
-                <div class="book-cover-mock" style={`--cover-bg:${ed.coverBg};`}>
-                  {ed.coverImg && (
-                    <div class="cover-img-area">
-                      <img src={ed.coverImg} alt={ed.name} style={ed.coverImgFilter ? `filter:${ed.coverImgFilter}` : ''} />
-                    </div>
-                  )}
-                  <div class="cover-orange-bar" style={ed.status === 'coming-soon' ? 'background:#555;' : ''}></div>
-                  <div class="cover-lp-label" style={ed.status === 'coming-soon' ? 'color:rgba(255,255,255,0.4);' : ''}>Lonely Planet</div>
-                  <div class="cover-title-area">
-                    <div class="cover-planet-name" style={ed.status === 'coming-soon' ? 'color:rgba(255,255,255,0.45);' : ''}>{ed.name}</div>
-                    <div class="cover-system">{ed.coverLabel}</div>
+      <!-- System Editions -->
+      <section class="editions" id="editions" aria-labelledby="editions-heading">
+        <div class="container">
+          <h2 id="editions-heading" class="section-heading">System Editions</h2>
+
+          <div class="editions-grid">
+            {EDITIONS.map((ed) => (
+              <article class={`edition-card edition-card--${ed.theme} ${ed.status === 'coming-soon' ? 'edition-card--soon' : ''}`}>
+                <div class="edition-card__thumb">
+                  <div class="edition-card__planet" aria-hidden="true"></div>
+                  <div class="edition-card__overlay"></div>
+                  <span class={`edition-card__status-badge ${ed.status === 'available' ? 'edition-card__status-badge--live' : ''}`}>
+                    {ed.status === 'available' ? 'Available Now' : 'Coming Soon'}
+                  </span>
+                  <span class="edition-card__lp-badge">LP</span>
+                  <div class="edition-card__thumb-text">
+                    <span class="edition-card__eyebrow">Star Citizen</span>
+                    <h3 class="edition-card__name">{ed.name}</h3>
                   </div>
                 </div>
-                <span class={`cover-badge ${ed.status === 'available' ? 'cover-badge--live' : 'cover-badge--soon'}`}>
-                  {ed.status === 'available' ? 'Available' : 'Coming Soon'}
-                </span>
-              </a>
-              <div class="book-meta">
-                <h3 class="book-title">{ed.name}</h3>
-                <p class="book-subtitle">{ed.subtitle}</p>
-                <p class="book-desc">{ed.tagline}</p>
-                <div class="book-footer">
+                <div class="edition-card__body">
+                  <p class="edition-card__subtitle">{ed.subtitle}</p>
+                  <p class="edition-card__tagline">{ed.tagline}</p>
                   {ed.status === 'available' ? (
-                    <a href={ed.href} class="btn-read">Read Now →</a>
+                    <a href={ed.href} class="edition-card__cta">Explore →</a>
                   ) : (
-                    <span class="btn-read btn-read--disabled">In development</span>
+                    <span class="edition-card__cta edition-card__cta--disabled">Coming soon</span>
                   )}
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <!-- Feature band: editor's pick -->
+      <!-- Editor's Pick feature band -->
       <section class="feature-band">
-        <div class="feature-inner">
+        <div class="container feature-band__inner">
           <img
-            class="feature-img"
+            class="feature-band__img"
             src={`${base}images/microtech/bioluminescent-cave.jpeg`}
             alt="Bioluminescent caves on microTech"
             loading="lazy"
           />
-          <div class="feature-text">
-            <p class="feature-eyebrow">Editor's Pick — Stanton IV</p>
-            <h2>Seven reasons to land on microTech</h2>
-            <p>Rivers that shouldn't exist, forests that refused to freeze, and caves that light up like an inverted starfield. The corporate ice world is the most quietly spectacular place in the Stanton system.</p>
-            <div class="feature-stats">
-              <div class="stat">
-                <div class="stat-num">7</div>
-                <div class="stat-label">Attractions</div>
+          <div class="feature-band__text">
+            <p class="feature-band__eyebrow">Editor's Pick — Stanton IV</p>
+            <h2 class="feature-band__heading">Seven reasons to land on microTech</h2>
+            <p class="feature-band__body">
+              Rivers that shouldn't exist, forests that refused to freeze, and caves that light
+              up like an inverted starfield. The corporate ice world is the most quietly
+              spectacular place in the Stanton system.
+            </p>
+            <div class="feature-band__stats">
+              <div class="feature-stat">
+                <span class="feature-stat__num">7</span>
+                <span class="feature-stat__label">Attractions</span>
               </div>
-              <div class="stat">
-                <div class="stat-num">4</div>
-                <div class="stat-label">Hidden Finds</div>
+              <div class="feature-stat">
+                <span class="feature-stat__num">4</span>
+                <span class="feature-stat__label">Hidden Finds</span>
               </div>
-              <div class="stat">
-                <div class="stat-num">1</div>
-                <div class="stat-label">City</div>
+              <div class="feature-stat">
+                <span class="feature-stat__num">1</span>
+                <span class="feature-stat__label">City</span>
               </div>
             </div>
-            <a href={`${base}stanton/microtech/`} class="btn-primary">Read the microTech Guide →</a>
+            <a href={`${base}stanton/microtech/`} class="btn btn--primary">Read the microTech Guide →</a>
           </div>
         </div>
       </section>
 
-      <!-- Top attractions -->
-      <section class="poi-section" id="attractions">
-        <div class="section-header">
-          <h2>Top Attractions</h2>
-        </div>
-        <div class="poi-grid">
-          {POIS.map((poi) => (
-            <a href={poi.href} class="poi-card">
-              <span class="poi-num">{poi.num}</span>
-              <h3 class="poi-name">{poi.name}</h3>
-              <span class="poi-tag">{poi.tag}</span>
-              <p class="poi-desc">{poi.desc}</p>
-              <span class="poi-planet">{poi.planet}</span>
-            </a>
-          ))}
+      <!-- Top Attractions -->
+      <section class="poi-section" id="attractions" aria-labelledby="attractions-heading">
+        <div class="container">
+          <h2 id="attractions-heading" class="section-heading">Top Attractions</h2>
+          <div class="poi-grid">
+            {POIS.map((poi) => (
+              <a href={poi.href} class="poi-card">
+                <span class="poi-card__num">{poi.num}</span>
+                <h3 class="poi-card__name">{poi.name}</h3>
+                <span class="poi-card__tag">{poi.tag}</span>
+                <p class="poi-card__desc">{poi.desc}</p>
+                <span class="poi-card__planet">{poi.planet}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      <!-- Community manifesto band -->
-      <section class="why-band" id="about">
-        <h2>The 'Verse belongs to everyone.<br />So do these guides.</h2>
-        <p>Lonely Planet: Star Citizen Edition is a fan-made, community-driven project. No subscriptions, no paywalls — every guide is written by explorers and released freely. Found a hidden gem? Help us map the 'Verse.</p>
-        <a href="https://github.com/Kuchengnom/lonely-planet-sc" class="btn-white" target="_blank" rel="noopener">Contribute on GitHub →</a>
+      <!-- Community manifesto -->
+      <section class="manifesto" id="about">
+        <div class="manifesto__inner">
+          <h2 class="manifesto__heading">The 'Verse belongs to everyone.<br />So do these guides.</h2>
+          <p class="manifesto__body">
+            Lonely Planet: Star Citizen Edition is a fan-made, community-driven project.
+            No subscriptions, no paywalls — every guide is written by explorers and released freely.
+            Found a hidden gem? Help us map the 'Verse.
+          </p>
+          <a href="https://github.com/Kuchengnom/lonely-planet-sc" class="btn btn--outline-white" target="_blank" rel="noopener">
+            Contribute on GitHub →
+          </a>
+        </div>
       </section>
 
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <div class="footer-logo">Lonely <span>Planet</span></div>
-          <p>Unofficial fan guide to the Star Citizen universe. Written by explorers, for explorers. Star Citizen and related marks belong to Cloud Imperium Rights LLC.</p>
+      <div class="container site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="site-footer__logo">Lonely Planet</p>
+          <p class="site-footer__blurb">
+            Unofficial fan guide to the Star Citizen universe. Written by explorers, for explorers.
+            Star Citizen and related marks belong to Cloud Imperium Rights LLC.
+          </p>
         </div>
-        <div class="footer-col">
-          <h4>Editions</h4>
-          <ul>
+        <div>
+          <p class="footer-title">Editions</p>
+          <ul class="footer-links">
             <li><a href={`${base}stanton/`}>Stanton</a></li>
             <li><a href={`${base}stanton/microtech/`}>microTech</a></li>
             <li><a href={`${base}stanton/crusader/`}>Crusader</a></li>
@@ -261,23 +258,23 @@ const POIS = [
             <li><a href={`${base}pyro/`}>Pyro</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <ul>
+        <div>
+          <p class="footer-title">Community</p>
+          <ul class="footer-links">
             <li><a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Star Citizen</a></li>
-            <li><a href="https://starcitizen.tools/" target="_blank" rel="noopener">SC Wiki</a></li>
+            <li><a href="https://starcitizen.tools/" target="_blank" rel="noopener">Star Citizen Wiki</a></li>
             <li><a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">GitHub Repo</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Project</h4>
-          <ul>
+        <div>
+          <p class="footer-title">Project</p>
+          <ul class="footer-links">
             <li><a href="#about">About</a></li>
             <li><a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">How to Contribute</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="container site-footer__bottom">
         <span>Fan-made reference guide. Not affiliated with Cloud Imperium Games.</span>
         <span>Lonely Planet: Star Citizen Edition</span>
       </div>
@@ -287,724 +284,662 @@ const POIS = [
 </html>
 
 <style>
-  /* ── Tokens ──────────────────────────────────────────── */
-  :root {
-    --lp-orange:    #e8420a;
-    --lp-orange-dk: #c03208;
-    --lp-black:     #1a1714;
-    --lp-white:     #ffffff;
-    --lp-paper:     #f7f4ef;
-    --lp-paper-2:   #ede9e1;
-    --lp-rule:      #d4cec3;
-    --lp-ink:       #231f1b;
-    --lp-muted:     #7a7168;
-
-    --f-display: 'Archivo Narrow', sans-serif;
-    --f-body:    'Merriweather', serif;
-
-    --max-w:  1280px;
-    --gutter: clamp(16px, 4vw, 48px);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-
+  /* ── Base ──────────────────────────────────────────── */
   body {
-    font-family: var(--f-body);
-    color: var(--lp-ink);
-    background: var(--lp-white);
+    background: var(--color-neutral-50);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-
-  a { color: inherit; text-decoration: none; }
-  img { display: block; max-width: 100%; }
 
   /* ── Top strip ─────────────────────────────────────── */
   .top-strip {
-    background: var(--lp-black);
-    color: rgba(255,255,255,0.7);
-    font-family: var(--f-display);
-    font-size: 11px;
-    letter-spacing: 0.12em;
+    background: var(--color-neutral-900);
+    color: var(--color-neutral-400);
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
     text-align: center;
-    padding: 8px var(--gutter);
+    padding: var(--space-2) var(--space-6);
   }
-  .top-strip strong { color: var(--lp-orange); font-weight: 700; }
+  .top-strip strong {
+    color: #f5c518;
+    font-weight: var(--font-weight-bold);
+  }
 
   /* ── Sticky header ─────────────────────────────────── */
   .site-header {
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: var(--lp-white);
-    border-bottom: 2px solid var(--lp-black);
+    z-index: var(--z-sticky);
+    background: var(--color-white);
+    border-bottom: 2px solid var(--color-neutral-900);
   }
 
-  .header-inner {
-    max-width: var(--max-w);
+  .site-header__inner {
+    max-width: var(--container-xl);
     margin: 0 auto;
-    padding: 0 var(--gutter);
+    padding: 0 var(--space-6);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    height: 64px;
+    height: 60px;
   }
 
-  .nav-left {
+  .site-header__nav-left,
+  .site-header__nav-right {
     display: flex;
-    gap: 24px;
-    font-family: var(--f-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    gap: var(--space-6);
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
+    color: var(--color-neutral-700);
   }
-  .nav-left a:hover { color: var(--lp-orange); }
+  .site-header__nav-right { justify-content: flex-end; }
+  .site-header__nav-left  a:hover,
+  .site-header__nav-right a:hover { color: var(--color-primary-600); }
 
-  .logo {
-    text-align: center;
+  .site-header__logo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
   }
-  .logo-lp {
-    font-family: var(--f-display);
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+  .site-header__logo-name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: var(--letter-spacing-tight);
+    text-transform: uppercase;
+    color: var(--color-neutral-900);
     line-height: 1;
-    text-transform: uppercase;
   }
-  .logo-lp span { color: var(--lp-orange); }
-  .logo-sub {
-    font-family: var(--f-display);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.3em;
+  .site-header__logo-sub {
+    font-family: var(--font-display);
+    font-size: 0.5rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--lp-muted);
-    margin-top: 3px;
+    color: var(--color-neutral-500);
+    margin-top: 2px;
   }
-
-  .nav-right {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-end;
-    align-items: center;
-    font-family: var(--f-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .nav-right a:hover { color: var(--lp-orange); }
 
   /* ── Hero ──────────────────────────────────────────── */
   .hero {
-    background: var(--lp-black);
     position: relative;
-    overflow: hidden;
     min-height: 520px;
     display: flex;
     align-items: stretch;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
+    background-color: var(--color-primary-900);
     background-size: cover;
     background-position: center 35%;
-    opacity: 0.35;
-    filter: sepia(20%) contrast(1.1);
+    color: var(--color-white);
+    overflow: hidden;
   }
 
-  .hero-bg::after {
+  /* Dark overlay layers */
+  .hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(110deg, rgba(232,66,10,0.5) 0%, transparent 55%),
-      linear-gradient(to right, rgba(26,23,20,0.92) 0%, rgba(26,23,20,0.18) 70%);
+      linear-gradient(110deg, rgba(9,20,45,0.88) 0%, rgba(9,20,45,0.35) 65%),
+      linear-gradient(to bottom, rgba(9,20,45,0.3) 0%, transparent 40%);
   }
 
-  .hero-inner {
-    max-width: var(--max-w);
-    width: 100%;
-    margin: 0 auto;
-    padding: 80px var(--gutter) 72px;
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.04) 2px,
+      rgba(0,0,0,0.04) 4px
+    );
+    pointer-events: none;
+  }
+
+  .hero__inner {
     position: relative;
     z-index: 2;
+    max-width: var(--container-xl);
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--space-20) var(--space-6) var(--space-16);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    max-width: 640px;
+    max-width: 580px;
   }
 
-  .hero-eyebrow {
-    font-family: var(--f-display);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
+  .hero__eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--lp-orange);
-    margin-bottom: 14px;
+    color: var(--color-primary-300);
+    margin-bottom: var(--space-3);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-3);
   }
-  .hero-eyebrow::before {
+  .hero__eyebrow::before {
     content: '';
     display: block;
-    width: 28px;
+    width: 24px;
     height: 2px;
-    background: var(--lp-orange);
+    background: var(--color-primary-400);
     flex-shrink: 0;
   }
 
-  .hero h1 {
-    font-family: var(--f-display);
-    font-size: clamp(40px, 7vw, 84px);
-    font-weight: 700;
-    line-height: 0.93;
-    letter-spacing: -0.02em;
-    color: var(--lp-white);
-    margin-bottom: 20px;
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin: 0 0 var(--space-5);
   }
-  .hero h1 em { font-style: normal; color: var(--lp-orange); }
-
-  .hero-lead {
-    font-family: var(--f-display);
-    font-size: clamp(14px, 1.8vw, 17px);
-    color: rgba(255,255,255,0.7);
-    max-width: 460px;
-    line-height: 1.6;
-    margin-bottom: 32px;
+  .hero__title em {
+    font-style: normal;
+    color: #f5c518;
   }
 
-  .hero-ctas {
+  .hero__lede {
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 1.6vw, 1rem);
+    line-height: var(--line-height-relaxed);
+    color: rgba(255,255,255,0.72);
+    max-width: 440px;
+    margin: 0 0 var(--space-8);
+  }
+
+  .hero__ctas {
     display: flex;
-    gap: 12px;
+    gap: var(--space-3);
     flex-wrap: wrap;
   }
 
-  /* ── Book cover (hero + cards shared) ─────────────── */
-  .hero-book {
+  /* Floating edition card in hero */
+  .hero__floating-card {
     position: absolute;
-    right: var(--gutter);
+    right: clamp(24px, 6vw, 80px);
     bottom: 0;
-    width: clamp(150px, 17vw, 240px);
-    filter: drop-shadow(-12px 12px 40px rgba(0,0,0,0.7));
-    animation: float-book 5s ease-in-out infinite;
+    width: clamp(140px, 16vw, 220px);
+    filter: drop-shadow(var(--shadow-2xl));
+    animation: float-card 5s ease-in-out infinite;
     z-index: 3;
   }
+  .hero__floating-card .edition-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: none;
+  }
+  .hero__floating-card .edition-card__thumb {
+    height: clamp(210px, 24vw, 330px);
+  }
 
-  @keyframes float-book {
+  @keyframes float-card {
     0%, 100% { transform: rotate(2deg) translateY(0); }
     50%       { transform: rotate(2deg) translateY(-8px); }
   }
 
-  .book-cover-mock {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background: var(--cover-bg, #1a1714);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cover-img-area {
-    position: absolute;
-    inset: 0;
-  }
-  .cover-img-area img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.62;
-  }
-
-  .cover-orange-bar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 7px;
-    background: var(--lp-orange);
-    z-index: 3;
-  }
-
-  .cover-lp-label {
-    position: absolute;
-    top: 16px;
-    left: 12px;
-    font-family: var(--f-display);
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    z-index: 4;
-  }
-
-  .cover-title-area {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 16px 12px 12px;
-    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
-    z-index: 4;
-  }
-  .cover-planet-name {
-    font-family: var(--f-display);
-    font-size: clamp(20px, 3.5vw, 28px);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    color: var(--lp-white);
-  }
-  .cover-system {
-    font-family: var(--f-display);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    margin-top: 4px;
-  }
-
-  .cover-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    font-family: var(--f-display);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 4px 8px;
-    z-index: 5;
-  }
-  .cover-badge--live { background: #1a6b3a; color: #fff; }
-  .cover-badge--soon { background: var(--lp-black); color: rgba(255,255,255,0.65); }
-
-  /* ── Buttons ───────────────────────────────────────── */
-  .btn-primary {
+  /* ── Shared buttons ────────────────────────────────── */
+  .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--lp-orange);
-    color: var(--lp-white);
-    font-family: var(--f-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
-    padding: 13px 24px;
-    transition: background 0.2s;
+    text-decoration: none;
+    padding: 0.8125rem var(--space-6);
+    transition: background var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out);
     cursor: pointer;
+    border: none;
   }
-  .btn-primary:hover { background: var(--lp-orange-dk); }
+  .btn--primary {
+    background: var(--color-primary-600);
+    color: var(--color-white);
+  }
+  .btn--primary:hover { background: var(--color-primary-700); }
 
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .btn--ghost {
     background: transparent;
     border: 1.5px solid rgba(255,255,255,0.4);
-    color: var(--lp-white);
-    font-family: var(--f-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    color: var(--color-white);
+  }
+  .btn--ghost:hover { border-color: var(--color-white); background: rgba(255,255,255,0.08); }
+
+  .btn--outline-white {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    color: var(--color-white);
+  }
+  .btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--color-white); }
+
+  /* ── Section heading (shared with rest of site) ────── */
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
-    padding: 13px 24px;
-    transition: border-color 0.2s, background 0.2s;
-    cursor: pointer;
-  }
-  .btn-ghost:hover { border-color: var(--lp-white); background: rgba(255,255,255,0.08); }
-
-  .btn-white {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--lp-white);
-    color: var(--lp-orange);
-    font-family: var(--f-display);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 13px 28px;
-    transition: opacity 0.2s;
-  }
-  .btn-white:hover { opacity: 0.9; }
-
-  /* ── Section chrome ────────────────────────────────── */
-  .section-header {
-    max-width: var(--max-w);
-    margin: 0 auto 28px;
-    padding: 0 var(--gutter);
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-  }
-  .section-header h2 {
-    font-family: var(--f-display);
-    font-size: clamp(22px, 3vw, 30px);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.01em;
+    color: var(--color-neutral-500);
+    margin: 0 0 var(--space-5);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-neutral-200);
   }
 
-  /* ── Editions grid ─────────────────────────────────── */
-  .editions-section { padding: 64px 0 0; }
+  /* ── Edition cards (unchanged from original) ───────── */
+  .editions { padding: var(--space-16) 0; }
 
   .editions-grid {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
   }
 
-  .book-card {
+  .edition-card {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  .book-card:hover { transform: translateY(-4px); }
-  .book-card--soon { opacity: 0.72; }
-  .book-card--soon:hover { transform: none; }
-
-  .book-cover-wrap {
-    position: relative;
-    aspect-ratio: 2/3;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+    background: var(--color-white);
+  }
+  .edition-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+  .edition-card--soon { opacity: 0.85; }
+  .edition-card--soon:hover { transform: none; box-shadow: var(--shadow-sm); }
+
+  .edition-card__thumb {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+  .edition-card--stanton .edition-card__thumb { background: linear-gradient(160deg, #1e3a5c 0%, #0d1f35 55%, #040c18 100%); }
+  .edition-card--pyro    .edition-card__thumb { background: linear-gradient(160deg, #3a1a0a 0%, #1e0d04 55%, #0a0400 100%); }
+  .edition-card--terra   .edition-card__thumb { background: linear-gradient(160deg, #0a2a1a 0%, #051510 55%, #020a06 100%); }
+  .edition-card--nyx     .edition-card__thumb { background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1e 55%, #050510 100%); }
+
+  .edition-card__planet {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+  }
+  .edition-card--stanton .edition-card__planet { background: radial-gradient(circle at 30% 30%, #4a8be5, #1a3a6c, #040c18); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.8), 0 0 50px rgba(58,123,213,0.25); }
+  .edition-card--pyro    .edition-card__planet { background: radial-gradient(circle at 30% 30%, #e55a1a, #8b2500, #1a0500); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.7), 0 0 60px rgba(229,90,26,0.35); }
+  .edition-card--terra   .edition-card__planet { background: radial-gradient(circle at 30% 30%, #2aaa6a, #0d5530, #020f08); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.7), 0 0 50px rgba(42,170,106,0.2); }
+  .edition-card--nyx     .edition-card__planet { background: radial-gradient(circle at 30% 30%, #7a4aaa, #3a1a5c, #0a0518); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.8), 0 0 50px rgba(122,74,170,0.2); }
+
+  .edition-card__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, transparent 40%, rgba(0,0,0,0.65) 85%);
+  }
+  .edition-card__lp-badge {
+    position: absolute; top: 0.625rem; right: 0.625rem;
+    background: #f5c518;
+    font-family: var(--font-display);
+    font-size: 0.5625rem; font-weight: var(--font-weight-extrabold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-neutral-900); padding: 0.1875rem 0.4375rem;
+    line-height: 1.4;
+  }
+  .edition-card__status-badge {
+    position: absolute; top: 0.625rem; left: 0.625rem;
+    font-family: var(--font-display);
+    font-size: 0.5rem; font-weight: var(--font-weight-extrabold);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-white); padding: 0.1875rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(4px);
+  }
+  .edition-card__status-badge--live { background: var(--color-success); backdrop-filter: none; }
+
+  .edition-card__thumb-text {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0.875rem 0.75rem 0.75rem;
+  }
+  .edition-card__eyebrow {
     display: block;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.14);
-    transition: box-shadow 0.2s;
+    font-family: var(--font-display);
+    font-size: 0.5rem; font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest); text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 0.1875rem;
   }
-  .book-card:hover .book-cover-wrap { box-shadow: 0 16px 48px rgba(0,0,0,0.22); }
-
-  .book-meta { display: flex; flex-direction: column; gap: 4px; }
-
-  .book-title {
-    font-family: var(--f-display);
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--lp-ink);
+  .edition-card__name {
+    font-family: var(--font-display);
+    font-size: 1.75rem; font-weight: var(--font-weight-extrabold);
+    line-height: var(--line-height-tight); letter-spacing: var(--letter-spacing-tight);
+    text-transform: uppercase; color: var(--color-white); margin: 0;
   }
 
-  .book-subtitle {
-    font-family: var(--f-body);
-    font-size: 11px;
-    font-style: italic;
-    color: var(--lp-muted);
-    margin-top: 1px;
+  .edition-card__body {
+    padding: 0.75rem var(--space-4) var(--space-4);
+    display: flex; flex-direction: column; flex: 1;
+    background: var(--color-white);
   }
-
-  .book-desc {
-    font-family: var(--f-body);
-    font-size: 12px;
-    line-height: 1.55;
-    color: var(--lp-muted);
-    margin-top: 4px;
+  .edition-card__subtitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem; font-style: italic;
+    color: var(--color-neutral-500); margin: 0 0 0.375rem;
   }
-
-  .book-footer { margin-top: 12px; }
-
-  .btn-read {
-    font-family: var(--f-display);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--lp-orange);
-    border-bottom: 1.5px solid var(--lp-orange);
-    padding-bottom: 1px;
-    display: inline-block;
-    transition: opacity 0.15s;
+  .edition-card__tagline {
+    font-family: var(--font-body);
+    font-size: 0.75rem; color: var(--color-neutral-600);
+    line-height: var(--line-height-snug); flex: 1; margin: 0 0 0.75rem;
   }
-  .btn-read:hover { opacity: 0.7; }
-  .btn-read--disabled { color: var(--lp-muted); border-color: var(--lp-rule); font-style: italic; font-weight: 400; letter-spacing: 0; text-transform: none; cursor: default; }
+  .edition-card__cta {
+    display: inline-block; align-self: flex-start;
+    font-family: var(--font-display);
+    font-size: 0.6875rem; font-weight: var(--font-weight-extrabold);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--color-primary-700);
+    text-decoration: none;
+    border-bottom: 2px solid currentColor; padding-bottom: 1px;
+    transition: opacity var(--duration-fast);
+  }
+  .edition-card__cta:hover { opacity: 0.7; }
+  .edition-card__cta--disabled { pointer-events: none; color: var(--color-neutral-400); border-color: var(--color-neutral-300); }
 
   /* ── Feature band ──────────────────────────────────── */
   .feature-band {
-    background: var(--lp-paper);
-    padding: 72px 0;
-    margin-top: 72px;
-    border-top: 1.5px solid var(--lp-rule);
-    border-bottom: 1.5px solid var(--lp-rule);
+    background: var(--color-surface-paper);
+    border-top: 1px solid var(--color-neutral-200);
+    border-bottom: 1px solid var(--color-neutral-200);
+    padding: var(--space-16) 0;
   }
 
-  .feature-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
+  .feature-band__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
+    gap: var(--space-16);
     align-items: center;
   }
 
-  .feature-img {
+  .feature-band__img {
     width: 100%;
     aspect-ratio: 4/3;
     object-fit: cover;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
   }
 
-  .feature-eyebrow {
-    font-family: var(--f-display);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
+  .feature-band__eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--lp-orange);
-    margin-bottom: 12px;
+    color: var(--color-primary-600);
+    margin-bottom: var(--space-3);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-3);
   }
-  .feature-eyebrow::before {
+  .feature-band__eyebrow::before {
     content: '';
     display: block;
-    width: 20px;
+    width: 18px;
     height: 2px;
-    background: var(--lp-orange);
+    background: var(--color-primary-500);
     flex-shrink: 0;
   }
 
-  .feature-text h2 {
-    font-family: var(--f-display);
-    font-size: clamp(26px, 3.5vw, 40px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 16px;
+  .feature-band__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-neutral-900);
+    margin: 0 0 var(--space-4);
   }
 
-  .feature-text p {
-    font-size: 14px;
-    line-height: 1.78;
-    color: #4a4030;
-    margin-bottom: 28px;
+  .feature-band__body {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0 0 var(--space-6);
   }
 
-  .feature-stats {
+  .feature-band__stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--lp-rule);
-    border-left: 1px solid var(--lp-rule);
-    margin-bottom: 28px;
+    border: 1px solid var(--color-neutral-200);
+    margin-bottom: var(--space-8);
   }
 
-  .stat {
-    padding: 16px;
-    border-right: 1px solid var(--lp-rule);
-    border-bottom: 1px solid var(--lp-rule);
-    text-align: center;
+  .feature-stat {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    border-right: 1px solid var(--color-neutral-200);
   }
-  .stat-num {
-    font-family: var(--f-display);
-    font-size: 28px;
-    font-weight: 700;
+  .feature-stat:last-child { border-right: none; }
+
+  .feature-stat__num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-extrabold);
     line-height: 1;
-    color: var(--lp-orange);
+    color: var(--color-primary-600);
   }
-  .stat-label {
-    font-family: var(--f-display);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+  .feature-stat__label {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
-    color: var(--lp-muted);
-    margin-top: 4px;
+    color: var(--color-neutral-500);
   }
 
   /* ── POI grid ──────────────────────────────────────── */
-  .poi-section { padding: 72px 0; }
+  .poi-section { padding: var(--space-16) 0; }
 
   .poi-grid {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    border: 1px solid var(--color-neutral-200);
     gap: 1px;
-    background: var(--lp-rule);
-    border: 1px solid var(--lp-rule);
+    background: var(--color-neutral-200);
   }
 
   .poi-card {
-    background: var(--lp-white);
-    padding: 24px 20px;
+    background: var(--color-white);
+    padding: var(--space-6) var(--space-5);
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    transition: background 0.15s;
+    gap: var(--space-1);
     text-decoration: none;
     color: inherit;
+    transition: background var(--duration-fast) var(--ease-out);
   }
-  .poi-card:hover { background: var(--lp-paper); }
+  .poi-card:hover { background: var(--color-neutral-50); }
 
-  .poi-num {
-    font-family: var(--f-display);
-    font-size: 11px;
-    font-weight: 700;
+  .poi-card__num {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
     letter-spacing: 0.14em;
-    color: var(--lp-orange);
+    color: var(--color-primary-500);
   }
-  .poi-name {
-    font-family: var(--f-display);
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.2;
+  .poi-card__name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
+    color: var(--color-neutral-900);
+    margin: 0;
   }
-  .poi-tag {
-    font-family: var(--f-display);
-    font-size: 10px;
-    letter-spacing: 0.1em;
+  .poi-card__tag {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
-    color: var(--lp-muted);
+    color: var(--color-neutral-500);
   }
-  .poi-desc {
-    font-family: var(--f-display);
-    font-size: 12.5px;
-    line-height: 1.55;
-    color: #6a5e4a;
-    margin-top: 4px;
+  .poi-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-600);
+    margin: var(--space-1) 0 0;
   }
-  .poi-planet {
-    font-family: var(--f-display);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--lp-muted);
+  .poi-card__planet {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
+    color: var(--color-neutral-400);
     margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px solid var(--lp-rule);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-neutral-200);
   }
 
-  /* ── Community band ────────────────────────────────── */
-  .why-band {
-    background: var(--lp-orange);
-    padding: 56px var(--gutter);
+  /* ── Community manifesto ───────────────────────────── */
+  .manifesto {
+    background: var(--color-primary-900);
+    padding: var(--space-16) var(--space-6);
     text-align: center;
   }
-  .why-band h2 {
-    font-family: var(--f-display);
-    font-size: clamp(22px, 3.5vw, 36px);
-    font-weight: 700;
-    color: var(--lp-white);
-    margin-bottom: 14px;
-    line-height: 1.1;
+  .manifesto__inner {
+    max-width: var(--container-md);
+    margin: 0 auto;
   }
-  .why-band p {
-    font-family: var(--f-display);
-    font-size: 15px;
-    color: rgba(255,255,255,0.85);
-    max-width: 560px;
-    margin: 0 auto 28px;
-    line-height: 1.6;
+  .manifesto__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
+    color: var(--color-white);
+    margin: 0 0 var(--space-4);
+  }
+  .manifesto__body {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    color: rgba(255,255,255,0.65);
+    margin: 0 0 var(--space-8);
   }
 
   /* ── Footer ────────────────────────────────────────── */
   .site-footer {
-    background: var(--lp-black);
-    color: rgba(255,255,255,0.5);
-    padding: 56px var(--gutter) 32px;
+    background: var(--color-neutral-900);
+    color: var(--color-neutral-400);
+    padding: var(--space-16) 0 var(--space-8);
   }
 
-  .footer-inner {
-    max-width: var(--max-w);
-    margin: 0 auto 40px;
+  .site-footer__grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
+    gap: var(--space-10);
+    margin-bottom: var(--space-10);
   }
 
-  .footer-logo {
-    font-family: var(--f-display);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+  .site-footer__logo {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: var(--letter-spacing-tight);
     text-transform: uppercase;
-    color: var(--lp-white);
-    margin-bottom: 10px;
-  }
-  .footer-logo span { color: var(--lp-orange); }
-
-  .footer-brand p {
-    font-family: var(--f-display);
-    font-size: 12px;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.42);
+    color: var(--color-white);
+    margin: 0 0 var(--space-3);
   }
 
-  .footer-col h4 {
-    font-family: var(--f-display);
-    font-size: 10px;
-    font-weight: 700;
+  .site-footer__blurb {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    line-height: var(--line-height-relaxed);
+    color: rgba(255,255,255,0.38);
+    margin: 0;
+  }
+
+  .footer-title {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: var(--font-weight-bold);
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.38);
-    margin-bottom: 12px;
+    color: rgba(255,255,255,0.35);
+    margin: 0 0 var(--space-3);
   }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .footer-col li a {
-    font-family: var(--f-display);
-    font-size: 13px;
-    color: rgba(255,255,255,0.58);
-    transition: color 0.15s;
-  }
-  .footer-col li a:hover { color: var(--lp-orange); }
 
-  .footer-bottom {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-family: var(--f-display);
-    font-size: 11px;
-    color: rgba(255,255,255,0.28);
+  .footer-links {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .footer-links a {
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    color: var(--color-neutral-400);
+    text-decoration: none;
+    transition: color var(--duration-fast);
+  }
+  .footer-links a:hover { color: var(--color-primary-300); }
+
+  .site-footer__bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    color: rgba(255,255,255,0.25);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: var(--space-2);
   }
 
   /* ── Hero entrance animation ───────────────────────── */
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(18px); }
+    from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero-eyebrow { animation: fade-up 0.7s 0.05s ease both; }
-  .hero h1      { animation: fade-up 0.7s 0.15s ease both; }
-  .hero-lead    { animation: fade-up 0.7s 0.25s ease both; }
-  .hero-ctas    { animation: fade-up 0.7s 0.35s ease both; }
+  .hero__eyebrow { animation: fade-up 0.6s 0.05s ease both; }
+  .hero__title   { animation: fade-up 0.6s 0.15s ease both; }
+  .hero__lede    { animation: fade-up 0.6s 0.25s ease both; }
+  .hero__ctas    { animation: fade-up 0.6s 0.35s ease both; }
 
   /* ── Responsive ────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .editions-grid { grid-template-columns: repeat(2, 1fr); }
+    .site-footer__grid { grid-template-columns: 1fr 1fr; }
+    .site-footer__brand { grid-column: 1 / -1; }
+  }
+
   @media (max-width: 860px) {
-    .hero-book { display: none; }
-    .header-inner { grid-template-columns: auto 1fr; }
-    .nav-left, .nav-right { display: none; }
-    .logo { text-align: left; }
-    .feature-inner { grid-template-columns: 1fr; }
-    .feature-img { aspect-ratio: 16/9; }
+    .hero__floating-card { display: none; }
+    .site-header__inner { grid-template-columns: auto 1fr; }
+    .site-header__nav-left,
+    .site-header__nav-right { display: none; }
+    .feature-band__inner { grid-template-columns: 1fr; }
+    .feature-band__img { aspect-ratio: 16/9; }
   }
 
-  @media (max-width: 700px) {
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-    .footer-brand { grid-column: 1 / -1; }
-  }
-
-  @media (max-width: 480px) {
-    .editions-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 640px) {
+    .editions-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
+    .site-footer__grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
