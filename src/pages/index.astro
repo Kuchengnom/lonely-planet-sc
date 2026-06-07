@@ -10,16 +10,23 @@ interface Edition {
   status: 'available' | 'coming-soon';
   href: string;
   theme: 'stanton' | 'pyro' | 'terra' | 'nyx';
+  coverBg: string;
+  coverImg?: string;
+  coverImgFilter?: string;
+  coverLabel: string;
 }
 
 const EDITIONS: Edition[] = [
   {
     name: 'Stanton',
     subtitle: 'The Corporate Core',
-    tagline: 'Four planets. Four corporations. One system where power is the currency.',
+    tagline: 'Four planets. Four corporations. One system where power is the only currency.',
     status: 'available',
     href: `${base}stanton/`,
     theme: 'stanton',
+    coverBg: '#0d1f3a',
+    coverImg: `${base}images/microtech/panoramic-lake.jpeg`,
+    coverLabel: 'UEE Territory',
   },
   {
     name: 'Pyro',
@@ -28,14 +35,20 @@ const EDITIONS: Edition[] = [
     status: 'available',
     href: `${base}pyro/`,
     theme: 'pyro',
+    coverBg: '#2e1507',
+    coverImg: `${base}images/microtech/canyon-forest.jpeg`,
+    coverImgFilter: 'hue-rotate(180deg) saturate(1.3) brightness(0.6)',
+    coverLabel: 'Contested Space',
   },
   {
     name: 'Terra',
     subtitle: 'The Capital World',
-    tagline: 'The cultural and political heart of the UEE — cosmopolitan, ambitious, complicated.',
+    tagline: 'Cultural and political heart of the UEE — cosmopolitan, ambitious, complicated.',
     status: 'coming-soon',
     href: '#',
     theme: 'terra',
+    coverBg: '#0a2a1a',
+    coverLabel: 'UEE Capital',
   },
   {
     name: 'Nyx',
@@ -44,36 +57,18 @@ const EDITIONS: Edition[] = [
     status: 'coming-soon',
     href: '#',
     theme: 'nyx',
+    coverBg: '#0f0f1e',
+    coverLabel: 'Contested Space',
   },
 ];
 
-interface Destination {
-  name: string;
-  label: string;
-  href: string;
-  system: 'stanton' | 'pyro';
-}
-
-const DESTINATIONS: { system: string; color: string; items: Destination[] }[] = [
-  {
-    system: 'Stanton',
-    color: 'var(--color-primary-600)',
-    items: [
-      { name: 'Hurston',  label: 'Stanton I',   href: `${base}stanton/hurston/`,   system: 'stanton' },
-      { name: 'Crusader', label: 'Stanton II',  href: `${base}stanton/crusader/`,  system: 'stanton' },
-      { name: 'ArcCorp',  label: 'Stanton III', href: `${base}stanton/arccorp/`,   system: 'stanton' },
-      { name: 'microTech',label: 'Stanton IV',  href: `${base}stanton/microtech/`, system: 'stanton' },
-    ],
-  },
-  {
-    system: 'Pyro',
-    color: '#c2410c',
-    items: [
-      { name: 'Pyro I–VI',      label: 'All Planets',     href: `${base}pyro/`,                        system: 'pyro' },
-      { name: 'Ruin Station',   label: 'Lagrange Point 1',href: `${base}pyro/stations/ruin-station/`,  system: 'pyro' },
-      { name: 'Pyro Belt',      label: 'Asteroid Field',  href: `${base}pyro/stations/pyro-belt/`,     system: 'pyro' },
-    ],
-  },
+const POIS = [
+  { num: '01', name: 'The First River',        tag: 'Natural Wonder', desc: 'Open water on a permafrost world. The anomaly that has no satisfying explanation.',            planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '02', name: 'Bioluminescent Caves',   tag: 'Hidden Find',    desc: 'Blue-cyan ceilings that look like an inverted starfield. Not on any official map.',           planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '03', name: 'New Babbage Commons',    tag: 'Settlement',     desc: 'Corporate grandeur bordering on absurdist. The warmest welcome on the coldest planet.',       planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
+  { num: '04', name: 'The Canyon River',       tag: 'Natural Wonder', desc: 'Canyon walls and a colour palette that screenshots struggle to convey. Fly it slowly.',        planet: 'microTech · Stanton', href: `${base}stanton/microtech/northern-wastes/canyon-river` },
+  { num: '05', name: 'Orison',                 tag: 'Settlement',     desc: 'A city built on platforms in the clouds of a gas giant. Nowhere else in the \'Verse like it.', planet: 'Crusader · Stanton',  href: `${base}stanton/crusader/` },
+  { num: '06', name: 'Frozen Lakes',           tag: 'Natural Wonder', desc: 'Arches and columns of compressed blue-white ice. Walk them carefully — the footing is uneven.', planet: 'microTech · Stanton', href: `${base}stanton/microtech/` },
 ];
 ---
 
@@ -86,134 +81,205 @@ const DESTINATIONS: { system: string; color: string; items: Destination[] }[] = 
     <meta name="description" content="Unofficial travel guides to the Star Citizen universe. Curated attractions, hidden gems, and essential travel tips." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   </head>
 
   <body>
-    {/* ── Hero ──────────────────────────────── */}
-    <header class="hero", style={`background: linear-gradient(180deg, rgba(9,20,45,.78), rgba(9,20,45,.48)), url(${base}images/microtech/panoramic-lake.jpeg) center / cover no-repeat`}>
-      <div class="hero__pattern"></div>
-      <div class="hero__inner">
-        <div class="hero__pin" aria-hidden="true">&#9733;</div>
-        <h1 class="hero__title">Lonely Planet</h1>
-        <p class="hero__subtitle">Star Citizen</p>
-        <p class="hero__lede">
-          Unofficial travel guides to the 'Verse. Curated attractions, hidden gems,
-          and essential travel tips for the systems you fly through.
-        </p>
-        <div class="hero__scroll" aria-hidden="true">
-          <span>Scroll</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
+
+    <!-- Top announcement strip -->
+    <div class="top-strip">
+      All Star Citizen editions are <strong>completely free</strong> — community-written, forever open access
+    </div>
+
+    <!-- Sticky header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <nav class="nav-left">
+          <a href="#editions">Editions</a>
+          <a href="#attractions">Attractions</a>
+          <a href="#about">About</a>
+        </nav>
+
+        <a href={base} class="logo">
+          <span class="logo-lp">Lonely <span>Planet</span></span>
+          <span class="logo-sub">Star Citizen Edition</span>
+        </a>
+
+        <nav class="nav-right">
+          <a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">Contribute</a>
+          <a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Community</a>
+        </nav>
       </div>
     </header>
 
-    <main>
-      {/* ── System Editions ─────────────────── */}
-      <section class="editions" aria-labelledby="editions-heading">
-        <div class="container">
-          <h2 id="editions-heading" class="section-heading">System Editions</h2>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" style={`background-image: url(${base}images/microtech/flying-over-mountains.jpeg)`}></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow">New Edition Available</p>
+        <h1>The&nbsp;'Verse<br>awaits.<br><em>No ticket needed.</em></h1>
+        <p class="hero-lead">Unofficial travel guides to Star Citizen — written by explorers, for explorers. Curated attractions, navigation notes, and hidden gems. Every edition, completely free.</p>
+        <div class="hero-ctas">
+          <a href={`${base}stanton/microtech/`} class="btn-primary">Explore microTech →</a>
+          <a href="#editions" class="btn-ghost">Browse Editions</a>
+        </div>
+      </div>
+      <div class="hero-book" aria-hidden="true">
+        <div class="book-cover-mock" style="--cover-bg:#0d1f3a;">
+          <div class="cover-img-area">
+            <img src={`${base}images/microtech/panoramic-lake.jpeg`} alt="" />
+          </div>
+          <div class="cover-orange-bar"></div>
+          <div class="cover-lp-label">Lonely Planet</div>
+          <div class="cover-title-area">
+            <div class="cover-planet-name">micro<br>Tech</div>
+            <div class="cover-system">Stanton Edition</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="editions-grid">
-            {EDITIONS.map((ed) => (
-              <article class={`edition-card edition-card--${ed.theme} ${ed.status === 'coming-soon' ? 'edition-card--soon' : ''}`}>
-                <div class="edition-card__thumb">
-                  <div class="edition-card__planet" aria-hidden="true"></div>
-                  <div class="edition-card__overlay"></div>
-                  <span class={`edition-card__status-badge ${ed.status === 'available' ? 'edition-card__status-badge--live' : ''}`}>
-                    {ed.status === 'available' ? 'Available Now' : 'Coming Soon'}
-                  </span>
-                  <span class="edition-card__lp-badge">LP</span>
-                  <div class="edition-card__thumb-text">
-                    <span class="edition-card__eyebrow">Star Citizen</span>
-                    <h3 class="edition-card__name">{ed.name}</h3>
+    <main>
+
+      <!-- Editions -->
+      <section class="editions-section" id="editions">
+        <div class="section-header">
+          <h2>System Editions</h2>
+        </div>
+        <div class="editions-grid">
+          {EDITIONS.map((ed) => (
+            <article class={`book-card ${ed.status === 'coming-soon' ? 'book-card--soon' : ''}`}>
+              <a href={ed.href} class="book-cover-wrap" tabindex={ed.status === 'coming-soon' ? -1 : 0}>
+                <div class="book-cover-mock" style={`--cover-bg:${ed.coverBg};`}>
+                  {ed.coverImg && (
+                    <div class="cover-img-area">
+                      <img src={ed.coverImg} alt={ed.name} style={ed.coverImgFilter ? `filter:${ed.coverImgFilter}` : ''} />
+                    </div>
+                  )}
+                  <div class="cover-orange-bar" style={ed.status === 'coming-soon' ? 'background:#555;' : ''}></div>
+                  <div class="cover-lp-label" style={ed.status === 'coming-soon' ? 'color:rgba(255,255,255,0.4);' : ''}>Lonely Planet</div>
+                  <div class="cover-title-area">
+                    <div class="cover-planet-name" style={ed.status === 'coming-soon' ? 'color:rgba(255,255,255,0.45);' : ''}>{ed.name}</div>
+                    <div class="cover-system">{ed.coverLabel}</div>
                   </div>
                 </div>
-                <div class="edition-card__body">
-                  <p class="edition-card__subtitle">{ed.subtitle}</p>
-                  <p class="edition-card__tagline">{ed.tagline}</p>
+                <span class={`cover-badge ${ed.status === 'available' ? 'cover-badge--live' : 'cover-badge--soon'}`}>
+                  {ed.status === 'available' ? 'Available' : 'Coming Soon'}
+                </span>
+              </a>
+              <div class="book-meta">
+                <h3 class="book-title">{ed.name}</h3>
+                <p class="book-subtitle">{ed.subtitle}</p>
+                <p class="book-desc">{ed.tagline}</p>
+                <div class="book-footer">
                   {ed.status === 'available' ? (
-                    <a href={ed.href} class="edition-card__cta">Explore →</a>
+                    <a href={ed.href} class="btn-read">Read Now →</a>
                   ) : (
-                    <span class="edition-card__cta edition-card__cta--disabled">Coming soon</span>
+                    <span class="btn-read btn-read--disabled">In development</span>
                   )}
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Destinations Quick-Nav ──────────── */}
-      <section class="quick-nav" aria-labelledby="destinations-heading">
-        <div class="container">
-          <h2 id="destinations-heading" class="section-heading">Destinations</h2>
-
-          <div class="dest-grid">
-            {DESTINATIONS.map((group) => (
-              <div class="dest-group">
-                <p class="dest-group__label" style={`color: ${group.color};`}>{group.system}</p>
-                <ul class="dest-list">
-                  {group.items.map((dest) => (
-                    <li class="dest-item">
-                      <a href={dest.href} class={`dest-link dest-link--${dest.system}`}>
-                        <span class="dest-link__name">{dest.name}</span>
-                        <span class="dest-link__label">{dest.label}</span>
-                        <span class={`dest-link__tag dest-link__tag--${dest.system}`}>Live</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            ))}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Feature band: editor's pick -->
+      <section class="feature-band">
+        <div class="feature-inner">
+          <img
+            class="feature-img"
+            src={`${base}images/microtech/bioluminescent-cave.jpeg`}
+            alt="Bioluminescent caves on microTech"
+            loading="lazy"
+          />
+          <div class="feature-text">
+            <p class="feature-eyebrow">Editor's Pick — Stanton IV</p>
+            <h2>Seven reasons to land on microTech</h2>
+            <p>Rivers that shouldn't exist, forests that refused to freeze, and caves that light up like an inverted starfield. The corporate ice world is the most quietly spectacular place in the Stanton system.</p>
+            <div class="feature-stats">
+              <div class="stat">
+                <div class="stat-num">7</div>
+                <div class="stat-label">Attractions</div>
+              </div>
+              <div class="stat">
+                <div class="stat-num">4</div>
+                <div class="stat-label">Hidden Finds</div>
+              </div>
+              <div class="stat">
+                <div class="stat-num">1</div>
+                <div class="stat-label">City</div>
+              </div>
+            </div>
+            <a href={`${base}stanton/microtech/`} class="btn-primary">Read the microTech Guide →</a>
           </div>
         </div>
       </section>
 
-      {/* ── About / Manifesto ───────────────── */}
-      <section class="about" aria-labelledby="about-heading">
-        <div class="container about-grid">
-          <div class="about-image">
-            <img src={`${base}images/microtech/flying-over-mountains.jpeg`} alt="Small exploration ship flying over microTech's snowy mountain ranges" loading="lazy" />
-          </div>
-          <div class="about-text">
-            <h2 id="about-heading" class="about-heading">For the Explorer</h2>
-            <p class="about-lede">
-              The 'Verse is vast, cold, and spectacular. These are the places that make the journey worth it.
-            </p>
-            <p>
-              This is an unofficial fan guide inspired by the spirit of classic travel writing.
-              We focus on the atmospheric and the hidden — the rivers that shouldn't flow,
-              the caves that glow, and the silence between ice storms.
-            </p>
-            <p>All content is community-driven. Found a new spot? Help us map the 'Verse.</p>
-          </div>
+      <!-- Top attractions -->
+      <section class="poi-section" id="attractions">
+        <div class="section-header">
+          <h2>Top Attractions</h2>
+        </div>
+        <div class="poi-grid">
+          {POIS.map((poi) => (
+            <a href={poi.href} class="poi-card">
+              <span class="poi-num">{poi.num}</span>
+              <h3 class="poi-name">{poi.name}</h3>
+              <span class="poi-tag">{poi.tag}</span>
+              <p class="poi-desc">{poi.desc}</p>
+              <span class="poi-planet">{poi.planet}</span>
+            </a>
+          ))}
         </div>
       </section>
+
+      <!-- Community manifesto band -->
+      <section class="why-band" id="about">
+        <h2>The 'Verse belongs to everyone.<br />So do these guides.</h2>
+        <p>Lonely Planet: Star Citizen Edition is a fan-made, community-driven project. No subscriptions, no paywalls — every guide is written by explorers and released freely. Found a hidden gem? Help us map the 'Verse.</p>
+        <a href="https://github.com/Kuchengnom/lonely-planet-sc" class="btn-white" target="_blank" rel="noopener">Contribute on GitHub →</a>
+      </section>
+
     </main>
 
-    {/* ── Footer ──────────────────────────── */}
+    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <p class="footer-title">Editions</p>
-          <ul class="footer-links">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">Lonely <span>Planet</span></div>
+          <p>Unofficial fan guide to the Star Citizen universe. Written by explorers, for explorers. Star Citizen and related marks belong to Cloud Imperium Rights LLC.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Editions</h4>
+          <ul>
             <li><a href={`${base}stanton/`}>Stanton</a></li>
+            <li><a href={`${base}stanton/microtech/`}>microTech</a></li>
+            <li><a href={`${base}stanton/crusader/`}>Crusader</a></li>
+            <li><a href={`${base}stanton/hurston/`}>Hurston</a></li>
+            <li><a href={`${base}stanton/arccorp/`}>ArcCorp</a></li>
             <li><a href={`${base}pyro/`}>Pyro</a></li>
-            <li><a href="#" style="opacity:0.45;pointer-events:none;">Terra</a></li>
-            <li><a href="#" style="opacity:0.45;pointer-events:none;">Nyx</a></li>
           </ul>
         </div>
-        <div>
-          <p class="footer-title">Community</p>
-          <ul class="footer-links">
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
             <li><a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Star Citizen</a></li>
-            <li><a href="https://starcitizen.tools/" target="_blank" rel="noopener">Star Citizen Wiki</a></li>
+            <li><a href="https://starcitizen.tools/" target="_blank" rel="noopener">SC Wiki</a></li>
+            <li><a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">GitHub Repo</a></li>
           </ul>
         </div>
-        <div class="footer-col-wide">
-          <p class="footer-small">Fan-made reference guide. Star Citizen and related marks belong to Cloud Imperium Rights LLC and Cloud Imperium Rights Ltd.</p>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">How to Contribute</a></li>
+          </ul>
         </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Fan-made reference guide. Not affiliated with Cloud Imperium Games.</span>
+        <span>Lonely Planet: Star Citizen Edition</span>
       </div>
     </footer>
 
@@ -221,444 +287,724 @@ const DESTINATIONS: { system: string; color: string; items: Destination[] }[] = 
 </html>
 
 <style>
-  /* ── Base / Typography ─────────────────── */
+  /* ── Tokens ──────────────────────────────────────────── */
+  :root {
+    --lp-orange:    #e8420a;
+    --lp-orange-dk: #c03208;
+    --lp-black:     #1a1714;
+    --lp-white:     #ffffff;
+    --lp-paper:     #f7f4ef;
+    --lp-paper-2:   #ede9e1;
+    --lp-rule:      #d4cec3;
+    --lp-ink:       #231f1b;
+    --lp-muted:     #7a7168;
+
+    --f-display: 'Archivo Narrow', sans-serif;
+    --f-body:    'Merriweather', serif;
+
+    --max-w:  1280px;
+    --gutter: clamp(16px, 4vw, 48px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
   body {
-    background: #f5f0ea;
+    font-family: var(--f-body);
+    color: var(--lp-ink);
+    background: var(--lp-white);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
-  .container {
-    max-width: 1024px;
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ── Top strip ─────────────────────────────────────── */
+  .top-strip {
+    background: var(--lp-black);
+    color: rgba(255,255,255,0.7);
+    font-family: var(--f-display);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px var(--gutter);
+  }
+  .top-strip strong { color: var(--lp-orange); font-weight: 700; }
+
+  /* ── Sticky header ─────────────────────────────────── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--lp-white);
+    border-bottom: 2px solid var(--lp-black);
+  }
+
+  .header-inner {
+    max-width: var(--max-w);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 64px;
   }
 
-  .section-heading {
-    font-family: var(--font-display);
-    font-size: 0.625rem;
+  .nav-left {
+    display: flex;
+    gap: 24px;
+    font-family: var(--f-display);
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-neutral-500);
-    margin: 0 0 1.25rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-neutral-200);
   }
+  .nav-left a:hover { color: var(--lp-orange); }
 
-  /* ── Hero ──────────────────────────────── */
-  .hero {
-    position: relative;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .logo {
     text-align: center;
-    padding: 2rem;
-    background:
-      linear-gradient(180deg, rgba(9,20,45,.78), rgba(9,20,45,.48)) center / cover no-repeat;
-    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-lp {
+    font-family: var(--f-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .logo-lp span { color: var(--lp-orange); }
+  .logo-sub {
+    font-family: var(--f-display);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--lp-muted);
+    margin-top: 3px;
   }
 
-  .hero__pattern {
+  .nav-right {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav-right a:hover { color: var(--lp-orange); }
+
+  /* ── Hero ──────────────────────────────────────────── */
+  .hero {
+    background: var(--lp-black);
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .hero-bg {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,.04) 2px,
-      rgba(0,0,0,.04) 4px
-    );
-    pointer-events: none;
+    background-size: cover;
+    background-position: center 35%;
+    opacity: 0.35;
+    filter: sepia(20%) contrast(1.1);
   }
 
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-  }
-
-  .hero__pin {
-    font-size: 2.5rem;
-    line-height: 1;
-    opacity: .6;
-    margin-bottom: .5rem;
-  }
-
-  .hero__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    line-height: .9;
-    margin: 0;
-  }
-
-  .hero__subtitle {
-    font-family: var(--font-body);
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,.65);
-    margin: .625rem 0 1.5rem;
-  }
-
-  .hero__lede {
-    font-family: var(--font-body);
-    font-size: clamp(0.9375rem, 2vw, 1.125rem);
-    line-height: var(--line-height-relaxed);
-    color: rgba(255,255,255,.75);
-    max-width: 540px;
-    margin: 0 auto;
-  }
-
-  .hero__scroll {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: .375rem;
-    margin-top: 2.5rem;
-    font-family: var(--font-display);
-    font-size: .625rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.4);
-  }
-
-  .hero__scroll svg {
-    width: 20px;
-    height: 20px;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
-  /* ── Editions Section ──────────────────── */
-  .editions { padding: 3.5rem 0 4rem; }
-
-  .editions-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-  }
-
-  .edition-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--radius-md, 0.5rem);
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    transition: transform .25s ease, box-shadow .25s ease;
-    background: #fff;
-  }
-
-  .edition-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,.13); }
-  .edition-card--soon { opacity: .85; }
-  .edition-card--soon:hover { transform: none; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-
-  /* Thumb */
-  .edition-card__thumb {
-    position: relative;
-    height: 220px;
-    overflow: hidden;
-  }
-
-  /* Theme backgrounds */
-  .edition-card--stanton .edition-card__thumb { background: linear-gradient(160deg, #1e3a5c 0%, #0d1f35 55%, #040c18 100%); }
-  .edition-card--pyro    .edition-card__thumb { background: linear-gradient(160deg, #3a1a0a 0%, #1e0d04 55%, #0a0400 100%); }
-  .edition-card--terra   .edition-card__thumb { background: linear-gradient(160deg, #0a2a1a 0%, #051510 55%, #020a06 100%); }
-  .edition-card--nyx     .edition-card__thumb { background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1e 55%, #050510 100%); }
-
-  /* CSS planets */
-  .edition-card__planet {
+  .hero-bg::after {
+    content: '';
     position: absolute;
-    bottom: -20px; right: -20px;
-    width: 130px; height: 130px;
-    border-radius: 50%;
-  }
-  .edition-card--stanton .edition-card__planet { background: radial-gradient(circle at 30% 30%, #4a8be5, #1a3a6c, #040c18); box-shadow: inset -14px -10px 35px rgba(0,0,0,.8), 0 0 50px rgba(58,123,213,.25); }
-  .edition-card--pyro    .edition-card__planet { background: radial-gradient(circle at 30% 30%, #e55a1a, #8b2500, #1a0500); box-shadow: inset -14px -10px 35px rgba(0,0,0,.7), 0 0 60px rgba(229,90,26,.35); }
-  .edition-card--terra   .edition-card__planet { background: radial-gradient(circle at 30% 30%, #2aaa6a, #0d5530, #020f08); box-shadow: inset -14px -10px 35px rgba(0,0,0,.7), 0 0 50px rgba(42,170,106,.2); }
-  .edition-card--nyx     .edition-card__planet { background: radial-gradient(circle at 30% 30%, #7a4aaa, #3a1a5c, #0a0518); box-shadow: inset -14px -10px 35px rgba(0,0,0,.8), 0 0 50px rgba(122,74,170,.2); }
-
-  .edition-card__overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, transparent 40%, rgba(0,0,0,.65) 85%);
+    inset: 0;
+    background:
+      linear-gradient(110deg, rgba(232,66,10,0.5) 0%, transparent 55%),
+      linear-gradient(to right, rgba(26,23,20,0.92) 0%, rgba(26,23,20,0.18) 70%);
   }
 
-  /* Badges */
-  .edition-card__lp-badge {
-    position: absolute; top: .625rem; right: .625rem;
-    background: #f5c518;
-    font-family: var(--font-display);
-    font-size: .5625rem; font-weight: 900;
-    letter-spacing: .12em; text-transform: uppercase;
-    color: #1a1a1a; padding: .1875rem .4375rem;
-    line-height: 1.4;
-  }
-  .edition-card__status-badge {
-    position: absolute; top: .625rem; left: .625rem;
-    font-family: var(--font-display);
-    font-size: .5rem; font-weight: 800;
-    letter-spacing: .08em; text-transform: uppercase;
-    color: #fff; padding: .1875rem .5rem;
-    border-radius: 2px;
-    background: rgba(255,255,255,.18);
-    backdrop-filter: blur(4px);
-  }
-  .edition-card__status-badge--live { background: #059669; backdrop-filter: none; }
-
-  /* Title block inside thumb */
-  .edition-card__thumb-text {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: .875rem .75rem .75rem;
-  }
-  .edition-card__eyebrow {
-    display: block;
-    font-family: var(--font-display);
-    font-size: .5rem; font-weight: 700;
-    letter-spacing: .15em; text-transform: uppercase;
-    color: rgba(255,255,255,.5); margin-bottom: .1875rem;
-  }
-  .edition-card__name {
-    font-family: var(--font-display);
-    font-size: 1.75rem; font-weight: 900;
-    line-height: .9; letter-spacing: -.02em;
-    text-transform: uppercase; color: #fff; margin: 0;
+  .hero-inner {
+    max-width: var(--max-w);
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px var(--gutter) 72px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 640px;
   }
 
-  /* Card body */
-  .edition-card__body {
-    padding: .75rem 1rem 1rem;
-    display: flex; flex-direction: column; flex: 1;
-    background: #fff;
-  }
-  .edition-card__subtitle {
-    font-family: var(--font-body);
-    font-size: .75rem; font-style: italic;
-    color: var(--color-neutral-500); margin: 0 0 .375rem;
-  }
-  .edition-card__tagline {
-    font-family: var(--font-body);
-    font-size: .75rem; color: var(--color-neutral-600);
-    line-height: 1.4; flex: 1; margin: 0 0 .75rem;
-  }
-  .edition-card__cta {
-    display: inline-block; align-self: flex-start;
-    font-family: var(--font-display);
-    font-size: .6875rem; font-weight: 800;
-    letter-spacing: .06em; text-transform: uppercase;
-    color: var(--color-primary-700);
-    text-decoration: none;
-    border-bottom: 2px solid currentColor; padding-bottom: 1px;
-    transition: opacity .2s;
-  }
-  .edition-card__cta:hover { opacity: .7; }
-  .edition-card__cta--disabled { pointer-events: none; color: var(--color-neutral-400); border-color: var(--color-neutral-300); }
-
-  /* ── Destinations Nav ──────────────────── */
-  .quick-nav { padding: 0 0 4rem; }
-
-  .dest-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .dest-group__label {
-    font-family: var(--font-display);
-    font-size: .625rem; font-weight: 800;
-    letter-spacing: .12em; text-transform: uppercase;
-    margin: 0 0 .5rem;
-  }
-
-  .dest-list { list-style: none; margin: 0; padding: 0; }
-
-  .dest-item { border-top: 1px solid var(--color-neutral-200); }
-  .dest-item:last-child { border-bottom: 1px solid var(--color-neutral-200); }
-
-  .dest-link {
-    display: flex; align-items: center; gap: 1rem;
-    padding: .75rem 0; text-decoration: none; color: inherit;
-    transition: background .15s;
-  }
-  .dest-link:hover { background: rgba(0,0,0,.02); }
-
-  .dest-link__name {
-    font-family: var(--font-display);
-    font-size: 1rem; font-weight: 700;
-    color: var(--color-neutral-900); min-width: 130px;
-  }
-  .dest-link__label {
-    font-family: var(--font-body);
-    font-size: .8125rem; color: var(--color-neutral-500); flex: 1;
-  }
-  .dest-link__tag {
-    font-family: var(--font-display);
-    font-size: .5625rem; font-weight: 700;
-    letter-spacing: .06em; text-transform: uppercase;
-    padding: .125rem .4375rem; border-radius: var(--radius-sm, .25rem);
-  }
-  .dest-link__tag--stanton { background: #eff6ff; color: var(--color-primary-700); }
-  .dest-link__tag--pyro    { background: #fff7ed; color: #c2410c; }
-
-  /* ── About / Manifesto ─────────────────── */
-  .about {
-    background: #fff;
-    padding: 4rem 0;
-    border-top: 1px solid var(--color-neutral-200);
-    border-bottom: 1px solid var(--color-neutral-200);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+  .hero-eyebrow {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lp-orange);
+    margin-bottom: 14px;
+    display: flex;
     align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--lp-orange);
+    flex-shrink: 0;
   }
 
-  .about-image {
-    border-radius: var(--radius-md, .5rem);
-    overflow: hidden;
+  .hero h1 {
+    font-family: var(--f-display);
+    font-size: clamp(40px, 7vw, 84px);
+    font-weight: 700;
+    line-height: 0.93;
+    letter-spacing: -0.02em;
+    color: var(--lp-white);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--lp-orange); }
+
+  .hero-lead {
+    font-family: var(--f-display);
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: rgba(255,255,255,0.7);
+    max-width: 460px;
+    line-height: 1.6;
+    margin-bottom: 32px;
   }
 
-  .about-image img {
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Book cover (hero + cards shared) ─────────────── */
+  .hero-book {
+    position: absolute;
+    right: var(--gutter);
+    bottom: 0;
+    width: clamp(150px, 17vw, 240px);
+    filter: drop-shadow(-12px 12px 40px rgba(0,0,0,0.7));
+    animation: float-book 5s ease-in-out infinite;
+    z-index: 3;
+  }
+
+  @keyframes float-book {
+    0%, 100% { transform: rotate(2deg) translateY(0); }
+    50%       { transform: rotate(2deg) translateY(-8px); }
+  }
+
+  .book-cover-mock {
     width: 100%;
     height: 100%;
-    aspect-ratio: 16 / 10;
+    display: flex;
+    flex-direction: column;
+    background: var(--cover-bg, #1a1714);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-img-area {
+    position: absolute;
+    inset: 0;
+  }
+  .cover-img-area img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
+    opacity: 0.62;
   }
 
-  .about-heading {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
+  .cover-orange-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 7px;
+    background: var(--lp-orange);
+    z-index: 3;
+  }
+
+  .cover-lp-label {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    font-family: var(--f-display);
+    font-size: 11px;
     font-weight: 700;
-    color: var(--color-neutral-900);
-    margin: 0 0 .75rem;
-  }
-
-  .about-lede {
-    font-family: var(--font-body);
-    font-size: 1.0625rem;
-    font-style: italic;
-    color: var(--color-neutral-700);
-    line-height: var(--line-height-relaxed);
-    margin: 0 0 1.25rem;
-  }
-
-  .about-text p {
-    font-family: var(--font-body);
-    font-size: .9375rem;
-    line-height: var(--line-height-relaxed);
-    color: var(--color-neutral-700);
-    margin: 0 0 .75rem;
-  }
-
-  .about-text p:last-child {
-    margin-bottom: 0;
-  }
-
-  /* ── Footer ────────────────────────────── */
-  .site-footer {
-    background: var(--color-neutral-900);
-    color: #a0aec0;
-    padding: 2.5rem 0 1.5rem;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  .footer-title {
-    font-family: var(--font-display);
-    font-size: .625rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.5);
-    margin: 0 0 .75rem;
-  }
-
-  .footer-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .footer-links li {
-    margin-bottom: .375rem;
-  }
-
-  .footer-links a {
-    color: #a0aec0;
-    text-decoration: none;
-    font-family: var(--font-body);
-    font-size: .8125rem;
-    transition: color .2s ease;
-  }
-
-  .footer-links a:hover {
     color: #fff;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 4;
   }
 
-  .footer-col-wide {
-    align-self: end;
+  .cover-title-area {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 16px 12px 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+    z-index: 4;
+  }
+  .cover-planet-name {
+    font-family: var(--f-display);
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--lp-white);
+  }
+  .cover-system {
+    font-family: var(--f-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
   }
 
-  .footer-small {
-    font-family: var(--font-body);
-    font-size: .6875rem;
-    color: #718096;
+  .cover-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: var(--f-display);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    z-index: 5;
+  }
+  .cover-badge--live { background: #1a6b3a; color: #fff; }
+  .cover-badge--soon { background: var(--lp-black); color: rgba(255,255,255,0.65); }
+
+  /* ── Buttons ───────────────────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--lp-orange);
+    color: var(--lp-white);
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 24px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--lp-orange-dk); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: var(--lp-white);
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 24px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { border-color: var(--lp-white); background: rgba(255,255,255,0.08); }
+
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--lp-white);
+    color: var(--lp-orange);
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    transition: opacity 0.2s;
+  }
+  .btn-white:hover { opacity: 0.9; }
+
+  /* ── Section chrome ────────────────────────────────── */
+  .section-header {
+    max-width: var(--max-w);
+    margin: 0 auto 28px;
+    padding: 0 var(--gutter);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .section-header h2 {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Editions grid ─────────────────────────────────── */
+  .editions-section { padding: 64px 0 0; }
+
+  .editions-grid {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 28px;
+  }
+
+  .book-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .book-card:hover { transform: translateY(-4px); }
+  .book-card--soon { opacity: 0.72; }
+  .book-card--soon:hover { transform: none; }
+
+  .book-cover-wrap {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    margin-bottom: 14px;
+    display: block;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+    transition: box-shadow 0.2s;
+  }
+  .book-card:hover .book-cover-wrap { box-shadow: 0 16px 48px rgba(0,0,0,0.22); }
+
+  .book-meta { display: flex; flex-direction: column; gap: 4px; }
+
+  .book-title {
+    font-family: var(--f-display);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--lp-ink);
+  }
+
+  .book-subtitle {
+    font-family: var(--f-body);
+    font-size: 11px;
+    font-style: italic;
+    color: var(--lp-muted);
+    margin-top: 1px;
+  }
+
+  .book-desc {
+    font-family: var(--f-body);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--lp-muted);
+    margin-top: 4px;
+  }
+
+  .book-footer { margin-top: 12px; }
+
+  .btn-read {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lp-orange);
+    border-bottom: 1.5px solid var(--lp-orange);
+    padding-bottom: 1px;
+    display: inline-block;
+    transition: opacity 0.15s;
+  }
+  .btn-read:hover { opacity: 0.7; }
+  .btn-read--disabled { color: var(--lp-muted); border-color: var(--lp-rule); font-style: italic; font-weight: 400; letter-spacing: 0; text-transform: none; cursor: default; }
+
+  /* ── Feature band ──────────────────────────────────── */
+  .feature-band {
+    background: var(--lp-paper);
+    padding: 72px 0;
+    margin-top: 72px;
+    border-top: 1.5px solid var(--lp-rule);
+    border-bottom: 1.5px solid var(--lp-rule);
+  }
+
+  .feature-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .feature-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+  }
+
+  .feature-eyebrow {
+    font-family: var(--f-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lp-orange);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .feature-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--lp-orange);
+    flex-shrink: 0;
+  }
+
+  .feature-text h2 {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .feature-text p {
+    font-size: 14px;
+    line-height: 1.78;
+    color: #4a4030;
+    margin-bottom: 28px;
+  }
+
+  .feature-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--lp-rule);
+    border-left: 1px solid var(--lp-rule);
+    margin-bottom: 28px;
+  }
+
+  .stat {
+    padding: 16px;
+    border-right: 1px solid var(--lp-rule);
+    border-bottom: 1px solid var(--lp-rule);
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--lp-orange);
+  }
+  .stat-label {
+    font-family: var(--f-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lp-muted);
+    margin-top: 4px;
+  }
+
+  /* ── POI grid ──────────────────────────────────────── */
+  .poi-section { padding: 72px 0; }
+
+  .poi-grid {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--lp-rule);
+    border: 1px solid var(--lp-rule);
+  }
+
+  .poi-card {
+    background: var(--lp-white);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: background 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .poi-card:hover { background: var(--lp-paper); }
+
+  .poi-num {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--lp-orange);
+  }
+  .poi-name {
+    font-family: var(--f-display);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .poi-tag {
+    font-family: var(--f-display);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lp-muted);
+  }
+  .poi-desc {
+    font-family: var(--f-display);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #6a5e4a;
+    margin-top: 4px;
+  }
+  .poi-planet {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--lp-muted);
+    text-transform: uppercase;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--lp-rule);
+  }
+
+  /* ── Community band ────────────────────────────────── */
+  .why-band {
+    background: var(--lp-orange);
+    padding: 56px var(--gutter);
+    text-align: center;
+  }
+  .why-band h2 {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 700;
+    color: var(--lp-white);
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+  .why-band p {
+    font-family: var(--f-display);
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    margin: 0 auto 28px;
     line-height: 1.6;
-    margin: 0;
   }
 
-  /* ── Responsive ────────────────────────── */
-  @media (max-width: 900px) {
-    .editions-grid { grid-template-columns: repeat(2, 1fr); }
-    .dest-grid { grid-template-columns: 1fr; }
+  /* ── Footer ────────────────────────────────────────── */
+  .site-footer {
+    background: var(--lp-black);
+    color: rgba(255,255,255,0.5);
+    padding: 56px var(--gutter) 32px;
   }
 
-  @media (max-width: 768px) {
-    .editions-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
 
-    .about-grid {
-      grid-template-columns: 1fr;
-    }
+  .footer-logo {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--lp-white);
+    margin-bottom: 10px;
+  }
+  .footer-logo span { color: var(--lp-orange); }
 
-    .about-image {
-      order: -1;
-    }
+  .footer-brand p {
+    font-family: var(--f-display);
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.42);
+  }
 
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .footer-col h4 {
+    font-family: var(--f-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    margin-bottom: 12px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col li a {
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: rgba(255,255,255,0.58);
+    transition: color 0.15s;
+  }
+  .footer-col li a:hover { color: var(--lp-orange); }
 
-    .footer-col-wide {
-      grid-column: 1 / -1;
-    }
+  .footer-bottom {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-family: var(--f-display);
+    font-size: 11px;
+    color: rgba(255,255,255,0.28);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── Hero entrance animation ───────────────────────── */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fade-up 0.7s 0.05s ease both; }
+  .hero h1      { animation: fade-up 0.7s 0.15s ease both; }
+  .hero-lead    { animation: fade-up 0.7s 0.25s ease both; }
+  .hero-ctas    { animation: fade-up 0.7s 0.35s ease both; }
+
+  /* ── Responsive ────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .hero-book { display: none; }
+    .header-inner { grid-template-columns: auto 1fr; }
+    .nav-left, .nav-right { display: none; }
+    .logo { text-align: left; }
+    .feature-inner { grid-template-columns: 1fr; }
+    .feature-img { aspect-ratio: 16/9; }
+  }
+
+  @media (max-width: 700px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
   }
 
   @media (max-width: 480px) {
-    .planet-link {
-      flex-wrap: wrap;
-      gap: .25rem .75rem;
-    }
-
-    .planet-link__label {
-      order: 3;
-      width: 100%;
-    }
+    .editions-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   }
 </style>
