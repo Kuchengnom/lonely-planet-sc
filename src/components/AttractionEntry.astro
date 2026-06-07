@@ -1,5 +1,5 @@
 ---
-const { number, title, category, image, imageAlt } = Astro.props;
+const { number, title, category, image, imageAlt, href } = Astro.props;
 
 const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
 function resolveImagePath(path: string) {
@@ -25,14 +25,22 @@ const cat = CATEGORY_CONFIG[category];
   <div class="attraction__inner">
     <div class="attraction__thumb">
       {imageUrl
-        ? <img src={imageUrl} alt={imageAlt ?? title} class="attraction__image" loading="lazy" />
+        ? <img src={imageUrl} alt={imageAlt ?? title} class="attraction__image" loading="lazy"
+            onerror="this.classList.add('attraction__image--hidden');this.nextElementSibling.style.display='block'" />
+        : null
+      }
+      {imageUrl
+        ? <div class="attraction__image attraction__image--placeholder" style="display:none" />
         : <div class="attraction__image attraction__image--placeholder" />
       }
       <span class="attraction__badge">{number}</span>
     </div>
     <div class="attraction__content">
       <div class="attraction__header">
-        <h2 class="attraction__title">{title}</h2>
+        {href
+          ? <h2 class="attraction__title"><a href={href} class="attraction__title-link">{title}</a></h2>
+          : <h2 class="attraction__title">{title}</h2>
+        }
         <span class="attraction__category">{cat.label}</span>
       </div>
       <div class="attraction__text">
@@ -70,6 +78,10 @@ const cat = CATEGORY_CONFIG[category];
     object-fit: cover;
     border-radius: var(--radius-sm, 0.25rem);
     display: block;
+  }
+
+  .attraction__image--hidden {
+    display: none !important;
   }
 
   .attraction__image--placeholder {
@@ -114,6 +126,16 @@ const cat = CATEGORY_CONFIG[category];
     color: var(--color-neutral-900);
     margin: 0;
     line-height: 1.2;
+  }
+
+  .attraction__title-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .attraction__title-link:hover {
+    text-decoration: underline;
+    color: var(--color-primary-600);
   }
 
   .attraction__category {
