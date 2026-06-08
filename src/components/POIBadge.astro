@@ -6,10 +6,10 @@ interface Props {
 const { type } = Astro.props;
 
 const BADGE_CONFIG = {
-  'natural-wonder': { label: 'Natural Wonder', emoji: '🏔️', bg: '#059669' },
-  'easter-egg':     { label: 'Easter Egg',     emoji: '🎄', bg: '#7c3aed' },
+  'natural-wonder': { label: 'Natural Wonder', emoji: '🏔️', bg: 'var(--color-category-wonder)' },
+  'easter-egg':     { label: 'Easter Egg',     emoji: '🎄', bg: 'var(--color-category-hidden)' },
   'urban-sight':    { label: 'Urban Sight',    emoji: '🏢', bg: 'var(--color-primary-600)' },
-  'technical':      { label: 'Technical',      emoji: '🛸', bg: '#d97706' },
+  'technical':      { label: 'Technical',      emoji: '🛸', bg: 'var(--color-difficulty-moderate)' },
   'photo-spot':     { label: 'Photo Spot',     emoji: '📸',  bg: '#db2777' },
   'anomaly':        { label: 'Anomaly',        emoji: '🌀', bg: '#0891b2' },
   'mystery':        { label: 'Mystery',        emoji: '🔮', bg: '#4f46e5' },
