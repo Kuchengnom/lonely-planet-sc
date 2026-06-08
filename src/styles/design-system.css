@@ -44,6 +44,22 @@
     --color-accent-sand: #d4a574;
     --color-accent-lavender: #9b59b6;
 
+    /* POI Category Colors */
+    --color-category-wonder:      #059669;
+    --color-category-hidden:      #7c3aed;
+    --color-category-settlement:  var(--color-primary-600);
+    --color-category-practical:   var(--color-secondary-600);
+    --color-category-urban:       #0891b2;
+
+    /* Difficulty Colors */
+    --color-difficulty-easy:      #059669;
+    --color-difficulty-moderate:  #d97706;
+    --color-difficulty-hard:      var(--color-secondary-500);
+    --color-difficulty-extreme:   #7c3aed;
+
+    /* UI Accent */
+    --color-star:                 #f59e0b;
+
     /* Neutral Colors */
     --color-neutral-900: #1a1a1a;
     --color-neutral-800: #2d2d2d;
