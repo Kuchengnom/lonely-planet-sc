@@ -10,10 +10,10 @@ interface Props {
 const { rating, vibe, difficulty, required_gear, coordinates } = Astro.props;
 
 const DIFFICULTY_COLORS = {
-  Easy:     '#059669',
-  Moderate: '#d97706',
-  Hard:     '#dc2626',
-  Extreme:  '#7c3aed',
+  Easy:     'var(--color-difficulty-easy)',
+  Moderate: 'var(--color-difficulty-moderate)',
+  Hard:     'var(--color-difficulty-hard)',
+  Extreme:  'var(--color-difficulty-extreme)',
 } as const;
 
 const filledStars = '★'.repeat(rating);
@@ -102,7 +102,7 @@ const emptyStars  = '☆'.repeat(5 - rating);
   }
 
   .fact-stars {
-    color: #f59e0b;
+    color: var(--color-star);
     font-size: 0.9375rem;
     letter-spacing: 0.05em;
   }
