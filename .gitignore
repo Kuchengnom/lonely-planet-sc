@@ -9,6 +9,7 @@ dist/
 
 # Generated / temp files
 inbox/
+od-export/
 *.png
 *.zip
 
