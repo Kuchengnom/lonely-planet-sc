@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export function inlineAssets(html, distDir) {
   html = html.replace(
-    /<link rel="stylesheet" href="\/_astro\/([^"]+)"[^>]*\/?>/g,
+    /<link rel="stylesheet" href="[^"]*\/_astro\/([^"]+)"[^>]*\/?>/g,
     (_, filename) => {
       const css = readFileSync(join(distDir, '_astro', filename), 'utf8');
       return `<style>${css}</style>`;
@@ -16,7 +16,7 @@ export function inlineAssets(html, distDir) {
   html = html.replace(/<link rel="modulepreload"[^>]*\/?>/g, '');
 
   html = html.replace(
-    /<script([^>]*)src="\/_astro\/([^"]+)"([^>]*)><\/script>/g,
+    /<script([^>]*)src="[^"]*\/_astro\/([^"]+)"([^>]*)><\/script>/g,
     (_, before, filename, after) => {
       const js = readFileSync(join(distDir, '_astro', filename), 'utf8');
       return `<script${before}${after}>${js}</script>`;

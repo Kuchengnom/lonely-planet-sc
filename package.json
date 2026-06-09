@@ -10,6 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "build:od": "astro build && node scripts/inline-pages.js",
+    "sync:tokens": "node scripts/sync-tokens.js",
     "test:scripts": "node --test scripts/inline-pages.test.js scripts/sync-tokens.test.js"
   },
   "dependencies": {
