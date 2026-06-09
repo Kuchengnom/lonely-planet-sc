@@ -9,27 +9,56 @@
 
 <style>
   .tourist-tip {
-    background: #FEFCE8;
-    border: 1px dashed #ca8a04;
-    border-radius: 0.5rem;
-    padding: 0.875rem 1rem;
+    background: var(--color-secondary-50);
+    border-left: 4px solid var(--color-secondary-600);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
     display: flex;
-    gap: 0.75rem;
+    gap: var(--space-3);
     align-items: flex-start;
-    margin: 1.5rem 0;
+    margin: var(--space-6) 0;
   }
 
   .tourist-tip__icon {
     font-size: 1.125rem;
     flex-shrink: 0;
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
   }
 
   .tourist-tip__text {
     font-family: var(--font-body);
-    font-size: 0.9375rem;
+    font-size: var(--text-body-sm);
     line-height: var(--line-height-relaxed);
-    color: #78350f;
+    color: var(--color-neutral-700);
     margin: 0;
+  }
+
+  .tourist-tip__text :global(ul) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tourist-tip__text :global(li) {
+    position: relative;
+    padding-left: var(--space-4);
+    margin-bottom: var(--space-3);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .tourist-tip__text :global(li:last-child) {
+    margin-bottom: 0;
+  }
+
+  .tourist-tip__text :global(li::before) {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary-600);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .tourist-tip__text :global(strong) {
+    color: var(--color-secondary-800);
   }
 </style>

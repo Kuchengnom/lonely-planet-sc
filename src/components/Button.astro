@@ -1,0 +1,105 @@
+---
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type Size = 'small' | 'medium' | 'large'
+
+interface Props {
+  variant?: Variant
+  size?: Size
+  icon?: string
+  href?: string
+  onClick?: string
+}
+
+const { variant = 'primary', size = 'medium', icon, href, onClick } = Astro.props
+
+const sizeConfig = {
+  small: { padding: 'var(--space-2) var(--space-4)', fontSize: 'var(--text-body-sm)' },
+  medium: { padding: 'var(--space-3) var(--space-6)', fontSize: 'var(--text-body-md)' },
+  large: { padding: 'var(--space-4) var(--space-8)', fontSize: 'var(--text-body-lg)' }
+}
+
+const variantStyles: Record<Variant, string> = {
+  primary: 'background: var(--color-primary-600); color: var(--color-white); border: none;',
+  secondary: 'background: var(--color-secondary-600); color: var(--color-white); border: none;',
+  outline: 'background: transparent; color: var(--color-primary-600); border: 2px solid var(--color-primary-600);',
+  ghost: 'background: transparent; color: var(--color-primary-600); border: none;'
+}
+
+const hoverStyles: Record<Variant, string> = {
+  primary: 'background: var(--color-primary-700);',
+  secondary: 'background: var(--color-secondary-700);',
+  outline: 'background: var(--color-primary-50);',
+  ghost: 'background: var(--color-primary-50);'
+}
+---
+
+{href ? (
+  <a
+    href={href}
+    class={`button button--${variant} button--${size}`}
+    style={`${sizeConfig[size].padding}; font-size: ${sizeConfig[size].fontSize}; ${variantStyles[variant]}`}
+  >
+    {icon && <span class="button__icon" aria-hidden="true">{icon}</span>}
+    <span class="button__text"><slot /></span>
+  </a>
+) : (
+  <button
+    type="button"
+    class={`button button--${variant} button--${size}`}
+    style={`${sizeConfig[size].padding}; font-size: ${sizeConfig[size].fontSize}; ${variantStyles[variant]}`}
+    {...onClick && { onClick }}
+  >
+    {icon && <span class="button__icon" aria-hidden="true">{icon}</span>}
+    <span class="button__text"><slot /></span>
+  </button>
+)}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-md);
+    transition: all var(--duration-normal) var(--ease-out);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .button:active {
+    transform: translateY(0);
+  }
+
+  .button--primary:hover {
+    background: var(--color-primary-700);
+  }
+
+  .button--secondary:hover {
+    background: var(--color-secondary-700);
+  }
+
+  .button--outline:hover {
+    background: var(--color-primary-50);
+  }
+
+  .button--ghost:hover {
+    background: var(--color-primary-50);
+  }
+
+  .button__icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    line-height: 1;
+  }
+
+  .button__text {
+    line-height: 1;
+  }
+</style>

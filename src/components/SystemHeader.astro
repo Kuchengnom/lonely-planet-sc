@@ -13,6 +13,7 @@ interface Props {
 const { system, planet, region, title, type } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const logoUrl = `${base}logo.svg`;
 
 type Crumb = { label: string; href: string | null };
 
@@ -50,6 +51,9 @@ const crumbs: Crumb[] = [
 <header class="system-header">
   <div class="container mx-auto px-6">
     <div class="system-header__inner">
+      <a href={base} class="system-header__logo-link">
+        <img src={logoUrl} alt="Lonely Planet" class="system-header__logo" />
+      </a>
       <div class="system-header__left">
         <span class="system-header__edition">{system} Edition</span>
         <Breadcrumb crumbs={crumbs} title={title} />
@@ -73,6 +77,21 @@ const crumbs: Crumb[] = [
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+  }
+
+  .system-header__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .system-header__logo {
+    height: 28px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
   }
 
   .system-header__left {
