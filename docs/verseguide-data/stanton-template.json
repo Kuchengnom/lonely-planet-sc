@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source": "verseguide.com",
+    "lastUpdated": "2025-12-09",
+    "system": "STANTON"
+  },
+  "system": {
+    "name": "Stanton System (UEE)",
+    "type": "Main Sequence-Dwarf-G Star",
+    "description": "While the UEE still controls the rights to the system overall, the four planets themselves were sold by the government to four megacorporations making them the only privately-owned worlds in the Empire. Though subject to the UEE's Common Laws and standard penal code, the UEE does not police the region. Instead, private planetary security teams enforce the local law.",
+    "fromVerseGuide": true
+  },
+  "planets": [
+    {
+      "id": "HURSTON",
+      "name": "Hurston",
+      "corporation": "Hurston Dynamics",
+      "type": "Terrestrial",
+      "description": "Industrial mining world, heavily polluted with strip mining operations and corporate security.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "lorville",
+          "name": "Lorville",
+          "type": "city",
+          "category": "urban-sight",
+          "description": "Corporate headquarters and main civilian settlement on Hurston.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full",
+          "image": {
+            "url": "https://verseguide.com/images/lorville.jpg",
+            "attribution": "Image courtesy of VerseGuide",
+            "alt": "Lorville skyline from VerseGuide"
+          },
+          "navigation": {
+            "landingZones": ["Lorville Aerodrome"],
+            "quantumRoutes": ["Area18", "New Babbage", "Orison"],
+            "fromVerseGuide": true
+          }
+        }
+      ]
+    }
+  ],
+  "stations": [
+    {
+      "id": "crusader-orison",
+      "name": "Orison",
+      "type": "orbital-station",
+      "parentPlanet": "CRUSADER",
+      "description": "Floating city in Crusader's upper atmosphere, home to Crusader Industries.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    }
+  ],
+  "navigation": {
+    "jumpPoints": [
+      {
+        "from": "STANTON",
+        "to": "TERRA",
+        "name": "Stanton-Terra Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "STANTON", 
+        "to": "PYRO",
+        "name": "Stanton-Pyro Jump Point",
+        "fromVerseGuide": true
+      }
+    ],
+    "tradeRoutes": [
+      {
+        "from": "LORVILLE",
+        "to": "AREA18",
+        "duration": "15 minutes",
+        "hazards": null,
+        "fromVerseGuide": true
+      }
+    ]
+  }
+}

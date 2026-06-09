@@ -1,0 +1,150 @@
+---
+interface Props {
+  x: number
+  y: number
+  z: number
+  showAttribution?: boolean
+  showPrecision?: boolean
+}
+
+const { 
+  x, 
+  y, 
+  z, 
+  showAttribution = true,
+  showPrecision = false 
+} = Astro.props
+
+// Format coordinate based on precision preference
+const formatCoord = (value: number) => {
+  return showPrecision ? value.toFixed(3) : Math.round(value * 100) / 100
+}
+---
+
+<div class="coordinate-display">
+  <div class="coordinate-display__header">
+    <span class="coordinate-display__icon" aria-hidden="true">📍</span>
+    <h4 class="coordinate-display__title">Location Coordinates</h4>
+  </div>
+  
+  <div class="coordinate-display__values">
+    <div class="coordinate-display__coord">
+      <span class="coordinate-display__label">X</span>
+      <span class="coordinate-display__value" aria-label={`X coordinate ${formatCoord(x)}`}>
+        {formatCoord(x)}
+      </span>
+    </div>
+    <div class="coordinate-display__coord">
+      <span class="coordinate-display__label">Y</span>
+      <span class="coordinate-display__value" aria-label={`Y coordinate ${formatCoord(y)}`}>
+        {formatCoord(y)}
+      </span>
+    </div>
+    <div class="coordinate-display__coord">
+      <span class="coordinate-display__label">Z</span>
+      <span class="coordinate-display__value" aria-label={`Z coordinate ${formatCoord(z)}`}>
+        {formatCoord(z)}
+      </span>
+    </div>
+  </div>
+
+  {showAttribution && (
+    <div class="coordinate-display__attribution">
+      <TextAttribution dataType="coordinates" showIcon={true} />
+    </div>
+  )}
+</div>
+
+<style>
+  .coordinate-display {
+    background: var(--color-surface-paper);
+    border-left: 4px solid var(--color-primary-600);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+    font-family: var(--font-body);
+  }
+
+  .coordinate-display__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .coordinate-display__icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .coordinate-display__title {
+    font-family: var(--font-display);
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    text-transform: uppercase;
+    color: var(--color-neutral-600);
+    margin: 0;
+  }
+
+  .coordinate-display__values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .coordinate-display__coord {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .coordinate-display__label {
+    font-family: var(--font-display);
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-500);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+  }
+
+  .coordinate-display__value {
+    font-family: var(--font-mono);
+    font-size: var(--text-body-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-neutral-900);
+    text-align: center;
+    background: var(--color-white);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  .coordinate-display__attribution {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .coordinate-display__values {
+      gap: var(--space-2);
+    }
+
+    .coordinate-display__coord {
+      min-width: 0;
+    }
+
+    .coordinate-display__value {
+      padding: var(--space-1-5) var(--space-2);
+      font-size: var(--text-body-sm);
+    }
+  }
+</style>
+
+<style is:global>
+  @import '../components/TextAttribution.astro';
+</style>

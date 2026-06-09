@@ -1,0 +1,108 @@
+---
+interface Props {
+  imageSource: string
+  locationName: string
+  imageUrl?: string
+  showOnHover?: boolean
+}
+
+const { 
+  imageSource, 
+  locationName, 
+  imageUrl, 
+  showOnHover = true 
+} = Astro.props
+
+const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/')
+---
+
+<div class={`image-attribution ${showOnHover ? 'image-attribution--hover' : ''}`}>
+  <a 
+    href="https://verseguide.com" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="image-attribution__link"
+    title="View on VerseGuide"
+  >
+    <span class="image-attribution__text">
+      <span class="image-attribution__prefix" aria-hidden="true">📷</span>
+      Photo by <strong>VerseGuide</strong>
+    </span>
+    <span class="image-attribution__arrow" aria-hidden="true">→</span>
+  </a>
+</div>
+
+<style>
+  .image-attribution {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: 10;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .image-attribution--hover {
+    opacity: 0;
+  }
+
+  .image-attribution--hover:hover {
+    opacity: 1;
+  }
+
+  .image-attribution__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--color-white);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-medium);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .image-attribution__link:hover {
+    background: rgba(0, 0, 0, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .image-attribution__text {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1-5);
+  }
+
+  .image-attribution__prefix {
+    font-size: 1em;
+    line-height: 1;
+  }
+
+  .image-attribution__arrow {
+    font-size: 0.875em;
+    opacity: 0.7;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .image-attribution__link:hover .image-attribution__arrow {
+    transform: translateX(2px);
+    opacity: 1;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .image-attribution__link {
+      padding: var(--space-1-5) var(--space-2);
+      font-size: var(--text-body-xs);
+    }
+
+    .image-attribution__prefix {
+      display: none;
+    }
+  }
+</style>

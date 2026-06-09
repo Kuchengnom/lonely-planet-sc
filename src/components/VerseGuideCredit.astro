@@ -1,0 +1,122 @@
+---
+
+<aside class="verseguide-credit">
+  <div class="verseguide-credit__header">
+    <span class="verseguide-credit__logo" aria-hidden="true">🚀</span>
+    <h3 class="verseguide-credit__title">Content Enhanced</h3>
+  </div>
+  
+  <p class="verseguide-credit__description">
+    This guide is enhanced with <a href="https://verseguide.com" target="_blank" rel="noopener noreferrer" class="verseguide-credit__link">VerseGuide</a>, 
+    providing detailed location data, coordinates, and navigation information throughout the Star Citizen universe.
+  </p>
+
+  <div class="verseguide-credit__features">
+    <div class="verseguide-credit__feature">
+      <span class="verseguide-credit__feature-icon" aria-hidden="true">📍</span>
+      <span class="verseguide-credit__feature-text">Precise coordinates</span>
+    </div>
+    <div class="verseguide-credit__feature">
+      <span class="verseguide-credit__feature-icon" aria-hidden="true">🧭</span>
+      <span class="verseguide-credit__feature-text">Optimized flight paths</span>
+    </div>
+    <div class="verseguide-credit__feature">
+      <span class="verseguide-credit__feature-icon" aria-hidden="true">📸</span>
+      <span class="verseguide-credit__feature-text">Location photography</span>
+    </div>
+  </div>
+
+  <p class="verseguide-credit__disclaimer">
+    VerseGuide is an unofficial Star Citizen resource. All location images and coordinates are provided for reference purposes.
+  </p>
+</aside>
+
+<style>
+  .verseguide-credit {
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-8) 0;
+    font-family: var(--font-body);
+  }
+
+  .verseguide-credit__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .verseguide-credit__logo {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .verseguide-credit__title {
+    font-family: var(--font-display);
+    font-size: var(--text-heading-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-900);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .verseguide-credit__description {
+    font-size: var(--text-body-sm);
+    color: var(--color-neutral-700);
+    line-height: var(--line-height-relaxed);
+    margin: 0 0 var(--space-4) 0;
+  }
+
+  .verseguide-credit__link {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    border-bottom: 1px solid var(--color-primary-600);
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .verseguide-credit__link:hover {
+    color: var(--color-primary-700);
+    border-bottom-color: var(--color-primary-700);
+  }
+
+  .verseguide-credit__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .verseguide-credit__feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-body-sm);
+    color: var(--color-neutral-600);
+  }
+
+  .verseguide-credit__feature-icon {
+    font-size: 1.1em;
+    line-height: 1;
+  }
+
+  .verseguide-credit__disclaimer {
+    font-size: var(--text-body-xs);
+    color: var(--color-neutral-500);
+    line-height: var(--line-height-snug);
+    margin: 0;
+    font-style: italic;
+    border-top: 1px solid var(--color-neutral-200);
+    padding-top: var(--space-3);
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .verseguide-credit__features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
