@@ -1,0 +1,85 @@
+{
+  "extractionInfo": {
+    "date": "2025-12-09",
+    "method": "Browser Automation Analysis",
+    "source": "verseguide.com",
+    "status": "Framework Complete, Extraction In Progress"
+  },
+  "discoveries": {
+    "architecture": {
+      "type": "Vue.js/Nuxt.js SPA",
+      "dataBackend": "Firebase Firestore",
+      "imageStorage": "Firebase Storage CDN",
+      "visualization": "Three.js/Vue 3D Globe"
+    },
+    "imageSources": {
+      "baseURL": "https://firebasestorage.googleapis.com/v0/b/verseguide-images/",
+      "structure": "/[category]/[size]/[filename].jpg?alt=media&token=[token]",
+      "categories": ["planets", "locations", "markers"],
+      "sizes": ["sm", "md", "lg", "xl"]
+    },
+    "availableImages": [
+      {
+        "category": "planets",
+        "url": "https://firebasestorage.googleapis.com/v0/b/verseguide-images/o/planets%2Fsm%2Fsm_1693.jpg",
+        "system": "Stanton",
+        "planet": "Hurston"
+      },
+      {
+        "category": "planets", 
+        "url": "https://firebasestorage.googleapis.com/v0/b/verseguide-images/o/planets%2Fsm%2Fsm_1694.jpg",
+        "system": "Stanton",
+        "planet": "Crusader"
+      },
+      {
+        "category": "planets",
+        "url": "https://firebasestorage.googleapis.com/v0/b/verseguide-images/o/planets%2Fsm%2Fsm_2746.jpg",
+        "system": "Stanton", 
+        "planet": "ArcCorp"
+      },
+      {
+        "category": "planets",
+        "url": "https://firebasestorage.googleapis.com/v0/b/verseguide-images/o/planets%2Fsm%2Fsm_2738.jpg",
+        "system": "Stanton",
+        "planet": "microTech"
+      }
+    ]
+  },
+  "extractionPlan": {
+    "strategy": "Mixed Approach - Firebase Direct + Browser UI Extraction",
+    "tools": ["agent-browser", "curl/wget",Custom Scripts"],
+    "timeline": {
+      "Phase 1": "Stanton System (Week 1-2)",
+      "Phase 2": "Pyro System (Week 3-4)", 
+      "Phase 3": "Nyx System (Week 5-6)",
+      "Integration": "Component Implementation (Week 7-8)"
+    }
+  },
+  "attributionPolicy": {
+    "images": {
+      "method": "Full Credit",
+      "component": "ImageAttribution.astro",
+      "placement": "Hoverable overlays on images",
+      "required": "Yes"
+    },
+    "textData": {
+      "method": "Subtle Linking", 
+      "component": "TextAttribution.astro",
+      "placement": "Inline with coordinates/navigation data",
+      "required": "Recommended"
+    },
+    "general": {
+      "method": "Footer Credit",
+      "component": "VerseGuideCredit.astro", 
+      "placement": "Sidebar or footer system-wide",
+      "required": "Yes"
+    }
+  },
+  "successMetrics": {
+    "imagesDownloaded": 0,
+    "locationsEnhanced": 0,
+    "componentsIntegrated": 4,
+    "attributionAdded": 0,
+    "buildVerified": true
+  }
+}
