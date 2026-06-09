@@ -87,7 +87,7 @@ const POIS = [
         </nav>
 
         <a href={base} class="site-header__logo">
-          <span class="site-header__logo-name">Lonely Planet</span>
+          <img src={`${base}logo.svg`} alt="Lonely Planet" class="site-header__logo-img" />
           <span class="site-header__logo-sub">Star Citizen Edition</span>
         </a>
 
@@ -456,15 +456,12 @@ const POIS = [
     align-items: center;
     text-decoration: none;
     color: inherit;
+    gap: 1px;
   }
-  .site-header__logo-name {
-    font-family: var(--font-display);
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-extrabold);
-    letter-spacing: var(--letter-spacing-tight);
-    text-transform: uppercase;
-    color: var(--color-neutral-900);
-    line-height: 1;
+  .site-header__logo-img {
+    height: 32px;
+    width: auto;
+    display: block;
   }
   .site-header__logo-sub {
     font-family: var(--font-display);
@@ -473,7 +470,6 @@ const POIS = [
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--color-neutral-500);
-    margin-top: 2px;
   }
 
   /* ── Hero ──────────────────────────────────────────── */
@@ -651,6 +647,7 @@ const POIS = [
 
   /* ── Edition cards (unchanged from original) ───────── */
   .editions { padding: var(--space-16) 0; }
+  .editions .container { max-width: var(--container-2xl); }
 
   .editions-grid {
     display: grid;
