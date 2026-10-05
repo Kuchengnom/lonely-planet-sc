@@ -11,3 +11,6 @@ dist/
 inbox/
 *.png
 *.zip
+
+# Old React design system prototype (converted to Astro)
+"Design System for Travel Blog/"

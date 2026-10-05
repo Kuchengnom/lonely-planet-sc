@@ -8,5 +8,11 @@ export default defineConfig({
   integrations: [mdx()],
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@components': '/src/components',
+        '@styles': '/src/styles',
+      },
+    },
   },
 });

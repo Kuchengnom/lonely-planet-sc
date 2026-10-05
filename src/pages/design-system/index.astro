@@ -1,0 +1,1291 @@
+---
+import DesignSystemNav from '@components/DesignSystemNav.astro';
+
+const sections = [
+  { id: 'colors', label: 'Colors' },
+  { id: 'typography', label: 'Typography' },
+  { id: 'spacing', label: 'Spacing' },
+  { id: 'badges', label: 'Badges' },
+  { id: 'cards', label: 'Cards' },
+  { id: 'tips', label: 'Tips & Notes' },
+  { id: 'images', label: 'Images' },
+  { id: 'embeds', label: 'Embeds' },
+  { id: 'layout', label: 'Layout' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Lonely Planet: Star Citizen</title>
+  </head>
+  <body class="bg-[var(--color-neutral-50)] text-[var(--color-neutral-800)] font-body">
+    <div class="ds-wrapper">
+      <DesignSystemNav sections={sections} />
+      <main class="ds-main">
+        <div class="ds-hero">
+          <h1 class="ds-hero__title">Design System</h1>
+          <p class="ds-hero__subtitle">Lonely Planet: Star Citizen — Component library &amp; visual reference</p>
+        </div>
+
+        <!-- ===================== COLORS ===================== -->
+        <section id="colors" class="ds-section">
+          <h2 class="ds-section__title">Color System</h2>
+          <p class="ds-section__intro">All colors are CSS custom properties defined in <code class="ds-code">design-system.css</code>. Primary palette is Stanton Cobalt, secondary is Pyro Magma, with six cultural accent colors.</p>
+
+          <h3 class="ds-subtitle">Primary — Stanton Cobalt</h3>
+          <div class="ds-color-grid">
+            {[
+              { v: '--color-primary-900', c: '#09142d', l: 0 },
+              { v: '--color-primary-800', c: '#10204c', l: 1 },
+              { v: '--color-primary-700', c: '#172d6b', l: 2 },
+              { v: '--color-primary-600', c: '#1e3a8a', l: 3 },
+              { v: '--color-primary-500', c: '#2d5fab', l: 4 },
+              { v: '--color-primary-400', c: '#557fc3', l: 5 },
+              { v: '--color-primary-300', c: '#7f9fd2', l: 6 },
+              { v: '--color-primary-200', c: '#aabfe1', l: 7 },
+              { v: '--color-primary-100', c: '#d4dff0', l: 8 },
+              { v: '--color-primary-50', c: '#eef2f8', l: 9 },
+            ].map((swatch) => (
+              <div class="ds-swatch">
+                <div class="ds-swatch__color" style={`background-color: ${swatch.c};`}></div>
+                <span class="ds-swatch__name">{swatch.v}</span>
+                <span class="ds-swatch__hex">{swatch.c}</span>
+                <span class="ds-swatch__light">L{swatch.l}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 class="ds-subtitle">Secondary — Pyro Magma</h3>
+          <div class="ds-color-grid">
+            {[
+              { v: '--color-secondary-900', c: '#450a0a', l: 0 },
+              { v: '--color-secondary-800', c: '#7f1d1d', l: 1 },
+              { v: '--color-secondary-700', c: '#991b1b', l: 2 },
+              { v: '--color-secondary-600', c: '#b91c1c', l: 3 },
+              { v: '--color-secondary-500', c: '#dc2626', l: 4 },
+              { v: '--color-secondary-400', c: '#ef4444', l: 5 },
+              { v: '--color-secondary-300', c: '#fca5a5', l: 6 },
+              { v: '--color-secondary-200', c: '#fecaca', l: 7 },
+              { v: '--color-secondary-100', c: '#fee2e2', l: 8 },
+              { v: '--color-secondary-50', c: '#fff5f5', l: 9 },
+            ].map((swatch) => (
+              <div class="ds-swatch">
+                <div class="ds-swatch__color" style={`background-color: ${swatch.c};`}></div>
+                <span class="ds-swatch__name">{swatch.v}</span>
+                <span class="ds-swatch__hex">{swatch.c}</span>
+                <span class="ds-swatch__light">L{swatch.l}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 class="ds-subtitle">Cultural Accents</h3>
+          <div class="ds-color-grid">
+            {[
+              { v: '--color-accent-coral', c: '#ff6b6b' },
+              { v: '--color-accent-emerald', c: '#1abc9c' },
+              { v: '--color-accent-terracotta', c: '#c0504d' },
+              { v: '--color-accent-sage', c: '#95a57c' },
+              { v: '--color-accent-sand', c: '#d4a574' },
+              { v: '--color-accent-lavender', c: '#9b59b6' },
+            ].map((acc) => (
+              <div class="ds-swatch ds-swatch--accent">
+                <div class="ds-swatch__color" style={`background-color: ${acc.c};`}></div>
+                <span class="ds-swatch__name">{acc.v}</span>
+                <span class="ds-swatch__hex">{acc.c}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 class="ds-subtitle">Neutrals &amp; Semantic</h3>
+          <div class="ds-color-grid">
+            {[
+              { v: '--color-neutral-900', c: '#1a1a1a' },
+              { v: '--color-neutral-800', c: '#2d2d2d' },
+              { v: '--color-neutral-700', c: '#4a4a4a' },
+              { v: '--color-neutral-600', c: '#6b6b6b' },
+              { v: '--color-neutral-500', c: '#8c8c8c' },
+              { v: '--color-neutral-400', c: '#adadad' },
+              { v: '--color-neutral-300', c: '#d1d1d1' },
+              { v: '--color-neutral-200', c: '#e8e8e8' },
+              { v: '--color-neutral-100', c: '#f5f5f5' },
+              { v: '--color-neutral-50', c: '#fafafa' },
+              { v: '--color-white', c: '#ffffff' },
+              { v: '--color-surface-paper', c: '#E5E2D9' },
+              { v: '--color-success', c: '#27ae60' },
+              { v: '--color-warning', c: '#b91c1c' },
+              { v: '--color-error', c: '#b91c1c' },
+              { v: '--color-info', c: '#1e3a8a' },
+            ].map((n) => (
+              <div class="ds-swatch">
+                <div class="ds-swatch__color" style={`background-color: ${n.c}; ${n.c === '#ffffff' ? 'border: 1px solid #e5e7eb;' : ''}`}></div>
+                <span class="ds-swatch__name">{n.v}</span>
+                <span class="ds-swatch__hex">{n.c}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- ===================== TYPOGRAPHY ===================== -->
+        <section id="typography" class="ds-section">
+          <h2 class="ds-section__title">Typography</h2>
+          <p class="ds-section__intro">Two-font system: <strong class="ds-font-sample ds-font-display">Archivo Narrow</strong> for display/headings, <strong class="ds-font-sample ds-font-body">Merriweather</strong> for body text. Monospace is JetBrains Mono for code.</p>
+
+          <h3 class="ds-subtitle">Type Scale</h3>
+          <div class="ds-type-scale">
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-display-2xl · 4.5rem (72px)</span>
+              <span class="ds-type-sample display-2xl">Display XL</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-display-xl · 3.75rem (60px)</span>
+              <span class="ds-type-sample display-xl">Display Large</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-display-lg · 3rem (48px)</span>
+              <span class="ds-type-sample display-lg">Display Medium</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-heading-xl · 2.25rem (36px)</span>
+              <span class="ds-type-sample heading-xl">Heading XL</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-heading-lg · 1.875rem (30px)</span>
+              <span class="ds-type-sample heading-lg">Heading Large</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-heading-md · 1.5rem (24px)</span>
+              <span class="ds-type-sample heading-md">Heading Medium</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-heading-sm · 1.25rem (20px)</span>
+              <span class="ds-type-sample heading-sm">Heading Small</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-body-xl · 1.25rem (20px)</span>
+              <span class="ds-type-sample body-text">Body Extra Large</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-body-lg · 1.125rem (18px)</span>
+              <span class="ds-type-sample body-text">Body Large</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-body-md · 1rem (16px)</span>
+              <span class="ds-type-sample body-text">Body Medium</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-body-sm · 0.875rem (14px)</span>
+              <span class="ds-type-sample body-text">Body Small</span>
+            </div>
+            <div class="ds-type-row">
+              <span class="ds-type-meta">--text-body-xs · 0.75rem (12px)</span>
+              <span class="ds-type-sample body-text">Body X-Small</span>
+            </div>
+          </div>
+
+          <h3 class="ds-subtitle">Weights</h3>
+          <div class="ds-type-samples">
+            <p style={`font-weight: 300;`}>Light (300)</p>
+            <p style={`font-weight: 400;`}>Normal (400)</p>
+            <p style={`font-weight: 500;`}>Medium (500)</p>
+            <p style={`font-weight: 600;`}>Semibold (600)</p>
+            <p style={`font-weight: 700;`}>Bold (700)</p>
+            <p style={`font-weight: 800;`}>Extrabold (800)</p>
+          </div>
+
+          <h3 class="ds-subtitle">Line Heights</h3>
+          <div class="ds-type-samples">
+            <p style={`line-height: 1.2;`}>Tight (1.2)</p>
+            <p style={`line-height: 1.375;`}>Snug (1.375)</p>
+            <p style={`line-height: 1.5;`}>Normal (1.5)</p>
+            <p style={`line-height: 1.625;`}>Relaxed (1.625)</p>
+            <p style={`line-height: 2;`}>Loose (2)</p>
+          </div>
+        </section>
+
+        <!-- ===================== SPACING ===================== -->
+        <section id="spacing" class="ds-section">
+          <h2 class="ds-section__title">Spacing System</h2>
+          <p class="ds-section__intro">4px baseline grid. All spacing tokens are CSS custom properties from <code class="ds-code">--space-0</code> (0px) to <code class="ds-code">--space-32</code> (128px).</p>
+          <div class="ds-spacing-grid">
+            {[
+              { v: '--space-0', px: 0 },
+              { v: '--space-1', px: 4 },
+              { v: '--space-2', px: 8 },
+              { v: '--space-3', px: 12 },
+              { v: '--space-4', px: 16 },
+              { v: '--space-5', px: 20 },
+              { v: '--space-6', px: 24 },
+              { v: '--space-8', px: 32 },
+              { v: '--space-10', px: 40 },
+              { v: '--space-12', px: 48 },
+              { v: '--space-16', px: 64 },
+              { v: '--space-20', px: 80 },
+              { v: '--space-24', px: 96 },
+              { v: '--space-32', px: 128 },
+            ].map((s) => (
+              <div class="ds-spacing-item">
+                <div class="ds-spacing-bar" style={`width: ${Math.max(s.px / 4, 2)}px; height: 24px; background: var(--color-primary-500); border-radius: 2px;`}></div>
+                <span class="ds-spacing-name">{s.v}</span>
+                <span class="ds-spacing-px">{s.px}px</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- ===================== BADGES ===================== -->
+        <section id="badges" class="ds-section">
+          <h2 class="ds-section__title">Badges &amp; Labels</h2>
+          <p class="ds-section__intro">Reusable badge components with semantic color mapping. Used throughout the site for POI types, activity categories, and difficulty levels.</p>
+
+          <h3 class="ds-subtitle">POI Badges</h3>
+          <div class="ds-badge-grid">
+            <span class="poi-badge" style="background-color: #059669;">🏔️ Natural Wonder</span>
+            <span class="poi-badge" style="background-color: #7c3aed;">🎄 Easter Egg</span>
+            <span class="poi-badge" style="background-color: var(--color-primary-600);">🏢 Urban Sight</span>
+            <span class="poi-badge" style="background-color: #d97706;">🛸 Technical</span>
+            <span class="poi-badge" style="background-color: #db2777;">📸 Photo Spot</span>
+          </div>
+
+          <h3 class="ds-subtitle">Category Badges</h3>
+          <div class="ds-badge-grid">
+            <span class="ds-category-badge" style="color: #f97316; background-color: #ffd7b5;">⛏️ Mining</span>
+            <span class="ds-category-badge" style="color: #dc2626; background-color: #fee2e2;">🎯 Hunting</span>
+            <span class="ds-category-badge" style="color: #2563eb; background-color: #dbeafe;">🔭 Exploration</span>
+            <span class="ds-category-badge" style="color: #15803d; background-color: #dcfce7;">📋 Mission</span>
+          </div>
+
+          <h3 class="ds-subtitle">Difficulty Colors</h3>
+          <div class="ds-badge-grid">
+            <span style="color: #059669; font-weight: 700; font-family: var(--font-body);">● Easy</span>
+            <span style="color: #d97706; font-weight: 700; font-family: var(--font-body);">● Moderate</span>
+            <span style="color: #dc2626; font-weight: 700; font-family: var(--font-body);">● Hard</span>
+            <span style="color: #7c3aed; font-weight: 700; font-family: var(--font-body);">● Extreme</span>
+          </div>
+
+          <h3 class="ds-subtitle">Category Pills (Attraction Cards)</h3>
+          <div class="ds-badge-grid">
+            <span class="ds-category-pill" style="background: #059669;">Natural Wonder</span>
+            <span class="ds-category-pill" style="background: #7c3aed;">Hidden Find</span>
+            <span class="ds-category-pill" style="background: var(--color-primary-600);">Settlement</span>
+            <span class="ds-category-pill" style="background: #d97706;">Getting Around</span>
+            <span class="ds-category-pill" style="background: #0891b2;">Urban Sight</span>
+          </div>
+        </section>
+
+        <!-- ===================== CARDS ===================== -->
+        <section id="cards" class="ds-section">
+          <h2 class="ds-section__title">Cards</h2>
+          <p class="ds-section__intro">Two card patterns: destination cards (grid layout with thumbnail) and attraction entry cards (horizontal with category badge).</p>
+
+          <h3 class="ds-subtitle">Destination / Attraction Card</h3>
+          <div class="ds-card ds-card--destination">
+            <div class="ds-card__thumb ds-card__thumb--landscape"></div>
+            <div class="ds-card__body">
+              <span class="ds-card__category" style="background: var(--color-primary-600);">Settlement</span>
+              <h3 class="ds-card__title">New Babbage, Crusader</h3>
+              <p class="ds-card__text">The capital of Crusader and a hub for corporate headquarters, New Babbage is a sprawling metropolis with towering arcologies.</p>
+            </div>
+          </div>
+
+          <h3 class="ds-subtitle">Attraction Entry Card</h3>
+          <div class="ds-card ds-card--attraction">
+            <div class="ds-card__attraction-row">
+              <div class="ds-card__attraction-thumb"></div>
+              <div class="ds-card__attraction-body">
+                <div class="ds-card__attraction-header">
+                  <span class="ds-card__attraction-number">1</span>
+                  <h4 class="ds-card__attraction-title">The Maelstrom</h4>
+                  <span class="ds-card__attraction-cat" style="background: #059669;">Natural Wonder</span>
+                </div>
+                <p class="ds-card__attraction-text">A massive atmospheric anomaly visible from orbit, the Maelstrom is one of Stanton's most dramatic weather phenomena.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="ds-subtitle">Activity Card</h3>
+          <div class="ds-card ds-card--activity">
+            <span class="ds-card__activity-badge" style="color: #dc2626; background-color: #fee2e2;">🎯 Hunting</span>
+            <h3 class="ds-card__activity-title">Scarab Hunt at The Maelstrom</h3>
+            <p class="ds-card__activity-text">Hunt for Scarabs — rare creatures that spawn in high numbers near The Maelstrom during atmospheric turbulence events.</p>
+          </div>
+
+          <h3 class="ds-subtitle">Vital Stats Sidebar Card</h3>
+          <div class="ds-card ds-card--vitals">
+            <h3 class="ds-card__vitals-title">Vital Statistics</h3>
+            <ul class="ds-card__vitals-list">
+              <li><span class="ds-card__vital-label">Best For</span><span class="ds-card__vital-value">Exploration &amp; Mining</span></li>
+              <li><span class="ds-card__vital-label">Climate</span><span class="ds-card__vital-value">Continental</span></li>
+              <li><span class="ds-card__vital-label">Hub</span><span class="ds-card__vital-value">New Babbage (OM-1)</span></li>
+              <li><span class="ds-card__vital-label">Currency</span><span class="ds-card__vital-value">Credits (CR)</span></li>
+              <li><span class="ds-card__vital-label">Ship Class</span><span class="ds-card__vital-value">Freighter+</span></li>
+            </ul>
+          </div>
+
+          <h3 class="ds-subtitle">Getting There Card</h3>
+          <div class="ds-card ds-card--getting-there">
+            <h3 class="ds-card__gt-label">Getting There</h3>
+            <p class="ds-card__gt-body">Pilot from any Stanton system hub. Most common route is via Yela OM-1 with a 1.2LY jump to Crusader.</p>
+          </div>
+        </section>
+
+        <!-- ===================== TIPS & NOTES ===================== -->
+        <section id="tips" class="ds-section">
+          <h2 class="ds-section__title">Tips &amp; Notes</h2>
+          <p class="ds-section__intro">Two semantic callout patterns: yellow "Tourist Tip" for advice and green "Explorer Note" for curated field notes.</p>
+
+          <h3 class="ds-subtitle">Tourist Tip</h3>
+          <div class="tourist-tip">
+            <span class="tourist-tip__icon" aria-hidden="true">💡</span>
+            <p class="tourist-tip__text">Always check the weather report before attempting to dock at Area18 during storm season. Winds can exceed landing thresholds for small freighters.</p>
+          </div>
+
+          <h3 class="ds-subtitle">Explorer Note</h3>
+          <div class="explorer-note">
+            <div class="explorer-note__header">
+              <svg class="explorer-note__star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+              Explorer Note
+            </div>
+            <blockquote class="explorer-note__quote">"I once spent three real-world days trying to find the right frequency to crack open a Pyro mineral deposit. It was a single, unmarked rock in an asteroid field. Worth it."</blockquote>
+            <cite class="explorer-note__author">— Void Walker Joe</cite>
+          </div>
+        </section>
+
+        <!-- ===================== IMAGES ===================== -->
+        <section id="images" class="ds-section">
+          <h2 class="ds-section__title">Image Treatments</h2>
+          <p class="ds-section__intro">Standardized aspect ratios and overlay treatments for consistent visual hierarchy across the site.</p>
+
+          <h3 class="ds-subtitle">Aspect Ratios</h3>
+          <div class="ds-aspect-grid">
+            <div class="ds-aspect-item">
+              <div class="ds-aspect-box ds-aspect-landscape"></div>
+              <span class="ds-aspect-label">Landscape (16:9)</span>
+            </div>
+            <div class="ds-aspect-item">
+              <div class="ds-aspect-box ds-aspect-portrait"></div>
+              <span class="ds-aspect-label">Portrait (3:4)</span>
+            </div>
+            <div class="ds-aspect-item">
+              <div class="ds-aspect-box ds-aspect-square"></div>
+              <span class="ds-aspect-label">Square (1:1)</span>
+            </div>
+            <div class="ds-aspect-item">
+              <div class="ds-aspect-box ds-aspect-panorama"></div>
+              <span class="ds-aspect-label">Panorama (21:9)</span>
+            </div>
+          </div>
+
+          <h3 class="ds-subtitle">Hero Overlay</h3>
+          <div class="ds-hero-preview">
+            <div class="ds-hero-preview__image"></div>
+            <div class="ds-hero-preview__overlay"></div>
+            <div class="ds-hero-preview__text">
+              <h3 class="ds-hero-preview__title">Benny Henge</h3>
+              <p class="ds-hero-preview__subtitle">Crusader · Stanton</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== EMBEDS ===================== -->
+        <section id="embeds" class="ds-section">
+          <h2 class="ds-section__title">Embeds</h2>
+          <p class="ds-section__intro">YouTube embed uses <code class="ds-code">youtube-nocookie.com</code> (privacy-enhanced), lazy-loaded thumbnail, and responsive 16:9 container.</p>
+
+          <h3 class="ds-subtitle">YouTube Embed</h3>
+          <div class="ds-embed-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/uXtMWLRBOsY?rel=0" title="Benny Henge — Official Star Citizen Instagram Cinematic" allowfullscreen loading="lazy" style="border: none; border-radius: var(--radius-lg, 0.75rem);"></iframe>
+          </div>
+        </section>
+
+        <!-- ===================== LAYOUT ===================== -->
+        <section id="layout" class="ds-section">
+          <h2 class="ds-section__title">Layout &amp; Containers</h2>
+          <p class="ds-section__intro">Container breakpoints and grid patterns used across the site.</p>
+
+          <h3 class="ds-subtitle">Container Breakpoints</h3>
+          <div class="ds-container-showcase">
+            <div class="ds-container-example ds-container-sm">
+              <span class="ds-container-label">SM: 640px</span>
+            </div>
+            <div class="ds-container-example ds-container-md">
+              <span class="ds-container-label">MD: 768px</span>
+            </div>
+            <div class="ds-container-example ds-container-lg">
+              <span class="ds-container-label">LG: 1024px</span>
+            </div>
+            <div class="ds-container-example ds-container-xl">
+              <span class="ds-container-label">XL: 1280px</span>
+            </div>
+            <div class="ds-container-example ds-container-2xl">
+              <span class="ds-container-label">2XL: 1536px</span>
+            </div>
+          </div>
+
+          <h3 class="ds-subtitle">Page Grid (2fr + 1fr)</h3>
+          <div class="ds-grid-preview">
+            <div class="ds-grid-main">
+              <div class="ds-grid-block">Main Content (2fr)</div>
+            </div>
+            <div class="ds-grid-sidebar">
+              <div class="ds-grid-block ds-grid-block--sidebar">Sidebar (1fr)</div>
+            </div>
+          </div>
+
+          <h3 class="ds-subtitle">Shadows</h3>
+          <div class="ds-shadow-grid">
+            <div class="ds-shadow-item" style="box-shadow: var(--shadow-xs);">XS (0 1px 2px)</div>
+            <div class="ds-shadow-item" style="box-shadow: var(--shadow-sm);">SM (0 1px 3px)</div>
+            <div class="ds-shadow-item" style="box-shadow: var(--shadow-md);">MD (0 4px 6px)</div>
+            <div class="ds-shadow-item" style="box-shadow: var(--shadow-lg);">LG (0 10px 15px)</div>
+            <div class="ds-shadow-item" style="box-shadow: var(--shadow-xl);">XL (0 20px 25px)</div>
+            <div class="ds-shadow-item" style="box-shadow: var(--shadow-2xl);">2XL (0 25px 50px)</div>
+          </div>
+
+          <h3 class="ds-subtitle">Border Radius</h3>
+          <div class="ds-radius-grid">
+            <div class="ds-radius-item" style="border-radius: var(--radius-none);">None</div>
+            <div class="ds-radius-item" style="border-radius: var(--radius-sm);">SM</div>
+            <div class="ds-radius-item" style="border-radius: var(--radius-md);">MD</div>
+            <div class="ds-radius-item" style="border-radius: var(--radius-lg);">LG</div>
+            <div class="ds-radius-item" style="border-radius: var(--radius-xl);">XL</div>
+            <div class="ds-radius-item" style="border-radius: var(--radius-2xl);">2XL</div>
+            <div class="ds-radius-item" style="border-radius: var(--radius-full);">Full</div>
+          </div>
+
+          <h3 class="ds-subtitle">Z-Index Scale</h3>
+          <div class="ds-zgrid">
+            <div class="ds-zitem">base: 0</div>
+            <div class="ds-zitem">dropdown: 1000</div>
+            <div class="ds-zitem">sticky: 1100</div>
+            <div class="ds-zitem">fixed: 1200</div>
+            <div class="ds-zitem">modal-backdrop: 1300</div>
+            <div class="ds-zitem">modal: 1400</div>
+            <div class="ds-zitem">popover: 1500</div>
+            <div class="ds-zitem">tooltip: 1600</div>
+          </div>
+        </section>
+
+        <footer class="ds-footer">
+          <p>Lonely Planet: Star Citizen — Design System generated from live source. All components are Astro (.astro) files.</p>
+          <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  /* ===== DESIGN SYSTEM PAGE STYLES ===== */
+  .ds-wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar Nav */
+  .ds-wrapper { position: relative; }
+
+  .ds-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: white;
+    border-right: 1px solid var(--color-neutral-200);
+    padding: 1.5rem 0;
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .ds-nav__brand {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-600);
+    padding: 0 1.25rem 1rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+    margin-bottom: 0.75rem;
+  }
+
+  .ds-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0.75rem;
+  }
+
+  .ds-nav__link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-neutral-600);
+    text-decoration: none;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: background 150ms;
+  }
+
+  .ds-nav__link:hover {
+    background: var(--color-primary-50);
+    color: var(--color-primary-700);
+  }
+
+  /* Main Content */
+  .ds-main {
+    margin-left: 220px;
+    flex: 1;
+    padding: 0;
+  }
+
+  .ds-hero {
+    background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-600));
+    color: white;
+    padding: 3rem 3rem 2rem;
+  }
+
+  .ds-hero__title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .ds-hero__subtitle {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* Sections */
+  .ds-section {
+    padding: 2.5rem 3rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .ds-section__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-700);
+    margin: 0 0 0.75rem;
+    padding-top: 1rem;
+  }
+
+  .ds-section__intro {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0 0 1.5rem;
+    max-width: 72ch;
+  }
+
+  .ds-code {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    background: var(--color-neutral-100);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    color: var(--color-primary-700);
+  }
+
+  .ds-subtitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-neutral-800);
+    margin: 2rem 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Color Swatches */
+  .ds-color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-swatch {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid var(--color-neutral-200);
+    background: white;
+  }
+
+  .ds-swatch--accent {
+    border-color: transparent;
+  }
+
+  .ds-swatch__color {
+    height: 64px;
+  }
+
+  .ds-swatch__name {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-neutral-600);
+    padding: 0.375rem 0.5rem 0.125rem;
+    word-break: break-all;
+  }
+
+  .ds-swatch__hex {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-neutral-500);
+    padding: 0 0.5rem 0.375rem;
+  }
+
+  .ds-swatch__light {
+    display: block;
+    font-size: 0.625rem;
+    color: var(--color-neutral-400);
+    padding: 0 0.5rem 0.5rem;
+  }
+
+  /* Typography Scale */
+  .ds-type-scale {
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-neutral-100);
+  }
+
+  .ds-type-meta {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-neutral-400);
+    flex-shrink: 0;
+    width: 200px;
+  }
+
+  .ds-type-sample {
+    font-family: var(--font-display);
+    color: var(--color-neutral-800);
+  }
+
+  .ds-type-samples {
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-type-samples p {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: var(--color-neutral-700);
+    margin: 0.375rem 0;
+  }
+
+  .ds-font-display {
+    font-family: var(--font-display);
+  }
+
+  .ds-font-body {
+    font-family: var(--font-body);
+  }
+
+  /* Spacing */
+  .ds-spacing-grid {
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-spacing-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.25rem 0;
+  }
+
+  .ds-spacing-bar {
+    flex-shrink: 0;
+  }
+
+  .ds-spacing-name {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-neutral-500);
+    width: 140px;
+    flex-shrink: 0;
+  }
+
+  .ds-spacing-px {
+    font-size: 0.75rem;
+    color: var(--color-neutral-600);
+  }
+
+  /* Badges */
+  .ds-badge-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .poi-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  .ds-category-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    display: inline-block;
+    font-family: var(--font-body);
+  }
+
+  .ds-category-pill {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm, 0.25rem);
+    color: white;
+    display: inline-block;
+  }
+
+  /* Cards */
+  .ds-card {
+    border-radius: var(--radius-lg, 0.75rem);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-neutral-200);
+    background: white;
+  }
+
+  .ds-card--destination .ds-card__thumb {
+    height: 120px;
+    background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-500));
+  }
+
+  .ds-card--destination .ds-card__body {
+    padding: 1rem 1.25rem;
+  }
+
+  .ds-card__category {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm, 0.25rem);
+    color: white;
+    display: inline-block;
+  }
+
+  .ds-card__title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  .ds-card__text {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0;
+  }
+
+  /* Attraction Card */
+  .ds-card--attraction .ds-card__attraction-row {
+    display: flex;
+    gap: 0.875rem;
+    padding: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .ds-card__attraction-thumb {
+    width: 72px;
+    height: 60px;
+    background: linear-gradient(135deg, #059669, #10b981);
+    border-radius: var(--radius-sm, 0.25rem);
+    flex-shrink: 0;
+  }
+
+  .ds-card__attraction-number {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #059669;
+    color: white;
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .ds-card__attraction-header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .ds-card__attraction-title {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .ds-card__attraction-cat {
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm, 0.25rem);
+    color: white;
+  }
+
+  .ds-card__attraction-text {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0;
+  }
+
+  /* Activity Card */
+  .ds-card--activity {
+    padding: 1rem 1.25rem;
+  }
+
+  .ds-card__activity-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    display: inline-block;
+    font-family: var(--font-body);
+  }
+
+  .ds-card__activity-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-neutral-900);
+    margin: 0.5rem 0 0.25rem;
+    font-family: Georgia, serif;
+  }
+
+  .ds-card__activity-text {
+    color: var(--color-neutral-700);
+    line-height: 1.6;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+  }
+
+  /* Vitals Card */
+  .ds-card--vitals {
+    background: var(--color-surface-paper);
+    border-left: 4px solid var(--color-primary-600);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .ds-card__vitals-title {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary-600);
+    margin: 0 0 0.875rem;
+  }
+
+  .ds-card__vitals-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ds-card__vitals-list li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  }
+
+  .ds-card__vitals-list li:last-child {
+    border-bottom: none;
+  }
+
+  .ds-card__vital-label {
+    font-family: var(--font-body);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-neutral-500);
+    margin-bottom: 0.125rem;
+  }
+
+  .ds-card__vital-value {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-neutral-800);
+    line-height: 1.4;
+  }
+
+  /* Getting There Card */
+  .ds-card--getting-there {
+    border-radius: var(--radius-md, 0.5rem);
+    padding: 1rem 1.25rem;
+    background: #fffbeb;
+    border-left: 4px solid #d97706;
+  }
+
+  .ds-card__gt-label {
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #92400e;
+    margin: 0 0 0.625rem;
+  }
+
+  .ds-card__gt-body {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0;
+  }
+
+  /* Tourist Tip */
+  .tourist-tip {
+    background: #FEFCE8;
+    border: 1px dashed #ca8a04;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin: 1rem 0;
+  }
+
+  .tourist-tip__icon {
+    font-size: 1.125rem;
+    flex-shrink: 0;
+    line-height: 1.6;
+  }
+
+  .tourist-tip__text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    color: #78350f;
+    margin: 0;
+  }
+
+  /* Explorer Note */
+  .explorer-note {
+    background: #065f46;
+    border-radius: var(--radius-md, 0.5rem);
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .explorer-note__header {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-display);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.75rem;
+  }
+
+  .explorer-note__star {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+  }
+
+  .explorer-note__quote {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-style: italic;
+    line-height: var(--line-height-relaxed);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 0.625rem;
+  }
+
+  .explorer-note__author {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: normal;
+    display: block;
+  }
+
+  /* Aspect Ratios */
+  .ds-aspect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-aspect-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ds-aspect-box {
+    background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-500));
+    border-radius: var(--radius-md, 0.5rem);
+  }
+
+  .ds-aspect-landscape { width: 160px; height: 90px; }
+  .ds-aspect-portrait { width: 90px; height: 120px; }
+  .ds-aspect-square { width: 120px; height: 120px; }
+  .ds-aspect-panorama { width: 160px; height: 68px; }
+
+  .ds-aspect-label {
+    font-size: 0.75rem;
+    color: var(--color-neutral-600);
+  }
+
+  /* Hero Overlay Preview */
+  .ds-hero-preview {
+    position: relative;
+    height: 240px;
+    border-radius: var(--radius-lg, 0.75rem);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-hero-preview__image {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-primary-800), var(--color-primary-500));
+  }
+
+  .ds-hero-preview__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 100%);
+  }
+
+  .ds-hero-preview__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+  }
+
+  .ds-hero-preview__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.25rem;
+    line-height: 1.2;
+  }
+
+  .ds-hero-preview__subtitle {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  /* Embed */
+  .ds-embed-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-embed-container iframe {
+    width: 100%;
+    max-width: 640px;
+    height: 360px;
+    border-radius: var(--radius-lg, 0.75rem);
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Layout Showcase */
+  .ds-container-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-container-example {
+    background: var(--color-primary-100);
+    border: 2px solid var(--color-primary-300);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .ds-container-sm { max-width: 640px; }
+  .ds-container-md { max-width: 768px; }
+  .ds-container-lg { max-width: 1024px; }
+  .ds-container-xl { max-width: 1280px; }
+  .ds-container-2xl { max-width: 1536px; }
+
+  .ds-container-label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-primary-700);
+  }
+
+  .ds-grid-preview {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-grid-block {
+    background: var(--color-primary-100);
+    border: 2px solid var(--color-primary-300);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .ds-grid-block--sidebar {
+    background: var(--color-surface-paper);
+    border-color: var(--color-primary-500);
+  }
+
+  /* Shadows */
+  .ds-shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-shadow-item {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--color-neutral-600);
+  }
+
+  /* Radius */
+  .ds-radius-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-radius-item {
+    background: var(--color-primary-500);
+    color: white;
+    padding: 1rem 1.25rem;
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+  }
+
+  /* Z-Index */
+  .ds-zgrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-zitem {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary-50);
+    border-radius: 0.25rem;
+    color: var(--color-primary-700);
+  }
+
+  /* Footer */
+  .ds-footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--color-neutral-200);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-neutral-500);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .ds-nav {
+      display: none;
+    }
+    .ds-main {
+      margin-left: 0;
+    }
+    .ds-hero, .ds-section, .ds-footer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .ds-type-row {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .ds-type-meta {
+      width: auto;
+    }
+    .ds-grid-preview {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
