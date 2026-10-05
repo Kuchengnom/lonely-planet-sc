@@ -1,6 +1,8 @@
 # Lonely Planet: Star Citizen
 
 > Unofficial travel guides to the 'Verse.
+>
+[🌐 Live Site](https://kuchengnom.github.io/lonely-planet-sc/)
 
 Curated attractions, hidden gems, and essential travel tips for the systems you fly through. Built in the editorial spirit of classic travel writing — for explorers, by explorers.
 
