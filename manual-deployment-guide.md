@@ -1,116 +1,93 @@
 ---
 
-# Manual Deployment Method
+# Deployment Guide — Lonely Planet: Star Citizen
 
-Since the GitHub Actions deployment is having issues, let's use a reliable manual deployment method.
+## 🚀 Deployment Methods
 
-## 🚀 Quick Manual Deployment
+### Primary: GitHub Actions (Recommended)
 
-### Option 1: Using the Deploy Script (Recommended)
+Every push to `main` triggers an automated build and deploy via GitHub Actions.
+Manual triggers are also available.
+
+**Configuration:** `.github/workflows/deploy.yml`
+
+```
+1. Push your changes to main
+2. Actions tab → watch the build
+3. If green → site is live in ~1–2 minutes
+```
+
+To trigger manually: **Actions → Deploy to GitHub Pages → Run workflow**
+
+### Manual Fallback: `deploy.sh`
+
+Use this when you cannot deploy via Actions (CI down, SSH keys unavailable, or
+you want a targeted rebuild without touching `main`).
 
 ```bash
-# Make sure you're on the main branch
-git checkout main
-
-# Run the deployment script
 ./deploy.sh
 ```
 
-This will:
-1. Build the Astro site
-2. Deploy to the `gh-pages` branch using the `gh-pages` package
-3. Push the branch to GitHub
+This builds locally and uses the `gh-pages` npm package to push the `dist/`
+directory to the `gh-pages` branch on GitHub.
 
-### Option 2: Manual Steps
-
-```bash
-# Build the site
-npm run build
-
-# Deploy using gh-pages
-npx gh-pages -d dist -m "Deploy to GitHub Pages"
-```
+---
 
 ## 🔧 GitHub Pages Configuration
 
 1. Go to **Settings → Pages** in your repository
-2. Set **Source** to **Deploy from a branch**  
+2. Set **Source** to **Deploy from a branch**
 3. Select:
    - **Branch**: `gh-pages`
    - **Folder**: `/ (root)`
 4. Click **Save**
 
-## 💡 Why This Works
+This tells GitHub to serve the `gh-pages` branch, which both Actions and the
+manual script deploy to.
 
-The `gh-pages` package:
-- Creates/deletes a `gh-pages` branch
-- Copies the contents of `dist/` to that branch
-- Pushes the branch to GitHub
-- GitHub Pages automatically serves the branch
-
-This method is:
-- ✅ Proven and reliable
-- ✅ No GitHub Actions configuration needed
-- ✅ Full control over when to deploy
-- ✅ Easy to debug if something goes wrong
+---
 
 ## 📊 What Gets Deployed
 
-When you run the deploy script, the `dist/` folder (which is building successfully) gets deployed to a `gh-pages` branch on GitHub. GitHub Pages then serves that branch as your website.
+Both methods build `dist/` from the Astro project and deploy it to the
+`gh-pages` branch. The deployed structure:
 
-**Deployed structure:**
 ```
 dist/
 ├── index.html
 ├── stanton/
+├── pyro/
 ├── images/
 ├── _astro/
 └── _nojekyll
 ```
 
-## 🎯 Step-by-Step Guide
-
-1. **Build locally** (we confirmed this works):
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy to GitHub:**
-   ```bash
-   ./deploy.sh
-   ```
-
-3. **Configure GitHub Pages:**
-   - Settings → Pages → Deploy from branch
-   - Branch: `gh-pages` → `/ (root)`
-
-4. **Check your site:**
-   - Wait 1-2 minutes
-   - Visit: `https://kuchengnom.github.io/lonely-planet-sc/`
+---
 
 ## 🔍 Troubleshooting
 
-### "gh-pages not found"
+### Actions deploy fails
+- Check the **Actions → Runs** tab for red errors
+- Most common: build error (run `npm run build` locally to see the actual error)
+- Fix the error, push to main, the action re-runs automatically
+
+### Manual deploy fails ("gh-pages not found")
 ```bash
 npm install --save-dev gh-pages
 ./deploy.sh
 ```
 
-### "Permission denied"
+### Manual deploy fails ("Permission denied")
 ```bash
 chmod +x deploy.sh
 ```
 
-### Site shows 404
-- Make sure GitHub Pages is set to `gh-pages` branch
-- Wait 1-2 minutes for DNS to update
-- Check the gh-pages branch exists in your repository
-
-### Build fails locally
-- Run `npm run build` first to see the error
-- Fix the error
-- Run deployment again
+### Site shows 404 or is stale
+- Wait 1–2 minutes for GitHub to propagate
+- Hard-refresh your browser (Ctrl+Shift+R / Cmd+Shift+R)
+- Verify the `gh-pages` branch exists: `git ls-remote origin gh-pages`
+- Check Settings → Pages shows `gh-pages` / `/ (root)`
 
 ---
 
-*This manual deployment method is simpler and more reliable than GitHub Actions for your setup.*
+*Primary: GitHub Actions. Fallback: `deploy.sh`. Both deploy to the `gh-pages` branch.*

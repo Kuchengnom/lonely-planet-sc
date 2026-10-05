@@ -1,3 +1,7 @@
+# GitHub Actions — Primary Deployment Method
+# Runs automatically on every push to main, and can be triggered manually.
+# See manual-deployment-guide.md for the manual fallback.
+
 name: Deploy to GitHub Pages
 
 on:

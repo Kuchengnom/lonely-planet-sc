@@ -1,9 +1,14 @@
 #!/bin/bash
 
-# GitHub Pages Deployment Script
-# This script builds the Astro site and deploys it to GitHub Pages using gh-pages
+# Manual Fallback — GitHub Pages Deployment via gh-pages npm package
+#
+# Primary deployment method: GitHub Actions (on every push to main or manual trigger).
+# Use this script ONLY if you cannot deploy via Actions (e.g. SSH keys unavailable,
+# CI is down, or you want a targeted rebuild without touching main).
 
-echo "🚀 Starting GitHub Pages Deployment..."
+set -euo pipefail
+
+echo "🚀 Starting Manual GitHub Pages Deployment (fallback)..."
 
 # Build the site
 echo "📦 Building Astro site..."
@@ -16,7 +21,7 @@ fi
 
 echo "✅ Build successful. Deploying to GitHub Pages..."
 
-# Deploy using gh-pages package
+# Deploy using gh-pages package (creates/updates the gh-pages branch)
 npx gh-pages -d dist -m "Deploy to GitHub Pages $(date +'%Y-%m-%d %H:%M:%S')"
 
 if [ $? -ne 0 ]; then
@@ -24,5 +29,5 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "✅ Deployment successful! Check your GitHub Pages settings to use the gh-pages branch."
+echo "✅ Deployment successful!"
 echo "🌐 Your site should be available at: https://kuchengnom.github.io/lonely-planet-sc/"
