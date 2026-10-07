@@ -1,0 +1,171 @@
+---
+// CSS-only tabbed tour selector.
+// Usage in MDX:
+// <TourTabs system="Stanton" planet="Hurston">
+//   <TourSchedule slot="tab-1" ... />
+//   <TourSchedule slot="tab-2" ... />
+//   <TourSchedule slot="tab-3" ... />
+//   <TourSchedule slot="tab-moon" ... />
+//   <TourSchedule slot="tab-hop" ... />
+// </TourTabs>
+
+interface Props {
+  system: string;
+  planet: string;
+}
+
+const { system, planet } = Astro.props;
+---
+
+<!-- Hidden radio buttons — must be siblings of tabs and panels for CSS sibling selectors -->
+<input type="radio" name="tour-tab" id="tab-1" checked class="tour-radio" />
+<input type="radio" name="tour-tab" id="tab-2" class="tour-radio" />
+<input type="radio" name="tour-tab" id="tab-3" class="tour-radio" />
+<input type="radio" name="tour-tab" id="tab-moon" class="tour-radio" />
+<input type="radio" name="tour-tab" id="tab-hop" class="tour-radio" />
+
+<div class="tour-tabs" role="tablist" aria-label={`${planet} tours`}>
+  <label class="tour-tab" for="tab-1" role="tab" aria-selected="true">
+    <span class="tour-tab__icon">⏱</span>
+    <span class="tour-tab__text">1 Hour</span>
+  </label>
+  <label class="tour-tab" for="tab-2" role="tab" aria-selected="false">
+    <span class="tour-tab__icon">⏱</span>
+    <span class="tour-tab__text">2 Hours</span>
+  </label>
+  <label class="tour-tab" for="tab-3" role="tab" aria-selected="false">
+    <span class="tour-tab__icon">⏱</span>
+    <span class="tour-tab__text">3–4 Hours</span>
+  </label>
+  <label class="tour-tab" for="tab-moon" role="tab" aria-selected="false">
+    <span class="tour-tab__icon">🌙</span>
+    <span class="tour-tab__text">Moon Route</span>
+  </label>
+  <label class="tour-tab" for="tab-hop" role="tab" aria-selected="false">
+    <span class="tour-tab__icon">🏙</span>
+    <span class="tour-tab__text">City Hopper</span>
+  </label>
+</div>
+
+<div class="tour-panels">
+  <div class="tour-panel" id="panel-1">
+    <slot name="tab-1" />
+  </div>
+  <div class="tour-panel" id="panel-2">
+    <slot name="tab-2" />
+  </div>
+  <div class="tour-panel" id="panel-3">
+    <slot name="tab-3" />
+  </div>
+  <div class="tour-panel" id="panel-moon">
+    <slot name="tab-moon" />
+  </div>
+  <div class="tour-panel" id="panel-hop">
+    <slot name="tab-hop" />
+  </div>
+</div>
+
+<style>
+  /* Hide radio inputs */
+  .tour-radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* Tab bar */
+  .tour-tabs {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    background: var(--color-surface-paper);
+    border: 1px solid var(--color-neutral-200);
+    border-bottom: none;
+    border-radius: 0.75rem 0.75rem 0 0;
+    overflow-x: auto;
+  }
+
+  .tour-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  .tour-tab:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .tour-tab__icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .tour-tab__text {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-neutral-600);
+    transition: color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  /* Active tab */
+  #tab-1:checked ~ .tour-tabs .tour-tab[for="tab-1"],
+  #tab-2:checked ~ .tour-tabs .tour-tab[for="tab-2"],
+  #tab-3:checked ~ .tour-tabs .tour-tab[for="tab-3"],
+  #tab-moon:checked ~ .tour-tabs .tour-tab[for="tab-moon"],
+  #tab-hop:checked ~ .tour-tabs .tour-tab[for="tab-hop"] {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  #tab-1:checked ~ .tour-tabs .tour-tab[for="tab-1"] .tour-tab__text,
+  #tab-2:checked ~ .tour-tabs .tour-tab[for="tab-2"] .tour-tab__text,
+  #tab-3:checked ~ .tour-tabs .tour-tab[for="tab-3"] .tour-tab__text,
+  #tab-moon:checked ~ .tour-tabs .tour-tab[for="tab-moon"] .tour-tab__text,
+  #tab-hop:checked ~ .tour-tabs .tour-tab[for="tab-hop"] .tour-tab__text {
+    color: var(--color-primary-600);
+    font-weight: 700;
+  }
+
+  /* Panels wrapper */
+  .tour-panels {
+    border: 1px solid var(--color-neutral-200);
+    border-radius: 0 0 0.75rem 0.75rem;
+    overflow: hidden;
+  }
+
+  .tour-panel {
+    display: none;
+  }
+
+  /* Show correct panel */
+  #tab-1:checked ~ .tour-panels #panel-1,
+  #tab-2:checked ~ .tour-panels #panel-2,
+  #tab-3:checked ~ .tour-panels #panel-3,
+  #tab-moon:checked ~ .tour-panels #panel-moon,
+  #tab-hop:checked ~ .tour-panels #panel-hop {
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .tour-tabs {
+      flex-wrap: wrap;
+    }
+    .tour-tab {
+      flex: 1 1 calc(50% - 0.25rem);
+      justify-content: center;
+      padding: 0.625rem 0.75rem;
+    }
+    .tour-tab__text {
+      font-size: 0.75rem;
+    }
+  }
+</style>

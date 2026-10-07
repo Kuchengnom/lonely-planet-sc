@@ -1,0 +1,23 @@
+---
+interface Props {
+  time: string;
+  title: string;
+  route?: string;
+  gear?: string;
+  supplies?: string;
+}
+---
+
+<li class="tour-stop">
+  <div class="tour-stop__marker">
+    <span class="timeline__bullet"></span>
+    <span class="timeline__line"></span>
+  </div>
+  <div class="tour-stop__content">
+    <time class="timeline__time" datetime={Astro.props.time}>{Astro.props.time}</time>
+    <h3 class="timeline__stop">{Astro.props.title}</h3>
+    {Astro.props.route && <span class="timeline__route">{Astro.props.route}</span>}
+    {Astro.props.gear && <span class="timeline__gear">Gear: {Astro.props.gear}</span>}
+    {Astro.props.supplies && <span class="timeline__supplies">Carry: {Astro.props.supplies}</span>}
+  </div>
+</li>
