@@ -1,0 +1,110 @@
+---
+import PHDSIndex from '../../components/PHDSIndex.astro';
+import '../styles/global.css';
+import SystemHeader from '../../../components/SystemHeader.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+// Gather PHDS entries from all systems
+const entries = [
+  {
+    href: `${base}stanton/crusader/daymar/`,
+    name: 'Daymar Bio-Dome Remnants',
+    system: 'Stanton',
+    planet: 'Crusader',
+    region: 'Daymar',
+    type: 'easter-egg',
+    difficulty: 'Moderate',
+    teaser: 'Three interconnected glass domes rising from Daymar\'s regolith — a covert research installation abandoned under mysterious circumstances.',
+    heroImage: '/images/daymar/canyon-mapping.webp',
+  },
+  {
+    href: `${base}stanton/arcorp/`,
+    name: 'ArcCorp Hidden Vaults',
+    system: 'Stanton',
+    planet: 'ArcCorp',
+    region: 'Central ArcCorp',
+    type: 'natural-wonder',
+    difficulty: 'Hard',
+    teaser: 'Underground vaults beneath the corporate sprawl, rumored to hold pre-industrial artifacts and untouched ecosystems.',
+    heroImage: '/images/arccorp/vault-thumb.webp',
+  },
+  {
+    href: `${base}pyro/bexley/`,
+    name: 'Bexley Observatory',
+    system: 'Pyro',
+    planet: 'Bexley',
+    region: 'Southern Highlands',
+    type: 'easter-egg',
+    difficulty: 'Easy',
+    teaser: 'An abandoned astronomical observatory with an intact dome, offering unobstructed views of the Pyro constellation.',
+    heroImage: '/images/bexley/observatory-thumb.webp',
+  },
+];
+
+// Get visited/bookmarked state from props (will be empty on first render)
+const visitedEntries = entries.map(entry => ({
+  ...entry,
+  visited: false,
+  bookmarked: false,
+}));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Discoveries — Lonely Planet Star Citizen</title>
+  </head>
+  <body>
+    <SystemHeader
+      system="System-wide"
+      planet=""
+      region=""
+      title="Hidden Discoveries"
+      type="easter-egg"
+    />
+
+    <div class="container mx-auto px-6 py-10">
+      <div class="phds-page">
+        <header class="phds-page__header">
+          <h1 class="phds-page__title">Hidden Discoveries</h1>
+          <p class="phds-page__subtitle">Locations not on the in-game map. Places the universe forgot — or never wanted you to find.</p>
+        </header>
+
+        <PHDSIndex entries={visitedEntries} />
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .phds-page {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .phds-page__header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-primary-600);
+  }
+
+  .phds-page__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-neutral-900);
+    margin: 0 0 0.5rem;
+    line-height: var(--line-height-tight);
+  }
+
+  .phds-page__subtitle {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: var(--color-neutral-600);
+    margin: 0;
+    font-style: italic;
+  }
+</style>
