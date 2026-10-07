@@ -21,21 +21,18 @@ const CATEGORY_CONFIG = {
 const cat = CATEGORY_CONFIG[category];
 ---
 
-<article class="attraction" style={`--cat-color: ${cat.color};`}>
+<article class="attraction" style={`--cat-color: ${cat.color};`} data-title-slug={title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
   <div class="attraction__inner">
     <div class="attraction__thumb">
       {imageUrl
         ? <>
             <div class="attraction__image attraction__image--skeleton" aria-hidden="true" />
-            <img src={imageUrl} alt={imageAlt ?? title} class="attraction__image" loading="lazy"
+            <img src={imageUrl} alt={imageAlt ?? title} class="attraction__image attraction__image--loading" loading="lazy"
                 onload="this.classList.remove('attraction__image--loading');this.previousElementSibling.style.display='none'"
                 onerror="this.classList.add('attraction__image--hidden');this.nextElementSibling.style.display='block'" />
+            <div class="attraction__image attraction__image--placeholder" aria-hidden="true" />
           </>
-        : null
-      }
-      {imageUrl
-        ? <div class="attraction__image attraction__image--placeholder attraction__image--loading" style="display:none" />
-        : <div class="attraction__image attraction__image--placeholder" />
+        : <div class="attraction__image attraction__image--placeholder" aria-hidden="true" />
       }
       <span class="attraction__badge">{number}</span>
     </div>
@@ -61,6 +58,12 @@ const cat = CATEGORY_CONFIG[category];
     border-radius: var(--radius-sm, 0.25rem);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .attraction:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
   }
 
   .attraction__inner {

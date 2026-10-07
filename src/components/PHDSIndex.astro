@@ -65,12 +65,14 @@ const visitedIds = new Set<string>();
       >
         <!-- Image -->
         <div class="phds-index__card-image">
+          <div class="phds-index__card-img-skeleton" aria-hidden="true" />
           <img
             src={entry.heroImage}
             alt={entry.name}
             loading="lazy"
-            class="phds-index__card-img"
-            onerror="this.style.display='none'; this.parentElement.querySelector('.phds-index__placeholder').style.display='flex';"
+            class="phds-index__card-img phds-index__card-img--loading"
+            onerror="this.classList.add('phds-index__card-img--hidden');this.nextElementSibling.style.display='flex';this.previousElementSibling.style.display='none'"
+            onload="this.classList.remove('phds-index__card-img--loading');this.previousElementSibling.style.display='none'"
           />
           <div class="phds-index__placeholder">
             <span class="phds-index__placeholder-icon">📍</span>
@@ -217,6 +219,34 @@ const visitedIds = new Set<string>();
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--color-neutral-700), var(--color-neutral-800));
+  }
+
+  /* ─── Blur-up skeleton ─── */
+  .phds-index__card-img-skeleton {
+    position: absolute;
+    inset: 0;
+    background: var(--color-neutral-600);
+    filter: blur(12px);
+    transform: scale(1.1);
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  .phds-index__card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.4s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .phds-index__card-img--loading {
+    opacity: 0;
+  }
+
+  .phds-index__card-img--hidden {
+    display: none;
   }
 
   .phds-index__placeholder-icon {

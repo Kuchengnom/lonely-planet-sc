@@ -54,6 +54,74 @@ a.attraction__title-link:hover::after {
   transform: scaleX(1);
 }
 
+/* ─── Scroll-to-link hover accent for PHDS cards ─── */
+a.phds-index__card:hover {
+  text-decoration: none;
+}
+
+a.phds-index__card:hover .phds-index__card-title {
+  color: var(--color-primary-600);
+}
+
+/* ─── Entrance animations ─── */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.phds-index__card {
+  animation: fade-in-up 0.4s ease both;
+}
+
+.phds-index__card:nth-child(1) { animation-delay: 0.05s; }
+.phds-index__card:nth-child(2) { animation-delay: 0.1s; }
+.phds-index__card:nth-child(3) { animation-delay: 0.15s; }
+.phds-index__card:nth-child(4) { animation-delay: 0.2s; }
+.phds-index__card:nth-child(5) { animation-delay: 0.25s; }
+.phds-index__card:nth-child(6) { animation-delay: 0.3s; }
+.phds-index__card:nth-child(7) { animation-delay: 0.35s; }
+.phds-index__card:nth-child(8) { animation-delay: 0.4s; }
+.phds-index__card:nth-child(9) { animation-delay: 0.45s; }
+
+/* ─── Image hover zoom across all layouts ─── */
+.main-hero__image,
+.poi-hero__image,
+.attraction__image {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.main-hero:hover .main-hero__image,
+.poi-hero:hover .poi-hero__image {
+  transform: scale(1.02);
+}
+
+/* ─── Card focus outline for keyboard nav ─── */
+.phds-index__card:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-md, 0.5rem);
+}
+
+/* ─── Filter pill hover lift ─── */
+.phds-index__filter-btn:hover {
+  background: var(--color-neutral-100);
+  border-color: var(--color-neutral-400);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.phds-index__filter-btn--active:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(var(--color-primary-rgb, 0, 85, 136), 0.25);
+}
+
 /* ─── Filter pill active state ─── */
 .phds-index__filter-btn--active {
   background: var(--color-primary-600);
