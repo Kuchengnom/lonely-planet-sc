@@ -24,7 +24,7 @@ const LABELS = {
   </header>
 
   <div class="tour-equipment">
-    <span class="tour-equipment__label">Required:</span>
+    <span class="tour-equipment__label-badge">Required</span>
     <ul class="tour-equipment__list">
       {required_gear.map(item => (
         <li class="tour-equipment__item">{item}</li>
@@ -91,12 +91,17 @@ const LABELS = {
     margin-bottom: 1.5rem;
   }
 
-  .tour-equipment__label {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+  .tour-equipment__label-badge {
+    display: inline-flex;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--color-neutral-500);
+    color: var(--color-primary-700);
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-200);
     flex-shrink: 0;
   }
 
