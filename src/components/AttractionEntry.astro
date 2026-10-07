@@ -80,6 +80,35 @@ const cat = CATEGORY_CONFIG[category];
     display: block;
   }
 
+  /* ─── Mobile: stacked layout ─── */
+  @media (max-width: 640px) {
+    .attraction__inner {
+      flex-direction: column;
+    }
+
+    .attraction__thumb {
+      width: 100%;
+    }
+
+    .attraction__image {
+      width: 100%;
+      height: 200px;
+      border-radius: var(--radius-sm, 0.25rem) var(--radius-sm, 0.25rem) 0 0;
+    }
+
+    .attraction__badge {
+      top: 8px;
+      left: 8px;
+      width: 22px;
+      height: 22px;
+      font-size: 0.6875rem;
+    }
+
+    .attraction__content {
+      padding-top: 0.5rem;
+    }
+  }
+
   .attraction__image--hidden {
     display: none !important;
   }
