@@ -31,7 +31,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [ ] PHDS thumbnail images for each location (screenshots or concept art)
 
 - [ ] **Impeccable Steps**
-  - [ ] Step 3: Fix TourSchedule heading hierarchy (H3 → H4 in step cards)
+  - [x] Step 3: Fix TourSchedule heading hierarchy (H3 → H4 in step cards)
   - [ ] Step 4: Add blur-up image placeholders
   - [ ] Step 4: Add hover states to tour cards
   - [ ] Step 4: Add scroll-to-link for TOC
