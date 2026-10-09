@@ -170,12 +170,20 @@ const POIS = [
       <!-- Editor's Pick feature band -->
       <section class="feature-band">
         <div class="container feature-band__inner">
-          <img
-            class="feature-band__img"
-            src={`${base}images/microtech/bioluminescent-cave.jpeg`}
-            alt="Bioluminescent caves on microTech"
-            loading="lazy"
-          />
+          <div class="feature-band__img-wrap">
+            <div class="feature-band__skeleton" aria-hidden="true" />
+            <img
+              class="feature-band__img feature-band__img--loading"
+              src={`${base}images/microtech/bioluminescent-cave.jpeg`}
+              alt="Bioluminescent caves on microTech"
+              loading="lazy"
+              onload="this.classList.remove('feature-band__img--loading');this.previousElementSibling.style.display='none'"
+              onerror="this.classList.add('feature-band__img--hidden');this.nextElementSibling.style.display='flex';this.previousElementSibling.style.display='none'"
+            />
+            <div class="feature-band__placeholder" aria-hidden="true">
+              <span class="feature-band__placeholder-icon">🌌</span>
+            </div>
+          </div>
           <div class="feature-band__text">
             <p class="feature-band__eyebrow">Editor's Pick — Stanton IV</p>
             <h2 class="feature-band__heading">Seven reasons to land on microTech</h2>
@@ -217,7 +225,16 @@ const POIS = [
                   data-name={poi.name}
                   aria-label={`View full image: ${poi.alt}`}
                 >
-                  <img src={poi.img} alt={poi.alt} loading="lazy" />
+                  <div class="poi-card__img-wrap">
+                    <div class="poi-card__skeleton" aria-hidden="true" />
+                    <img src={poi.img} alt={poi.alt} loading="lazy"
+                         class="poi-card__img poi-card__img--loading"
+                         onload="this.classList.remove('poi-card__img--loading');this.previousElementSibling.style.display='none'"
+                         onerror="this.classList.add('poi-card__img--hidden');this.nextElementSibling.style.display='flex';this.previousElementSibling.style.display='none'" />
+                    <div class="poi-card__placeholder" aria-hidden="true">
+                      <span class="poi-card__placeholder-icon">🌌</span>
+                    </div>
+                  </div>
                   <div class="poi-card__img-overlay">
                     <span class="poi-card__num">{poi.num}</span>
                     <span class="poi-card__tag-badge">{poi.tag}</span>
@@ -713,12 +730,64 @@ const POIS = [
     align-items: center;
   }
 
-  .feature-band__img {
+  /* ── Feature band image wrapper ────────────────────── */
+  .feature-band__img-wrap {
+    position: relative;
     width: 100%;
     aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .feature-band__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease, opacity 0.4s ease;
+  }
+
+  .feature-band__img-wrap:hover .feature-band__img {
+    transform: scale(1.03);
+  }
+
+  /* ─── Blur-up skeleton ─── */
+  .feature-band__skeleton {
+    position: absolute;
+    inset: 0;
+    background: var(--color-neutral-600);
+    filter: blur(12px);
+    transform: scale(1.1);
+    z-index: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .feature-band__img--loading {
+    opacity: 0;
+  }
+
+  .feature-band__img--hidden {
+    display: none;
+  }
+
+  .feature-band__placeholder {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-neutral-700), var(--color-neutral-800));
+    border-radius: var(--radius-md);
+    z-index: 0;
+  }
+
+  .feature-band__placeholder-icon {
+    font-size: 3rem;
   }
 
   .feature-band__eyebrow {
@@ -829,17 +898,62 @@ const POIS = [
     background: var(--color-neutral-900);
     cursor: zoom-in;
   }
-  .poi-card__img-btn img {
+
+  .poi-card__img-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .poi-card__img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform var(--duration-slow) var(--ease-out),
                 opacity var(--duration-normal) var(--ease-out);
+    z-index: 2;
   }
-  .poi-card__img-btn:hover img {
+
+  .poi-card__img-btn:hover .poi-card__img {
     transform: scale(1.04);
     opacity: 0.88;
+  }
+
+  /* ─── Blur-up skeleton ─── */
+  .poi-card__skeleton {
+    position: absolute;
+    inset: 0;
+    background: var(--color-neutral-600);
+    filter: blur(12px);
+    transform: scale(1.1);
+    z-index: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .poi-card__img--loading {
+    opacity: 0;
+  }
+
+  .poi-card__img--hidden {
+    display: none;
+  }
+
+  .poi-card__placeholder {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-neutral-700), var(--color-neutral-800));
+    z-index: 0;
+  }
+
+  .poi-card__placeholder-icon {
+    font-size: 2.5rem;
   }
 
   .poi-card__img-overlay {

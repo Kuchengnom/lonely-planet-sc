@@ -36,7 +36,18 @@ const categoryBackgrounds = {
   </span>
   <h3 class="activity-title">{title}</h3>
   <div class="activity-image">
-    <img src={image} alt={imageAlt} loading="lazy" />
+    <div class="activity-image__skeleton" aria-hidden="true" />
+    <img
+      src={image}
+      alt={imageAlt}
+      loading="lazy"
+      class="activity-image__img activity-image__img--loading"
+      onload="this.classList.remove('activity-image__img--loading');this.previousElementSibling.style.display='none'"
+      onerror="this.classList.add('activity-image__img--hidden');this.nextElementSibling.style.display='flex';this.previousElementSibling.style.display='none'"
+    />
+    <div class="activity-image__placeholder" aria-hidden="true">
+      <span class="activity-image__placeholder-icon">🌌</span>
+    </div>
   </div>
   <div class="activity-description">
     <slot />
@@ -50,6 +61,12 @@ const categoryBackgrounds = {
     border-radius: 0.5rem;
     padding: 1.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .activity-entry:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
   }
 
   .activity-badge {
@@ -74,12 +91,53 @@ const categoryBackgrounds = {
     margin-bottom: 1rem;
     border-radius: 0.5rem;
     overflow: hidden;
+    position: relative;
+    height: 12rem;
   }
 
-  .activity-image img {
+  .activity-image__img {
     width: 100%;
-    height: 12rem;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.4s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .activity-image:hover .activity-image__img {
+    transform: scale(1.03);
+  }
+
+  /* ─── Blur-up skeleton ─── */
+  .activity-image__skeleton {
+    position: absolute;
+    inset: 0;
+    background: var(--color-neutral-600);
+    filter: blur(12px);
+    transform: scale(1.1);
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  .activity-image__img--loading {
+    opacity: 0;
+  }
+
+  .activity-image__img--hidden {
+    display: none;
+  }
+
+  .activity-image__placeholder {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-neutral-700), var(--color-neutral-800));
+  }
+
+  .activity-image__placeholder-icon {
+    font-size: 2.5rem;
   }
 
   .activity-description {

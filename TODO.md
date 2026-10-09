@@ -20,7 +20,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Hurston eating/drinking section
   - [x] ArcCorp eating/drinking section
   - [x] Pyro eating/drinking section
-  - [ ] Add recommended gear lists per planet
+  - [x] Add recommended gear lists per planet
 
 - [ ] **Image Research & Filling**
   - [ ] MicroTech hero image — find high-fidelity screenshot (glacial landscape, rivers)
