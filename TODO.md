@@ -3,23 +3,23 @@
 This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen project.
 
 - [ ] **PHDS Content Expansion**
-  - [ ] daymar-biodome — fill "What to Bring" section
-  - [ ] daymar-biodome — fill "Access Notes" section with coordinates
-  - [ ] microtech-ice-caves — write full MDX entry with cave exploration guide
-  - [ ] area18-tram-vistas — write content about abandoned tram routes
-  - [ ] orison-catwalks — write content about cloud-city bridges
-  - [ ] yela-cryo-asteroid — write content about abandoned cryo station
-  - [ ] port-tressler-under-hangar — write content about hidden maintenance tunnels
-  - [ ] new-babbage-ice — write content about frozen waterways
-  - [ ] pyro-vi-crashed-constellation — write content about wreckage site
-  - [ ] Create PHDS index entries for ArcCorp and Pyro system locations
+  - [x] daymar-biodome — fill "What to Bring" section
+  - [x] daymar-biodome — fill "Access Notes" section with coordinates
+  - [x] microtech-ice-caves — write full MDX entry with cave exploration guide
+  - [x] area18-tram-vistas — write content about tram routes (Cityflight Transit)
+  - [x] orison-catwalks — write content about cloud-city bridges
+  - [x] yela-cryo-asteroid — write content about abandoned cryo station
+  - [x] port-tressler-under-hangar — write content about hidden maintenance tunnels
+  - [x] new-babbage-ice — write content about frozen waterways
+  - [x] pyro-vi-crashed-constellation — write content about wreckage site
+  - [x] phds-arc-pyro. Create PHDS index entries for ArcCorp and Pyro system locations
 
 - [ ] **Missing Content Gaps**
-  - [ ] MicroTech eating/drinking section (add recommended venues)
-  - [ ] Crusader eating/drinking section
-  - [ ] Hurston eating/drinking section
-  - [ ] ArcCorp eating/drinking section
-  - [ ] Pyro eating/drinking section
+  - [x] MicroTech eating/drinking section (add recommended venues)
+  - [x] Crusader eating/drinking section
+  - [x] Hurston eating/drinking section
+  - [x] ArcCorp eating/drinking section
+  - [x] Pyro eating/drinking section
   - [ ] Add recommended gear lists per planet
 
 - [ ] **Image Research & Filling**
