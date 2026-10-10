@@ -4,10 +4,28 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
-
+/* ── Anchor link behavior ───────────────────────── */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: calc(16rem + 1rem); /* accommodate sticky header */
+}
+
+/* ── Scroll-spy active state for TOC links ───────── */
+.site-header__nav-left a,
+.site-header__nav-right a {
+  transition: color 0.2s ease;
+}
+
+.site-header__nav-left a.is-active {
+  color: var(--color-primary-600);
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .site-header__nav-left a.is-active,
+  .site-header__nav-right a.is-active {
+    color: inherit; /* hide active state when nav is hidden */
+  }
 }
 
 /* Scroll anchor target offset */
