@@ -86,16 +86,51 @@ const POIS = [
           <a href="#about">About</a>
         </nav>
 
+        <button
+          class="mobile-nav__toggle"
+          id="mobile-nav-toggle"
+          type="button"
+          aria-controls="mobile-nav"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open navigation</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+
         <a href={base} class="site-header__logo">
           <img src={`${base}logo.svg`} alt="Lonely Planet" class="site-header__logo-img" />
           <span class="site-header__logo-sub">Star Citizen Edition</span>
         </a>
+
+        <span class="mobile-nav__balance" aria-hidden="true"></span>
 
         <nav class="site-header__nav-right">
           <a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">Contribute</a>
           <a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Community</a>
         </nav>
       </div>
+
+      <dialog class="mobile-nav" id="mobile-nav" aria-labelledby="mobile-nav-title">
+        <div class="mobile-nav__topline">
+          <h2 id="mobile-nav-title">Explore the 'Verse</h2>
+          <button class="mobile-nav__close" id="mobile-nav-close" type="button">
+            <span class="sr-only">Close navigation</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+        <nav class="mobile-nav__links" aria-label="Primary navigation">
+          <a href="#editions">Editions</a>
+          <a href="#attractions">Attractions</a>
+          <a href={`${base}phds/`}>Hidden Discoveries</a>
+          <a href="#about">About</a>
+          <a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">Contribute</a>
+          <a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Community</a>
+        </nav>
+      </dialog>
     </header>
 
     <!-- Hero -->
@@ -131,6 +166,75 @@ const POIS = [
     </header>
 
     <main>
+
+      <!-- Time planner: schedules are authored in the Hurston guide. -->
+      <section class="time-planner" aria-labelledby="time-planner-heading">
+        <div class="container time-planner__inner">
+          <div class="time-planner__intro">
+            <h2 id="time-planner-heading">How much time do you have today to visit the ’Verse?</h2>
+            <p>Choose an authored Hurston itinerary that fits the session you actually have.</p>
+          </div>
+
+          <fieldset class="time-planner__choices">
+            <legend class="sr-only">Choose your available time</legend>
+            <input class="time-planner__input" type="radio" name="visit-time" id="time-one" checked aria-controls="time-one-result" />
+            <label class="time-planner__choice" for="time-one"><span>1</span> hour</label>
+
+            <input class="time-planner__input" type="radio" name="visit-time" id="time-two" aria-controls="time-two-result" />
+            <label class="time-planner__choice" for="time-two"><span>2</span> hours</label>
+
+            <input class="time-planner__input" type="radio" name="visit-time" id="time-extended" aria-controls="time-extended-result" />
+            <label class="time-planner__choice" for="time-extended"><span>3–4</span> hours</label>
+
+            <div class="time-planner__results">
+              <article class="time-planner__result time-planner__result--one" id="time-one-result" aria-labelledby="time-one-title">
+                <div>
+                  <p class="time-planner__duration">1 hour · Hurston</p>
+                  <h3 id="time-one-title">Lorville in an Hour</h3>
+                  <p>A focused tour of Lorville’s essential landmarks: the Workers District, M&amp;V’s Bar, and the Central Tower.</p>
+                  <p class="time-planner__gear"><strong>Bring:</strong> Filter mask, camera, and UEC for food.</p>
+                </div>
+                <a href={`${base}stanton/hurston/`} class="btn btn--primary">Open the Hurston itinerary <span aria-hidden="true">→</span></a>
+              </article>
+
+              <article class="time-planner__result time-planner__result--two" id="time-two-result" aria-labelledby="time-two-title">
+                <div>
+                  <p class="time-planner__duration">2 hours · Hurston</p>
+                  <h3 id="time-two-title">Lorville Deep Dive</h3>
+                  <p>Spend longer in the Workers District, walk the Strip Mine boundary, and venture into the Shanty Towns.</p>
+                  <p class="time-planner__gear"><strong>Bring:</strong> Filter mask, camera with polarizing filter, water, and UEC for meals.</p>
+                </div>
+                <a href={`${base}stanton/hurston/`} class="btn btn--primary">Open the Hurston itinerary <span aria-hidden="true">→</span></a>
+              </article>
+
+              <section class="time-planner__result time-planner__result--extended" id="time-extended-result" aria-labelledby="time-extended-title">
+                <div class="time-planner__extended-intro">
+                  <p class="time-planner__duration">3–4 hours · Hurston</p>
+                  <h3 id="time-extended-title">Choose your longer route</h3>
+                  <p>Three authored itineraries fit this visit length. Pick the kind of day you want before opening the guide.</p>
+                </div>
+                <div class="time-planner__route-grid">
+                  <article class="time-planner__route">
+                    <h4>Extended Lorville Circuit</h4>
+                    <p>Workers District, Strip Mines, Shanty Towns, and the Central Tower at sunset.</p>
+                    <a href={`${base}stanton/hurston/`}>Open Hurston guide <span aria-hidden="true">→</span></a>
+                  </article>
+                  <article class="time-planner__route">
+                    <h4>Moon Route: Aberdeen or Arial</h4>
+                    <p>A quantum-capable ship route to one of Hurston’s moons.</p>
+                    <a href={`${base}stanton/hurston/`}>Open Hurston guide <span aria-hidden="true">→</span></a>
+                  </article>
+                  <article class="time-planner__route">
+                    <h4>Hurston City Hopper</h4>
+                    <p>A circuit across Lorville, Aberdeen, and Arial.</p>
+                    <a href={`${base}stanton/hurston/`}>Open Hurston guide <span aria-hidden="true">→</span></a>
+                  </article>
+                </div>
+              </section>
+            </div>
+          </fieldset>
+        </div>
+      </section>
 
       <!-- System Editions -->
       <section class="editions" id="editions" aria-labelledby="editions-heading">
@@ -216,8 +320,8 @@ const POIS = [
         <div class="container">
           <h2 id="attractions-heading" class="section-heading">Top Attractions</h2>
           <div class="poi-grid">
-            {POIS.map((poi) => (
-              <div class="poi-card">
+            {POIS.map((poi, index) => (
+              <article class={`poi-card ${index === 0 ? 'poi-card--lead' : index === 1 || index === 2 ? 'poi-card--supporting' : ''}`}>
                 <button
                   class="poi-card__img-btn"
                   data-img={poi.img}
@@ -246,7 +350,7 @@ const POIS = [
                   <p class="poi-card__desc">{poi.desc}</p>
                   <span class="poi-card__planet">{poi.planet}</span>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -280,10 +384,52 @@ const POIS = [
         dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
       </script>
 
+      <script>
+        (() => {
+          const mobileMenu = document.getElementById('mobile-nav') as HTMLDialogElement | null;
+          const mobileMenuToggle = document.getElementById('mobile-nav-toggle') as HTMLButtonElement | null;
+          const mobileMenuClose = document.getElementById('mobile-nav-close') as HTMLButtonElement | null;
+          if (!mobileMenu || !mobileMenuToggle || !mobileMenuClose) return;
+
+          let restoreToggleFocus = true;
+          const syncMenuState = () => {
+            const isOpen = mobileMenu.open;
+            mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('mobile-nav-open', isOpen);
+          };
+          const closeMobileMenu = (shouldRestoreFocus = true) => {
+            restoreToggleFocus = shouldRestoreFocus;
+            if (mobileMenu.open) mobileMenu.close();
+          };
+
+          mobileMenuToggle.addEventListener('click', () => {
+            restoreToggleFocus = true;
+            mobileMenu.showModal();
+            syncMenuState();
+            requestAnimationFrame(() => mobileMenuClose.focus());
+          });
+          mobileMenuClose.addEventListener('click', () => closeMobileMenu());
+          mobileMenu.addEventListener('click', (event) => {
+            if (event.target === mobileMenu) closeMobileMenu();
+          });
+          mobileMenu.addEventListener('close', () => {
+            syncMenuState();
+            if (restoreToggleFocus) mobileMenuToggle.focus();
+            restoreToggleFocus = true;
+          });
+          mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => closeMobileMenu(false));
+          });
+          window.matchMedia('(min-width: 861px)').addEventListener('change', event => {
+            if (event.matches) closeMobileMenu(false);
+          });
+        })();
+      </script>
+
       <!-- Scroll spy: highlight active nav link as user scrolls -->
       <script>
         (() => {
-          const navLinks = document.querySelectorAll('.site-header__nav-left a[href^="#"], .site-header__nav-right a[href^="#"]');
+          const navLinks = document.querySelectorAll('.site-header__nav-left a[href^="#"], .site-header__nav-right a[href^="#"], .mobile-nav__links a[href^="#"]');
           if (!navLinks.length) return;
 
           const anchors = Array.from(navLinks).map(link => {
@@ -319,7 +465,7 @@ const POIS = [
             }
 
             for (const a of anchors) {
-              a.link.classList.toggle('is-active', a === activeAnchor);
+              a.link.classList.toggle('is-active', a.href === activeAnchor.href);
             }
           }, observerOptions);
 
@@ -400,6 +546,11 @@ const POIS = [
     -moz-osx-font-smoothing: grayscale;
   }
 
+  :global(::selection) {
+    background: var(--color-primary-600);
+    color: var(--color-white);
+  }
+
   /* ── Top strip ─────────────────────────────────────── */
   .top-strip {
     background: var(--color-neutral-900);
@@ -470,6 +621,97 @@ const POIS = [
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--color-neutral-500);
+  }
+
+  .mobile-nav__toggle,
+  .mobile-nav__balance {
+    display: none;
+  }
+
+  .mobile-nav {
+    border: 0;
+    color: var(--color-neutral-900);
+    background: var(--color-white);
+  }
+
+  .mobile-nav::backdrop {
+    background: rgba(9, 20, 45, 0.62);
+  }
+
+  .mobile-nav__topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  .mobile-nav__topline h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    text-transform: uppercase;
+  }
+
+  .mobile-nav__close {
+    display: inline-flex;
+  }
+
+  .mobile-nav__close,
+  .mobile-nav__toggle {
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--color-neutral-900);
+    color: var(--color-neutral-900);
+    background: transparent;
+  }
+
+  .mobile-nav__close svg,
+  .mobile-nav__toggle svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: square;
+    stroke-width: 2;
+  }
+
+  .mobile-nav__links {
+    display: grid;
+    padding-top: var(--space-4);
+  }
+
+  .mobile-nav__links a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-neutral-200);
+    color: var(--color-neutral-900);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .mobile-nav__links a:hover,
+  .mobile-nav__links a.is-active {
+    color: var(--color-primary-600);
+  }
+
+  .mobile-nav__close:focus-visible,
+  .mobile-nav__toggle:focus-visible,
+  .mobile-nav__links a:focus-visible {
+    outline: 2px solid var(--color-primary-600);
+    outline-offset: 3px;
   }
 
   /* ── Hero ──────────────────────────────────────────── */
@@ -600,6 +842,9 @@ const POIS = [
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 44px;
     font-family: var(--font-display);
     font-size: 0.6875rem;
     font-weight: var(--font-weight-bold);
@@ -608,7 +853,9 @@ const POIS = [
     text-decoration: none;
     padding: 0.8125rem var(--space-6);
     transition: background var(--duration-fast) var(--ease-out),
-                border-color var(--duration-fast) var(--ease-out);
+                border-color var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
     cursor: pointer;
     border: none;
   }
@@ -616,21 +863,28 @@ const POIS = [
     background: var(--color-primary-600);
     color: var(--color-white);
   }
-  .btn--primary:hover { background: var(--color-primary-700); }
+  .btn--primary:hover { background: var(--color-primary-700); transform: translateY(-1px); }
+  .btn--primary:active { background: var(--color-primary-800); transform: translateY(0); }
 
   .btn--ghost {
     background: transparent;
     border: 1.5px solid rgba(255,255,255,0.4);
     color: var(--color-white);
   }
-  .btn--ghost:hover { border-color: var(--color-white); background: rgba(255,255,255,0.08); }
+  .btn--ghost:hover { border-color: var(--color-white); background: rgba(255,255,255,0.08); transform: translateY(-1px); }
 
   .btn--outline-white {
     background: transparent;
     border: 1.5px solid rgba(255,255,255,0.6);
     color: var(--color-white);
   }
-  .btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--color-white); }
+  .btn--outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--color-white); transform: translateY(-1px); }
+  .btn:focus-visible,
+  .poi-card__img-btn:focus-visible,
+  .lightbox__close:focus-visible {
+    outline: 3px solid var(--color-primary-400);
+    outline-offset: 3px;
+  }
 
   /* ── Section heading (shared with rest of site) ────── */
   .section-heading {
@@ -665,7 +919,8 @@ const POIS = [
                 box-shadow var(--duration-normal) var(--ease-out);
     background: var(--color-white);
   }
-  .edition-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+  .edition-card:hover,
+  .edition-card:has(.edition-card__cta:focus-visible) { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
   .edition-card--soon { opacity: 0.85; }
   .edition-card--soon:hover { transform: none; box-shadow: var(--shadow-sm); }
 
@@ -755,10 +1010,10 @@ const POIS = [
     letter-spacing: 0.06em; text-transform: uppercase;
     color: var(--color-primary-700);
     text-decoration: none;
-    border-bottom: 2px solid currentColor; padding-bottom: 1px;
-    transition: opacity var(--duration-fast);
+    border-bottom: 2px solid currentColor; padding: 0.375rem 0;
+    transition: color var(--duration-fast) var(--ease-out), opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
   }
-  .edition-card__cta:hover { opacity: 0.7; }
+  .edition-card__cta:hover { color: var(--color-primary-900); transform: translateX(2px); }
   .edition-card__cta--disabled { pointer-events: none; color: var(--color-neutral-400); border-color: var(--color-neutral-300); }
 
   /* ── Feature band ──────────────────────────────────── */
@@ -910,10 +1165,12 @@ const POIS = [
 
   /* ── POI grid ──────────────────────────────────────── */
   .poi-section { padding: var(--space-16) 0; }
+  .poi-section .container { max-width: 1280px; }
 
   .poi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, auto));
     gap: var(--space-5);
   }
 
@@ -928,7 +1185,30 @@ const POIS = [
     transition: transform var(--duration-normal) var(--ease-out),
                 box-shadow var(--duration-normal) var(--ease-out);
   }
-  .poi-card:hover {
+
+  /* The lead story and its two companions form an editorial spread at wide sizes. */
+  .poi-card--lead {
+    grid-column: span 7;
+    grid-row: span 2;
+  }
+  .poi-card--supporting { grid-column: span 5; }
+  .poi-card:not(.poi-card--lead):not(.poi-card--supporting) { grid-column: span 4; }
+
+  .poi-card--lead .poi-card__img-btn {
+    aspect-ratio: auto;
+    flex: 1;
+    min-height: 0;
+  }
+  .poi-card--lead .poi-card__body {
+    padding: var(--space-5) var(--space-6) var(--space-6);
+    gap: var(--space-3);
+    flex: 0;
+  }
+  .poi-card--lead .poi-card__name { font-size: clamp(1.5rem, 2.2vw, 2.125rem); }
+  .poi-card--lead .poi-card__desc { max-width: 56ch; font-size: 0.9375rem; }
+  .poi-card:hover,
+  .poi-card:has(.poi-card__img-btn:focus-visible),
+  .poi-card:has(.poi-card__name:focus-visible) {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
   }
@@ -963,7 +1243,8 @@ const POIS = [
     z-index: 2;
   }
 
-  .poi-card__img-btn:hover .poi-card__img {
+  .poi-card__img-btn:hover .poi-card__img,
+  .poi-card__img-btn:focus-visible .poi-card__img {
     transform: scale(1.04);
     opacity: 0.88;
   }
@@ -1043,7 +1324,8 @@ const POIS = [
     transition: color var(--duration-fast);
     pointer-events: none;
   }
-  .poi-card__img-btn:hover .poi-card__zoom-hint { color: rgba(255,255,255,0.9); }
+  .poi-card__img-btn:hover .poi-card__zoom-hint,
+  .poi-card__img-btn:focus-visible .poi-card__zoom-hint { color: rgba(255,255,255,0.9); }
 
   .poi-card__body {
     padding: var(--space-4) var(--space-5) var(--space-5);
@@ -1243,24 +1525,306 @@ const POIS = [
   .hero__lede    { animation: fade-up 0.6s 0.25s ease both; }
   .hero__ctas    { animation: fade-up 0.6s 0.35s ease both; }
 
+  /* ── Time planner ──────────────────────────────────── */
+  .time-planner {
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-neutral-200);
+    padding: var(--space-16) 0;
+  }
+
+  .time-planner__inner {
+    max-width: 1280px;
+  }
+
+  .time-planner__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    gap: var(--space-8);
+    align-items: end;
+    margin-bottom: var(--space-7);
+  }
+
+  .time-planner__intro h2 {
+    color: var(--color-neutral-900);
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.3vw, 2.75rem);
+    font-weight: var(--font-weight-extrabold);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: 1.05;
+    margin: 0;
+    max-width: 20ch;
+  }
+
+  .time-planner__intro p {
+    color: var(--color-neutral-600);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  .time-planner__choices {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .time-planner__input,
+  .sr-only {
+    block-size: 1px;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+  }
+
+  .time-planner__choice {
+    align-items: baseline;
+    background: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-300);
+    color: var(--color-neutral-700);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    font-weight: var(--font-weight-bold);
+    justify-content: center;
+    letter-spacing: var(--letter-spacing-widest);
+    line-height: 1;
+    margin-right: var(--space-2);
+    min-height: 52px;
+    min-width: 9rem;
+    padding: 0.75rem 1rem;
+    text-transform: uppercase;
+    transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  }
+
+  .time-planner__choice span {
+    font-size: 1.25rem;
+    letter-spacing: -0.03em;
+    margin-right: 0.35rem;
+  }
+
+  .time-planner__choice:hover {
+    border-color: var(--color-primary-600);
+    color: var(--color-primary-700);
+  }
+
+  .time-planner__input:focus-visible + .time-planner__choice {
+    outline: 3px solid var(--color-primary-400);
+    outline-offset: 3px;
+  }
+
+  .time-planner__input:checked + .time-planner__choice {
+    background: var(--color-primary-700);
+    border-color: var(--color-primary-700);
+    color: var(--color-white);
+  }
+
+  .time-planner__results {
+    margin-top: var(--space-5);
+  }
+
+  .time-planner__result {
+    background: var(--color-surface-paper);
+    display: none;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+  }
+
+  #time-one:checked ~ .time-planner__results .time-planner__result--one,
+  #time-two:checked ~ .time-planner__results .time-planner__result--two,
+  #time-extended:checked ~ .time-planner__results .time-planner__result--extended {
+    display: grid;
+  }
+
+  .time-planner__result--one,
+  .time-planner__result--two {
+    align-items: end;
+    gap: var(--space-6);
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .time-planner__duration {
+    color: var(--color-primary-700);
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    margin: 0 0 var(--space-3);
+    text-transform: uppercase;
+  }
+
+  .time-planner__result h3 {
+    color: var(--color-neutral-900);
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: var(--line-height-snug);
+    margin: 0 0 var(--space-3);
+  }
+
+  .time-planner__result > div > p:not(.time-planner__duration),
+  .time-planner__extended-intro > p:not(.time-planner__duration) {
+    color: var(--color-neutral-700);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .time-planner__gear {
+    font-size: 0.8125rem !important;
+    margin-top: var(--space-4) !important;
+  }
+
+  .time-planner__result .btn {
+    justify-content: center;
+    min-height: 48px;
+    text-align: center;
+  }
+
+  .time-planner__result--extended {
+    gap: var(--space-6);
+  }
+
+  .time-planner__route-grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .time-planner__route {
+    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 13rem;
+    padding: var(--space-5);
+  }
+
+  .time-planner__route h4 {
+    color: var(--color-neutral-900);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    margin: 0 0 var(--space-3);
+  }
+
+  .time-planner__route p {
+    color: var(--color-neutral-600);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    line-height: var(--line-height-relaxed);
+    margin: 0 0 var(--space-5);
+  }
+
+  .time-planner__route a {
+    align-self: flex-start;
+    color: var(--color-primary-700);
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.08em;
+    margin-top: auto;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .time-planner__route a:hover { color: var(--color-primary-900); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__eyebrow,
+    .hero__title,
+    .hero__lede,
+    .hero__ctas,
+    .hero__floating-card { animation: none; }
+    .btn,
+    .edition-card,
+    .edition-card__cta,
+    .poi-card,
+    .poi-card__img,
+    .time-planner__choice { transition: none; }
+  }
+
   /* ── Responsive ────────────────────────────────────── */
   @media (max-width: 1024px) {
     .editions-grid { grid-template-columns: repeat(2, 1fr); }
     .site-footer__grid { grid-template-columns: 1fr 1fr; }
     .site-footer__brand { grid-column: 1 / -1; }
+    .poi-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: none;
+    }
+    .poi-card--lead,
+    .poi-card--supporting,
+    .poi-card:not(.poi-card--lead):not(.poi-card--supporting) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .poi-card--lead .poi-card__img-btn { aspect-ratio: 3 / 2; flex: none; }
+    .poi-card--lead .poi-card__body { padding: var(--space-4) var(--space-5) var(--space-5); gap: var(--space-2); }
+    .poi-card--lead .poi-card__name { font-size: 1rem; }
+    .poi-card--lead .poi-card__desc { max-width: none; font-size: 0.8125rem; }
   }
 
   @media (max-width: 860px) {
     .hero__floating-card { display: none; }
-    .site-header__inner { grid-template-columns: auto 1fr; }
+    .site-header__inner { grid-template-columns: 44px minmax(0, 1fr) 44px; }
     .site-header__nav-left,
     .site-header__nav-right { display: none; }
+    .mobile-nav__toggle,
+    .mobile-nav__balance { display: inline-flex; }
+    .mobile-nav__toggle { grid-column: 1; justify-self: start; }
+    .site-header__logo { grid-column: 2; justify-self: center; }
+    .mobile-nav__balance { grid-column: 3; }
+    .mobile-nav {
+      inset: 60px 0 0;
+      width: 100%;
+      max-width: none;
+      height: calc(100dvh - 60px);
+      max-height: none;
+      margin: 0;
+      padding: var(--space-6);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+    :global(body.mobile-nav-open) { overflow: hidden; }
     .feature-band__inner { grid-template-columns: 1fr; }
     .feature-band__img { aspect-ratio: 16/9; }
+    .time-planner__intro { grid-template-columns: 1fr; gap: var(--space-3); }
+    .time-planner__result--one,
+    .time-planner__result--two { align-items: start; grid-template-columns: 1fr; }
+    .time-planner__result .btn { justify-self: start; }
+    .time-planner__route-grid { grid-template-columns: 1fr; }
+    .time-planner__route { min-height: 0; }
   }
 
   @media (max-width: 640px) {
     .editions-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
     .site-footer__grid { grid-template-columns: 1fr 1fr; }
+    .poi-grid { grid-template-columns: 1fr; }
+    .time-planner { padding: var(--space-12) 0; }
+    .time-planner__choice {
+      margin: 0 0 var(--space-2);
+      min-width: calc(50% - var(--space-2));
+    }
+    .time-planner__choice:last-of-type { min-width: 100%; }
+    .time-planner__result { padding: var(--space-5); }
+    .time-planner__result .btn { align-self: stretch; justify-self: stretch; }
+    .hero__ctas {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: min(100%, 22rem);
+    }
+    .hero__ctas .btn { width: 100%; }
   }
 </style>
