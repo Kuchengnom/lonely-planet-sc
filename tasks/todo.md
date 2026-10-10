@@ -11,6 +11,8 @@
   - [x] Resolve the 390px hero CTA wrap into an intentional vertical primary/secondary hierarchy.
   - [x] Add branded text-selection and consistent reduced-motion behavior for the refined surfaces.
 - [x] Verify the final homepage at desktop and mobile viewports, keyboard navigation, and production build.
+- [x] Replace the static landing-page hero with the approved privacy-enhanced YouTube background embed, including readable overlay, reduced-motion fallback, and responsive behavior.
+- [x] Merge the Elsewhere-inspired landing-page patterns: hero facts rail, generous editorial spacing, and an itinerary-style time-planning composition based on verified routes.
 
 ## Review
 
@@ -19,3 +21,45 @@ Mobile navigation: native dialog drawer includes all six existing destinations, 
 Time planner: homepage-only CSS-native radio disclosure uses only the authored Hurston schedules. The 1h and 2h paths expose their matching itinerary; 3–4h exposes all three authored choices, with honest guide-level links and no invented tab URL. `npm run build` and `git diff --check` passed. Browser checks passed at 1440×1000 and 390×844; keyboard Right Arrow changes the selected itinerary and the 3–4h choice list is accessible.
 
 Cross-breakpoint polish: retained the editorial grid, mobile drawer, and authored Hurston planner while establishing a consistent 44px CTA floor, pressed/hover/focus treatment, keyboard-visible card affordances, branded selection, and reduced-motion behavior. At 390×844 the hero now presents its primary and secondary actions as a deliberate vertical sequence; no horizontal overflow was observed. Browser checks at 1440×1000 and 390×844 passed, including drawer Escape/focus restoration, planner keyboard selection, and no console errors. `npm run build` (41 pages), `npm run test:scripts` (17 tests), and `git diff --check` passed.
+
+Hero video: the landing page now uses the requested YouTube video through YouTube's privacy-enhanced embed endpoint, muted and looped as decorative background media. The previous hero image remains the visual fallback; reduced-motion users receive that static image instead.
+
+Elsewhere-inspired refinement: the landing hero now provides an at-a-glance facts rail, while the time planner uses the reference page's spacious, decision-first itinerary rhythm without copying its price calculator or inventing unsupported estimates.
+Desktop and 390px mobile browser checks confirm the hero hierarchy, four guide facts, readable time-planner copy, and touch-sized time choices; the temporary mobile viewport override was reset after verification. `npm run build` (41 pages), `npm run test:scripts` (17 tests), and `git diff --check` pass.
+
+---
+
+# Master backlog
+
+## Editions
+- [ ] Add a cover image for each system's "edition" (Stanton, Pyro, NYX).
+
+## VerseGuide integration (carried over from MONTHLY_PLAN.md)
+
+### Data extraction
+- [ ] Finish Stanton extraction and image downloads (`src/data/verseguide/stanton.json` exists; verify completeness, coordinates, images)
+- [ ] Extract Pyro POIs/coordinates fully (`pyro.json` exists; verify)
+- [ ] Extract NYX data (if available)
+- [ ] Download, optimize (WebP/responsive) and organize image assets
+- [ ] Validate all extracted JSON; document extraction scripts
+
+### Components
+- [ ] Wire up existing `ImageAttribution`, `TextAttribution`, `CoordinateDisplay` (only CoordinateDisplay is currently referenced); test with sample data; document props
+- [ ] Create `POICollection.astro`, `NavigationInfo.astro`, `VerseGuideCite.astro` (inline citations)
+- [ ] Enhance `AttractionEntry.astro` with VerseGuide support
+- [ ] Performance + accessibility check of new components
+
+### Integration
+- [ ] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages
+- [ ] Enhance Pyro overview page
+- [ ] Create NYX system page
+- [ ] Mobile responsiveness + cross-browser testing
+
+### Attribution & compliance
+- [ ] Image and text attribution system-wide; footer attribution (`VerseGuideCredit` exists, confirm it is used everywhere)
+- [ ] Review VerseGuide terms of use; write attribution guidelines; legal compliance review
+
+### Launch
+- [ ] Final QA, performance optimization, monitoring, post-launch checklist
+- Targets: pages load <2s, 100% attribution, 95%+ accessibility and mobile scores
+- Risks: VerseGuide data availability (use agent-browser), image storage (lazy-load), attribution compliance, keep Lonely Planet voice primary

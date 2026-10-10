@@ -135,6 +135,14 @@ const POIS = [
 
     <!-- Hero -->
     <header class="hero" style={`background-image: url(${base}images/microtech/panoramic-lake.jpeg)`}>
+      <div class="hero__media" aria-hidden="true">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/5DSm_s4THpw?autoplay=1&mute=1&loop=1&playlist=5DSm_s4THpw&controls=0&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1"
+          title=""
+          tabindex="-1"
+          allow="autoplay; encrypted-media; picture-in-picture"
+        ></iframe>
+      </div>
       <div class="hero__pattern"></div>
       <div class="hero__inner">
         <p class="hero__eyebrow">New Edition Available</p>
@@ -163,6 +171,25 @@ const POIS = [
           </div>
         </div>
       </div>
+
+      <dl class="hero__facts" aria-label="Guide at a glance">
+        <div>
+          <dt>Access</dt>
+          <dd>Always free</dd>
+        </div>
+        <div>
+          <dt>Systems</dt>
+          <dd>Stanton + Pyro</dd>
+        </div>
+        <div>
+          <dt>Format</dt>
+          <dd>Curated guides</dd>
+        </div>
+        <div>
+          <dt>Start here</dt>
+          <dd>Plan a visit</dd>
+        </div>
+      </dl>
     </header>
 
     <main>
@@ -172,7 +199,7 @@ const POIS = [
         <div class="container time-planner__inner">
           <div class="time-planner__intro">
             <h2 id="time-planner-heading">How much time do you have today to visit the ’Verse?</h2>
-            <p>Choose an authored Hurston itinerary that fits the session you actually have.</p>
+            <p><strong>This is a sample itinerary.</strong> Choose the time you actually have; the route below is a real, authored Hurston visit rather than a generated recommendation.</p>
           </div>
 
           <fieldset class="time-planner__choices">
@@ -717,7 +744,7 @@ const POIS = [
   /* ── Hero ──────────────────────────────────────────── */
   .hero {
     position: relative;
-    min-height: 520px;
+    min-height: 640px;
     display: flex;
     align-items: stretch;
     background-color: var(--color-primary-900);
@@ -735,6 +762,28 @@ const POIS = [
     background:
       linear-gradient(110deg, rgba(9,20,45,0.88) 0%, rgba(9,20,45,0.35) 65%),
       linear-gradient(to bottom, rgba(9,20,45,0.3) 0%, transparent 40%);
+    z-index: 1;
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: var(--color-primary-900);
+    pointer-events: none;
+  }
+
+  .hero__media iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    min-width: 100%;
+    height: 56.25vw;
+    min-height: 100%;
+    border: 0;
+    transform: translate(-50%, -50%) scale(1.03);
   }
 
   .hero__pattern {
@@ -748,6 +797,7 @@ const POIS = [
       rgba(0,0,0,0.04) 4px
     );
     pointer-events: none;
+    z-index: 1;
   }
 
   .hero__inner {
@@ -756,7 +806,7 @@ const POIS = [
     max-width: var(--container-xl);
     width: 100%;
     margin: 0 auto;
-    padding: var(--space-20) var(--space-6) var(--space-16);
+    padding: var(--space-20) var(--space-6) 10rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -812,6 +862,45 @@ const POIS = [
     display: flex;
     gap: var(--space-3);
     flex-wrap: wrap;
+  }
+
+  .hero__facts {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: min(100% - 3rem, 1280px);
+    margin: 0 auto;
+    padding: var(--space-5) 0 var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.34);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .hero__facts div {
+    min-width: 0;
+    padding: 0 var(--space-5);
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+  }
+
+  .hero__facts div:first-child { border-left: 0; padding-left: 0; }
+
+  .hero__facts dt {
+    margin-bottom: var(--space-1);
+    color: rgba(255, 255, 255, 0.64);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    line-height: var(--line-height-normal);
+  }
+
+  .hero__facts dd {
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: clamp(0.875rem, 1.4vw, 1.125rem);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-snug);
   }
 
   /* Floating edition card in hero */
@@ -1528,37 +1617,36 @@ const POIS = [
   /* ── Time planner ──────────────────────────────────── */
   .time-planner {
     background: var(--color-white);
-    border-bottom: 1px solid var(--color-neutral-200);
-    padding: var(--space-16) 0;
+    padding: clamp(5rem, 10vw, 9rem) 0;
   }
 
   .time-planner__inner {
-    max-width: 1280px;
+    max-width: 1120px;
   }
 
   .time-planner__intro {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-    gap: var(--space-8);
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+    gap: clamp(var(--space-8), 8vw, var(--space-20));
     align-items: end;
-    margin-bottom: var(--space-7);
+    margin-bottom: var(--space-10);
   }
 
   .time-planner__intro h2 {
     color: var(--color-neutral-900);
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 3.3vw, 2.75rem);
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
     font-weight: var(--font-weight-extrabold);
     letter-spacing: var(--letter-spacing-tight);
-    line-height: 1.05;
+    line-height: 0.98;
     margin: 0;
     max-width: 20ch;
   }
 
   .time-planner__intro p {
-    color: var(--color-neutral-600);
+    color: var(--color-neutral-700);
     font-family: var(--font-body);
-    font-size: 0.9375rem;
+    font-size: 1rem;
     line-height: var(--line-height-relaxed);
     margin: 0;
     max-width: 42ch;
@@ -1584,22 +1672,22 @@ const POIS = [
   }
 
   .time-planner__choice {
-    align-items: baseline;
-    background: var(--color-neutral-50);
-    border: 1px solid var(--color-neutral-300);
-    color: var(--color-neutral-700);
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--color-neutral-400);
+    color: var(--color-neutral-900);
     cursor: pointer;
     display: inline-flex;
     font-family: var(--font-display);
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: var(--font-weight-bold);
     justify-content: center;
     letter-spacing: var(--letter-spacing-widest);
     line-height: 1;
     margin-right: var(--space-2);
-    min-height: 52px;
-    min-width: 9rem;
-    padding: 0.75rem 1rem;
+    min-height: 58px;
+    min-width: 10.5rem;
+    padding: 0.875rem 1.25rem;
     text-transform: uppercase;
     transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
   }
@@ -1611,7 +1699,7 @@ const POIS = [
   }
 
   .time-planner__choice:hover {
-    border-color: var(--color-primary-600);
+    border-color: var(--color-neutral-900);
     color: var(--color-primary-700);
   }
 
@@ -1621,19 +1709,20 @@ const POIS = [
   }
 
   .time-planner__input:checked + .time-planner__choice {
-    background: var(--color-primary-700);
-    border-color: var(--color-primary-700);
+    background: var(--color-neutral-900);
+    border-color: var(--color-neutral-900);
     color: var(--color-white);
   }
 
   .time-planner__results {
-    margin-top: var(--space-5);
+    margin-top: var(--space-10);
+    border-top: 1px solid var(--color-neutral-900);
   }
 
   .time-planner__result {
-    background: var(--color-surface-paper);
+    background: transparent;
     display: none;
-    padding: clamp(1.5rem, 4vw, 2.75rem);
+    padding: clamp(2rem, 5vw, 4.5rem) 0 0;
   }
 
   #time-one:checked ~ .time-planner__results .time-planner__result--one,
@@ -1650,7 +1739,7 @@ const POIS = [
   }
 
   .time-planner__duration {
-    color: var(--color-primary-700);
+    color: var(--color-neutral-600);
     font-family: var(--font-display);
     font-size: 0.6875rem;
     font-weight: var(--font-weight-bold);
@@ -1662,7 +1751,7 @@ const POIS = [
   .time-planner__result h3 {
     color: var(--color-neutral-900);
     font-family: var(--font-display);
-    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--letter-spacing-tight);
     line-height: var(--line-height-snug);
@@ -1696,22 +1785,22 @@ const POIS = [
 
   .time-planner__route-grid {
     display: grid;
-    gap: 1px;
+    gap: var(--space-6);
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .time-planner__route {
-    background: var(--color-white);
+    border-top: 1px solid var(--color-neutral-300);
     display: flex;
     flex-direction: column;
     min-height: 13rem;
-    padding: var(--space-5);
+    padding: var(--space-5) 0 0;
   }
 
   .time-planner__route h4 {
     color: var(--color-neutral-900);
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 1.125rem;
     letter-spacing: -0.015em;
     line-height: 1.2;
     margin: 0 0 var(--space-3);
@@ -1742,6 +1831,7 @@ const POIS = [
   .time-planner__route a:hover { color: var(--color-primary-900); }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero__media { display: none; }
     .hero__eyebrow,
     .hero__title,
     .hero__lede,
@@ -1778,6 +1868,18 @@ const POIS = [
 
   @media (max-width: 860px) {
     .hero__floating-card { display: none; }
+    .hero { min-height: 660px; }
+    .hero__inner { padding-bottom: 12rem; }
+    .hero__facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: var(--space-5);
+      width: min(calc(100% - 2rem), 42rem);
+    }
+    .hero__facts div:nth-child(odd) {
+      border-left: 0;
+      padding-left: 0;
+    }
+    .hero__facts div:nth-child(even) { padding-right: 0; }
     .site-header__inner { grid-template-columns: 44px minmax(0, 1fr) 44px; }
     .site-header__nav-left,
     .site-header__nav-right { display: none; }
@@ -1818,8 +1920,18 @@ const POIS = [
       min-width: calc(50% - var(--space-2));
     }
     .time-planner__choice:last-of-type { min-width: 100%; }
-    .time-planner__result { padding: var(--space-5); }
+    .time-planner__result { padding: var(--space-8) 0 0; }
     .time-planner__result .btn { align-self: stretch; justify-self: stretch; }
+    .hero { min-height: 700px; }
+    .hero__inner { padding-bottom: 14.5rem; }
+    .hero__facts {
+      bottom: var(--space-5);
+      column-gap: var(--space-4);
+      row-gap: var(--space-4);
+    }
+    .hero__facts div { padding: 0 var(--space-4); }
+    .hero__facts dt { font-size: 0.5625rem; }
+    .hero__facts dd { font-size: 0.875rem; }
     .hero__ctas {
       display: grid;
       grid-template-columns: 1fr;
