@@ -77,12 +77,63 @@ const color = stepColors[parseInt(colorIndex) % stepColors.length];
     border: 1px solid var(--color-neutral-200);
     border-radius: 0.75rem;
     box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    cursor: default;
   }
 
   .step-card:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    border-color: var(--color-primary-300);
+  }
+
+  /* Number ring hover — subtle pulse */
+  .step-card__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .step-card:hover .step-card__number {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Icon nudge on hover */
+  .step-card__icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .step-card:hover .step-card__icon {
+    transform: scale(1.15) rotate(-8deg);
+  }
+
+  /* Time badge hover */
+  .step-card__time {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-primary-600);
+    background: var(--color-primary-50);
+    border: 1px solid var(--color-primary-200);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .step-card:hover .step-card__time {
+    background: var(--color-primary-600);
+    color: white;
   }
 
   /* ─── Header ─── */
