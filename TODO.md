@@ -23,7 +23,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Add recommended gear lists per planet
 
 - [ ] **Image Research & Filling**
-  - [ ] MicroTech hero image — find high-fidelity screenshot (glacial landscape, rivers)
+  - [x] MicroTech hero image — find high-fidelity screenshot (glacial landscape, rivers)
   - [ ] Crusader hero image — find orbital platform/cloud city screenshot
   - [ ] Hurston hero image — find industrial cityscape
   - [ ] ArcCorp hero image — find underground corporate complex
