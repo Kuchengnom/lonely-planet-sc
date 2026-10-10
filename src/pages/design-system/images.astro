@@ -1,0 +1,126 @@
+---
+import '@styles/global.css';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, relative } from 'node:path';
+
+const walk = (dir: string): string[] =>
+  readdirSync(dir).flatMap((f) => {
+    const p = join(dir, f);
+    return statSync(p).isDirectory() ? walk(p) : [p];
+  });
+
+const root = process.cwd();
+const imgs = walk(join(root, 'public/images'))
+  .filter((p) => /\.(jpe?g|png|webp|svg|gif)$/i.test(p))
+  .map((p) => relative(join(root, 'public'), p));
+
+// ponytail: plain-text scan of src/, finds literal paths only (not computed ones)
+const srcFiles = walk(join(root, 'src')).filter((p) => /\.(astro|mdx|md|json|ts)$/.test(p));
+const sources = srcFiles.map((p) => ({ file: relative(root, p), text: readFileSync(p, 'utf8') }));
+
+const rows = imgs.map((path) => ({
+  path,
+  folder: path.split('/').slice(1, -1).join('/') || '(root)',
+  usedIn: sources.filter((s) => s.text.includes(path)).map((s) => s.file),
+}));
+
+const groups = Object.entries(
+  rows.reduce<Record<string, typeof rows>>((acc, r) => ((acc[r.folder] ??= []).push(r), acc), {})
+).sort(([a], [b]) => a.localeCompare(b));
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const used = rows.filter((r) => r.usedIn.length).length;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Audit — Design System</title>
+  </head>
+  <body>
+    <main class="audit">
+      <p><a href={`${base}design-system/`}>← Design System</a></p>
+      <h1>Image audit</h1>
+      <p>{rows.length} images · {used} in use · {rows.length - used} unused. Add notes per image; they save in this browser.</p>
+      <div class="bar">
+        <label><input type="radio" name="f" value="all" checked /> All</label>
+        <label><input type="radio" name="f" value="used" /> In use</label>
+        <label><input type="radio" name="f" value="unused" /> Unused</label>
+        <label><input type="radio" name="f" value="flagged" /> Flagged</label>
+        <button id="copy" type="button">Copy all notes</button>
+      </div>
+
+      {groups.map(([folder, items]) => (
+        <section>
+          <h2>{folder} <small>({items.length})</small></h2>
+          <div class="grid">
+            {items.map((r) => (
+              <figure class="card" data-path={r.path} data-used={r.usedIn.length ? 'used' : 'unused'}>
+                <a href={`${base}${r.path}`} target="_blank" rel="noopener"><img src={`${base}${r.path}`} alt="" loading="lazy" /></a>
+                <figcaption>
+                  <code>{r.path.replace('images/', '')}</code>
+                  {r.usedIn.length
+                    ? <ul>{r.usedIn.map((f) => <li>{f.replace('src/pages/', '')}</li>)}</ul>
+                    : <p class="unused">Not used anywhere</p>}
+                  <label class="flag"><input type="checkbox" class="flag-box" /> Wrong / replace</label>
+                  <textarea rows="2" placeholder="Correct subject, replacement, notes…"></textarea>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      ))}
+    </main>
+
+    <script>
+      const KEY = 'image-audit-v1';
+      let store: Record<string, { flag?: boolean; note?: string }> = {};
+      try { store = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch {}
+      const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch {} };
+      const cards = [...document.querySelectorAll<HTMLElement>('.card')];
+
+      cards.forEach((c) => {
+        const p = c.dataset.path!, box = c.querySelector<HTMLInputElement>('.flag-box')!, ta = c.querySelector('textarea')!;
+        box.checked = !!store[p]?.flag; ta.value = store[p]?.note ?? '';
+        const upd = () => { store[p] = { flag: box.checked, note: ta.value }; c.classList.toggle('flagged', box.checked); save(); };
+        c.classList.toggle('flagged', box.checked);
+        box.onchange = upd; ta.oninput = upd;
+      });
+
+      document.querySelectorAll<HTMLInputElement>('input[name=f]').forEach((r) => r.onchange = () => {
+        cards.forEach((c) => {
+          c.hidden = r.value === 'used' ? c.dataset.used !== 'used'
+            : r.value === 'unused' ? c.dataset.used !== 'unused'
+            : r.value === 'flagged' ? !c.classList.contains('flagged') : false;
+        });
+      });
+
+      document.getElementById('copy')!.onclick = () => {
+        const out = Object.entries(store).filter(([, v]) => v.flag || v.note)
+          .map(([p, v]) => `${v.flag ? '[WRONG] ' : ''}${p}${v.note ? ' — ' + v.note : ''}`).join('\n');
+        navigator.clipboard.writeText(out);
+      };
+    </script>
+
+    <style>
+      .audit { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; font-family: var(--font-body); color: var(--color-text); }
+      h1 { font-family: var(--font-display); }
+      h2 { font-family: var(--font-display); margin: 2rem 0 .75rem; border-bottom: 1px solid var(--color-neutral-200); padding-bottom: .25rem; }
+      h2 small { font-weight: 400; opacity: .6; }
+      .bar { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; position: sticky; top: 0; background: white; padding: .75rem 0; z-index: 1; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+      .card { margin: 0; border: 1px solid var(--color-neutral-200); border-radius: 8px; overflow: hidden; background: white; }
+      .card[hidden] { display: none; }
+      .card.flagged { border-color: #c0392b; box-shadow: 0 0 0 2px #c0392b33; }
+      .card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; background: var(--color-neutral-100); }
+      figcaption { padding: .5rem .75rem .75rem; font-size: .8125rem; display: flex; flex-direction: column; gap: .35rem; }
+      code { font-size: .75rem; word-break: break-all; }
+      ul { margin: 0; padding-left: 1rem; color: var(--color-neutral-600); }
+      .unused { margin: 0; color: #b7791f; }
+      textarea { width: 100%; font: inherit; font-size: .8125rem; }
+      button { padding: .4rem 1rem; border-radius: 26px; border: 0; background: var(--color-ink); color: white; font-weight: 700; cursor: pointer; }
+    </style>
+  </body>
+</html>
