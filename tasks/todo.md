@@ -32,7 +32,7 @@ Desktop and 390px mobile browser checks confirm the hero hierarchy, four guide f
 # Master backlog
 
 ## Editions
-- [ ] Add a cover image for each system's "edition" (Stanton, Pyro, NYX).
+- [x] Cover images on edition cards: Stanton + Pyro done; Pyro needs a real in-game shot; Castra cover is a starmap; NYX uses wiki shots.
 
 ## VerseGuide integration (carried over from MONTHLY_PLAN.md)
 
@@ -52,7 +52,7 @@ Desktop and 390px mobile browser checks confirm the hero hierarchy, four guide f
 ### Integration
 - [ ] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages
 - [ ] Enhance Pyro overview page
-- [ ] Create NYX system page
+- [x] Create NYX system page (overview done; planet/POI subpages and own screenshots still to do)
 - [ ] Mobile responsiveness + cross-browser testing
 
 ### Attribution & compliance

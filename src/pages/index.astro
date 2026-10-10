@@ -9,7 +9,7 @@ interface Edition {
   tagline: string;
   status: 'available' | 'coming-soon';
   href: string;
-  theme: 'stanton' | 'pyro' | 'terra' | 'nyx';
+  theme: 'stanton' | 'pyro' | 'castra' | 'nyx';
   cover?: string;
 }
 
@@ -33,20 +33,22 @@ const EDITIONS: Edition[] = [
     cover: `${base}images/pyro/pyro-1-lava.webp`,
   },
   {
-    name: 'Terra',
-    subtitle: 'The Capital World',
-    tagline: 'The cultural and political heart of the UEE — cosmopolitan, ambitious, complicated.',
-    status: 'coming-soon',
-    href: '#',
-    theme: 'terra',
-  },
-  {
     name: 'Nyx',
     subtitle: 'The Lawless Fringe',
     tagline: "Home of Delamar and Levski. The rebel answer to Pyro's chaos.",
+    status: 'available',
+    href: `${base}nyx/`,
+    theme: 'nyx',
+    cover: `${base}images/nyx/glaciem.webp`,
+  },
+  {
+    name: 'Castra',
+    subtitle: 'The Next System',
+    tagline: 'A single-star system on the Nyx run. Coming after Nyx.',
     status: 'coming-soon',
     href: '#',
-    theme: 'nyx',
+    theme: 'castra',
+    cover: `${base}images/castra/castra.webp`,
   },
 ];
 
@@ -182,7 +184,7 @@ const POIS = [
         </div>
         <div>
           <dt>Systems</dt>
-          <dd>Stanton + Pyro</dd>
+          <dd>Stanton, Pyro + Nyx</dd>
         </div>
         <div>
           <dt>Format</dt>
@@ -1027,7 +1029,7 @@ const POIS = [
   }
   .edition-card--stanton .edition-card__thumb { background: linear-gradient(160deg, #1e3a5c 0%, #0d1f35 55%, #040c18 100%); }
   .edition-card--pyro    .edition-card__thumb { background: linear-gradient(160deg, #3a1a0a 0%, #1e0d04 55%, #0a0400 100%); }
-  .edition-card--terra   .edition-card__thumb { background: linear-gradient(160deg, #0a2a1a 0%, #051510 55%, #020a06 100%); }
+  .edition-card--castra   .edition-card__thumb { background: linear-gradient(160deg, #0a2a1a 0%, #051510 55%, #020a06 100%); }
   .edition-card--nyx     .edition-card__thumb { background: linear-gradient(160deg, #1a1a2e 0%, #0d0d1e 55%, #050510 100%); }
 
   .edition-card__cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -1040,7 +1042,7 @@ const POIS = [
   }
   .edition-card--stanton .edition-card__planet { background: radial-gradient(circle at 30% 30%, #4a8be5, #1a3a6c, #040c18); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.8), 0 0 50px rgba(58,123,213,0.25); }
   .edition-card--pyro    .edition-card__planet { background: radial-gradient(circle at 30% 30%, #e55a1a, #8b2500, #1a0500); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.7), 0 0 60px rgba(229,90,26,0.35); }
-  .edition-card--terra   .edition-card__planet { background: radial-gradient(circle at 30% 30%, #2aaa6a, #0d5530, #020f08); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.7), 0 0 50px rgba(42,170,106,0.2); }
+  .edition-card--castra   .edition-card__planet { background: radial-gradient(circle at 30% 30%, #2aaa6a, #0d5530, #020f08); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.7), 0 0 50px rgba(42,170,106,0.2); }
   .edition-card--nyx     .edition-card__planet { background: radial-gradient(circle at 30% 30%, #7a4aaa, #3a1a5c, #0a0518); box-shadow: inset -14px -10px 35px rgba(0,0,0,0.8), 0 0 50px rgba(122,74,170,0.2); }
 
   .edition-card__overlay {

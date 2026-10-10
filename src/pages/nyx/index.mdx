@@ -1,0 +1,58 @@
+---
+layout: '../../layouts/PlanetLayout.astro'
+title: "Nyx"
+system: "The Lawless Fringe"
+region: "3 Planets · 2 Belts"
+hero_image: "/images/nyx/in-space.webp"
+lead: "An unclaimed system on the edge of a dark nebula, left alone by the UEE because nothing in it was worth terraforming and the one thing worth mining was too dangerous to try. What filled the vacuum is the People's Alliance, a hideout inside an asteroid, and a very good place to not be found."
+vitals_best_for: "Off-the-grid travel, hidden-base spotting, cargo-run waypoints, terraforming watching"
+vitals_climate: "Deep cold, dense asteroid fields, a nebula on the doorstep"
+vitals_hub: "Levski · Delamar · People's Service Stations"
+vitals_currency: "UEC"
+vitals_ship: "Armed vessel advised — stick to the standard spacelanes"
+getting_there: "Nyx has seven jump points: Bremen, Castra, Odin, Pyro, Stanton, Tohil and Virgil. The Pyro and Virgil gates are medium; the rest are large. Since CitizenCon 2025 the Castra gate has been redirected to Stanton, which is not expected to be permanent. Nyx is a waypoint on the Castra–Stanton run, so there is cargo worth stealing in transit, and small-scale piracy is not unusual. Stay on the spacelanes."
+---
+
+import AttractionEntry from '@components/AttractionEntry.astro'
+import ExplorerView from '@components/ExplorerView.astro'
+import TouristTip from '@components/TouristTip.astro'
+
+<AttractionEntry number={1} title="Delamar and Levski — The Hideout" category="settlement" image="/images/nyx/glaciem.webp" imageAlt="The Glaciem Ring drifting through the nebula-lit dark of Nyx">
+
+Delamar is not technically a planet. It is a large asteroid hidden deep in the Glaciem Ring, and the abandoned mining facility inside it is Levski, home of the People's Alliance. Founded in 2618 by political activists and refugees who fled the Messer regime, it is now the most populous and most visited place in the system. Anti-UEE activists, radicals and criminals live here. Visitors are strictly forbidden from entering the residential areas, and nobody pretends this is a negotiable rule.
+
+</AttractionEntry>
+
+<AttractionEntry number={2} title="The Keeger Belt — The Cold Edge" category="natural-wonder" image="/images/nyx/keeger.webp" imageAlt="The Keeger Belt at the outer edge of the Nyx system" >
+
+Nyx's second belt sits at the very edge of the system, cold and distant, and is suspected of hiding criminal strongholds. People's Service Stations and QV Breaker Stations have been added here since Alpha 4.7. If you want to see what an unclaimed frontier looks like once somebody starts bolting infrastructure to it, this is the place.
+
+</AttractionEntry>
+
+<AttractionEntry number={3} title="The Planets — Three Worlds Nobody Wanted" category="natural-wonder" image="/images/nyx/in-space.webp" imageAlt="The Nyx star glowing against a red nebula" >
+
+Nyx I is a coreless world strip-mined clean by Gold Horizon, and it is now the focus of an experimental terraforming effort by Genesis Terraforming. Nyx II has a high-pressure atmosphere of acid and carbon dioxide clouds. Nyx III is an ice giant with no breathable air and nothing worth taking. The planets are arriving in stages during 2026, so for now the view from the belts is the main attraction.
+
+</AttractionEntry>
+
+<AttractionEntry number={4} title="People's Service Stations — A Safe Harbour" category="practical">
+
+Four stations (Alpha, Delta, Theta and Lambda) are run by the People's Alliance and offer restocking, rearming, refuelling and a surprising amount of shopping. It is a safe haven in a system where safe havens are scarce. Mind your manners: you are a guest of the people who live here.
+
+</AttractionEntry>
+
+<ExplorerView slot="explorer" author="Freight Pilot, Castra–Stanton Run">
+Everyone talks about Levski like it's a pirate den. It's a settlement of people who left a regime and found the one place nobody would follow. Treat it with that in mind and you'll have no trouble. Treat it like a tourist stop and you'll be escorted back to your ship.
+</ExplorerView>
+
+<TouristTip>
+
+- **Entry**: Nyx is unclaimed, so there is no UEE customs. The People's Alliance keeps the order around Levski.
+- **Safety**: Stay on the standard spacelanes. Piracy is small-scale but real, and the cargo moving through is valuable.
+- **Levski**: Do not enter the residential areas. You will be turned back.
+- **Resupply**: People's Service Stations (Alpha, Delta, Theta, Lambda) handle fuel, repairs and restocking.
+- **Status**: Nyx is only partly released. The system arrived in Alpha 4.4 with Delamar and QV Services Stations, and the planets are due during 2026.
+
+</TouristTip>
+
+*Source: [Star Citizen Wiki, Nyx system](https://starcitizen.tools/Nyx_system), CC BY-SA. Images from the same wiki.*
