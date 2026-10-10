@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SystemHeader from '../components/SystemHeader.astro';
+import Button from '../components/Button.astro';
 import VitalStats from '../components/VitalStats.astro';
 
 interface Frontmatter {
@@ -32,6 +33,13 @@ const heroUrl = hero_image && !hero_image.startsWith('http')
   ? `${base}${hero_image.startsWith('/') ? hero_image.slice(1) : hero_image}`
   : hero_image;
 
+const facts = [
+  ['Best for', vitals_best_for?.split(',')[0]],
+  ['Hub', vitals_hub?.split('·')[0]],
+  ['Currency', vitals_currency],
+  ['Ship class', vitals_ship?.split('—')[0]],
+].filter(([, v]) => v).map(([l, v]) => [l, v.trim()]);
+
 const hasExplorer = Astro.slots.has('explorer');
 ---
 
@@ -57,7 +65,14 @@ const hasExplorer = Astro.slots.has('explorer');
       <div class="planet-hero__text">
         <h1 class="planet-hero__title">{title}</h1>
         <p class="planet-hero__subtitle">{system}{region ? ` · ${region}` : ''}</p>
+        <div class="planet-hero__cta">
+          <Button href="#sights">Explore</Button>
+          <Button href="#getting-there" variant="glass">Getting there</Button>
+        </div>
       </div>
+      <dl class="planet-hero__facts">
+        {facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
+      </dl>
     </div>
 
     <div class="page-container">
@@ -65,7 +80,7 @@ const hasExplorer = Astro.slots.has('explorer');
 
         <main class="page-main">
           <p class="main-lead">{lead}</p>
-          <h2 class="main-section-heading">Sights &amp; Highlights</h2>
+          <h2 class="main-section-heading" id="sights">Sights &amp; Highlights</h2>
           <div class="main-attractions">
             <slot />
           </div>
@@ -81,7 +96,7 @@ const hasExplorer = Astro.slots.has('explorer');
             ship_class={vitals_ship}
           />
 
-          <div class="sidebar-card sidebar-card--getting-there">
+          <div class="sidebar-card sidebar-card--getting-there" id="getting-there">
             <h3 class="sidebar-card__label">Getting There</h3>
             <p class="sidebar-card__body">{getting_there}</p>
           </div>
@@ -102,7 +117,9 @@ const hasExplorer = Astro.slots.has('explorer');
 
   .planet-hero {
     position: relative;
-    height: 500px;
+    height: min(78vh, 640px);
+    margin: var(--space-4) var(--space-4) 0;
+    border-radius: var(--radius-2xl);
     overflow: hidden;
   }
 
@@ -116,39 +133,63 @@ const hasExplorer = Astro.slots.has('explorer');
   .planet-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.65) 0%,
-      rgba(0, 0, 0, 0.15) 50%,
-      transparent 100%
-    );
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.25) 100%);
   }
 
   .planet-hero__text {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-8);
+    inset: 0 0 5.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-4);
+    color: white;
   }
 
   .planet-hero__title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    color: white;
-    margin: 0 0 var(--space-1);
-    line-height: var(--line-height-tight);
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin: 0 0 var(--space-2);
+    line-height: 1.15;
   }
 
   .planet-hero__subtitle {
-    font-family: var(--font-body);
-    font-size: var(--text-body-md);
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--text-body-lg);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 var(--space-6);
+  }
+
+  .planet-hero__cta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .planet-hero__facts {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: 0;
+    padding: var(--space-5) var(--space-8);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    color: white;
+  }
+
+  .planet-hero__facts dt {
+    font-size: var(--text-body-sm);
+    opacity: 0.75;
+  }
+
+  .planet-hero__facts dd {
+    margin: 0;
+    font-weight: 700;
   }
 
   /* ── Container ──────────────────────────────── */
@@ -178,7 +219,7 @@ const hasExplorer = Astro.slots.has('explorer');
     font-size: 1.0625rem;
     font-style: italic;
     line-height: var(--line-height-relaxed);
-    color: var(--color-neutral-700);
+    color: var(--color-text);
     margin: 0 0 1.25rem;
   }
 
@@ -244,7 +285,18 @@ const hasExplorer = Astro.slots.has('explorer');
 
   @media (max-width: 768px) {
     .planet-hero {
-      height: 320px;
+      height: 480px;
+      margin: var(--space-2) var(--space-2) 0;
+    }
+
+    .planet-hero__facts {
+      grid-template-columns: repeat(2, 1fr);
+      padding: var(--space-4);
+      gap: var(--space-2) var(--space-4);
+    }
+
+    .planet-hero__text {
+      inset: 0 0 7.5rem;
     }
 
     .page-container {

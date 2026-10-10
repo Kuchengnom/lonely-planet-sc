@@ -1,5 +1,5 @@
 ---
-type Variant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type Variant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'glass'
 type Size = 'small' | 'medium' | 'large'
 
 interface Props {
@@ -19,14 +19,16 @@ const sizeConfig = {
 }
 
 const variantStyles: Record<Variant, string> = {
-  primary: 'background: var(--color-primary-600); color: var(--color-white); border: none;',
+  primary: 'background: var(--color-ink); color: var(--color-white); border: none;',
+  glass: 'background: rgba(52, 47, 65, 0.5); color: var(--color-white); border: none; backdrop-filter: blur(6px);',
   secondary: 'background: var(--color-secondary-600); color: var(--color-white); border: none;',
   outline: 'background: transparent; color: var(--color-primary-600); border: 2px solid var(--color-primary-600);',
   ghost: 'background: transparent; color: var(--color-primary-600); border: none;'
 }
 
 const hoverStyles: Record<Variant, string> = {
-  primary: 'background: var(--color-primary-700);',
+  primary: 'background: var(--color-primary-600);',
+  glass: 'background: rgba(52, 47, 65, 0.7);',
   secondary: 'background: var(--color-secondary-700);',
   outline: 'background: var(--color-primary-50);',
   ghost: 'background: var(--color-primary-50);'
@@ -37,7 +39,7 @@ const hoverStyles: Record<Variant, string> = {
   <a
     href={href}
     class={`button button--${variant} button--${size}`}
-    style={`${sizeConfig[size].padding}; font-size: ${sizeConfig[size].fontSize}; ${variantStyles[variant]}`}
+    style={`padding: ${sizeConfig[size].padding}; font-size: ${sizeConfig[size].fontSize}; ${variantStyles[variant]}`}
   >
     {icon && <span class="button__icon" aria-hidden="true">{icon}</span>}
     <span class="button__text"><slot /></span>
@@ -46,7 +48,7 @@ const hoverStyles: Record<Variant, string> = {
   <button
     type="button"
     class={`button button--${variant} button--${size}`}
-    style={`${sizeConfig[size].padding}; font-size: ${sizeConfig[size].fontSize}; ${variantStyles[variant]}`}
+    style={`padding: ${sizeConfig[size].padding}; font-size: ${sizeConfig[size].fontSize}; ${variantStyles[variant]}`}
     {...onClick && { onClick }}
   >
     {icon && <span class="button__icon" aria-hidden="true">{icon}</span>}
@@ -60,8 +62,8 @@ const hoverStyles: Record<Variant, string> = {
     align-items: center;
     gap: var(--space-2);
     font-family: var(--font-body);
-    font-weight: var(--font-weight-semibold);
-    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-bold);
+    border-radius: 26px; /* pill, per Elsewhere */
     transition: all var(--duration-normal) var(--ease-out);
     cursor: pointer;
     text-decoration: none;
@@ -77,7 +79,11 @@ const hoverStyles: Record<Variant, string> = {
   }
 
   .button--primary:hover {
-    background: var(--color-primary-700);
+    background: var(--color-primary-600) !important;
+  }
+
+  .button--glass:hover {
+    background: rgba(52, 47, 65, 0.7) !important;
   }
 
   .button--secondary:hover {
