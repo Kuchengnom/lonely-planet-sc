@@ -1013,6 +1013,8 @@ const POIS = [
                 box-shadow var(--duration-normal) var(--ease-out);
     background: var(--color-white);
   }
+  .edition-card { position: relative; }
+  a.edition-card__cta::after { content: ''; position: absolute; inset: 0; }
   .edition-card:hover,
   .edition-card:has(.edition-card__cta:focus-visible) { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
   .edition-card--soon { opacity: 0.85; }

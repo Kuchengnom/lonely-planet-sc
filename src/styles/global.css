@@ -49,29 +49,6 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* ─── Scroll-to-link hover accent ─── */
-a.attraction__title-link:hover {
-  color: var(--color-primary-600);
-  position: relative;
-}
-
-a.attraction__title-link::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--color-primary-600);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-}
-
-a.attraction__title-link:hover::after {
-  transform: scaleX(1);
-}
-
 /* ─── Scroll-to-link hover accent for PHDS cards ─── */
 a.phds-index__card:hover {
   text-decoration: none;

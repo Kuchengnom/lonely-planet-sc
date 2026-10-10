@@ -51,6 +51,7 @@ const cat = CATEGORY_CONFIG[category];
 
 <style>
   .attraction {
+    position: relative;
     background: white;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
@@ -137,6 +138,24 @@ const cat = CATEGORY_CONFIG[category];
   .attraction__title-link {
     color: inherit;
     text-decoration: none;
+  }
+
+  /* stretched link: whole card is clickable */
+  .attraction__title-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .attraction__title-link:focus-visible::after {
+    outline: 2px solid var(--color-primary-600);
+    outline-offset: -2px;
+    border-radius: var(--radius-lg);
+  }
+
+  .attraction:hover .attraction__title-link {
+    text-decoration: underline;
+    color: var(--color-primary-600);
   }
 
   .attraction__title-link:hover {
