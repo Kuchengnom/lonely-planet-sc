@@ -1,7 +1,7 @@
 ---
-import PHDSIndex from '../../components/PHDSIndex.astro';
+import PHDSIndex from '../../components/PHDSIndex.astro'
 import '../../styles/global.css';
-import SystemHeader from '../../components/SystemHeader.astro';
+import SystemHeader from '../../components/SystemHeader.astro'
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
@@ -107,6 +107,17 @@ const entries = [
     difficulty: 'Moderate',
     teaser: 'A Vanguard Harbinger fighter-bomber wedged in an equatorial canyon on the scorched surface of Pyro I — its bomb bay still open, still waiting.',
     heroImage: '/images/pyro/pyro-1-lava.webp',
+  },
+  {
+    href: `${base}arccorp/phds/locations/wala-moon-surface/`,
+    name: 'Wala Moon — Deformed Surface',
+    system: 'Stanton',
+    planet: 'ArcCorp',
+    region: 'Wala Orbit',
+    type: 'anomaly',
+    difficulty: 'Hard',
+    teaser: 'A misshapen moon being slowly crushed by ArcCorp\'s gravity — elongated mountains, floating debris at the tidal equator, and gravity that shifts direction every 18 hours.',
+    heroImage: '/images/arccorp/wala-surface.jpeg',
   },
 ];
 

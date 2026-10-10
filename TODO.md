@@ -35,7 +35,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Step 4: Add blur-up image placeholders
   - [x] Step 4: Add hover states to tour cards
   - [x] Step 4: Add scroll-to-link for TOC
-  - [ ] Step 5: Cross-system consistency polish (Stanton → Pyro → ArcCorp)
+  - [x] **Step 5**: Cross-system consistency polish (Stanton → Pyro → ArcCorp)
 
 - [ ] **Browse Index Polish**
   - [ ] Add filter pills for difficulty (Easy/Moderate/Hard)

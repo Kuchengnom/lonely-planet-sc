@@ -35,6 +35,8 @@ const visitedIds = new Set<string>();
     >
       All
     </button>
+    <div class="phds-index__filter-divider" aria-hidden="true" />
+    <span class="phds-index__filter-label">Type</span>
     {allTypes.map((type) => (
       <button
         class="phds-index__filter-btn"
@@ -43,14 +45,27 @@ const visitedIds = new Set<string>();
         {type.replace('-', ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
       </button>
     ))}
-    {allDifficulties.map((diff) => (
-      <button
-        class="phds-index__filter-btn"
-        data-filter={diff}
-      >
-        {diff}
-      </button>
-    ))}
+    <span class="phds-index__filter-label">Difficulty</span>
+    {allDifficulties.map((diff) => {
+      // Map difficulty string to a CSS class for colored pills
+      const diffClass = diff === 'Easy'
+        ? 'phds-index__filter-btn--easy'
+        : diff === 'Moderate'
+          ? 'phds-index__filter-btn--moderate'
+          : diff === 'Hard'
+            ? 'phds-index__filter-btn--hard'
+            : diff === 'Extreme'
+              ? 'phds-index__filter-btn--extreme'
+              : '';
+      return (
+        <button
+          class={`phds-index__filter-btn ${diffClass}`.trim()}
+          data-filter={diff}
+        >
+          {diff}
+        </button>
+      );
+    })}
   </div>
 
   <!-- Cards grid -->
@@ -155,6 +170,68 @@ const visitedIds = new Set<string>();
     background: var(--color-primary-600);
     color: white;
     border-color: var(--color-primary-600);
+  }
+
+  /* Difficulty-colored pills */
+  .phds-index__filter-btn--easy {
+    background: color-mix(in srgb, var(--color-difficulty-easy) 15%, transparent);
+    color: var(--color-difficulty-easy);
+    border-color: var(--color-difficulty-easy);
+  }
+  .phds-index__filter-btn--easy.phds-index__filter-btn--active,
+  .phds-index__filter-btn--easy:hover {
+    background: var(--color-difficulty-easy);
+    color: white;
+  }
+
+  .phds-index__filter-btn--moderate {
+    background: color-mix(in srgb, var(--color-difficulty-moderate) 15%, transparent);
+    color: var(--color-difficulty-moderate);
+    border-color: var(--color-difficulty-moderate);
+  }
+  .phds-index__filter-btn--moderate.phds-index__filter-btn--active,
+  .phds-index__filter-btn--moderate:hover {
+    background: var(--color-difficulty-moderate);
+    color: white;
+  }
+
+  .phds-index__filter-btn--hard {
+    background: color-mix(in srgb, var(--color-difficulty-hard) 15%, transparent);
+    color: var(--color-difficulty-hard);
+    border-color: var(--color-difficulty-hard);
+  }
+  .phds-index__filter-btn--hard.phds-index__filter-btn--active,
+  .phds-index__filter-btn--hard:hover {
+    background: var(--color-difficulty-hard);
+    color: white;
+  }
+
+  .phds-index__filter-btn--extreme {
+    background: color-mix(in srgb, var(--color-difficulty-extreme) 15%, transparent);
+    color: var(--color-difficulty-extreme);
+    border-color: var(--color-difficulty-extreme);
+  }
+  .phds-index__filter-btn--extreme.phds-index__filter-btn--active,
+  .phds-index__filter-btn--extreme:hover {
+    background: var(--color-difficulty-extreme);
+    color: white;
+  }
+
+  /* Section labels and divider */
+  .phds-index__filter-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-neutral-400);
+    align-self: center;
+  }
+
+  .phds-index__filter-divider {
+    width: 1px;
+    height: 1.5rem;
+    background: var(--color-neutral-200);
+    align-self: center;
   }
 
   /* Cards grid */

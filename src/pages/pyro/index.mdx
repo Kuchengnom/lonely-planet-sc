@@ -13,9 +13,9 @@ vitals_ship: "Armed vessel strongly recommended; insurance exclusions apply thro
 getting_there: "Enter via the Stanton-Pyro jump point and do not stop moving. Ruin Station at Lagrange Point 1 is your first waypoint — dock there, get fuel, and calibrate your situational awareness before heading deeper into the system. Pyro has no visitor center, no welcome committee, and no meaningful law enforcement presence. What it has is six planets, a belt of asteroids, and more ways to die than any responsible guide should enumerate. Proceed accordingly."
 ---
 
-import AttractionEntry from '@components/AttractionEntry.astro';
-import ExplorerView from '@components/ExplorerView.astro';
-import TouristTip from '@components/TouristTip.astro';
+import AttractionEntry from '@components/AttractionEntry.astro'
+import ExplorerView from '@components/ExplorerView.astro'
+import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="Pyro I — The Hellscape" category="natural-wonder" image="/images/pyro/pyro-1-lava.webp" imageAlt="Active lava flows and volcanic vents on Pyro I's hostile surface" href="/lonely-planet-sc/pyro/pyro-1/">
 
@@ -136,11 +136,6 @@ Pyro is not one world — it is six, each with a different personality and a dif
 | **Pyro IV** | Mud Flats (crust over thick mud), iron-oxide dust | Surface probe, ship dust guards, wind-resistant jacket |
 | **Pyro V** | Extreme cold (-150°C+), frozen methane lakes | Thermal survival suit, heated liner, ice axe, anti-fog goggles |
 | **Pyro VI** | Radiation, ring debris, gravity well | Ship radiation shielding, thruster fuel reserve, debris detection |
-| **Ruin Station** | Nothing — it's a station | Respect for the locals, barter goods, situational awareness |
+|| **Ruin Station** | Nothing — it's a station | Respect for the locals, barter goods, situational awareness |
 
 For planet-specific gear recommendations, see the individual planet pages: [Pyro I](/lonely-planet-sc/pyro/pyro-1/), [Pyro II](/lonely-planet-sc/pyro/pyro-2/), [Pyro III](/lonely-planet-sc/pyro/pyro-3/), [Pyro IV](/lonely-planet-sc/pyro/pyro-4/), [Pyro V](/lonely-planet-sc/pyro/pyro-5/), [Pyro VI](/lonely-planet-sc/pyro/pyro-6/), [Ruin Station](/lonely-planet-sc/pyro/stations/ruin-station/).
-
-<ExplorerView slot="explorer" author="Freelance Hauler, Ruin Station">
-Gear matters in Pyro. Not in a "buy the right boots and you're golden" way — in a "if you leave for Pyro I without a thermal suit, you are literally asking to die" way. I've seen tourists show up for Pyro III with nothing because they thought the system was mostly chill. Then they decide to visit Pyro I on a whim because "why not." Don't be that person. Read the gear list for the planet you're going to. Pack it. Check it twice. And whatever you do, don't assume your Pyro V cold gear is going to do you any good on Pyro I's lava fields. The universe has a cruel sense of humor.
-
-</ExplorerView>
