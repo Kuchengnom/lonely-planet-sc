@@ -24,10 +24,10 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
 
 - [ ] **Image Research & Filling**
   - [x] MicroTech hero image — find high-fidelity screenshot (glacial landscape, rivers)
-  - [ ] Crusader hero image — find orbital platform/cloud city screenshot
-  - [ ] Hurston hero image — find industrial cityscape
-  - [ ] ArcCorp hero image — find underground corporate complex
-  - [ ] Pyro hero image — find volcanic terrain
+  - [x] Crusader hero image — find high-fidelity screenshot (orbital platform/cloud city screenshot)
+  - [x] Hurston hero image — find industrial cityscape
+  - [x] ArcCorp hero image — find underground corporate complex
+  - [x] Pyro hero image — find volcanic terrain
   - [ ] PHDS thumbnail images for each location (screenshots or concept art)
 
 - [ ] **Impeccable Steps**
