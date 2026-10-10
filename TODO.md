@@ -2,7 +2,7 @@
 
 This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen project.
 
-- [ ] **PHDS Content Expansion**
+- [x] **PHDS Content Expansion**
   - [x] daymar-biodome — fill "What to Bring" section
   - [x] daymar-biodome — fill "Access Notes" section with coordinates
   - [x] microtech-ice-caves — write full MDX entry with cave exploration guide
@@ -14,7 +14,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] pyro-vi-crashed-constellation — write content about wreckage site
   - [x] phds-arc-pyro. Create PHDS index entries for ArcCorp and Pyro system locations
 
-- [ ] **Missing Content Gaps**
+- [x] **Missing Content Gaps**
   - [x] MicroTech eating/drinking section (add recommended venues)
   - [x] Crusader eating/drinking section
   - [x] Hurston eating/drinking section
@@ -37,12 +37,12 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Step 4: Add scroll-to-link for TOC
   - [x] **Step 5**: Cross-system consistency polish (Stanton → Pyro → ArcCorp)
 
-- [ ] **Browse Index Polish**
-  - [ ] Add filter pills for difficulty (Easy/Moderate/Hard)
-  - [ ] Add bookmark feature (heart icon, localStorage)
-  - [ ] Add visited checkmarks (localStorage)
-  - [ ] Implement empty state for no-results
-  - [ ] Mobile layout: stack cards vertically, full-width
+- [x] **Browse Index Polish**
+  - [x] Add filter pills for difficulty (Easy/Moderate/Hard)
+  - [x] Add bookmark feature (heart icon, localStorage)
+  - [x] Add visited checkmarks (localStorage)
+  - [x] Implement empty state for no-results
+  - [x] Mobile layout: stack cards vertically, full-width
 
 - [ ] **ArcCorp Content**
   - [ ] Research ArcCorp underground facilities lore
