@@ -28,7 +28,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Hurston hero image — find industrial cityscape
   - [x] ArcCorp hero image — find underground corporate complex
   - [x] Pyro hero image — find volcanic terrain
-  - [ ] PHDS thumbnail images for each location (screenshots or concept art)
+  - [x] PHDS thumbnail images for each location (screenshots or concept art)
 
 - [ ] **Impeccable Steps**
   - [x] Step 3: Fix TourSchedule heading hierarchy (H3 → H4 in step cards)
