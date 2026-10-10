@@ -33,7 +33,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
 - [ ] **Impeccable Steps**
   - [x] Step 3: Fix TourSchedule heading hierarchy (H3 → H4 in step cards)
   - [x] Step 4: Add blur-up image placeholders
-  - [ ] Step 4: Add hover states to tour cards
+  - [x] Step 4: Add hover states to tour cards
   - [ ] Step 4: Add scroll-to-link for TOC
   - [ ] Step 5: Cross-system consistency polish (Stanton → Pyro → ArcCorp)
 
