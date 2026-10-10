@@ -280,6 +280,55 @@ const POIS = [
         dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
       </script>
 
+      <!-- Scroll spy: highlight active nav link as user scrolls -->
+      <script>
+        (() => {
+          const navLinks = document.querySelectorAll('.site-header__nav-left a[href^="#"], .site-header__nav-right a[href^="#"]');
+          if (!navLinks.length) return;
+
+          const anchors = Array.from(navLinks).map(link => {
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return null;
+            const target = document.getElementById(href.slice(1));
+            if (!target) return null;
+            return { link, target, href };
+          }).filter(Boolean);
+
+          if (!anchors.length) return;
+
+          // Offset for sticky header — matches the CSS scroll-padding-top
+          const headerHeight = 60; // site-header height
+          const offset = Math.max(headerHeight + 24, parseInt(getComputedStyle(document.documentElement)
+            .getPropertyValue('--scroll-anchor-offset') || '80'));
+
+          const observerOptions = {
+            root: null,
+            rootMargin: `-${offset}px 0px -40% 0px`,
+            threshold: 0,
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            // entries are already sorted by depth (first appearing = most visible)
+            const visible = entries.filter(e => e.isIntersecting)
+              .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+            let activeAnchor = anchors[0];
+            for (const entry of visible) {
+              const candidate = anchors.find(a => a.target === entry.target);
+              if (candidate) { activeAnchor = candidate; break; }
+            }
+
+            for (const a of anchors) {
+              a.link.classList.toggle('is-active', a === activeAnchor);
+            }
+          }, observerOptions);
+
+          for (const anchor of anchors) {
+            observer.observe(anchor.target);
+          }
+        })();
+      </script>
+
       <!-- Community manifesto -->
       <section class="manifesto" id="about">
         <div class="manifesto__inner">

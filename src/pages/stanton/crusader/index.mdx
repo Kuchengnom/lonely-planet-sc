@@ -2,6 +2,7 @@
 layout: '../../../layouts/PlanetLayout.astro'
 title: "Crusader"
 system: "Stanton"
+region: "Core Systems"
 hero_image: "/images/crusader/orison-city.jpeg"
 lead: "Crusader is a gas giant that somehow breathes — a low-mass monster with an atmosphere you can survive at altitude. Crusader Industries doesn't just use the planet; they built a city in it. Orison floats in the clouds, a delicate lattice of platforms and habitats suspended over an impossible drop. The sunsets are famous. So are the storms. And the shipyards — vast transport vessels hang in mid-air, surrounded by a web of construction gantries, lit from below by the planet's endless cloud-layer. It looks like a cathedral to ambition."
 vitals_best_for: "Ship spotting, cloud city exploration, breathtaking aerial photography"
@@ -12,9 +13,9 @@ vitals_ship: "Anything with VTOL — wind shear is real"
 getting_there: "Crusader is impossible to land on in the traditional sense. You don't land on a gas giant — you dock with it. Orison is your destination, a floating city at the edge of the breathable layer. The approach is the first attraction: descending through Crusader's cloud layer, watching the shipyards emerge from the mist like something from a dream. Seraphim Station handles traffic that isn't heading to the surface. If you are flying something small, watch the wind shear near the construction platforms. It's worse than it looks."
 ---
 
-import AttractionEntry from '../../../components/AttractionEntry.astro';
-import ExplorerView from '../../../components/ExplorerView.astro';
-import TouristTip from '../../../components/TouristTip.astro';
+import AttractionEntry from '@components/AttractionEntry.astro';
+import ExplorerView from '@components/ExplorerView.astro';
+import TouristTip from '@components/TouristTip.astro';
 
 <AttractionEntry number={1} title="Orison — City in the Clouds" category="settlement" image="/images/crusader/orison-city.jpeg" imageAlt="The floating platforms of Orison against Crusader's cloud layer">
 

@@ -2,6 +2,7 @@
 layout: '../../../layouts/PlanetLayout.astro'
 title: "MicroTech"
 system: "Stanton"
+region: "Core Systems"
 hero_image: "/images/microtech/panoramic-lake.jpeg"
 lead: "MicroTech is the coldest world in the Stanton system with the least reason to be interesting — and somehow the most reasons to stay. The megacorporation that owns it carved a gleaming tech city from the permafrost and called it a success. The planet had other ideas: rivers that shouldn't flow, forests that refused to freeze, caves that glow in the dark, and a silence between ice storms that is worth the flight alone."
 vitals_best_for: "Sightseeing, exploration, photography"
@@ -12,9 +13,9 @@ vitals_ship: "Small atmospheric craft strongly recommended"
 getting_there: "Spawn or land at Port Tressler in orbit, then descend to New Babbage on the surface — it's the warmest welcome the planet offers and the best departure point for everything else. A Pisces, Cutter, 100i, or Nomad handles the terrain far better than anything larger. Set your respawn at New Babbage before flying out into the wilderness. Quantum travel covers long distances in minutes, but the rivers and caves require low, slow approaches to find. Allow more time than you think you need, and land before the ice storms roll in."
 ---
 
-import AttractionEntry from '../../../components/AttractionEntry.astro';
-import ExplorerView from '../../../components/ExplorerView.astro';
-import TouristTip from '../../../components/TouristTip.astro';
+import AttractionEntry from '@components/AttractionEntry.astro';
+import ExplorerView from '@components/ExplorerView.astro';
+import TouristTip from '@components/TouristTip.astro';
 
 <AttractionEntry number={1} title="The First River" category="natural-wonder" image="/images/microtech/ships-on-lake.jpeg" imageAlt="Ships parked at the edge of the first river lake basin">
 

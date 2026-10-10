@@ -2,6 +2,7 @@
 layout: '../../../layouts/PlanetLayout.astro'
 title: "ArcCorp"
 system: "Stanton"
+region: "Core Systems"
 hero_image: "/images/arccorp/area18-aerial.jpeg"
 lead: "ArcCorp is the most industrialized planet in human space. In eighty years, the ArcCorp corporation terraformed and built on every available surface until there was nothing left to build on — then they built on top of that. Today, the planet is a layer cake of factories, residential blocks, and corporate towers, with the only open spaces being the ones that haven't been leased yet. Area18 is the main port, a landing zone clinging to one of the few patches of ground that can still support a spaceport. The rest is city, stretching to every horizon, glowing with neon and burning with ambition."
 vitals_best_for: "Urban exploration, cyberpunk vibes, factory tourism, neon photography"
@@ -12,9 +13,9 @@ vitals_ship: "Small, maneuverable craft — landing space is at a premium"
 getting_there: "ArcCorp is a dense, crowded place. Approach Area18 carefully — the airspace is busy and the landing guidance is automated but unforgiving. The planet's surface is one continuous construction project, and the only guaranteed clear approach is through the Area18 corridor. Baijini Point handles overflow traffic. If you are flying a large vessel, expect to be directed to wait. Everyone wants to land on ArcCorp. Not everyone gets to."
 ---
 
-import AttractionEntry from '../../../components/AttractionEntry.astro';
-import ExplorerView from '../../../components/ExplorerView.astro';
-import TouristTip from '../../../components/TouristTip.astro';
+import AttractionEntry from '@components/AttractionEntry.astro';
+import ExplorerView from '@components/ExplorerView.astro';
+import TouristTip from '@components/TouristTip.astro';
 
 <AttractionEntry number={1} title="Area18 — The Last Open Space" category="settlement" image="/images/arccorp/area18-aerial.jpeg" imageAlt="Aerial view of Area18's neon-lit sprawl">
 
