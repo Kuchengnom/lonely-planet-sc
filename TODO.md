@@ -50,8 +50,8 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Add PHDS entries: ArcCorp vaults, corporate black sites
   - [x] Find ArcCorp hero image
 
-- [ ] **Pyro Content**
-  - [ ] Research Pyro volcanic lore (Volcanus, Thymos, Cerberis)
-  - [ ] Write Pyro overview (extreme danger, lava flows, instability)
-  - [ ] Add PHDS entries: volcanic observation points, crashed ships
+- [x] **Pyro Content**
+  - [x] Research Pyro system lore (6 planets: Pyro I charred inferno, Monox/Pyro II gas-stripped husk, Bloom/Pyro III icy world, Pyro IV desolate, Pyro V gas giant w/7 moons, Terminus/Pyro VI cold outer planet; PyAm mining history 2493-2563; Ruin Station; gang factions)
+  - [x] Write Pyro overview (extreme danger, solar flares, gang territory, decay) — pyro/index.mdx exists with vitals, 6 planets, eating/drinking, tips, gear table
+  - [ ] Add PHDS entries: bloom abandoned mining sites, ruin station orbital observation, pyro i distortion storm edge
   - [ ] Find Pyro hero image
