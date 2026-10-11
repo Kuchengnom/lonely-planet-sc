@@ -35,6 +35,7 @@ Desktop and 390px mobile browser checks confirm the hero hierarchy, four guide f
 
 - [x] Verify the current, citable Nyx release/status facts and create a small source-backed system data record; do not present planned content as playable.
 - [ ] Add the first useful Nyx destination pages only where reliable source material and an appropriate licensed local image exist; link them from the Nyx overview.
+  - [x] Record the current Nyx image provenance gate and the exact evidence required before creating a new destination page.
 - [ ] Audit the Nyx overview and new destinations at desktop and mobile widths, including navigation, image alt text, and citation treatment.
 - [ ] Commit and push each verified Nyx work package separately; leave unrelated untracked workspace material untouched.
 
