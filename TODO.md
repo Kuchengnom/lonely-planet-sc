@@ -22,7 +22,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Pyro eating/drinking section
   - [x] Add recommended gear lists per planet
 
-- [ ] **Image Research & Filling**
+- [x] **Image Research & Filling**
   - [x] MicroTech hero image — find high-fidelity screenshot (glacial landscape, rivers)
   - [x] Crusader hero image — find high-fidelity screenshot (orbital platform/cloud city screenshot)
   - [x] Hurston hero image — find industrial cityscape
@@ -30,7 +30,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Pyro hero image — find volcanic terrain
   - [x] PHDS thumbnail images for each location (screenshots or concept art)
 
-- [ ] **Impeccable Steps**
+- [x] **Impeccable Steps**
   - [x] Step 3: Fix TourSchedule heading hierarchy (H3 → H4 in step cards)
   - [x] Step 4: Add blur-up image placeholders
   - [x] Step 4: Add hover states to tour cards
@@ -54,4 +54,4 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Research Pyro system lore (6 planets: Pyro I charred inferno, Monox/Pyro II gas-stripped husk, Bloom/Pyro III icy world, Pyro IV desolate, Pyro V gas giant w/7 moons, Terminus/Pyro VI cold outer planet; PyAm mining history 2493-2563; Ruin Station; gang factions)
   - [x] Write Pyro overview (extreme danger, solar flares, gang territory, decay) — pyro/index.mdx exists with vitals, 6 planets, eating/drinking, tips, gear table
   - [x] Add PHDS entries: bloom abandoned mining sites, ruin station orbital observation, pyro i distortion storm edge
-  - [ ] Find Pyro hero image
+  - [x] Find Pyro hero image
