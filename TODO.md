@@ -44,11 +44,11 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Implement empty state for no-results
   - [x] Mobile layout: stack cards vertically, full-width
 
-- [ ] **ArcCorp Content**
-  - [ ] Research ArcCorp underground facilities lore
-  - [ ] Write ArcCorp overview (corporate espionage, hidden vaults)
-  - [ ] Add PHDS entries: ArcCorp vaults, corporate black sites
-  - [ ] Find ArcCorp hero image
+- [x] **ArcCorp Content**
+  - [x] Research ArcCorp underground facilities lore
+  - [x] Write ArcCorp overview (corporate espionage, hidden vaults)
+  - [x] Add PHDS entries: ArcCorp vaults, corporate black sites
+  - [x] Find ArcCorp hero image
 
 - [ ] **Pyro Content**
   - [ ] Research Pyro volcanic lore (Volcanus, Thymos, Cerberis)
