@@ -41,6 +41,16 @@ Desktop and 390px mobile browser checks confirm the hero hierarchy, four guide f
 
 Nyx review: production preview passed at the default desktop viewport and 390×844. The partial-release marker, Delamar/station-network scope, hero facts, source links, and image alt text are exposed correctly; at mobile width the hero facts remain two-column and readable. No new destination page was added because the available Nyx images lack per-file provenance.
 
+## Nyx Levski editorial update
+
+- [x] Confirm Levski's current in-game availability and visitor-facing facts against current official CIG sources.
+- [x] Reframe the Nyx overview so Levski is the system's primary, compelling visit rather than a cautious availability footnote.
+- [x] Add a concise, source-backed Levski visit plan covering its distinctive public sights, market, shops, café, and access limits without creating a new image-dependent destination page.
+- [x] Preserve the existing Nyx image-provenance gate and all unrelated worktree changes.
+- [x] Run the production build, source checks, and a bounded desktop/mobile browser verification; record the results here.
+
+Review: official CIG sources now ground Levski's current availability, visitor access, public landmarks, and patch-specific cautions. The overview leads with Levski as Nyx's essential visit, offers a scan-friendly Grand Barter–Cordry's–Café Musain–Anthony Tanaka circuit, and retains residential-boundary and frontier-travel guidance. No new page or image reuse was introduced, so the existing provenance gate remains intact. `npm run build` built 48 pages, `npm run test:scripts` passed all 17 tests, and `git diff --check` passed. Production-browser checks at 1440×1000 and 390×844 confirmed the hero fact, first-attraction hierarchy, source links, and zero horizontal overflow; no browser console errors were reported. The first render exposed reset list markers, so the circuit was refined into labeled paragraphs and passed the confirmation render.
+
 ## Editions
 - [x] Cover images on edition cards: Stanton + Pyro done; Pyro needs a real in-game shot; Castra cover is a starmap; NYX uses wiki shots.
 
