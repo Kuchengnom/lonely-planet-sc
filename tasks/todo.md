@@ -31,6 +31,43 @@ Desktop and 390px mobile browser checks confirm the hero hierarchy, four guide f
 
 # Master backlog
 
+## Hurston correction
+
+- [x] Remove the duplicated M&V's dining copy while retaining the attraction and tour-stop coverage.
+
+## Home hero slideshow
+
+- [x] Replace the YouTube hero background with a local four-image slideshow that represents the range of the currently published destinations.
+- [x] Keep the first image as the static fallback, preserve hero text contrast, pause the sequence off-screen, and provide a visible pause/play control plus a reduced-motion static view.
+
+Review: the local production preview passed at desktop and 390×844. The image sequence reached a later frame, the pause/play control changed state correctly, and reduced-motion mode showed only the static first image without a motion control. The hero heading and both CTAs remained visible at both widths; no browser errors appeared.
+
+## Home exploration redesign
+
+- [x] Recast the first viewport around a concrete choice of currently available systems, rather than making the visitor discover the entry points further down the page.
+- [x] Turn the hero into an editorial launch deck: keep the local scenery sequence, strengthen the headline/action hierarchy, and make Stanton, Pyro, and Nyx visibly actionable from the first visit.
+- [x] Preserve every existing route, honest availability state, the time planner, and mobile navigation while making the new first-viewport flow work at desktop and 390px widths.
+- [x] Verify the redesigned production build at desktop and mobile, including keyboard paths, motion preferences, and console errors.
+
+Review: the local production preview shows a complete desktop launch deck and a readable 390px layout. Stanton, Pyro, and Nyx are exposed as real links in the first exploration choice; reduced-motion behavior and the existing pause/play control remain intact. `npm run build` built 48 pages, `npm run test:scripts` passed 17 tests, and the browser reported no errors.
+
+## Hidden Discoveries usability pass
+
+- [x] Resolve PHDS card image URLs through the configured `/lonely-planet-sc/` base path so published cards load on GitHub Pages.
+- [x] Widen the discovery grid on large screens while retaining two-column and single-column mobile layouts.
+- [x] Repair the filter controls with explicit button state, hidden-card handling, and a working reset path.
+- [x] Add an explicit “I have visited” check mark backed by localStorage; do not mark locations visited merely by hovering.
+- [x] Include a deliberate text-only fallback for entries whose image asset is not available instead of requesting empty files.
+- [x] Add the shared favicon links and make the system header keep its title readable at mobile widths.
+
+Review: production preview confirmed base-prefixed image requests, 14 working filter controls, 16 discovery cards, no horizontal overflow at 390px, a readable 93px mobile system header, and the visited state surviving reload. `npm run build` built 48 pages, `npm run test:scripts` passed 17 tests, and `git diff --check` passed.
+
+### Future content research
+
+- [ ] Once the current backlog is complete, review [Roberts Space Industries](https://robertsspaceindustries.com/) for newly published locations, systems, and visit-worthy updates.
+- [ ] Use [Galactapedia](https://robertsspaceindustries.com/galactapedia) as a reference when expanding guide copy, while preserving the source-backed provenance gate for new destinations.
+- [ ] Review the [hidden-location video](https://www.youtube.com/watch?v=QfjgBVAuscE) and capture the timestamp named in its description before linking a specific segment from a guide.
+
 ## Nyx delivery plan
 
 - [x] Verify the current, citable Nyx release/status facts and create a small source-backed system data record; do not present planned content as playable.
@@ -50,6 +87,129 @@ Nyx review: production preview passed at the default desktop viewport and 390×8
 - [x] Run the production build, source checks, and a bounded desktop/mobile browser verification; record the results here.
 
 Review: official CIG sources now ground Levski's current availability, visitor access, public landmarks, and patch-specific cautions. The overview leads with Levski as Nyx's essential visit, offers a scan-friendly Grand Barter–Cordry's–Café Musain–Anthony Tanaka circuit, and retains residential-boundary and frontier-travel guidance. No new page or image reuse was introduced, so the existing provenance gate remains intact. `npm run build` built 48 pages, `npm run test:scripts` passed all 17 tests, and `git diff --check` passed. Production-browser checks at 1440×1000 and 390×844 confirmed the hero fact, first-attraction hierarchy, source links, and zero horizontal overflow; no browser console errors were reported. The first render exposed reset list markers, so the circuit was refined into labeled paragraphs and passed the confirmation render.
+
+## Impeccable critique — Nyx overview (2026-10-15)
+
+Target: `src/pages/nyx/index.mdx` rendered at `/lonely-planet-sc/nyx/` in Read mode.
+
+Assessment provenance: two isolated assessments were completed. Assessment A was a source-and-browser design review; Assessment B collected detector/browser evidence independently. The Impeccable engine could not create `/Users/shaase/.impeccable/bin/0.1.5`, so the deterministic detector and critique snapshot persistence were unavailable. The findings below are therefore explicitly manual/source/browser evidence, not detector output.
+
+### Design verdict and score
+
+- Design specificity: **3/4**. The Levski voice, memorial, frontier framing, and astrophotography are product-specific, but the page still behaves like a generic travel template rather than a coordinate- and route-first Star Citizen guide.
+- Nielsen heuristics: **22/40**.
+
+| Heuristic | Score | Evidence |
+| --- | ---: | --- |
+| Visibility of system status | 2/4 | Playable status and patch cautions exist, but freshness and route confidence arrive late. |
+| Match between system and real world | 4/4 | Travel language fits the space-tourist mental model. |
+| User control and freedom | 2/4 | Only two anchor CTAs; no route recovery or per-stop navigation. |
+| Consistency and standards | 2/4 | Shared card patterns are consistent, but a system guide is labeled “Urban Sight.” |
+| Error prevention | 2/4 | Safety notes help, but operational hazards are late and route guidance is vague. |
+| Recognition rather than recall | 3/4 | Hero facts help scanning, but stop/station details remain buried in prose. |
+| Flexibility and efficiency | 2/4 | No TOC, direct POI links, coordinates, or triangulation workflow. |
+| Aesthetic and minimalist design | 2/4 | Cinematic opening is strong, but hero height, duplicate facts, dense cards, and the citation wall add weight. |
+| Error recovery | 1/4 | No fallback when a destination, route, station, or patch instruction is unavailable. |
+| Help and documentation | 2/4 | Sources are linked, but there is no concise route recipe, glossary, or coordinate explanation. |
+
+### Cognitive load and emotional journey
+
+Overall cognitive load is **moderate-high**. Five of eight checklist items fail: single focus, chunking, visual hierarchy, one thing at a time, and progressive disclosure. The cumulative set of four cards, four Levski stops, four service stations, and five source links is manageable only after the visitor infers the hierarchy. “The Worlds Beyond the Current Route” consumes attention while explicitly offering no visitable action.
+
+The emotional path is: cinematic arrival → orientation valley because preparation starts below the fold → discovery peak in the Levski card → trust valley at the unvisitability disclaimer and empty service-station image state → a research-appendix ending rather than a confident ready-to-go handoff.
+
+### Strengths
+
+- Distinctive, source-grounded Levski editorial voice.
+- Strong cinematic hero and compact fact rail.
+- Responsible uncertainty handling: Nyx I–III are not presented as confirmed visit stops.
+
+### Priority findings
+
+1. **P1 — First viewport sells atmosphere before preparation.** `PlanetLayout.astro` gives the hero up to 78vh/640px, so a 1280×720 visitor sees almost no “why go / how to get there / what to avoid” guidance. Add a compact “Start here” route summary to the first viewport. Recommended: `$impeccable layout`.
+2. **P1 — An unfinished attraction state is visible.** The service-station card has no image prop, while `AttractionEntry.astro` always creates a 220px image wrapper, producing a large empty block. The authored `ExplorerView` source also does not appear in rendered HTML/AX output. Add a deliberate text-only card variant or a licensed image, and either repair or remove the unused note. Recommended: `$impeccable polish`.
+3. **P1 — Mobile shell has a real header failure.** At 390×844, browser evidence measured a 390×170.8px header with `.system-header__left` only 38.4px wide; “The Lawless Fringe” measured 44.8px and overflow was visible. The logo request `/lonely-planet-sc/logo.svg` and `/favicon.ico` both returned 404. Fix the responsive header width/wrapping and missing assets. Recommended: `$impeccable adapt`.
+4. **P2 — Destinations are described but not actionable.** Levski stops and the four stations are bold prose, attraction titles lack `href`s, and “follow the route shown in the current star map” gives no route steps, coordinates, or triangulation workflow. Add a verified route plan, anchors/links, and coordinate guidance. Recommended: `$impeccable clarify`.
+5. **P2/P3 — Information architecture and hierarchy blur the itinerary.** The system header is labeled “Urban Sight,” the breadcrumb is not a useful linked hierarchy, and all four cards have near-equal weight even though one is primary, one is resupply, and one is context-only. On mobile, sidebar getting-there guidance follows the cards and tip block. Reframe into Start here / Worth the detour / Resupply / Context only, correct the system-level label, and move essential route/safety guidance earlier. Recommended: `$impeccable distill`, then `$impeccable clarify`.
+
+### Persona red flags and minor observations
+
+- First-timers encounter “Urban Sight,” unexplained UEE/ASOP/QV terms, and no clear route recipe.
+- Power users have no direct stop links, coordinates, or triangulation workflow.
+- Time-poor tourists must scroll past a large hero and multiple cards before reaching operational guidance.
+- The five-source italic paragraph reads as a citation wall; hero facts duplicate the sidebar; there is no “last verified” date; repeated dark imagery reduces card distinction; and no footer landmark was present in browser evidence.
+
+### Open design questions
+
+- Should the first screen answer “why go, how do I get there, and what should I avoid?” without scrolling?
+- Should the Levski circuit become the primary itinerary instead of four equal attraction cards?
+- Should “The Worlds Beyond the Current Route” remain on a visit guide if it offers no current visit action?
+- Is “Urban Sight” intentional for a system guide, or should it become “System Guide” with a linked hierarchy?
+
+## Impeccable critique — homepage navigation and mobile (2026-10-15)
+
+Target: `src/pages/index.astro` rendered at `/lonely-planet-sc/` in Read/Persuade hybrid mode. User emphasis: broken top navigation and mobile view.
+
+Method: dual-agent (`home_critique_design` + `home_critique_evidence`). Assessment A was an independent source/browser design review; Assessment B collected independent detector/browser evidence. The Impeccable engine could not create `/Users/shaase/.impeccable/bin/0.1.5`, so deterministic detector output and critique snapshot persistence were unavailable. No UI files were edited.
+
+### Design verdict and score
+
+- Design specificity: **3/4**. The “Find your next landing” launch deck, Stanton/Pyro/Nyx choices, travel language, and editorial rhythm are clearly Star Citizen-specific, but the navigation and coordinate-discovery model remain generic.
+- Nielsen heuristics: **25/40** — moderate; strong concept with important shell/navigation defects.
+
+| Heuristic | Score | Evidence |
+| --- | ---: | --- |
+| Visibility of system status | 2/4 | Pause/radio states exist, but active navigation is wrong at the top and scenery-slide status is unclear. |
+| Match between system and real world | 4/4 | Landing, routes, available time, hidden discoveries, and travel framing fit the audience. |
+| User control and freedom | 3/4 | Drawer close/Escape, pause, radios, and lightbox controls work; anchor and horizontal-rail behavior are less forgiving. |
+| Consistency and standards | 2/4 | Visual language is cohesive, but desktop navigation wraps and the planner changes system context unexpectedly. |
+| Error prevention | 2/4 | Honest Coming Soon state helps, but broken anchor offsets and ambiguous context remain. |
+| Recognition rather than recall | 3/4 | Labels, imagery, and direct links help; tiny wordmark, missing Home state, and hidden mobile routes add recall burden. |
+| Flexibility and efficiency | 3/4 | Direct system links, time choices, anchors, keyboard-friendly controls, and drawer are useful; no coordinate/search workflow. |
+| Aesthetic and minimalist design | 2/4 | Editorial composition is strong, but the header overlaps, the page is long, and the hero carries many competing actions. |
+| Error recovery | 2/4 | Escape/close and reduced-motion fallbacks exist; image failures and broken hash navigation are weak. |
+| Help and documentation | 2/4 | Hero and planner explain intent, but jargon, route assumptions, and coordinate discovery are not explained. |
+
+### Cognitive load and emotional journey
+
+Overall cognitive load is **moderate-high**: five of eight checklist items fail — single focus, chunking, visual hierarchy, one thing at a time, and working memory. The desktop first screen combines six nav links, two CTAs, three system choices, and scenery controls. The page then moves from a system-neutral launchpad into a Hurston-specific planner, forcing visitors to reinterpret the decision they just made.
+
+The emotional path is: cinematic arrival peak → trust valley when the desktop header wraps/overlaps → mobile orientation dip because Pyro and Nyx are only partially visible in a horizontal rail → discovery peak in the edition/attraction content → context valley when the Hurston planner follows a system-neutral choice → dense utility/footer ending without a confident next-destination handoff.
+
+### Strengths
+
+- The hero is a strong, product-specific launchpad with real Stanton, Pyro, and Nyx routes.
+- The page has a credible editorial rhythm: cinematic arrival, practical planning, editions, featured guide, attractions, and community.
+- The mobile drawer itself is well designed: clear title, full destination set, large controls, focus restoration, Escape support, and scroll locking.
+
+### Browser evidence
+
+- Desktop 1280×720: no document overflow, no console errors; header height 62px, but the logo extends 7px below it and “Hidden Discoveries” wraps to two lines.
+- Mobile 390×844: no document overflow; the hero is 683px tall. The route rail uses 272px cards; the second begins at x=309 and the third at x=582, so Pyro/Nyx are not immediately discoverable.
+- Mobile drawer behavior is sound: `aria-expanded`, body scroll lock, focus to close, Escape close, focus restoration, and modal Tab containment all work.
+- Ten unique internal routes tested successfully, including PHDS, Stanton, Pyro, Nyx, Hurston, microTech, Canyon River, Crusader, and ArcCorp.
+- Clicking `#editions` or `#attractions` lands the target about 352px below the viewport top. Global `scroll-padding-top: 272px` plus `[id] { scroll-margin-top: 80px }` conflicts with the approximately 62px sticky header, leaving an approximately 290px blank gap.
+
+### Priority findings
+
+1. **[P0/P1] Desktop top navigation collapses into the header.** The `1fr auto 1fr` header grid keeps six wide links in desktop mode until 860px. At 900–1440px, “Hidden Discoveries” wraps, the wordmark is tiny, and the logo crosses the header boundary. Switch to the mobile shell at a wider breakpoint or reduce desktop links; give the wordmark a readable width and prevent nav wrapping. Recommended: `$impeccable adapt`.
+2. **[P1] Hash navigation is visibly broken.** `scroll-padding-top: 272px`, `[id] { scroll-margin-top: 80px }`, and the script’s ~80px assumption disagree with the actual 62px sticky header. Fix the offset from one shared header measurement. Recommended: `$impeccable polish`.
+3. **[P1] Mobile system selection hides two destinations.** At 390px, the horizontal route rail shows one full card and a slice of the next, with no swipe cue, pagination, or snap affordance. Stack Stanton/Pyro/Nyx at this width or add explicit rail guidance. Recommended: `$impeccable adapt`.
+4. **[P1] The system choice and Hurston planner are contextually disconnected.** The hero asks for Stanton/Pyro/Nyx, then immediately presents “How much time do you have ... to visit Hurston today?” Move the planner below Stanton content or label it as a secondary Stanton-only path. Recommended: `$impeccable distill`.
+5. **[P2] Active navigation is misleading.** Scroll-spy defaults to the first anchor, so Editions is blue while the visitor is still at the hero; there is no Home/Launchpad state. Clear active state above the first section or add a Home state. Recommended: `$impeccable clarify`.
+
+### Persona red flags and minor observations
+
+- First-timers face six nav links, two CTAs, and three systems before they have a single clear next action; the tiny wordmark and terms such as “Hidden Discoveries” add uncertainty.
+- Distracted mobile users must swipe a route rail before seeing all systems, while the hero consumes most of the first screen.
+- Power users have no coordinate-triangulation/search entry point and must scroll through six attraction cards.
+- The 900px breakpoint is a real edge case; the wordmark is too small to read; “Top Attractions” is a six-card group; the footer is link-dense; and there is no clear current-section state at the hero.
+
+### Open design questions
+
+- Should the mobile 390px route selector stack all three systems, or remain horizontal with an explicit swipe/pagination cue?
+- Should the desktop header switch to the drawer earlier, or should the primary nav be reduced to four links plus a Home state?
+- Should the Hurston planner move below Stanton content so the system choice and itinerary remain in one context?
 
 ## Editions
 - [x] Cover images on edition cards: Stanton + Pyro done; Pyro needs a real in-game shot; Castra cover is a starmap; NYX uses wiki shots.

@@ -122,7 +122,28 @@ const crumbs: Crumb[] = [
   @media (max-width: 768px) {
     .system-header { padding: 0.75rem 0; }
     .system-header__container { padding: 0 var(--space-4); }
-    .system-header__inner { gap: 0.75rem; }
+    .system-header__inner {
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr);
+      grid-template-areas:
+        "logo divider left"
+        "logo divider badge";
+      align-items: center;
+      column-gap: 0.75rem;
+      row-gap: 0.25rem;
+    }
+
+    .system-header__logo-link { grid-area: logo; }
+    .system-header__divider { grid-area: divider; }
+    .system-header__left { grid-area: left; }
+    .system-header__badge {
+      grid-area: badge;
+      margin-left: 0;
+      justify-self: start;
+    }
+    .system-header__logo { height: 34px; }
+    .system-header__edition,
+    .breadcrumb { overflow-wrap: anywhere; }
   }
 
   .system-header__edition {

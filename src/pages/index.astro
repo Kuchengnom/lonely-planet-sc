@@ -52,6 +52,8 @@ const EDITIONS: Edition[] = [
   },
 ];
 
+const HERO_ROUTES = EDITIONS.filter((edition) => edition.status === 'available');
+
 const POIS = [
   { num: '01', name: 'The First River',      tag: 'Natural Wonder', desc: 'Open water on a permafrost world. The anomaly that has no satisfying explanation.',             planet: 'microTech · Stanton', href: `${base}stanton/microtech/`,                                        img: `${base}images/microtech/ships-on-lake.jpeg`,        alt: 'Ships parked at the edge of the first river lake basin' },
   { num: '02', name: 'Bioluminescent Caves', tag: 'Hidden Find',    desc: 'Blue-cyan ceilings that look like an inverted starfield. Not on any official map.',            planet: 'microTech · Stanton', href: `${base}stanton/microtech/`,                                        img: `${base}images/microtech/bioluminescent-cave.jpeg`,  alt: 'Bioluminescent cave ceiling covered in blue-cyan glowing organisms' },
@@ -67,6 +69,7 @@ const POIS = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href={`${base}favicon.svg`} />
     <title>Lonely Planet: Star Citizen</title>
     <meta name="description" content="Unofficial travel guides to the Star Citizen universe. Curated attractions, hidden gems, and essential travel tips." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -140,61 +143,53 @@ const POIS = [
 
     <!-- Hero -->
     <header class="hero" style={`background-image: url(${base}images/microtech/panoramic-lake.jpeg)`}>
-      <div class="hero__media" aria-hidden="true">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/5DSm_s4THpw?autoplay=1&mute=1&loop=1&playlist=5DSm_s4THpw&controls=0&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1"
-          title=""
-          tabindex="-1"
-          allow="autoplay; encrypted-media; picture-in-picture"
-        ></iframe>
+      <div class="hero__slideshow" data-hero-slideshow aria-hidden="true">
+        <figure class="hero__slide is-active">
+          <img src={`${base}images/microtech/panoramic-lake.jpeg`} alt="" fetchpriority="high" decoding="async" />
+        </figure>
+        <figure class="hero__slide">
+          <img src={`${base}images/crusader/orison-city.jpeg`} alt="" loading="eager" decoding="async" />
+        </figure>
+        <figure class="hero__slide">
+          <img src={`${base}images/pyro/pyro-1-lava.webp`} alt="" loading="eager" decoding="async" />
+        </figure>
+        <figure class="hero__slide">
+          <img src={`${base}images/arccorp/area18-aerial.jpeg`} alt="" loading="eager" decoding="async" />
+        </figure>
       </div>
-      <div class="hero__pattern"></div>
-      <div class="hero__inner">
-        <p class="hero__eyebrow">New Edition Available</p>
-        <h1 class="hero__title">The&nbsp;'Verse<br>awaits.<br><em>No ticket<br>needed.</em></h1>
-        <p class="hero__lede">
-          Unofficial travel guides to Star Citizen — written by explorers, for explorers.
-          Curated attractions, hidden gems, and navigation notes for the systems you fly through.
-        </p>
-        <div class="hero__ctas">
-          <a href={`${base}stanton/microtech/`} class="btn btn--primary">Explore microTech →</a>
-          <a href="#editions" class="btn btn--ghost">Browse Editions</a>
-        </div>
-      </div>
-
-      <!-- Floating edition card -->
-      <div class="hero__floating-card" aria-hidden="true">
-        <div class="edition-card edition-card--stanton">
-          <div class="edition-card__thumb">
-            <img class="edition-card__cover" src={EDITIONS[0].cover} alt="" loading="lazy" />
-            <div class="edition-card__overlay"></div>
-            <span class="edition-card__lp-badge">LP</span>
-            <div class="edition-card__thumb-text">
-              <span class="edition-card__eyebrow">Star Citizen</span>
-              <h3 class="edition-card__name">Stanton</h3>
-            </div>
+      <button class="hero__motion-toggle" type="button" data-hero-motion-toggle aria-pressed="false">Pause scenery</button>
+      <div class="hero__content">
+        <div class="hero__inner">
+          <h1 class="hero__title">Find your<br />next<br /><em>landing.</em></h1>
+          <p class="hero__lede">
+            Free, curated travel guides to the places in Star Citizen worth landing for.
+            Choose a system, then follow a route that fits the time you have.
+          </p>
+          <div class="hero__ctas">
+            <a href="#launchpad" class="btn btn--primary">Choose a system <span aria-hidden="true">→</span></a>
+            <a href="#attractions" class="btn btn--ghost">See top sights</a>
           </div>
         </div>
+        <nav class="hero__launchpad" id="launchpad" aria-labelledby="launchpad-heading">
+          <h2 id="launchpad-heading">Choose your first system</h2>
+          <div class="hero__routes">
+            {HERO_ROUTES.map((edition) => (
+              <a
+                class={`hero__route hero__route--${edition.theme}`}
+                href={edition.href}
+                data-hero-slide={edition.theme === 'stanton' ? '0' : edition.theme === 'pyro' ? '2' : undefined}
+              >
+                <img src={edition.cover} alt="" loading="lazy" decoding="async" />
+                <span class="hero__route-copy">
+                  <strong>{edition.name}</strong>
+                  <span>{edition.subtitle}</span>
+                </span>
+                <span class="hero__route-action" aria-hidden="true">Explore <span>→</span></span>
+              </a>
+            ))}
+          </div>
+        </nav>
       </div>
-
-      <dl class="hero__facts" aria-label="Guide at a glance">
-        <div>
-          <dt>Access</dt>
-          <dd>Always free</dd>
-        </div>
-        <div>
-          <dt>Systems</dt>
-          <dd>Stanton, Pyro + Nyx</dd>
-        </div>
-        <div>
-          <dt>Format</dt>
-          <dd>Curated guides</dd>
-        </div>
-        <div>
-          <dt>Start here</dt>
-          <dd>Plan a visit</dd>
-        </div>
-      </dl>
     </header>
 
     <main>
@@ -203,8 +198,8 @@ const POIS = [
       <section class="time-planner" aria-labelledby="time-planner-heading">
         <div class="container time-planner__inner">
           <div class="time-planner__intro">
-            <h2 id="time-planner-heading">How much time do you have today to visit the ’Verse?</h2>
-            <p><strong>This is a sample itinerary.</strong> Choose the time you actually have; the route below is a real, authored Hurston visit rather than a generated recommendation.</p>
+            <h2 id="time-planner-heading">How much time do you have for Hurston today?</h2>
+            <p><strong>A Stanton sampler.</strong> Choose the time you actually have; the route below is a real, authored Hurston visit rather than a generated recommendation.</p>
           </div>
 
           <fieldset class="time-planner__choices">
@@ -271,7 +266,7 @@ const POIS = [
       <!-- System Editions -->
       <section class="editions" id="editions" aria-labelledby="editions-heading">
         <div class="container">
-          <h2 id="editions-heading" class="section-heading">System Editions</h2>
+          <h2 id="editions-heading" class="section-heading">Every published edition</h2>
 
           <div class="editions-grid">
             {EDITIONS.map((ed) => (
@@ -398,6 +393,66 @@ const POIS = [
           <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
         </figure>
       </dialog>
+
+      <script>
+        (() => {
+          const slideshow = document.querySelector<HTMLElement>('[data-hero-slideshow]');
+          const toggle = document.querySelector<HTMLButtonElement>('[data-hero-motion-toggle]');
+          if (!slideshow || !toggle) return;
+
+          const slides = Array.from(slideshow.querySelectorAll<HTMLElement>('.hero__slide'));
+          const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+          let activeIndex = 0;
+          let isInView = true;
+          let isPaused = motionPreference.matches;
+          let rotation: number | undefined;
+
+          const setToggleLabel = () => {
+            toggle.textContent = isPaused ? 'Play scenery' : 'Pause scenery';
+            toggle.setAttribute('aria-pressed', String(isPaused));
+          };
+          const showNext = () => {
+            slides[activeIndex]?.classList.remove('is-active');
+            activeIndex = (activeIndex + 1) % slides.length;
+            slides[activeIndex]?.classList.add('is-active');
+          };
+          const showSlide = (index: number) => {
+            if (!Number.isInteger(index) || index < 0 || index >= slides.length || index === activeIndex) return;
+            slides[activeIndex]?.classList.remove('is-active');
+            activeIndex = index;
+            slides[activeIndex]?.classList.add('is-active');
+          };
+          const syncRotation = () => {
+            window.clearInterval(rotation);
+            if (!isPaused && isInView) rotation = window.setInterval(showNext, 7000);
+          };
+
+          const visibilityObserver = new IntersectionObserver(([entry]) => {
+            isInView = entry.isIntersecting;
+            syncRotation();
+          }, { threshold: 0.15 });
+          visibilityObserver.observe(slideshow);
+
+          toggle.addEventListener('click', () => {
+            isPaused = !isPaused;
+            setToggleLabel();
+            syncRotation();
+          });
+          motionPreference.addEventListener('change', event => {
+            isPaused = event.matches;
+            setToggleLabel();
+            syncRotation();
+          });
+          document.querySelectorAll<HTMLElement>('[data-hero-slide]').forEach(route => {
+            const revealRouteScene = () => showSlide(Number(route.dataset.heroSlide));
+            route.addEventListener('mouseenter', revealRouteScene);
+            route.addEventListener('focus', revealRouteScene);
+          });
+
+          setToggleLabel();
+          syncRotation();
+        })();
+      </script>
 
       <script>
         const dialog = document.getElementById('lightbox') as HTMLDialogElement;
@@ -751,7 +806,7 @@ const POIS = [
   /* ── Hero ──────────────────────────────────────────── */
   .hero {
     position: relative;
-    min-height: 640px;
+    min-height: 620px;
     display: flex;
     align-items: stretch;
     background-color: var(--color-primary-900);
@@ -772,7 +827,7 @@ const POIS = [
     z-index: 1;
   }
 
-  .hero__media {
+  .hero__slideshow {
     position: absolute;
     inset: 0;
     z-index: 0;
@@ -781,72 +836,75 @@ const POIS = [
     pointer-events: none;
   }
 
-  .hero__media iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 177.78vh;
-    min-width: 100%;
-    height: 56.25vw;
-    min-height: 100%;
-    border: 0;
-    transform: translate(-50%, -50%) scale(1.03);
-  }
-
-  .hero__pattern {
+  .hero__slide {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.04) 2px,
-      rgba(0,0,0,0.04) 4px
-    );
-    pointer-events: none;
-    z-index: 1;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 1200ms var(--ease-out);
+  }
+
+  .hero__slide.is-active { opacity: 1; }
+
+  .hero__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.05);
+    transition: transform 7000ms linear;
+  }
+
+  .hero__slide.is-active img { transform: scale(1); }
+
+  .hero__motion-toggle {
+    position: absolute;
+    z-index: 3;
+    top: var(--space-5);
+    right: var(--space-6);
+    min-height: 36px;
+    padding: 0.5rem 0.6875rem;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: var(--radius-sm);
+    background: rgba(9, 20, 45, 0.32);
+    color: rgba(255, 255, 255, 0.88);
+    font-family: var(--font-display);
+    font-size: 0.5625rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-widest);
+    line-height: 1;
+    text-transform: uppercase;
+    transition: background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .hero__motion-toggle:hover { background: rgba(9, 20, 45, 0.58); border-color: var(--color-white); }
+  .hero__motion-toggle:focus-visible { outline: 3px solid var(--color-primary-400); outline-offset: 3px; }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+    align-items: end;
+    gap: clamp(3rem, 8vw, 9rem);
+    width: min(100% - 5rem, 1280px);
+    margin: 0 auto;
+    padding: 5rem 0 2.5rem;
   }
 
   .hero__inner {
-    position: relative;
-    z-index: 2;
-    max-width: var(--container-xl);
     width: 100%;
-    margin: 0 auto;
-    padding: var(--space-20) var(--space-6) 10rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     max-width: 580px;
-  }
-
-  .hero__eyebrow {
-    font-family: var(--font-display);
-    font-size: 0.625rem;
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-primary-300);
-    margin-bottom: var(--space-3);
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-  }
-  .hero__eyebrow::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--color-primary-400);
-    flex-shrink: 0;
   }
 
   .hero__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
+    font-size: clamp(3rem, 5.5vw, 5.25rem);
     font-weight: var(--font-weight-extrabold);
     line-height: var(--line-height-tight);
-    letter-spacing: var(--letter-spacing-tight);
+    letter-spacing: -0.035em;
     text-transform: uppercase;
     color: var(--color-white);
     margin: 0 0 var(--space-5);
@@ -862,7 +920,7 @@ const POIS = [
     line-height: var(--line-height-relaxed);
     color: rgba(255,255,255,0.72);
     max-width: 440px;
-    margin: 0 0 var(--space-8);
+    margin: 0 0 var(--space-7);
   }
 
   .hero__ctas {
@@ -871,68 +929,64 @@ const POIS = [
     flex-wrap: wrap;
   }
 
-  .hero__facts {
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: min(100% - 3rem, 1280px);
-    margin: 0 auto;
-    padding: var(--space-5) 0 var(--space-6);
-    border-top: 1px solid rgba(255, 255, 255, 0.34);
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .hero__launchpad {
+    width: 100%;
+    padding: var(--space-5);
+    background: rgba(5, 16, 38, 0.64);
+    border-top: 1px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(14px);
   }
 
-  .hero__facts div {
-    min-width: 0;
-    padding: 0 var(--space-5);
-    border-left: 1px solid rgba(255, 255, 255, 0.28);
-  }
-
-  .hero__facts div:first-child { border-left: 0; padding-left: 0; }
-
-  .hero__facts dt {
-    margin-bottom: var(--space-1);
-    color: rgba(255, 255, 255, 0.64);
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    line-height: var(--line-height-normal);
-  }
-
-  .hero__facts dd {
-    margin: 0;
+  .hero__launchpad h2 {
+    margin: 0 0 var(--space-4);
     color: var(--color-white);
     font-family: var(--font-display);
-    font-size: clamp(0.875rem, 1.4vw, 1.125rem);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
     font-weight: var(--font-weight-bold);
+    letter-spacing: -0.02em;
     line-height: var(--line-height-snug);
   }
 
-  /* Floating edition card in hero */
-  .hero__floating-card {
-    position: absolute;
-    right: clamp(24px, 6vw, 80px);
-    bottom: 0;
-    width: clamp(140px, 16vw, 220px);
-    filter: drop-shadow(var(--shadow-2xl));
-    animation: float-card 5s ease-in-out infinite;
-    z-index: 3;
-  }
-  .hero__floating-card .edition-card {
-    border-radius: var(--radius-md);
+  .hero__routes { display: grid; gap: 1px; background: rgba(255, 255, 255, 0.25); }
+
+  .hero__route {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+    align-items: center;
+    min-height: 76px;
     overflow: hidden;
-    box-shadow: none;
-  }
-  .hero__floating-card .edition-card__thumb {
-    height: clamp(210px, 24vw, 330px);
+    background: rgba(5, 16, 38, 0.86);
+    color: var(--color-white);
+    text-decoration: none;
+    transition: background var(--duration-fast) var(--ease-out), padding var(--duration-fast) var(--ease-out);
   }
 
-  @keyframes float-card {
-    0%, 100% { transform: rotate(2deg) translateY(0); }
-    50%       { transform: rotate(2deg) translateY(-8px); }
+  .hero__route::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(5, 16, 38, 0.22), rgba(5, 16, 38, 0.8));
   }
+
+  .hero__route img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform var(--duration-normal) var(--ease-out), opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .hero__route-copy { display: grid; gap: 0.125rem; min-width: 0; padding: var(--space-3) var(--space-4); }
+  .hero__route-copy strong { font-family: var(--font-display); font-size: 1.125rem; letter-spacing: -0.015em; }
+  .hero__route-copy span { color: rgba(255,255,255,0.72); font-family: var(--font-body); font-size: 0.75rem; line-height: var(--line-height-snug); }
+  .hero__route-action { padding-right: var(--space-4); color: rgba(255,255,255,0.8); font-family: var(--font-display); font-size: 0.625rem; font-weight: var(--font-weight-bold); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+  .hero__route-action span { color: #f5c518; font-size: 1rem; }
+  .hero__route:hover, .hero__route:focus-visible { background: rgba(26, 65, 150, 0.92); }
+  .hero__route:hover img, .hero__route:focus-visible img { opacity: 1; transform: scale(1.06); }
+  .hero__route:focus-visible { outline: 3px solid #f5c518; outline-offset: 3px; }
 
   /* ── Shared buttons ────────────────────────────────── */
   .btn {
@@ -1620,10 +1674,10 @@ const POIS = [
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero__eyebrow { animation: fade-up 0.6s 0.05s ease both; }
-  .hero__title   { animation: fade-up 0.6s 0.15s ease both; }
-  .hero__lede    { animation: fade-up 0.6s 0.25s ease both; }
-  .hero__ctas    { animation: fade-up 0.6s 0.35s ease both; }
+  .hero__title   { animation: fade-up 0.6s 0.08s ease both; }
+  .hero__lede    { animation: fade-up 0.6s 0.18s ease both; }
+  .hero__ctas    { animation: fade-up 0.6s 0.28s ease both; }
+  .hero__launchpad { animation: fade-up 0.72s 0.24s ease both; }
 
   /* ── Time planner ──────────────────────────────────── */
   .time-planner {
@@ -1842,12 +1896,14 @@ const POIS = [
   .time-planner__route a:hover { color: var(--color-primary-900); }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__media { display: none; }
-    .hero__eyebrow,
+    .hero__slide { transition: none; }
+    .hero__slide:not(:first-child) { display: none; }
+    .hero__slide img { transform: none; transition: none; }
+    .hero__motion-toggle { display: none; }
     .hero__title,
     .hero__lede,
     .hero__ctas,
-    .hero__floating-card { animation: none; }
+    .hero__launchpad { animation: none; }
     .btn,
     .edition-card,
     .edition-card__cta,
@@ -1878,19 +1934,31 @@ const POIS = [
   }
 
   @media (max-width: 860px) {
-    .hero__floating-card { display: none; }
-    .hero { min-height: 660px; }
-    .hero__inner { padding-bottom: 12rem; }
-    .hero__facts {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: var(--space-5);
+    .hero { min-height: 0; }
+    .hero__content {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
       width: min(calc(100% - 2rem), 42rem);
+      padding: 7.5rem 0 var(--space-8);
     }
-    .hero__facts div:nth-child(odd) {
-      border-left: 0;
-      padding-left: 0;
+    .hero__inner { max-width: 35rem; }
+    .hero__launchpad {
+      margin-right: calc((100vw - min(100vw - 2rem, 42rem)) / -2);
+      padding: var(--space-5) 0 0 var(--space-5);
+      border-top-color: rgba(255, 255, 255, 0.38);
+      background: rgba(5, 16, 38, 0.34);
+      backdrop-filter: blur(10px);
     }
-    .hero__facts div:nth-child(even) { padding-right: 0; }
+    .hero__launchpad h2 { margin-left: 0; }
+    .hero__routes {
+      grid-auto-columns: minmax(17rem, 78%);
+      grid-auto-flow: column;
+      grid-template-columns: none;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      padding-right: var(--space-5);
+      scrollbar-width: thin;
+    }
     .site-header__inner { grid-template-columns: 44px minmax(0, 1fr) 44px; }
     .site-header__nav-left,
     .site-header__nav-right { display: none; }
@@ -1933,16 +2001,11 @@ const POIS = [
     .time-planner__choice:last-of-type { min-width: 100%; }
     .time-planner__result { padding: var(--space-8) 0 0; }
     .time-planner__result .btn { align-self: stretch; justify-self: stretch; }
-    .hero { min-height: 700px; }
-    .hero__inner { padding-bottom: 14.5rem; }
-    .hero__facts {
-      bottom: var(--space-5);
-      column-gap: var(--space-4);
-      row-gap: var(--space-4);
-    }
-    .hero__facts div { padding: 0 var(--space-4); }
-    .hero__facts dt { font-size: 0.5625rem; }
-    .hero__facts dd { font-size: 0.875rem; }
+    .hero__content { gap: var(--space-7); padding-top: 6.25rem; }
+    .hero__title { font-size: clamp(2.875rem, 12.5vw, 3.35rem); }
+    .hero__lede { max-width: 31ch; }
+    .hero__launchpad { padding-top: var(--space-4); }
+    .hero__route { min-height: 88px; }
     .hero__ctas {
       display: grid;
       grid-template-columns: 1fr;

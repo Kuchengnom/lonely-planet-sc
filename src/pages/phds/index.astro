@@ -172,7 +172,7 @@ const entries = [
     type: 'hidden-find',
     difficulty: 'Moderate',
     teaser: 'A vast subterranean network of tunnels, chambers, and marketplaces beneath Area18 — an autonomous city that ArcCorp does not acknowledge but cannot fully seal off.',
-    heroImage: '/images/arccorp/the-underground-entrance.jpeg',
+    heroImage: '',
   },
   {
     href: `${base}arccorp/phds/locations/vault-7/`,
@@ -183,7 +183,7 @@ const entries = [
     type: 'mystery',
     difficulty: 'Extreme',
     teaser: 'ArcCorp\'s most secure storage facility, located hundreds of meters underground. Forty years old, never breached, and the single most famous mystery in Stanton space.',
-    heroImage: '/images/arccorp/vault-7-entrance.jpeg',
+    heroImage: '',
   },
 ];
 
@@ -200,6 +200,7 @@ const visitedEntries = entries.map(entry => ({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href={`${base}favicon.svg`} />
     <title>Hidden Discoveries — Lonely Planet Star Citizen</title>
   </head>
   <body>
@@ -211,7 +212,7 @@ const visitedEntries = entries.map(entry => ({
       type="easter-egg"
     />
 
-    <div class="container mx-auto px-6 py-10">
+    <div class="phds-page-shell">
       <div class="phds-page">
         <header class="phds-page__header">
           <h1 class="phds-page__title">Hidden Discoveries</h1>
@@ -226,8 +227,21 @@ const visitedEntries = entries.map(entry => ({
 
 <style>
   .phds-page {
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
+  }
+
+  .phds-page-shell {
+    width: min(100% - 2rem, 1440px);
+    margin: 0 auto;
+    padding: 2.5rem 0 4rem;
+  }
+
+  @media (max-width: 640px) {
+    .phds-page-shell {
+      width: min(100% - 1.5rem, 1440px);
+      padding-top: 1.5rem;
+    }
   }
 
   .phds-page__header {
