@@ -58,6 +58,14 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [ ] Add Lore video of Worm to the relevant locations sidebar https://youtu.be/i6-HPzuBeW8?is=tkpGfgb--08TKYiI
   - [ ] Add Lore video to sidebar of pyro system https://youtu.be/Q_y_pGb3-VQ?is=shqt57j8fb55o0Qy
 
+## Explorer Note is missing from every guide page
+
+- [ ] Fix the `ExplorerView` named-slot mechanism so the Explorer Note renders on the 25 pages that use `<ExplorerView slot="explorer">`. `PlanetLayout.astro` checks `Astro.slots.has('explorer')` and renders `<slot name="explorer" />`, but a `slot="explorer"` attribute on a component instance inside the layout's default slot does not register a named slot. The component markup is never emitted and the quote text is absent from the built HTML.
+- [ ] Fix the three pages that use a self-closing `<ExplorerView category="explorer" name="..." quote="..." />` form — `ExplorerView.astro` declares only `{ author: string }` and renders `<slot />`, so these render an empty `<blockquote>` and an empty `<cite>`. Affected: `src/pages/stanton/hurston/arial.mdx`, `src/pages/stanton/hurston/aberdeen.mdx`, `src/pages/stanton/arccorp/wala.mdx`.
+- [ ] Verify with a fresh `npm run build` and confirm `class="explorer-note"` appears in the built HTML of the affected pages.
+
+Note: the checked-in `dist/` was stale and masked this. The TODO.md Impeccable critique (2026-10-15) recorded the symptom against the Nyx overview as P1; the scope is every guide page, not Nyx alone.
+
 
 ---
 
