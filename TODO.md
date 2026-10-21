@@ -55,7 +55,7 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
   - [x] Write Pyro overview (extreme danger, solar flares, gang territory, decay) — pyro/index.mdx exists with vitals, 6 planets, eating/drinking, tips, gear table
   - [x] Add PHDS entries: bloom abandoned mining sites, ruin station orbital observation, pyro i distortion storm edge
   - [x] Find Pyro hero image
-  - [x] Add Lore video of Worm to the relevant locations https://youtu.be/i6-HPzuBeW8?is=tkpGfgb--08TKYiI — added as a `## Video Guides` section on the Pyro II page (valakkars are confirmed in Pyro on Pyro II / Monox)
+  - [x] Add Lore video of Worm to the relevant locations https://youtu.be/i6-HPzuBeW8?is=tkpGfgb--08TKYiI — added as a `## Video Guides` section on the **Pyro I** page. RSI Galactapedia places the irradiated valakkar population on Pyro I, not Pyro II. A new "The Irradiated Valakkar" attraction, a matching tour tip, and a `## Sources` block were added alongside it.
   - [x] Add Lore video to pyro system https://youtu.be/Q_y_pGb3-VQ?is=shqt57j8fb55o0Qy — added as a `## Video Guides` section on the Pyro system page
 
 ## Explorer Note is missing from every guide page
