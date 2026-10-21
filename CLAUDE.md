@@ -95,9 +95,11 @@ There is no shared `BaseLayout`. `src/layouts/` has exactly two, and each render
 
 Both destructure `Astro.props.frontmatter` — Astro 6 MDX does **not** flatten frontmatter into props. The `layout:` frontmatter path is relative to the MDX file.
 
-**Named-slot composition (currently broken — see below):** `PlanetLayout` checks `Astro.slots.has('explorer')` and renders `<slot name="explorer" />` in the sidebar only when present. MDX pages are written to opt in with `<ExplorerView slot="explorer" author="...">`. **This does not work**: a `slot="explorer"` attribute on a component instance inside the layout's *default* slot does not register a named slot on the layout, so `Astro.slots.has('explorer')` is always false and the Explorer Note never renders. 25 pages are affected. Tracked in TODO.md under "Explorer Note is missing from every guide page".
+**The Explorer Note reaches the sidebar through frontmatter, not a slot.** Both layouts read `explorer_author` and `explorer_note` from frontmatter and render `<ExplorerView>` in the sidebar. Do **not** reintroduce `<ExplorerView slot="explorer">` in MDX: a `slot="explorer"` attribute on a component instance inside the layout's *default* slot does not register a named slot, so `Astro.slots.has('explorer')` is always false and the note silently vanishes from the built HTML. This shipped broken for 25 pages before it was caught — the `hasExplorer` guard and the `<slot name="explorer" />` are still in `PlanetLayout.astro` and are now dead code.
 
-**Known bug — `ExplorerView`'s `quote`/`name` props don't exist.** The component's `Props` interface declares only `{ author: string }` and renders `<slot />` inside a `<blockquote>`. Three pages use a self-closing `<ExplorerView category="explorer" name="..." quote="..." />` form — `src/pages/stanton/hurston/arial.mdx`, `src/pages/stanton/hurston/aberdeen.mdx`, `src/pages/stanton/arccorp/wala.mdx` — so their quotes render as an empty blockquote with an empty author. If you touch `ExplorerView`, fix this; don't copy the broken usage.
+Two pages (`stanton/arccorp/index.mdx`, `stanton/arccorp/wala.mdx`) carry a *second* note mid-body, rendered in body flow with a plain `<ExplorerView author="...">` (no `slot` attribute). That's intentional — they have two distinct quotes.
+
+`ExplorerView`'s `Props` interface declares only `{ author: string }` and renders `<slot />` inside a `<blockquote>`. A self-closing `<ExplorerView quote="..." name="..." />` form — which three pages used before the fix — renders an empty blockquote and an empty cite. Don't write that form.
 
 ### The badge vocabulary is a closed set, duplicated in three places
 

@@ -43,7 +43,6 @@ const facts = [
   ['Ship class', vitals_ship?.split('—')[0]],
 ].filter(([, v]) => v).map(([l, v]) => [l, v.trim()]);
 
-const hasExplorer = Astro.slots.has('explorer');
 ---
 
 <!doctype html>
@@ -104,10 +103,6 @@ const hasExplorer = Astro.slots.has('explorer');
             <h3 class="sidebar-card__label">Getting There</h3>
             <p class="sidebar-card__body">{getting_there}</p>
           </div>
-
-          {hasExplorer && (
-            <slot name="explorer" />
-          )}
 
           {explorer_note && (
             <ExplorerView author={explorer_author ?? ''}>

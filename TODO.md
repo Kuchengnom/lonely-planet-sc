@@ -60,11 +60,13 @@ This file tracks the iterative work pipeline for the Lonely Planet: Star Citizen
 
 ## Explorer Note is missing from every guide page
 
-- [ ] Fix the `ExplorerView` named-slot mechanism so the Explorer Note renders on the 25 pages that use `<ExplorerView slot="explorer">`. `PlanetLayout.astro` checks `Astro.slots.has('explorer')` and renders `<slot name="explorer" />`, but a `slot="explorer"` attribute on a component instance inside the layout's default slot does not register a named slot. The component markup is never emitted and the quote text is absent from the built HTML.
-- [ ] Fix the three pages that use a self-closing `<ExplorerView category="explorer" name="..." quote="..." />` form — `ExplorerView.astro` declares only `{ author: string }` and renders `<slot />`, so these render an empty `<blockquote>` and an empty `<cite>`. Affected: `src/pages/stanton/hurston/arial.mdx`, `src/pages/stanton/hurston/aberdeen.mdx`, `src/pages/stanton/arccorp/wala.mdx`.
-- [ ] Verify with a fresh `npm run build` and confirm `class="explorer-note"` appears in the built HTML of the affected pages.
+- [x] Fix the `ExplorerView` named-slot mechanism so the Explorer Note renders on the 25 pages that use `<ExplorerView slot="explorer">`. `PlanetLayout.astro` checks `Astro.slots.has('explorer')` and renders `<slot name="explorer" />`, but a `slot="explorer"` attribute on a component instance inside the layout's default slot does not register a named slot. The component markup is never emitted and the quote text is absent from the built HTML.
+- [x] Fix the three pages that use a self-closing `<ExplorerView category="explorer" name="..." quote="..." />` form — `ExplorerView.astro` declares only `{ author: string }` and renders `<slot />`, so these render an empty `<blockquote>` and an empty `<cite>`. Affected: `src/pages/stanton/hurston/arial.mdx`, `src/pages/stanton/hurston/aberdeen.mdx`, `src/pages/stanton/arccorp/wala.mdx`.
+- [x] Verify with a fresh `npm run build` and confirm `class="explorer-note"` appears in the built HTML of the affected pages.
 
 Note: the checked-in `dist/` was stale and masked this. The TODO.md Impeccable critique (2026-10-15) recorded the symptom against the Nyx overview as P1; the scope is every guide page, not Nyx alone.
+
+Resolution: the note is now carried in frontmatter (`explorer_author`, `explorer_note`) and rendered by both `PlanetLayout` and `POILayout`, matching how `vitals_*` and `getting_there` already reach the sidebar. 27 pages migrated; 2 pages that carry a second note mid-body keep it in body flow. 30 notes now render across 29 pages, up from 4 (3 of them empty).
 
 
 ---
