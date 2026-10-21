@@ -10,10 +10,11 @@ vitals_hub: "No surface port — gas mining platforms (corporate access)"
 vitals_currency: "UEC (platform workers negotiate rates)"
 vitals_ship: "Hardened hull; ring navigation requires maneuvering thrusters"
 getting_there: "Pyro VI is at the system's outer edge — a long quantum burn from Ruin Station. Approach from the plane of the ecliptic to avoid the worst of the ring debris. The gas mining platforms are corporate-owned and require advance authorization; freelance visitors are not typically welcome. For ring observation, park in the L4 or L5 Lagrangian points of the larger moons, which offer stable positions with clear sightlines."
+explorer_author: "Platform Foreman, Pyro VI Gas Mining Division"
+explorer_note: >-
+  The planet doesn't care about you. That's the thing you have to understand before you come here. The storms don't target you. The gravity isn't malicious. It's just physics, operating at a scale that makes human beings irrelevant. There's a kind of peace in that, once you stop fighting it. Most people never stop fighting it. Those are the ones we lose.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 Pyro VI is a classic gas giant — massive, turbulent, and utterly hostile to anything resembling life. Its atmosphere is a stew of hydrogen, helium, and traces of ammonia, methane, and water vapor. The pressure increases exponentially as you descend, and the temperature ranges from -150°C at the cloud tops to thousands of degrees at the core. The planet's most striking feature is its storm bands — parallel bands of clouds that move at different speeds, creating spectacular turbulence. The largest, the Great Scarlet Spot, is a storm the size of a small moon that has been raging for at least a century.
@@ -38,10 +39,6 @@ The rings are also dangerous. The particles move at high speed, and a ship that 
 
 </AttractionEntry>
 
-<ExplorerView slot="explorer" author="Platform Foreman, Pyro VI Gas Mining Division">
-The planet doesn't care about you. That's the thing you have to understand before you come here. The storms don't target you. The gravity isn't malicious. It's just physics, operating at a scale that makes human beings irrelevant. There's a kind of peace in that, once you stop fighting it. Most people never stop fighting it. Those are the ones we lose.
-</ExplorerView>
-
 <TouristTip>
 
 - **Ring Navigation**: If you're flying near the rings for photography, approach at low relative velocity and maintain constant maneuvering thrust. The debris field has no safe corridors — it has only "currently clear" corridors.
@@ -56,7 +53,6 @@ The planet doesn't care about you. That's the thing you have to understand befor
 ## What to Bring
 
 Pyro VI is a gas giant — there is no surface to land on, and no conventional tourism exists here. What "visitors" do is observe from orbit, photograph the rings, and occasionally tour the gas mining platforms if they have corporate authorization. Your gear list reflects the fact that you are never more than a few hundred kilometers from a gravity well that can crush your ship, a radiation field that can fry your electronics, and an atmosphere that contains enough ammonia to melt your eyes out of your skull.
-
 
 **Essential gear (orbital operations):**
 

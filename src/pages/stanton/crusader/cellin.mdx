@@ -10,10 +10,11 @@ vitals_hub: "Security Post Kareah (orbital)"
 vitals_currency: "UEC"
 vitals_ship: "Any atmospheric craft with EVA capability; small recommended"
 getting_there: "Cellin is the closest of Crusader's moons to the gas giant, which means the approach is spectacular — Crusader fills half the sky, its cloud bands swirling in colors you'd swear were painted. The moon's orbit is relatively stable, making quantum jumps straightforward from any Crusader Lagrangian point. There's no formal landing zone. Most pilots touch down near the equatorial volcanic fields, where the geothermal activity keeps the surface warm enough to prevent ice accumulation. The poles are treacherous — not from cold (Cellin is warm-blooded by moon standards), but from the thin crust over dormant magma chambers."
+explorer_author: "Viktor Santos, Volcanic Surveyor"
+explorer_note: >-
+  I've stood on the rim of Cellin's calderas and watched acid rainbows form in the steam. I've also watched a rover sink into what looked like solid ground but was actually a thin crust over a lava tube. Cellin doesn't care about your itinerary. It has its own schedule, and you're not on it.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="The Caldera Fields" category="natural-wonder" image="/images/cellin/caldera-fields.webp" imageAlt="A vast volcanic caldera with acid lake">
@@ -65,10 +66,6 @@ The steam from these vents creates localized microclimates — pockets of warmth
 For travelers, the vents offer a practical advantage: free heat and water (after purification). Several enterprising pilots have established temporary shelters near reliable vent fields, using the geothermal energy to maintain life support without tapping their ship's power reserves.
 
 </AttractionEntry>
-
-<ExplorerView slot="explorer" author="Viktor Santos, Volcanic Surveyor">
-I've stood on the rim of Cellin's calderas and watched acid rainbows form in the steam. I've also watched a rover sink into what looked like solid ground but was actually a thin crust over a lava tube. Cellin doesn't care about your itinerary. It has its own schedule, and you're not on it.
-</ExplorerView>
 
 ## Getting Around
 

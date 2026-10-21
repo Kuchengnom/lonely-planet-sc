@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SystemHeader from '../components/SystemHeader.astro';
 import FastFactSidebar from '../components/FastFactSidebar.astro';
+import ExplorerView from '../components/ExplorerView.astro';
 
 interface Frontmatter {
   title: string;
@@ -15,6 +16,8 @@ interface Frontmatter {
   vibe: string;
   rating: number;
   hero_image: string;
+  explorer_author?: string;
+  explorer_note?: string;
 }
 
 interface Props {
@@ -24,7 +27,7 @@ interface Props {
 const {
   title, system, planet, region, type,
   difficulty, coordinates, required_gear,
-  vibe, rating, hero_image,
+  vibe, rating, hero_image, explorer_author, explorer_note,
 } = Astro.props.frontmatter;
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -73,6 +76,12 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
             required_gear={required_gear}
             coordinates={coordinates}
           />
+
+          {explorer_note && (
+            <ExplorerView author={explorer_author ?? ''}>
+              {explorer_note}
+            </ExplorerView>
+          )}
         </div>
       </div>
     </div>

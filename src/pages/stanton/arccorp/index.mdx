@@ -11,8 +11,10 @@ vitals_hub: "Area18 (surface) · Baijini Point (orbital)"
 vitals_currency: "UEC"
 vitals_ship: "Small, maneuverable craft — landing space is at a premium"
 getting_there: "ArcCorp is a dense, crowded place. Approach Area18 carefully — the airspace is busy and the landing guidance is automated but unforgiving. The planet's surface is one continuous construction project, and the only guaranteed clear approach is through the Area18 corridor. Baijini Point handles overflow traffic. If you are flying a large vessel, expect to be directed to wait. Everyone wants to land on ArcCorp. Not everyone gets to."
+explorer_author: "ArcCorp Security Consultant, Former ArcCorp Employee"
+explorer_note: >-
+  You want to know about the Underground? Everyone wants to know about the Underground. You want to know about Vault 7? Nobody knows about Vault 7, that's the point. You want to know about the black sites? Let me just say this: ArcCorp has been around for eighty years. It has built and destroyed governments, rewritten constitutions, and made decisions about billions of people's lives in rooms that don't appear on any map. The Underground, the vaults, the black sites — they are just the physical manifestations of that reality. The city above is ArcCorp's face. The city below is its skeleton. And what it's doing in the dark is nobody's business but its own.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
 import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
@@ -146,17 +148,13 @@ The black sites are heavily guarded and often located in remote or inaccessible 
 
 If you encounter a black site, the best advice is simple: do not investigate. ArcCorp security is not interested in questions. The people who work at black sites are not interested in being seen. And the things that happen at black sites are not the kind of thing that gets reported to the UEE.
 
-<ExplorerView slot="explorer" author="ArcCorp Security Consultant, Former ArcCorp Employee">
-You want to know about the Underground? Everyone wants to know about the Underground. You want to know about Vault 7? Nobody knows about Vault 7, that's the point. You want to know about the black sites? Let me just say this: ArcCorp has been around for eighty years. It has built and destroyed governments, rewritten constitutions, and made decisions about billions of people's lives in rooms that don't appear on any map. The Underground, the vaults, the black sites — they are just the physical manifestations of that reality. The city above is ArcCorp's face. The city below is its skeleton. And what it's doing in the dark is nobody's business but its own.
-</ExplorerView>
-
 ---
 
 ## What to Bring
 
 ArcCorp's atmosphere is technically breathable but hostile — warm, thick with industrial particulates, and regularly drenched in acid rain. The key challenge is not survival so much as comfort: the air will not kill you in minutes, but it will ruin your equipment, irritate your lungs, and make every outdoor experience a negotiation with the atmosphere.
 
-<ExplorerView slot="explorer" author="Freight Pilot, ArcCorp Docks">
+<ExplorerView author="Freight Pilot, ArcCorp Docks">
 ArcCorp doesn't try to kill you. It just doesn't care if you die while it's building something. My first visit, I showed up in a standard EVA suit and spent six hours covered in grime that no amount of wiping would remove. Second time, I bought a filter mask, some goggles, and a coat that was basically a tarp. Still got dirty. But I came back alive and my lungs didn't sound like a broken compressor. That's a win.
 </ExplorerView>
 

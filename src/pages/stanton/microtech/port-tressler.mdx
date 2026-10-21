@@ -10,10 +10,11 @@ vitals_hub: "Port Tressler (this is the hub)"
 vitals_currency: "UEC · microTech credits accepted"
 vitals_ship: "All classes welcome; inner docking ring has size limits"
 getting_there: "Port Tressler is the primary spaceport for microTech. Quantum jumps terminate near the station's navigation beacons — large, autonomous satellites that guide ships into approach corridors. The approach is choreographed with the precision of a ballet: cargo haulers on the outer rings, passenger liners in the middle, private vessels on the inner tracks. Disrupt this choreography at your peril. Port Tressler's traffic control does not appreciate improvisation."
+explorer_author: "Lin M., Long-Haul Pilot"
+explorer_note: >-
+  I've docked at Port Tressler a hundred times. I still can't tell you what it smells like. Not because it's unpleasant — it isn't — but because it has no smell at all. The entire station is scrubbed to within an inch of its life. You could perform surgery in the maintenance corridors. It's clean. It's efficient. It's also somehow... sad. Like a hospital that ran out of patients.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="The Main Concourse" category="practical" image="/images/port-tressler/main-concourse.webp" imageAlt="The bustling main concourse of Port Tressler">
@@ -65,10 +66,6 @@ The lounge is free to enter, which makes it one of the station's most democratic
 The best time to visit is during a solar storm, when the ionized particles in Stanton's solar wind interact with microTech's magnetosphere to create light shows that put any laser display to shame. The lounge spends those hours packed to capacity, with people standing shoulder to shoulder, staring out at a sky on fire.
 
 </AttractionEntry>
-
-<ExplorerView slot="explorer" author="Lin M., Long-Haul Pilot">
-I've docked at Port Tressler a hundred times. I still can't tell you what it smells like. Not because it's unpleasant — it isn't — but because it has no smell at all. The entire station is scrubbed to within an inch of its life. You could perform surgery in the maintenance corridors. It's clean. It's efficient. It's also somehow... sad. Like a hospital that ran out of patients.
-</ExplorerView>
 
 <TouristTip>
 

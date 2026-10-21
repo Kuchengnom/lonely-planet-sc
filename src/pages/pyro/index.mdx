@@ -12,10 +12,11 @@ vitals_hub: "Ruin Station · Pyro Belt Outpost · Serpent's Rest"
 vitals_currency: "UEC (de facto: anything with tradeable value)"
 vitals_ship: "Armed vessel strongly recommended; insurance exclusions apply throughout"
 getting_there: "Enter via the Stanton-Pyro jump point and do not stop moving. Ruin Station at Lagrange Point 1 is your first waypoint — dock there, get fuel, and calibrate your situational awareness before heading deeper into the system. Pyro has no visitor center, no welcome committee, and no meaningful law enforcement presence. What it has is six planets, a belt of asteroids, and more ways to die than any responsible guide should enumerate. Proceed accordingly."
+explorer_author: "Independent Hauler, Ruin Station"
+explorer_note: >-
+  Everyone who comes to Pyro for the first time thinks they understand the risk. They've read the advisories, checked the insurance exclusions, talked to people who've been here. None of that prepares you for the first time a ship drops off your scanner and you realize there's no one to call. Pyro doesn't frighten you all at once. It does it slowly, one small realisation at a time. First you notice the quiet on the radio. Then you realize how far apart the planets are when you're counting fuel. Then you see your first emergency beacon and realize there's no one coming. That's when the real Pyro education begins.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="Pyro I — The Hellscape" category="natural-wonder" image="/images/pyro/pyro-1-lava.webp" imageAlt="Active lava flows and volcanic vents on Pyro I's hostile surface" href="/lonely-planet-sc/pyro/pyro-1/">
@@ -53,10 +54,6 @@ The system's cold, quiet terminus. Most ships stop here only because they have t
 The outer system's dominant presence — a gas giant wrapped in ammonia storm bands, its Great Scarlet Spot visible from Pyro V on a clear day. Gas mining platforms float in the upper atmosphere, their crews working six-month shifts extracting fuel and ammonia for stations throughout the frontier. A spectacular ring system surrounds the planet, a graveyard of captured moons that disintegrate over geological time. Everything about it will kill you if you get too close. From a distance, though, it's intolerably beautiful.
 
 </AttractionEntry>
-
-<ExplorerView slot="explorer" author="Independent Hauler, Ruin Station">
-Everyone who comes to Pyro for the first time thinks they understand the risk. They've read the advisories, checked the insurance exclusions, talked to people who've been here. None of that prepares you for the first time a ship drops off your scanner and you realize there's no one to call. Pyro doesn't frighten you all at once. It does it slowly, one small realisation at a time. First you notice the quiet on the radio. Then you realize how far apart the planets are when you're counting fuel. Then you see your first emergency beacon and realize there's no one coming. That's when the real Pyro education begins.
-</ExplorerView>
 
 ## Eating and Drinking
 

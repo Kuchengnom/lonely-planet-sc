@@ -10,10 +10,11 @@ vitals_hub: "GrimHEX (asteroid station)"
 vitals_currency: "Credits (unofficial) · UEC"
 vitals_ship: "Thermal-plated vessel; any size welcome at GrimHEX"
 getting_there: "Yela doesn't have a formal spaceport — at least not one that files transit plans with the UEE. Most pilots set down at GrimHEX, technically an asteroid but the closest thing to civilization for 200,000 klicks. If you're coming from Orison, it's a short quantum jump to Crusader's outer Lagrangian point, then a sub-light burn through the ice field. Bring thermal plating. The moon's surface radiates cold the way a black hole radiates gravity — it will find every gap in your hull."
+explorer_author: "Janne K., Freelance Surveyor"
+explorer_note: >-
+  I dropped a wrench on Yela once. It didn't bounce. The ice absorbed the sound entirely. I stood there for ten minutes, listening to nothing, and I understood why people come out here and never leave. The silence is addictive. And dangerous.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="GrimHEX" category="hidden-find" image="/images/yela/grimhex.webp" imageAlt="The hollowed-out asteroid station of GrimHEX, lights glowing against the ice">
@@ -67,10 +68,6 @@ Standard vehicles function adequately on the flatter regions near GrimHEX, but f
 Most experienced Yela travelers recommend traveling during the moon's "day" — when Crusader is visible in the sky — not because the light helps (it barely does), but because the slight warming effect reduces the likelihood of sudden ice fractures.
 
 </AttractionEntry>
-
-<ExplorerView slot="explorer" author="Janne K., Freelance Surveyor">
-I dropped a wrench on Yela once. It didn't bounce. The ice absorbed the sound entirely. I stood there for ten minutes, listening to nothing, and I understood why people come out here and never leave. The silence is addictive. And dangerous.
-</ExplorerView>
 
 ## Getting Around
 

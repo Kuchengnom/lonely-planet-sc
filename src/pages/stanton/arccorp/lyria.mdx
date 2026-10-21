@@ -10,10 +10,11 @@ vitals_hub: "No formal port — ArcCorp Research Outpost Alpha (surface)"
 vitals_currency: "UEC"
 vitals_ship: "Cryogenic-rated vessel; small craft preferred"
 getting_there: "Lyria orbits ArcCorp at a distance that makes it the outermost of the planet's two moons. The approach from Area18 is straightforward — a short quantum jump followed by a sub-light deceleration into orbital insertion. The moon's gravity is low enough that landing is effortless; the challenge is the cold. There is no spaceport, no landing beacon, no welcome committee. Most pilots set down near the cryovolcanic fields, where the geothermal activity creates localized warm zones. The ice is treacherous — Lyria's surface is a maze of frozen hydrocarbon deposits that look solid from orbit but may conceal caverns and voids beneath. Approach with caution, land with precision, and never trust the ground."
+explorer_author: "Dr. Aris Thorne, Exolanetary Geologist"
+explorer_note: >-
+  I've studied cryovolcanoes across three systems, and Lyria's are unique. The eruption mechanics are fundamentally different from magma volcanoes. Instead of heat, you get pressure. The cryomagma isn't molten — it's a slurry of frozen gases and liquid hydrocarbons kept mobile by tidal flexing from ArcCorp. When it erupts, it doesn't flow. It shatters. And the sound — imagine a glacier collapsing into a cathedral made of crystal. That's a Lyria eruption.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="The Cryovolcano Fields" category="natural-wonder" image="/images/lyria/cryovolcano-fields.webp" imageAlt="Active cryovolcanoes on Lyria's surface">
@@ -68,10 +69,6 @@ Whatever is down there — water, hydrocarbons, or something else entirely — i
 
 </AttractionEntry>
 
-<ExplorerView slot="explorer" author="Dr. Aris Thorne, Exolanetary Geologist">
-I've studied cryovolcanoes across three systems, and Lyria's are unique. The eruption mechanics are fundamentally different from magma volcanoes. Instead of heat, you get pressure. The cryomagma isn't molten — it's a slurry of frozen gases and liquid hydrocarbons kept mobile by tidal flexing from ArcCorp. When it erupts, it doesn't flow. It shatters. And the sound — imagine a glacier collapsing into a cathedral made of crystal. That's a Lyria eruption.
-</ExplorerView>
-
 ## Getting Around
 
 There is no formal transport on Lyria. The moon's surface is not suitable for standard ground vehicles — the ice is too unpredictable, the hydrocarbon deposits too sticky, and the temperature too extreme for anything without specialized heating. Most exploration is done by light ship, hopping between sites, or by specialized rovers designed for cryogenic environments.
@@ -88,13 +85,11 @@ ArcCorp Research Outpost Alpha is the closest thing to a hub. From there, the re
 
 </TouristTip>
 
-
 ---
 
 ## What to Bring
 
 Lyria is not a planet. It is a cryogenic death trap wrapped in a geological wonder wrapped in an ArcCorp cover story. With surface temperatures plunging to -180°C, no breathable atmosphere, and the constant possibility of a cryovolcanic eruption coating you in frozen shrapnel, visiting Lyria requires gear that most pilots keep for dedicated polar operations. The good news is that if you've packed for MicroTech or Pyro V, you're already 80% there. The bad news is that Lyria is colder than both, and its hazards are more unusual.
-
 
 **Essential gear:**
 

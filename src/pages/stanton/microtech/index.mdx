@@ -11,10 +11,11 @@ vitals_hub: "New Babbage (surface) · Port Tressler (orbital)"
 vitals_currency: "UEC"
 vitals_ship: "Small atmospheric craft strongly recommended"
 getting_there: "Spawn or land at Port Tressler in orbit, then descend to New Babbage on the surface — it's the warmest welcome the planet offers and the best departure point for everything else. A Pisces, Cutter, 100i, or Nomad handles the terrain far better than anything larger. Set your respawn at New Babbage before flying out into the wilderness. Quantum travel covers long distances in minutes, but the rivers and caves require low, slow approaches to find. Allow more time than you think you need, and land before the ice storms roll in."
+explorer_author: "Survey Pilot, New Babbage"
+explorer_note: >-
+  The trick on microTech is patience. You're going to fly right over what you're looking for at least once — the rivers are invisible from height and the storms don't respect your schedule. The moment you decide to turn back is usually the moment the weather clears. Stay low on the return leg and watch the terrain change beneath you. That is when you find the things that aren't on any guide.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 <AttractionEntry number={1} title="The First River" category="natural-wonder" image="/images/microtech/ships-on-lake.jpeg" imageAlt="Ships parked at the edge of the first river lake basin">
@@ -36,10 +37,6 @@ Quantum to **MT DataCenter KH3-AAE-L**, then hold heading **027** and fly roughl
 The canyon itself is wide enough to fly a small ship through at low speed. Do that before you land.
 
 </AttractionEntry>
-
-<ExplorerView slot="explorer" author="Survey Pilot, New Babbage">
-The trick on microTech is patience. You're going to fly right over what you're looking for at least once — the rivers are invisible from height and the storms don't respect your schedule. The moment you decide to turn back is usually the moment the weather clears. Stay low on the return leg and watch the terrain change beneath you. That is when you find the things that aren't on any guide.
-</ExplorerView>
 
 <AttractionEntry number={3} title="The Frozen Lakes" category="natural-wonder" image="/images/microtech/ice-arch.jpeg" imageAlt="Ice arch formation rising from a frozen lake on MicroTech">
 
@@ -120,7 +117,6 @@ The orbital station above New Babbage has a full food court, a bar, and a hot do
 ## What to Bring
 
 microTech does not forgive poor preparation. The cold is not a suggestion — it is a constant, patient threat. Exposed skin freezes in under a minute at surface temperatures that regularly drop below -100°C. If your gear list isn't thorough, your visit will be brief and uncomfortable.
-
 
 **Essential cold-weather gear:**
 

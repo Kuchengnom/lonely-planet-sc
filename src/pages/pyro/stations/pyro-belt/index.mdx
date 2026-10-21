@@ -10,10 +10,11 @@ vitals_hub: "The Outpost (Outer Belt asteroid station)"
 vitals_currency: "UEC · ore credits · cargo"
 vitals_ship: "Maneuverable small craft; shield generators strongly recommended"
 getting_there: "The Belt spans the zone between Pyro III and Pyro IV — a broad, chaotic band that you can enter from almost any approach vector. The Outpost station transmits a beacon, but its signal is frequently jammed by natural asteroid interference. Most Belt regulars navigate by landmark and ion trail. If you're new to asteroid navigation, hire a local guide at Ruin Station before heading in."
+explorer_author: "Lena, Outer Belt Miner"
+explorer_note: >-
+  The Belt is alive. I don't mean that metaphorically — I mean the rocks move, the gravity wells shift, the debris field rearranges itself on a timescale you can actually observe. I've been coming here for eight years and my charts from last year are already wrong. That's not a bug. That's what makes it interesting.
 ---
-
 import AttractionEntry from '@components/AttractionEntry.astro'
-import ExplorerView from '@components/ExplorerView.astro'
 import TouristTip from '@components/TouristTip.astro'
 
 The Pyro Belt is a vast ring of rock and ice stretching from the orbit of Pyro III to just inside the orbit of Pyro IV. It is composed of everything from dust-sized particles to asteroids the size of small cities, and it is in constant motion — a celestial ballet of rock and metal that is as dangerous as it is beautiful. The Belt is divided into zones: the Inner Belt, closest to Pyro III, is the most heavily mined and the most dangerous. The Outer Belt, closer to Pyro IV, is quieter but not safer — the asteroids are larger and the gravity wells more complex.
@@ -41,10 +42,6 @@ The Graveyard is a section of the Outer Belt where the wreckage of dozens of shi
 The Graveyard is a somber place. The wrecks are frozen in time, preserved by the cold of space, and in some cases the bodies of their crews are still inside. Salvage crews work the Graveyard carefully — not just because of the physical danger, but because there is a general understanding that the dead should not be disturbed without reason.
 
 </AttractionEntry>
-
-<ExplorerView slot="explorer" author="Lena, Outer Belt Miner">
-The Belt is alive. I don't mean that metaphorically — I mean the rocks move, the gravity wells shift, the debris field rearranges itself on a timescale you can actually observe. I've been coming here for eight years and my charts from last year are already wrong. That's not a bug. That's what makes it interesting.
-</ExplorerView>
 
 <TouristTip>
 
