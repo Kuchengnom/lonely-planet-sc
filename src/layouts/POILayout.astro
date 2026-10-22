@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SystemHeader from '../components/SystemHeader.astro';
 import FastFactSidebar from '../components/FastFactSidebar.astro';
 import ExplorerView from '../components/ExplorerView.astro';
+import ImageAttribution from '../components/ImageAttribution.astro';
 
 interface Frontmatter {
   title: string;
@@ -18,6 +19,10 @@ interface Frontmatter {
   hero_image: string;
   explorer_author?: string;
   explorer_note?: string;
+  /** Attribution for a third-party hero image, e.g. a VerseGuide photo. */
+  image_credit?: string;
+  image_credit_source?: string;
+  image_credit_url?: string;
 }
 
 interface Props {
@@ -28,9 +33,15 @@ const {
   title, system, planet, region, type,
   difficulty, coordinates, required_gear,
   vibe, rating, hero_image, explorer_author, explorer_note,
+  image_credit, image_credit_source = 'VerseGuide', image_credit_url,
 } = Astro.props.frontmatter;
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Same guard as PlanetLayout: absolute URLs pass through, site-relative paths
+// get the base prefix. Without this every POI hero 404s under /lonely-planet-sc/.
+const heroUrl = hero_image && !hero_image.startsWith('http')
+  ? `${base}${hero_image.startsWith('/') ? hero_image.slice(1) : hero_image}`
+  : hero_image;
 ---
 
 <!doctype html>
@@ -52,11 +63,20 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
     <div class="poi-hero">
       <img
-        src={hero_image}
+        src={heroUrl}
         alt={`${title} on ${planet}`}
         class="poi-hero__image"
       />
       <div class="poi-hero__overlay" aria-hidden="true"></div>
+      {image_credit && (
+        <ImageAttribution
+          imageSource={image_credit_source}
+          locationName={title}
+          imageUrl={image_credit_url}
+          photographer={image_credit}
+          showOnHover={false}
+        />
+      )}
       <div class="poi-hero__text container mx-auto px-6">
         <h1 class="poi-hero__title">{title}</h1>
         <p class="poi-hero__subtitle">{planet} · {region}</p>

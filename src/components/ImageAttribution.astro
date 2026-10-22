@@ -4,29 +4,42 @@ interface Props {
   locationName: string
   imageUrl?: string
   showOnHover?: boolean
+  /** Photographer's name, when the source credits one. */
+  photographer?: string
 }
 
-const { 
-  imageSource, 
-  locationName, 
-  imageUrl, 
-  showOnHover = true 
+const {
+  imageSource,
+  locationName,
+  imageUrl,
+  showOnHover = true,
+  photographer
 } = Astro.props
 
 const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/')
+const sourceHref = imageUrl ?? 'https://verseguide.com'
+const sourceLabel = imageUrl ? 'View source' : `View ${locationName} on VerseGuide`
 ---
 
 <div class={`image-attribution ${showOnHover ? 'image-attribution--hover' : ''}`}>
-  <a 
-    href="https://verseguide.com" 
-    target="_blank" 
+  <a
+    href={sourceHref}
+    target="_blank"
     rel="noopener noreferrer"
     class="image-attribution__link"
-    title="View on VerseGuide"
+    title={sourceLabel}
   >
     <span class="image-attribution__text">
       <span class="image-attribution__prefix" aria-hidden="true">📷</span>
-      Photo by <strong>VerseGuide</strong>
+      {photographer ? (
+        <>
+          Photo by <strong>{photographer}</strong> via <strong>{imageSource}</strong>
+        </>
+      ) : (
+        <>
+          Photo by <strong>{imageSource}</strong>
+        </>
+      )}
     </span>
     <span class="image-attribution__arrow" aria-hidden="true">→</span>
   </a>
