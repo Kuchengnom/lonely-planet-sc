@@ -81,17 +81,42 @@ const POIS = [
 
     <!-- Top strip -->
     <div class="top-strip">
-      All Star Citizen editions are <strong>completely free</strong> — community-written, forever open access
+      <span class="top-strip__note">
+        All Star Citizen editions are <strong>completely free</strong> — community-written, forever open access
+      </span>
+      <ul class="top-strip__roster" aria-label="Published editions">
+        {EDITIONS.map((edition) => (
+          <li class={`top-strip__edition${edition.status === 'coming-soon' ? ' is-soon' : ''}`}>
+            <span class="top-strip__dot" aria-hidden="true"></span>{edition.name}
+          </li>
+        ))}
+      </ul>
     </div>
 
     <!-- Sticky header -->
     <header class="site-header">
       <div class="site-header__inner">
+        <a href={base} class="site-header__brand">
+          <svg class="site-header__mark" viewBox="30 12 120 126" fill="none" aria-hidden="true" focusable="false">
+            <path d="M140 70C140 42.3858 117.614 20 90 20C62.3858 20 40 42.3858 40 70" stroke="currentColor" stroke-width="5" />
+            <path d="M40 80C40 107.614 62.3858 130 90 130C117.614 130 140 107.614 140 80" stroke="currentColor" stroke-width="5" />
+          </svg>
+          <span class="site-header__brand-text">
+            <span class="site-header__name">Lonely Planet</span>
+            <span class="site-header__tagline">Star Citizen Edition</span>
+          </span>
+        </a>
+
         <nav class="site-header__nav-left">
           <a href="#editions">Editions</a>
           <a href="#attractions">Attractions</a>
           <a href={`${base}phds/`}>Hidden Discoveries</a>
           <a href="#about">About</a>
+        </nav>
+
+        <nav class="site-header__nav-right">
+          <a class="site-header__cta" href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">Contribute</a>
+          <a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Community</a>
         </nav>
 
         <button
@@ -106,18 +131,6 @@ const POIS = [
             <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
-
-        <a href={base} class="site-header__logo">
-          <img src={`${base}logo.svg`} alt="Lonely Planet" class="site-header__logo-img" />
-          <span class="site-header__logo-sub">Star Citizen Edition</span>
-        </a>
-
-        <span class="mobile-nav__balance" aria-hidden="true"></span>
-
-        <nav class="site-header__nav-right">
-          <a href="https://github.com/Kuchengnom/lonely-planet-sc" target="_blank" rel="noopener">Contribute</a>
-          <a href="https://robertsspaceindustries.com/" target="_blank" rel="noopener">Community</a>
-        </nav>
       </div>
 
       <dialog class="mobile-nav" id="mobile-nav" aria-labelledby="mobile-nav-title">
@@ -531,8 +544,9 @@ const POIS = [
 
           if (!anchors.length) return;
 
-          // Offset for sticky header — matches the CSS scroll-padding-top
-          const headerHeight = 60; // site-header height
+          // Offset for sticky header — measured, since it is shorter on mobile
+          const header = document.querySelector<HTMLElement>('.site-header');
+          const headerHeight = header?.offsetHeight ?? 64;
           const offset = Math.max(headerHeight + 24, parseInt(getComputedStyle(document.documentElement)
             .getPropertyValue('--scroll-anchor-offset') || '80'));
 
@@ -547,14 +561,15 @@ const POIS = [
             const visible = entries.filter(e => e.isIntersecting)
               .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 
-            let activeAnchor = anchors[0];
+            // Nothing in view (e.g. above the first section) means nothing is active.
+            let activeHref: string | null = null;
             for (const entry of visible) {
               const candidate = anchors.find(a => a.target === entry.target);
-              if (candidate) { activeAnchor = candidate; break; }
+              if (candidate) { activeHref = candidate.href; break; }
             }
 
             for (const a of anchors) {
-              a.link.classList.toggle('is-active', a.href === activeAnchor.href);
+              a.link.classList.toggle('is-active', a.href === activeHref);
             }
           }, observerOptions);
 
@@ -642,18 +657,49 @@ const POIS = [
 
   /* ── Top strip ─────────────────────────────────────── */
   .top-strip {
-    background: var(--color-neutral-900);
-    color: var(--color-neutral-400);
-    font-family: var(--font-display);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    background: var(--color-primary-900);
+    color: var(--color-neutral-300);
+    font-family: var(--font-nav);
     font-size: 0.6875rem;
     letter-spacing: var(--letter-spacing-widest);
     text-transform: uppercase;
-    text-align: center;
     padding: var(--space-2) var(--space-6);
   }
   .top-strip strong {
     color: #f5c518;
     font-weight: var(--font-weight-bold);
+  }
+  .top-strip__roster {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.16em;
+  }
+  .top-strip__edition {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .top-strip__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-success);
+  }
+  .top-strip__edition.is-soon { color: rgba(255, 255, 255, 0.28); }
+  .top-strip__edition.is-soon .top-strip__dot {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px currentColor;
   }
 
   /* ── Sticky header ─────────────────────────────────── */
@@ -661,59 +707,135 @@ const POIS = [
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
-    background: var(--color-white);
-    border-bottom: 2px solid var(--color-neutral-900);
+    background: var(--color-primary-600);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   }
 
   .site-header__inner {
     max-width: var(--container-xl);
     margin: 0 auto;
     padding: 0 var(--space-6);
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
-    height: 60px;
+    gap: var(--space-6);
+    height: 64px;
+  }
+
+  /* Brand lockup — the guide's nameplate, always left. */
+  .site-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: var(--color-white);
+  }
+  .site-header__mark {
+    width: 28px;
+    height: 30px;
+    display: block;
+    flex: none;
+  }
+  .site-header__brand-text {
+    display: grid;
+    gap: 2px;
+  }
+  .site-header__name {
+    font-family: var(--font-nav);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--color-white);
+  }
+  .site-header__tagline {
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .site-header__nav-left,
   .site-header__nav-right {
     display: flex;
-    gap: var(--space-6);
-    font-family: var(--font-display);
-    font-size: 0.6875rem;
-    font-weight: var(--font-weight-bold);
-    letter-spacing: var(--letter-spacing-widest);
-    text-transform: uppercase;
-    color: var(--color-neutral-700);
-  }
-  .site-header__nav-right { justify-content: flex-end; }
-  .site-header__nav-left  a:hover,
-  .site-header__nav-right a:hover { color: var(--color-primary-600); }
-
-  .site-header__logo {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    text-decoration: none;
-    color: inherit;
-    gap: 1px;
-  }
-  .site-header__logo-img {
-    height: 32px;
-    width: auto;
-    display: block;
-  }
-  .site-header__logo-sub {
-    font-family: var(--font-display);
-    font-size: 0.5rem;
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.25em;
+    gap: var(--space-5);
+    font-family: var(--font-nav);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-neutral-500);
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .site-header__nav-right {
+    margin-left: auto;
+    gap: var(--space-4);
+  }
+  .site-header__nav-left a,
+  .site-header__nav-right a {
+    position: relative;
+    padding: 0.4rem 0;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  /* The one yellow job in the masthead: where you are, and where you'd go. */
+  .site-header__nav-left a:not(.site-header__cta)::after,
+  .site-header__nav-right a:not(.site-header__cta)::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: #f5c518;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+  .site-header__nav-left a:hover,
+  .site-header__nav-right a:hover {
+    color: var(--color-white);
+  }
+  .site-header__nav-left a:hover::after,
+  .site-header__nav-right a:hover::after {
+    transform: scaleX(1);
+  }
+  .site-header__nav-left a.is-active {
+    color: var(--color-white);
+  }
+  .site-header__nav-left a.is-active::after {
+    transform: scaleX(1);
   }
 
-  .mobile-nav__toggle,
-  .mobile-nav__balance {
+  .site-header__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 0.875rem;
+    border: 1.5px solid #f5c518;
+    border-radius: 999px;
+    color: #f5c518;
+    letter-spacing: 0.1em;
+  }
+  .site-header__cta:hover {
+    background: #f5c518;
+    color: var(--color-primary-900);
+  }
+
+  /* The global focus ring is cobalt — invisible on the cobalt bar. */
+  .site-header a:focus-visible,
+  .site-header button:focus-visible {
+    outline: 2px solid #f5c518;
+    outline-offset: 3px;
+    border-radius: 0;
+  }
+
+  .mobile-nav__toggle {
     display: none;
   }
 
@@ -759,6 +881,11 @@ const POIS = [
     border: 1px solid var(--color-neutral-900);
     color: var(--color-neutral-900);
     background: transparent;
+  }
+  /* The toggle sits on the cobalt bar, so it inverts; the close button stays on paper. */
+  .mobile-nav__toggle {
+    border-color: rgba(255, 255, 255, 0.45);
+    color: var(--color-white);
   }
 
   .mobile-nav__close svg,
@@ -1051,7 +1178,8 @@ const POIS = [
 
   /* ── Edition cards (unchanged from original) ───────── */
   .editions { padding: var(--space-16) 0; }
-  .editions .container { max-width: var(--container-2xl); }
+  /* Matches the page's main column so the section grid stays on one vertical rhythm. */
+  .editions .container { max-width: var(--container-xl); }
 
   .editions-grid {
     display: grid;
@@ -1959,14 +2087,11 @@ const POIS = [
       padding-right: var(--space-5);
       scrollbar-width: thin;
     }
-    .site-header__inner { grid-template-columns: 44px minmax(0, 1fr) 44px; }
+    .site-header__inner { height: 60px; gap: var(--space-4); }
     .site-header__nav-left,
     .site-header__nav-right { display: none; }
-    .mobile-nav__toggle,
-    .mobile-nav__balance { display: inline-flex; }
-    .mobile-nav__toggle { grid-column: 1; justify-self: start; }
-    .site-header__logo { grid-column: 2; justify-self: center; }
-    .mobile-nav__balance { grid-column: 3; }
+    .mobile-nav__toggle { display: inline-flex; margin-left: auto; }
+    .top-strip__roster { display: none; }
     .mobile-nav {
       inset: 60px 0 0;
       width: 100%;

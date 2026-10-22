@@ -91,7 +91,10 @@
     /* Font Families */
     --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    /* JetBrains Mono is only loaded on some pages — keep a system mono fallback. */
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, 'Courier New', monospace;
+    /* Editorial face for mastheads, wordmarks and section furniture. */
+    --font-nav: 'Archivo Narrow', var(--font-display);
 
     /* Type Scale */
     --text-display-2xl: 4.5rem;    /* 72px */
