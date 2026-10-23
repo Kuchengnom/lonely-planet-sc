@@ -80,6 +80,15 @@ const facts = [
       </dl>
     </div>
 
+    {youtube_url && (
+      <div class="page-container">
+        <div class="tour-video">
+          {youtube_credit && <p class="tour-video__credit">{youtube_credit}</p>}
+          <YouTubeEmbed videoId={ytId!} title={title} timestamp={youtube_start ?? 0} />
+        </div>
+      </div>
+    )}
+
     <div class="page-container">
       <div class="page-grid">
         <main class="page-main">
@@ -110,7 +119,7 @@ const facts = [
             <div class="sidebar-card" id="video">
               <h3 class="sidebar-card__label">Reference Video</h3>
               {youtube_credit && <p class="sidebar-card__body">{youtube_credit}</p>}
-              <YouTubeEmbed videoId={ytId!} title={title} timestamp={youtube_start ?? 0} />
+              <a href={youtube_url} target="_blank" rel="noopener">Open in YouTube ↗</a>
             </div>
           )}
 
@@ -146,6 +155,8 @@ const facts = [
   .sidebar-card__label{font-family:var(--font-display);font-size:1rem;font-weight:700;margin:0 0 .5rem;}
   .sidebar-card__body{font-size:.9375rem;line-height:1.6;margin:0 0 .5rem;}
   .sidebar-card__body:last-child{margin:0;}
+  .tour-video { margin: var(--space-6) 0 var(--space-8); }
+  .tour-video__credit { font-size: .9rem; color: var(--color-neutral-600); margin: 0 0 .75rem; }
   @media(max-width:900px){.page-grid{grid-template-columns:1fr;}.tour-hero__facts{grid-template-columns:repeat(2,1fr);}}
 </style>
 EOF
