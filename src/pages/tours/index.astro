@@ -1,0 +1,79 @@
+---
+import '../../styles/global.css';
+import SystemHeader from '../../components/SystemHeader.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const assetUrl = (p) => (p && !p.startsWith('http') ? `${base}${p.replace(/^\/+/, '')}` : p);
+
+const entries = [
+  {
+    href: `${base}tours/microtech-ridge-run/`,
+    name: 'MicroTech Ridge Run',
+    system: 'Stanton',
+    planet: 'microTech',
+    duration: '3-4 hours',
+    difficulty: 'Moderate',
+    vibe: 'Remote',
+    teaser: 'A cargo-friendly sweep: The River → Canyon River → Northern Wastes ice caves → New Babbage. Bring samples and a camera.',
+    heroImage: '/images/microtech/ships-on-lake.jpeg',
+    recommendedShip: 'Cutlass Black (M)',
+    source: 'https://youtu.be/aZE4pGRUdkw?t=512',
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href={`${base}favicon.svg`} />
+    <title>Guided Tours — Lonely Planet Star Citizen</title>
+  </head>
+  <body>
+    <SystemHeader system="System-wide" planet="" region="" title="Guided Tours" type="urban-sight" />
+
+    <div class="tours-page-shell">
+      <div class="tours-page">
+        <header class="tours-page__header">
+          <h1 class="tours-page__title">Guided Tours</h1>
+          <p class="tours-page__subtitle">Curated walkthroughs of the verse — cargo holds recommended. Every stop is a real location.</p>
+        </header>
+
+        <div class="tours-grid">
+          {entries.map(e => (
+            <a href={e.href} class="tour-card">
+              <img src={assetUrl(e.heroImage)} alt={e.name} class="tour-card__image" />
+              <div class="tour-card__body">
+                <span class="tour-card__meta">{e.system} · {e.planet} · {e.duration} · {e.difficulty}</span>
+                <h2 class="tour-card__title">{e.name}</h2>
+                <p class="tour-card__teaser">{e.teaser}</p>
+                <span class="tour-card__ship">Ship: {e.recommendedShip}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .tours-page { max-width: 1440px; margin: 0 auto; }
+  .tours-page-shell { width: min(100% - 2rem, 1440px); margin: 0 auto; padding: 2.5rem 0 4rem; }
+  .tours-page__header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-neutral-200); }
+  .tours-page__title { font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin: 0 0 .5rem; }
+  .tours-page__subtitle { color: var(--color-neutral-600); margin: 0; }
+  .tours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+  .tour-card { display: block; text-decoration: none; color: inherit; border: 1px solid var(--color-neutral-200); border-radius: .75rem; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
+  .tour-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .tour-card__image { width: 100%; height: 200px; object-fit: cover; display: block; }
+  .tour-card__body { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: .4rem; }
+  .tour-card__meta { font-size: .8rem; color: var(--color-neutral-500); text-transform: uppercase; letter-spacing: .04em; }
+  .tour-card__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin: 0; }
+  .tour-card__teaser { font-size: .95rem; line-height: 1.5; color: var(--color-neutral-700); margin: 0; }
+  .tour-card__ship { font-size: .85rem; color: var(--color-primary-600); font-weight: 600; }
+  @media (max-width: 640px) { .tours-page-shell { width: min(100% - 1.5rem, 1440px); padding-top: 1.5rem; } }
+</style>
+EOF
+echo done

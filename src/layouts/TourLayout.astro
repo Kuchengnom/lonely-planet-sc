@@ -1,0 +1,152 @@
+---
+import '../styles/global.css';
+import SystemHeader from '../components/SystemHeader.astro';
+import Button from '../components/Button.astro';
+import ExplorerView from '../components/ExplorerView.astro';
+import YouTubeEmbed from '../components/YouTubeEmbed.astro';
+
+interface Frontmatter {
+  title: string;
+  system: string;
+  region?: string;
+  duration: string;
+  stops: number;
+  difficulty: string;
+  vibe: string;
+  hero_image: string;
+  lead: string;
+  recommended_ship: string;
+  alternative_ship: string;
+  crew: string;
+  cargo: string;
+  youtube_credit?: string;
+  youtube_url?: string;
+  youtube_start?: number;
+  explorer_author?: string;
+  explorer_note?: string;
+  getting_there?: string;
+}
+
+interface Props {
+  frontmatter: Frontmatter;
+}
+
+const {
+  title, system, region, duration, stops, difficulty, vibe, hero_image, lead,
+  recommended_ship, alternative_ship, crew, cargo, youtube_credit, youtube_url,
+  youtube_start, explorer_author, explorer_note, getting_there,
+} = Astro.props.frontmatter;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const heroUrl = hero_image && !hero_image.startsWith('http')
+  ? `${base}${hero_image.startsWith('/') ? hero_image.slice(1) : hero_image}`
+  : hero_image;
+
+const ytId = youtube_url ? youtube_url.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/)?.[1] : undefined;
+
+const facts = [
+  ['Duration', duration],
+  ['Stops', String(stops)],
+  ['Difficulty', difficulty],
+  ['Ship', recommended_ship],
+].filter(([, v]) => v);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href={`${base}favicon.svg`} />
+    <title>{title} — {system} Edition</title>
+  </head>
+  <body>
+    <SystemHeader system={system} planet="" region={region ?? ''} title={title} type="urban-sight" />
+
+    <div class="tour-hero">
+      <img src={heroUrl} alt={`${title}, ${system} system`} class="tour-hero__image" />
+      <div class="tour-hero__overlay" aria-hidden="true"></div>
+      <div class="tour-hero__text">
+        <span class="tour-hero__kicker">Guided Tour</span>
+        <h1 class="tour-hero__title">{title}</h1>
+        <p class="tour-hero__subtitle">{system}{region ? ` · ${region}` : ''} · {duration} · {difficulty}</p>
+        <div class="tour-hero__cta">
+          <Button href="#route">Start route</Button>
+          <Button href="#ship" variant="glass">Ship &amp; cargo</Button>
+        </div>
+      </div>
+      <dl class="tour-hero__facts">
+        {facts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
+      </dl>
+    </div>
+
+    <div class="page-container">
+      <div class="page-grid">
+        <main class="page-main">
+          <p class="main-lead">{lead}</p>
+          <div id="route">
+            <slot />
+          </div>
+        </main>
+
+        <aside class="page-sidebar">
+          <div class="sidebar-card sidebar-card--ship" id="ship">
+            <h3 class="sidebar-card__label">Ship &amp; Cargo</h3>
+            <p class="sidebar-card__body">
+              <strong>{recommended_ship}</strong> (primary) · <strong>{alternative_ship}</strong> (alternative)
+            </p>
+            <p class="sidebar-card__body">Crew: {crew}</p>
+            <p class="sidebar-card__body">Cargo: {cargo}</p>
+          </div>
+
+          {getting_there && (
+            <div class="sidebar-card sidebar-card--getting-there" id="getting-there">
+              <h3 class="sidebar-card__label">Getting There</h3>
+              <p class="sidebar-card__body">{getting_there}</p>
+            </div>
+          )}
+
+          {youtube_url && (
+            <div class="sidebar-card" id="video">
+              <h3 class="sidebar-card__label">Reference Video</h3>
+              {youtube_credit && <p class="sidebar-card__body">{youtube_credit}</p>}
+              <YouTubeEmbed videoId={ytId!} title={title} timestamp={youtube_start ?? 0} />
+            </div>
+          )}
+
+          {explorer_note && (
+            <ExplorerView author={explorer_author ?? ''}>
+              {explorer_note}
+            </ExplorerView>
+          )}
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .tour-hero { position:relative; height:min(70vh,560px); margin:var(--space-4) var(--space-4) 0; border-radius:var(--radius-2xl); overflow:hidden; }
+  .tour-hero__image{width:100%;height:100%;object-fit:cover;display:block;}
+  .tour-hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.25) 100%);}
+  .tour-hero__text{position:absolute;inset:0 0 5.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:var(--space-4);color:#fff;}
+  .tour-hero__kicker{font-size:var(--text-body-sm);letter-spacing:.08em;text-transform:uppercase;opacity:.8;margin:0 0 var(--space-2);}
+  .tour-hero__title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.25rem);font-weight:700;margin:0 0 var(--space-2);line-height:1.15;}
+  .tour-hero__subtitle{font-size:var(--text-body-lg);color:rgba(255,255,255,.9);margin:0 0 var(--space-6);}
+  .tour-hero__cta{display:flex;gap:var(--space-3);flex-wrap:wrap;justify-content:center;}
+  .tour-hero__facts{position:absolute;left:0;right:0;bottom:0;margin:0;padding:var(--space-5) var(--space-8);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);color:#fff;}
+  .tour-hero__facts dt{font-size:var(--text-body-sm);opacity:.75;}
+  .tour-hero__facts dd{margin:0;font-weight:700;}
+  .page-container{width:90vw;max-width:1280px;margin:0 auto;padding:0 var(--space-6);}
+  .page-grid{display:grid;grid-template-columns:2fr 1fr;gap:2rem;align-items:start;padding-top:var(--space-8);padding-bottom:3rem;}
+  .page-main{min-width:0;}
+  .main-lead{font-size:var(--text-body-lg);line-height:1.7;margin:0 0 var(--space-6);}
+  .page-sidebar{display:flex;flex-direction:column;gap:1.25rem;}
+  .sidebar-card{background:var(--color-surface-paper);border:1px solid var(--color-neutral-200);border-radius:.75rem;padding:1.25rem 1.5rem;}
+  .sidebar-card__label{font-family:var(--font-display);font-size:1rem;font-weight:700;margin:0 0 .5rem;}
+  .sidebar-card__body{font-size:.9375rem;line-height:1.6;margin:0 0 .5rem;}
+  .sidebar-card__body:last-child{margin:0;}
+  @media(max-width:900px){.page-grid{grid-template-columns:1fr;}.tour-hero__facts{grid-template-columns:repeat(2,1fr);}}
+</style>
+EOF
+echo done

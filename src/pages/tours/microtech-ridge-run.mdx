@@ -1,0 +1,85 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "MicroTech Ridge Run"
+system: "Stanton"
+region: "Northern Wastes & New Babbage"
+duration: "3-4 hours"
+stops: 4
+difficulty: "Moderate"
+vibe: "Remote"
+hero_image: "/images/microtech/ships-on-lake.jpeg"
+lead: "A cargo-friendly sweep of microTech's frozen north: start at The River, push into the canyon forest, drop into the ice caves, and finish with a warm return into New Babbage. Bring a ship that can carry samples, a camera, and a repair kit."
+recommended_ship: "Cutlass Black (M)"
+alternative_ship: " Freelancer MAX (S)"
+crew: "2-4 (pilot + cargo handler recommended)"
+cargo: "Medium hold — sample crates, photo gear, spare parts"
+youtube_credit: "Community route inspiration: pilot walkthrough and landing notes."
+youtube_url: "https://youtu.be/aZE4pGRUdkw"
+youtube_start: 512
+getting_there: "Quantum to microTech, land at Port Tressler or New Babbage. Stage the Cutlass at the northern pad, then work south toward the city as the light fades."
+explorer_author: "Sebastian"
+explorer_note: "MicroTech is at its best when the sun is low and the ice stops reflecting; the north rewards early arrivals and punishes sloppy landings."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="MicroTech Ridge Run" duration="3-4h" description="Work north to south, largest cargo to smallest cockpit." required_gear={["Cold Weather Suit", "Oxygen", "Camera", "Repair Kit", "Sample Crates"]}>
+  <TourStop
+    time="00:00"
+    title="The River"
+    route="Port Tressler north pad → 808.662 / 417.866 / 415.655"
+    gear="Cold Weather Suit, Camera"
+    supplies="Sample Crates"
+    description="Open on the frozen shoreline: ships on the lake, long shadows, and a quiet camp. Load cargo here and set the route south."
+    icon="🧊"
+  />
+  <TourStop
+    time="00:45"
+    title="Canyon River"
+    route="Follow the river canyon south; land on the ridge shelf."
+    gear="Cold Weather Suit, Camera"
+    supplies="Sampling kit"
+    description="The canyon gives scale to microTech; this is the hero shot stop. Watch the shear edges."
+    icon="🏞️"
+  />
+  <TourStop
+    time="01:45"
+    title="Northern Wastes Ice Caves"
+    route="Northeast of The River; follow the ice arch markers."
+    gear="Cold Weather Suit, Oxygen, Light"
+    supplies="Sample Crates"
+    description="Blue translucent walls and bioluminescent fungi. Narrow passages — leave the cargo sled at the mouth."
+    icon="❄️"
+  />
+  <TourStop
+    time="03:00"
+    title="New Babbage Return"
+    route="Quantum/boost back to the city for warm-up and debrief."
+    gear="Standard kit"
+    supplies="Credits, Contraband Declaration (if needed)"
+    description="End in the city: unload, log findings, and refuel. Good stop for food and a debrief."
+    icon="🏙️"
+  />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Cutlass Black (M)** — balanced cargo hold, decent firepower for pirate or animal encounters, easy to land on ridge shelves.
+- **Alternative: Freelancer MAX (S)** — faster, smaller footprint for tight ice shelves, lower cargo ceiling.
+- Pack **sample crates** and **camera gear**; keep **Oxygen** and a **repair kit** in the hold, not the suit.
+- If you plan a detour for live specimens, add a medical box and secure tie-downs.
+
+## Sources
+
+- Community route inspiration and landing notes: see the reference video in the sidebar.
+- Coordinates for **The River**: 808.662 / 417.866 / 415.655 (microTech, Northern Wastes).
+- microTech POI pages: [The River](/lonely-planet-sc/stanton/microtech/northern-wastes/the-river/), [Canyon River](/lonely-planet-sc/stanton/microtech/northern-wastes/canyon-river/).
+
+---
+
+*The above is a curated itinerary, not an official RSI route. Verify coordinates in-game before committing.*
+EOF
+echo done
