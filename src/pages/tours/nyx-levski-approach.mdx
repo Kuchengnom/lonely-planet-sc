@@ -1,0 +1,81 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "Nyx: Levski Approach"
+system: "Nyx"
+region: "Delamar"
+duration: "2-3 hours"
+stops: 3
+difficulty: "Moderate"
+vibe: "Frontier"
+hero_image: "/images/nyx/Levski_above_complex.jpg"
+lead: "Approach Nyx and land at Levski on Delamar. A short, cargo-friendly run: land at Rikkord Memorial Spaceport, walk the complex, then take in the Glaciem Ring before departure. Bring trade goods or salvage-friendly storage."
+recommended_ship: "Caterpillar (L)"
+alternative_ship: "Constellation Andromeda (M)"
+crew: "3-6 (pilot + dock crew)"
+cargo: "Large hold — trade, salvage, general cargo"
+getting_there: "Quantum to Nyx, approach Delamar, request landing at Rikkord Memorial Spaceport. Watch the ring traffic on final approach."
+explorer_author: "Sebastian"
+explorer_note: "Levski is the welcome mat of the fringe; the beauty is in the approach, not the station."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="Nyx: Levski Approach" duration="2-3h" description="Land, walk, look up, depart." required_gear={["Light Armour", "Handheld Scanner", "Trade Ledger", "Oxygen", "Repair Kit"]}>
+  <TourStop
+    time="00:00"
+    title="Rikkord Memorial Spaceport Landing"
+    number={1}
+    image="/images/nyx/Levski_above_complex.jpg"
+    imageAlt="Levski from above the complex"
+    route="Approach Delamar → Rikkord Memorial Spaceport"
+    gear="Light Armour, Scanner"
+    supplies="Trade goods"
+    description="Set down at the main spaceport, clear customs, and hold a staging point for cargo. Confirm hangar foot traffic before unloading."
+    icon="🏁"
+  />
+  <TourStop
+    time="00:45"
+    title="Levski Complex Walk"
+    number={2}
+    image="/images/nyx/The_Glaciem_Ring.jpg"
+    imageAlt="The Glaciem Ring surrounding Delamar"
+    route="Spaceport → habitation & market district"
+    gear="Light Armour, Scanner"
+    supplies="UEC / barter"
+    description="Walk the complex: market stalls, habitation blocks, and the working docks. Keep cargo secure; the ring view opens up between the hab blocks."
+    icon="🚶"
+  />
+  <TourStop
+    time="01:30"
+    title="Glaciem Ring Overlook"
+    number={3}
+    image="/images/nyx/The_Glaciem_Ring.jpg"
+    imageAlt="Glaciem Ring ice panorama"
+    route="Upper promenade / observation point"
+    gear="Scanner, Camera"
+    supplies="None"
+    description="The ring is the set-piece: ice, light, and the slow wheel of the station. Good spot for photos and a quiet debrief before departure."
+    icon="🪐"
+  />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Caterpillar (L)** — maximum hold for trade or salvage runs; slow to dock.
+- **Alternative: Constellation Andromeda (M)** — faster approach, lighter crew, fewer pallets.
+- Bring a **handheld scanner** and **repair kit**; the fringe is not forgiving.
+- If you are staging salvage, confirm your hold layout before departure.
+
+## Sources
+
+- Imagery: starcitizen.tools media (see `docs/nyx-asset-provenance.md` for hashes and licence notes).
+- Availability: Nyx is a playable system; Levski is a confirmed landing zone. Verify current patch status via official CIG notes.
+
+---
+
+*Curated itinerary, not an official RSI route. Verify conditions in-game before committing.*
+EOF
+echo done

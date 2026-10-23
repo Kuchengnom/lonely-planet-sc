@@ -44,3 +44,13 @@ Availability sources:
 - [CIG Locations guide](https://support.robertsspaceindustries.com/hc/en-us/articles/360008085873-Locations-in-Star-Citizen)
 - [Alpha 4.4: Welcome to Nyx](https://robertsspaceindustries.com/en/comm-link/transmission/20868-Twitch-Drops-Welcome-To-Nyx)
 - [Alpha 4.7 patch notes](https://robertsspaceindustries.com/en/comm-link/Patch-Notes/21070-Star-Citizen-Alpha-47)
+
+## Cleared assets (2026-10-23, Nyx tour: Levski Approach)
+
+| Local asset | Current use | SHA-256 | Original source URL | Licence status | New-page use |
+| --- | --- | --- | --- | --- | --- |
+| `public/images/nyx/Levski_above_complex.jpg` | Nyx tour hero (Levski) | `f73da996ef23aaad4e92256fd57e71d698b5910f15209ae6f957ef4efe85f384` | https://media.starcitizen.tools/b/bc/Levski_-_Above_complex.jpg | Star Citizen Wiki media; credit original uploader/wiki | Cleared |
+| `public/images/nyx/The_Glaciem_Ring.png` | Nyx tour stop (Glaciem Ring) | `d650e4de57701c2778d5179bc1de771253c6a310bfd4b2177101dac74baef397` | https://media.starcitizen.tools/b/b6/The_Glaciem_Ring.png | Star Citizen Wiki media; credit original uploader/wiki | Cleared |
+
+Optimised variant used in-repo (committed):
+- `public/images/nyx/The_Glaciem_Ring.jpg` — SHA-256 `ae8cbb2d30d2ae6a63f8fc7310ba8aaa594d1a19b6baf8dc9061cbbc28ac0967` (converted from PNG because `*.png` is gitignored).
