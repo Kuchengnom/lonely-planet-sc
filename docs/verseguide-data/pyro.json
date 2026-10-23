@@ -1,0 +1,339 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source": "robertsspaceindustries.com/galactapedia",
+    "lastUpdated": "2026-10-23",
+    "system": "PYRO"
+  },
+  "system": {
+    "name": "Pyro System",
+    "type": "K-type Flare Star",
+    "description": "The Pyro system is an unclaimed planetary system that consists of a K-type flare star, five terrestrial planets, and a gas giant. Discovered in SEY 2493 by Pyrotechnic Amalgamated, it was not claimed by the United Nations of Earth (UNE) due in part to the dangers surrounding its star. Instead, it was exploited by corporate interests until the 2560s, when the potential resources extracted from the system stopped outweighing the increased cost of maintaining equipment under a volatile sun. Pyro became a haven for outlaws by the early 2600s. Today, it is mostly populated by criminal factions that frequently struggle against one another for dominance.",
+    "fromVerseGuide": true
+  },
+  "planets": [
+    {
+      "id": "PYRO_I",
+      "name": "Pyro I",
+      "alias": "The Hellscape",
+      "type": "Terrestrial",
+      "description": "The innermost world is a threat. Molten rock, corrosive atmosphere, and volcanic activity so constant that the surface changes faster than cartographers can map it. Home to some of the most profitable — and most dangerous — mining operations in the frontier. Mining sites tap sulfur crystals and rare earth metals in zones where thermal shielding is the difference between profit and becoming part of the geology.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "pyro-i-mining-operations",
+          "name": "Pyro I Mining Operations",
+          "type": "mining-facility",
+          "category": "industrial",
+          "description": "Mining sites on Pyro I's hostile surface that tap sulfur crystals and rare earth metals. Thermal shielding is essential for survival.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        }
+      ]
+    },
+    {
+      "id": "PYRO_II",
+      "name": "Pyro II",
+      "alias": "Monox",
+      "alias2": "The Glass World",
+      "type": "Terrestrial",
+      "description": "Ancient lava flows have frozen into vast Glass Fields of razor-edged obsidian, and a ridge of volcanic spires — the Spine — cuts across the northern hemisphere like a giant's backbone. Pyro I's calmer sibling, but only just. Geologically restless and visually stunning — the light refracts through the obsidian in ways that shouldn't exist in nature.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "pyro-ii-spine-ridge",
+          "name": "The Spine",
+          "type": "geological-feature",
+          "category": "natural-wonder",
+          "description": "A ridge of volcanic spires cutting across Pyro II's northern hemisphere like a giant's backbone.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        },
+        {
+          "id": "pyro-ii-glass-fields",
+          "name": "Glass Fields",
+          "type": "geological-feature",
+          "category": "natural-wonder",
+          "description": "Vast fields of razor-edged obsidian formed from ancient frozen lava flows.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        }
+      ]
+    },
+    {
+      "id": "PYRO_III",
+      "name": "Pyro III",
+      "alias": "Bloom",
+      "alias2": "The Garden",
+      "type": "Terrestrial",
+      "description": "By Pyro standards, practically a resort. The atmosphere is thin enough to breathe at low altitude, and the Old Serpent Channel hosts the Garden — the system's closest thing to normal life. Serpent's Rest Outpost is the unofficial capital, where independent operators, refuelers, and traders gather between deep-space runs.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "pyro-iii-serpents-rest",
+          "name": "Serpent's Rest Outpost",
+          "type": "settlement",
+          "category": "urban-sight",
+          "description": "The unofficial capital of Pyro, where independent operators, refuelers, and traders gather between deep-space runs. Home to the best hand-pressed coffee in Pyro.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full",
+          "navigation": {
+            "landingZones": ["Serpent's Rest Landing Pad"],
+            "fromVerseGuide": true
+          }
+        },
+        {
+          "id": "pyro-iii-old-serpent-channel",
+          "name": "Old Serpent Channel",
+          "type": "geographical-feature",
+          "category": "natural-wonder",
+          "description": "The location of Serpent's Rest Outpost and the Garden — Pyro's closest thing to normal life.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        }
+      ]
+    },
+    {
+      "id": "PYRO_IV",
+      "name": "Pyro IV",
+      "alias": "The Salvage Yards",
+      "type": "Terrestrial",
+      "description": "The system's middle child. Temperate highlands, arid lowlands, and the Salvage Yards: a sprawling patchwork of scrap, workshops, and black-market trading posts where you can build an entire ship if you have enough time, money, and tolerance for things that might explode. The yards are a testament to Pyro's fundamental truth: nothing goes to waste that someone else can use.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "pyro-iv-salvage-yards",
+          "name": "Salvage Yards",
+          "type": "settlement",
+          "category": "industrial",
+          "description": "A sprawling patchwork of scrap, workshops, and black-market trading posts where you can build an entire ship if you have enough time, money, and tolerance for things that might explode.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full",
+          "navigation": {
+            "landingZones": ["Yards Landing Strip"],
+            "fromVerseGuide": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "PYRO_V",
+      "name": "Pyro V",
+      "alias": "The Frozen End",
+      "type": "Gas Giant",
+      "description": "The system's cold, quiet terminus. Most ships stop here only because they have to. The Amber Lakes glow with frozen methane in the star's red light, creating permanent amber horizons that give the world its name. The Pole Station conducts research nobody else would do — the scientists there have been silent for months, which either means they're making breakthroughs or they've frozen to death. The Frozen City in the northern hemisphere raises questions nobody has answered yet.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "pyro-v-pole-station",
+          "name": "Pole Station",
+          "type": "research-station",
+          "category": "scientific",
+          "description": "Conducts research nobody else would do. The scientists there have been silent for months, which either means they're making breakthroughs or they've frozen to death.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        },
+        {
+          "id": "pyro-v-amber-lakes",
+          "name": "Amber Lakes",
+          "type": "geological-feature",
+          "category": "natural-wonder",
+          "description": "Frozen methane lakes that glow with the star's red light, creating permanent amber horizons.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        },
+        {
+          "id": "pyro-v-frozen-city",
+          "name": "Frozen City",
+          "type": "settlement",
+          "category": "urban-sight",
+          "description": "A settlement in the northern hemisphere that raises questions nobody has answered yet.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        }
+      ],
+      "moons": [
+        {
+          "id": "pyro-v-moon-1",
+          "name": "Moon 1",
+          "type": "moon",
+          "description": "One of Pyro V's six true moons.",
+          "fromVerseGuide": true
+        },
+        {
+          "id": "pyro-v-moon-2",
+          "name": "Moon 2",
+          "type": "moon",
+          "description": "One of Pyro V's six true moons.",
+          "fromVerseGuide": true
+        },
+        {
+          "id": "pyro-v-moon-3",
+          "name": "Moon 3",
+          "type": "moon",
+          "description": "One of Pyro V's six true moons.",
+          "fromVerseGuide": true
+        },
+        {
+          "id": "pyro-v-moon-4",
+          "name": "Moon 4",
+          "type": "moon",
+          "description": "One of Pyro V's six true moons.",
+          "fromVerseGuide": true
+        },
+        {
+          "id": "pyro-v-moon-5",
+          "name": "Moon 5",
+          "type": "moon",
+          "description": "One of Pyro V's six true moons.",
+          "fromVerseGuide": true
+        },
+        {
+          "id": "pyro-v-moon-6",
+          "name": "Moon 6",
+          "type": "moon",
+          "description": "One of Pyro V's six true moons.",
+          "fromVerseGuide": true
+        }
+      ]
+    },
+    {
+      "id": "PYRO_VI",
+      "name": "Pyro VI",
+      "alias": "Terminus",
+      "alias2": "The Giant",
+      "type": "Terrestrial",
+      "description": "The outer system's dominant presence — a gas giant wrapped in ammonia storm bands, its Great Scarlet Spot visible from Pyro V on a clear day. Gas mining platforms float in the upper atmosphere, their crews working six-month shifts extracting fuel and ammonia for stations throughout the frontier. A spectacular ring system surrounds the planet, a graveyard of captured moons that disintegrate over geological time.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "pyro-vi-gas-mining-platforms",
+          "name": "Gas Mining Platforms",
+          "type": "industrial-facility",
+          "category": "industrial",
+          "description": "Platforms in the upper atmosphere extracting fuel and ammonia for stations throughout the frontier. Crews work six-month shifts.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        }
+      ]
+    }
+  ],
+  "stations": [
+    {
+      "id": "ruin-station",
+      "name": "Ruin Station",
+      "type": "orbital-station",
+      "parentSystem": "PYRO",
+      "description": "The system's main hub at Lagrange Point 1. The most populous single structure in Pyro, with a food ecosystem more sophisticated than expected from a station assembled from derelicts. Rough & Ready took control of the station in 2951, ousting the extremist gang XenoThreat, who had held it since 2947.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true,
+      "navigation": {
+        "landingZones": ["Ruin Station Docking Bays"],
+        "fromVerseGuide": true
+      }
+    },
+    {
+      "id": "pyro-belt-outpost",
+      "name": "Pyro Belt Outpost",
+      "type": "orbital-station",
+      "parentSystem": "PYRO",
+      "description": "A mining outpost in the Pyro asteroid belt.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    },
+    {
+      "id": "serpents-rest",
+      "name": "Serpent's Rest",
+      "type": "planetary-outpost",
+      "parentPlanet": "PYRO_III",
+      "description": "The unofficial capital of Pyro, located on Bloom (Pyro III) at the Old Serpent Channel.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    }
+  ],
+  "navigation": {
+    "jumpPoints": [
+      {
+        "from": "PYRO",
+        "to": "STANTON",
+        "name": "Stanton-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "PYRO",
+        "to": "NYX",
+        "name": "Nyx-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "PYRO",
+        "to": "CANO",
+        "name": "Cano-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "PYRO",
+        "to": "CASTRA",
+        "name": "Castra-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "PYRO",
+        "to": "HADRIAN",
+        "name": "Hadrian-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "PYRO",
+        "to": "OSO",
+        "name": "Oso-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "PYRO",
+        "to": "TERRA",
+        "name": "Terra-Pyro Jump Point",
+        "fromVerseGuide": true
+      }
+    ]
+  },
+  "factions": [
+    {
+      "id": "rough-ready",
+      "name": "Rough & Ready",
+      "type": "criminal-gang",
+      "description": "Took control of Ruin Station in 2951, ousting XenoThreat. Currently the dominant power in the Pyro system.",
+      "fromVerseGuide": true
+    },
+    {
+      "id": "xenothreat",
+      "name": "XenoThreat",
+      "type": "criminal-gang",
+      "description": "An extremist gang that held Ruin Station since 2947, ousted by Rough & Ready in 2951. Known for a violently anti-alien and anti-corporate ideology.",
+      "fromVerseGuide": true
+    },
+    {
+      "id": "pyrotechnic-amalgamated",
+      "name": "Pyrotechnic Amalgamated",
+      "type": "defunct-corporation",
+      "description": "Discovered the Pyro system in SEY 2493 and was granted first crack at the system by the UNE. Pulled out by the end of the 2500s as operations became unprofitable.",
+      "fromVerseGuide": true
+    }
+  ]
+}

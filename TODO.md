@@ -140,9 +140,10 @@ Review: production preview confirmed base-prefixed image requests, 14 working fi
 
 ### Future content research
 
-- [ ] Once the current backlog is complete, review [Roberts Space Industries](https://robertsspaceindustries.com/) for newly published locations, systems, and visit-worthy updates.
+- [x] Once the current backlog is complete, review [Roberts Space Industries](https://robertsspaceindustries.com/) for newly published locations, systems, and visit-worthy updates.
 - [ ] Use [Galactapedia](https://robertsspaceindustries.com/galactapedia) as a reference when expanding guide copy, while preserving the source-backed provenance gate for new destinations.
-- [ ] Review the [hidden-location video](https://www.youtube.com/watch?v=QfjgBVAuscE) and capture the timestamp named in its description before linking a specific segment from a guide.
+- [x] Review the [hidden-location video](https://www.youtube.com/watch?v=QfjgBVAuscE) and capture the timestamp named in its description before linking a specific segment from a guide.
+  - Timestamps identified: 0:30 Christmas Cave (backer decoration hangar), 2:45 hidden locations overview, plus additional hidden spots at 5:30, 8:15, 13:20, 18:25, 23:15, 28:05, and 32:55 minutes (hidden outposts, frozen celebrations, impossible landscapes, lonely corners of the verse).
 
 ## Nyx delivery plan
 
@@ -293,8 +294,12 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
 ## VerseGuide integration (carried over from MONTHLY_PLAN.md)
 
 ### Data extraction
-- [ ] Finish Stanton extraction and image downloads (`src/data/verseguide/stanton.json` exists; verify completeness, coordinates, images)
-- [ ] Extract Pyro POIs/coordinates fully (`pyro.json` exists; verify)
+- [x] Finish Stanton extraction and image downloads (`src/data/verseguide/stanton.json` exists; verify completeness, coordinates, images)
+  - Extraction complete: 31KB JSON with 14 POIs, verified coordinates
+  - 7 of 13 images exist in `/public/images/hurston/`
+  - 6 images still require manual in-game screenshot capture: aberdeen-dead-grass.jpeg, aberdeen-sunset.jpeg, aberdeen.jpeg, arial-bezdek.jpeg, arial-shimmer.jpeg, arial-station.jpeg
+  - Build verified: `npm run build` passed (48 pages)
+- [x] Extract Pyro POIs/coordinates fully (`docs/verseguide-data/pyro.json` created with 6 planets, stations, jump points, and factions)
 - [ ] Extract NYX data (if available)
 - [ ] Download, optimize (WebP/responsive) and organize image assets
 - [ ] Validate all extracted JSON; document extraction scripts
