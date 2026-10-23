@@ -1,0 +1,39 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "ArcCorp Surface Underworld"
+system: "Stanton"
+region: "ArcCorp"
+duration: "3-4 hours"
+stops: 4
+difficulty: "Moderate"
+vibe: "Corporate"
+hero_image: "/images/arccorp/the-underground-entrance.jpeg"
+lead: "Above and below: Area18's sprawl, the subsurface market, Vault 7, and the Wala extraction yards. Cargo capacity for samples and salvage."
+recommended_ship: "Caterpillar (L)"
+alternative_ship: "Constellation Andromeda (M)"
+crew: "4-6"
+cargo: "Large hold — artifacts, salvage, industrial samples"
+getting_there: "Land at Area18, then work downward through the subsurface access points; quantum to Wala yards last."
+explorer_author: "Sebastian"
+explorer_note: "ArcCorp's real economy is underground; the surface is just the sales pitch."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="ArcCorp Surface Underworld" duration="3-4h" description="Corporate skin, underground bones." required_gear={["Light Armour", "Handheld Scanner", "Tools", "UEC"]}>
+  <TourStop time="00:00" title="Area18 Aerial Orientation" number={1} image="/images/arccorp/area18-aerial.jpeg" imageAlt="Area18 aerial view" route="Spaceport → transit tram vistas" gear="Scanner" supplies="Camera" description="Read the city from above: transit trams, neon grids, and the corporate hive." icon="🏙️" />
+  <TourStop time="00:45" title="The Underground" number={2} image="/images/arccorp/the-underground-entrance.jpeg" imageAlt="ArcCorp underground entrance" route="Subsurface access → tunnels & market" supplies="UEC" description="Drop below street level into the network ArcCorp denies. Mind your exits." icon="🕳️" />
+  <TourStop time="01:45" title="Vault 7 approach" number={3} image="/images/arccorp/vault-7-entrance.jpeg" imageAlt="Vault 7 entrance" route="Deep industrial zone → Vault 7 perimeter" gear="Scanner" supplies="None" description="The famous door; observe, log, and do not attempt entry without a permit." icon="🔐" />
+  <TourStop time="02:30" title="Wala Extraction Yards" number={4} image="/images/arccorp/wala-surface.jpeg" imageAlt="Wala surface yards" route="Quantum to Wala → yard inspection" supplies="Salvage" description="Finish in the yards: industrial salvage, heavy lifts, and a clear view of the deformed moon." icon="🛰️" />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Caterpillar (L)** — heavy lift and long-hold; ideal for industrial salvage.
+- **Alternative: Constellation Andromeda (M)** — quicker surface hops, smaller manifest.
+- Treat Vault 7 as observation only; site is not open access.
+EOF
+echo done

@@ -1,0 +1,39 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "Hurston Levski Circuit"
+system: "Stanton"
+region: "Hurston / Lorville"
+duration: "2-3 hours"
+stops: 4
+difficulty: "Moderate"
+vibe: "Industrial"
+hero_image: "/images/hurston/central-tower.jpeg"
+lead: "A walking-and-driving circuit through Lorville and the strip-mine edge: spaceport, Workers District, M&V's Bar, and the mine boundary at sunset. Bring a mask, water, and UEC."
+recommended_ship: "Cutlass Black (M)"
+alternative_ship: "Freelancer MAX (S)"
+crew: "2-4"
+cargo: "Medium hold — samples, provisions, camera gear"
+getting_there: "Land at Teasa Spaceport; metro south to the Workers District covers the first leg."
+explorer_author: "Sebastian"
+explorer_note: "Hurston is loud, dirty, and honest — the circuit works because the ugliness is the point."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="Hurston Levski Circuit" duration="2-3h" description="Spaceport to mine boundary, on foot where it matters." required_gear={["Filter mask", "Water (2+ liters)", "Camera", "UEC"]}>
+  <TourStop time="00:00" title="Teasa Spaceport Arrival" number={1} image="/images/hurston/central-tower.jpeg" imageAlt="Central tower at Lorville" route="Land → Teasa terminal → metro" gear="Filter mask" supplies="Water" description="Clear the pad, grab the metro south, and let the train do the first leg. Lorville hits you in layers." icon="🏁" />
+  <TourStop time="00:10" title="Workers District" number={2} image="/images/hurston/workers-district.jpeg" imageAlt="Lorville workers district" route="Leavsden Station → market blocks" gear="Filter mask" supplies="Water" description="Recycled air, diesel, the morning shift. Coffee from the platform kiosk, then start walking north." icon="🏭" />
+  <TourStop time="00:30" title="M&V's Bar" number={3} image="/images/hurston/mv-bar.jpeg" imageAlt="M&V's Bar" route="Leavsden Square → Workers District edge" supplies="UEC for drink" description="The door you almost walk past. Go at shift change when miners and haulers fill the room." icon="🍺" />
+  <TourStop time="00:45" title="Strip Mine Boundary" number={4} image="/images/hurston/strip-mine.jpeg" imageAlt="Hurston strip mine boundary" route="North through Workers District to the mine line" supplies="Camera, filter mask" description="The Central Tower and the rust-coloured sky at sunset. Best light, worst air." icon="⛏️" />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Cutlass Black (M)** — forgiving landing in industrial zones; decent cargo for samples and spares.
+- **Alternative: Freelancer MAX (S)** — better approach speed, lighter hold.
+- Mask and water are non-optional; UEC for the bar.
+EOF
+echo done

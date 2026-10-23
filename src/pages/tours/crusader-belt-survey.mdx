@@ -1,0 +1,39 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "Crusader Belt Survey"
+system: "Stanton"
+region: "Crusader / Orison"
+duration: "3-4 hours"
+stops: 4
+difficulty: "Moderate"
+vibe: "Atmospheric"
+hero_image: "/images/crusader/orison-city.jpeg"
+lead: "A cloud-and-belt survey: Orison's catwalks, Daymar's deserts, Cellin's volcanoes, and a swing through the Yela belt. Photo-friendly, cargo-light, bring fuel sense."
+recommended_ship: "Constellation Andromeda (M)"
+alternative_ship: "Freelancer MAX (S)"
+crew: "2-4"
+cargo: "Medium hold — photo gear, samples, small salvage"
+getting_there: "Orbit Crusader, land at Orison or Port Olisar area, then branch to moons via quantum."
+explorer_author: "Sebastian"
+explorer_note: "Crusader is the prettiest trap in Stanton — don't get lost in the clouds."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="Crusader Belt Survey" duration="3-4h" description="Clouds, desert, volcanoes, ice." required_gear={["Light Armour", "Camera with polarizing filter", "Oxygen", "Fuel"]}>
+  <TourStop time="00:00" title="Orison Catwalks" number={1} image="/images/crusader/orison-city.jpeg" imageAlt="Orison city in the clouds" route="Spaceport → maintenance catwalks" gear="Camera" supplies="None" description="Cloud-layer corridor; 75 m above the station. Quiet urban photography, soft light." icon="☁️" />
+  <TourStop time="00:45" title="Daymar Dunes" number={2} image="/images/crusader/daymar-desert.jpeg" imageAlt="Daymar desert" route="Quantum to Daymar → desert flats" supplies="Water" description="Shifting dunes and salvage wrecks. Keep to firm ground." icon="🏜️" />
+  <TourStop time="01:30" title="Cellin Volcanoes" number={3} image="/images/crusader/cellin-volcanoes.jpeg" imageAlt="Cellin volcanic terrain" route="Cellin approach → volcanic chain" gear="Oxygen" supplies="Samples" description="Geothermal vents and lava tubes — scenic, hazardous, photogenic." icon="🌋" />
+  <TourStop time="02:15" title="Yela Ice Belt" number={4} image="/images/crusader/yela-ice.jpeg" imageAlt="Yela ice" route="Yela belt → crystal formations" supplies="Camera" description="Ice asteroids and crystal caves; serene quarry at the end of the run." icon="🧊" />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Constellation Andromeda (M)** — cloud-friendly approach and storage for samples.
+- **Alternative: Freelancer MAX (S)** — faster belt hops, smaller hold.
+- Polarizing filter matters more than cargo here; pack water.
+EOF
+echo done

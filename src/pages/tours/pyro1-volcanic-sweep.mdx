@@ -1,0 +1,39 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "Pyro I Volcanic Sweep"
+system: "Pyro"
+region: "Pyro I"
+duration: "2-3 hours"
+stops: 4
+difficulty: "Hard"
+vibe: "Hostile"
+hero_image: "/images/pyro/pyro-1-lava.webp"
+lead: "A high-risk circuit of Pyro I's scorched surface: lava plains, sulfur mines, crystal deposits, and claim sites. Big hold, strong shields, plan your exit."
+recommended_ship: "Constellation Andromeda (M)"
+alternative_ship: "Freelancer MAX (S)"
+crew: "3-5"
+cargo: "Medium hold — ore samples, salvage, emergency spares"
+getting_there: "Enter Pyro carefully; approach Pyro I on a safe vector and land on a stable pad away from lava fields."
+explorer_author: "Sebastian"
+explorer_note: "Pyro I burns first and asks questions later — sweep fast, load, and leave."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="Pyro I Volcanic Sweep" duration="2-3h" description="Lava, sulfur, crystals, claims — then out." required_gear={["Heavy Armour", "Oxygen", "Repair Kit", "Fire Extinguisher", "Emergency Beacon"]}>
+  <TourStop time="00:00" title="Lava Plains Landfall" number={1} image="/images/pyro/pyro-1-lava.webp" imageAlt="Pyro I lava plains" route="Approach → stable pad near lava field" gear="Heavy Armour, Oxygen" supplies="Emergency beacon" description="Touch down on solid ground, away from active flows. Quick scan, then move." icon="🌋" />
+  <TourStop time="00:30" title="Sulfur Mines" number={2} image="/images/pyro/pyro-1-sulfur.webp" imageAlt="Pyro I sulfur mines" route="Northern claim line" gear="Heavy Armour" supplies="Ore samples" description="Scavenge sulfur deposits; watch footing — the ground shifts." icon="⛏️" />
+  <TourStop time="01:15" title="Crystal Deposits" number={3} image="/images/pyro/pyro-1-crystal.webp" imageAlt="Pyro I crystal fields" route="Eastern ridge" supplies="Sample crates" description="Crystals catch the flare light; good photos, better sale value." icon="💎" />
+  <TourStop time="02:00" title="Claim Sites & Exit" number={4} image="/images/pyro/pyro-1-claims.webp" imageAlt="Pyro I claim sites" route="Claim posts → quantum out" gear="Repair Kit" supplies="Salvage" description="Log claim site debris, load, and quantum out before the storm front arrives." icon="🚪" />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Constellation Andromeda (M)** — shields for debris, hold for ore and salvage.
+- **Alternative: Freelancer MAX (S)** — faster extraction, tighter cockpit.
+- Fire and hull damage are the norm; budget repairs into the plan.
+EOF
+echo done
