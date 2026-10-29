@@ -1,0 +1,105 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  type?: 'location' | 'system' | 'station' | 'planet';
+  showIcon?: boolean;
+  linkText?: string;
+}
+
+const {
+  id,
+  title,
+  type = 'location',
+  showIcon = true,
+  linkText,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/+\$/, '/');
+const sourceHref = `https://verseguide.com/${type}s/${id}`;
+const sourceLabel = title ? `${title} on VerseGuide` : `VerseGuide ${type}`;
+const displayTitle = title || `VerseGuide ${type}`;
+const citationIcon = {
+  'location': '📍',
+  'system': '🌌',
+  'station': '🛰️',
+  'planet': '🌍',
+} as const;
+const icon = citationIcon[type] || '📍';
+---
+
+<div class="verseguide-cite">
+  <a
+    href={sourceHref}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="verseguide-cite__link"
+    title={sourceLabel}
+  >
+    {showIcon && <span class="verseguide-cite__icon" aria-hidden="true">{icon}</span>}
+    <span class="verseguide-cite__text">
+      {linkText || displayTitle}
+    </span>
+    <span class="verseguide-cite__arrow" aria-hidden="true">↗</span>
+  </a>
+</div>
+
+<style>
+  .verseguide-cite {
+    display: inline;
+    margin: 0 0.25rem;
+  }
+
+  .verseguide-cite__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-0-5) var(--space-1);
+    border-radius: var(--radius-sm);
+    transition: all var(--duration-fast) var(--ease-out);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .verseguide-cite__link:hover {
+    color: var(--color-primary-700);
+    background: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+  }
+
+  .verseguide-cite__icon {
+    font-size: 0.9em;
+    line-height: 1;
+  }
+
+  .verseguide-cite__text {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .verseguide-cite__arrow {
+    font-size: 0.85em;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .verseguide-cite__link:hover .verseguide-cite__arrow {
+    transform: translate(2px, -2px);
+  }
+
+  /* Compact version for inline use */
+  @media (max-width: 640px) {
+    .verseguide-cite__link {
+      font-size: 0.75rem;
+      padding: var(--space-0-5) var(--space-0-5);
+    }
+
+    .verseguide-cite__icon {
+      display: none;
+    }
+  }
+</style>

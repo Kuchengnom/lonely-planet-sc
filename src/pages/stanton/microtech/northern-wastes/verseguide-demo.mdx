@@ -1,0 +1,100 @@
+---
+layout: '../../../../layouts/POILayout.astro'
+title: 'VerseGuide Demo'
+system: 'Stanton'
+planet: 'MicroTech'
+region: 'Northern Wastes'
+type: 'natural-wonder'
+difficulty: 'Easy'
+coordinates: '808.662 / 417.866 / 415.655'
+required_gear: ['Cold Weather Suit']
+vibe: 'Serene'
+rating: 5
+hero_image: '/images/microtech/ships-on-lake.jpeg'
+explorer_author: 'Captain Jax'
+explorer_note: 'This hidden spot is perfect for photographers looking to capture the northern lights over the frozen lake.'
+image_credit: 'lov3pixel'
+image_credit_source: 'VerseGuide'
+image_credit_url: 'https://verseguide.com/location/808.662-417.866-415.655'
+---
+
+import ImageAttribution from '../../../../components/ImageAttribution.astro';
+import CoordinateDisplay from '../../../../components/CoordinateDisplay.astro';
+import TextAttribution from '../../../../components/TextAttribution.astro';
+
+This is a demonstration page showing all three VerseGuide integration components working together.
+
+## Image Attribution
+
+<ImageAttribution
+  imageSource="VerseGuide"
+  locationName="The River"
+  imageUrl="https://verseguide.com/location/808.662-417.866-415.655"
+  photographer="lov3pixel"
+  showOnHover={true}
+/>
+
+## Coordinate Display
+
+The following coordinate display includes attribution:
+
+<CoordinateDisplay
+  x={808.662}
+  y={417.866}
+  z={415.655}
+  showAttribution={true}
+  showPrecision={false}
+/>
+
+## Navigation Information
+
+<figure>
+  <img
+    src="/images/microtech/ships-on-lake.jpeg"
+    alt="Ships docked at the edge of a frozen lake"
+  />
+  <figcaption>
+    <TextAttribution
+      dataType="coordinates"
+      locationName="The River"
+      showIcon={true}
+    />
+  </figcaption>
+</figure>
+
+## Navigation Info with Text Attribution
+
+<aside class="verseguide-info">
+  <h3>Route Information</h3>
+  <p>
+    From the nearest landing zone, fly north toward the major mountain range. 
+    The River is located in a protected valley, approximately 12km from the nearest 
+    settlement. Use your PIS (Planetary Instrument System) to navigate through 
+    the mountain pass.
+  </p>
+  <div class="verseguide-attribution">
+    <TextAttribution
+      dataType="navigation"
+      locationName="The River"
+      showIcon={true}
+    />
+  </div>
+</aside>
+
+## Description with Text Attribution
+
+<blockquote>
+  <p>
+    The River flows year-round despite the sub-zero temperatures, creating a 
+    striking contrast against the frozen landscape. The water remains liquid 
+    due to geothermal activity beneath the surface, creating pockets of open 
+    water that attract wildlife and travelers alike.
+  </p>
+  <footer>
+    <TextAttribution
+      dataType="description"
+      locationName="The River"
+      showIcon={true}
+    />
+  </footer>
+</blockquote>

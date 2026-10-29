@@ -1,4 +1,6 @@
 ---
+import TextAttribution from './TextAttribution.astro';
+
 interface Props {
   x: number
   y: number
@@ -143,8 +145,4 @@ const formatCoord = (value: number) => {
       font-size: var(--text-body-sm);
     }
   }
-</style>
-
-<style is:global>
-  @import '../components/TextAttribution.astro';
 </style>

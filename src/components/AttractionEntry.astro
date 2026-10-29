@@ -1,5 +1,40 @@
 ---
-const { number, title, category, image, imageAlt, href } = Astro.props;
+import VerseGuideCite from './VerseGuideCite.astro';
+import TextAttribution from './TextAttribution.astro';
+import CoordinateDisplay from './CoordinateDisplay.astro';
+
+interface Props {
+  number: number;
+  title: string;
+  category: 'natural-wonder' | 'hidden-find' | 'settlement' | 'practical' | 'urban-sight';
+  image?: string;
+  imageAlt?: string;
+  href?: string;
+  verseguideId?: string;
+  verseguideType?: 'location' | 'system' | 'station' | 'planet';
+  coordinates?: { x: number; y: number; z: number };
+  navigation?: {
+    landingZones?: string[];
+    quantumRoutes?: string[];
+  };
+  showAttribution?: boolean;
+  showCoordinates?: boolean;
+}
+
+const {
+  number,
+  title,
+  category,
+  image,
+  imageAlt,
+  href,
+  verseguideId,
+  verseguideType = 'location',
+  coordinates,
+  navigation,
+  showAttribution = true,
+  showCoordinates = true,
+} = Astro.props as Props;
 
 const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
 function resolveImagePath(path: string) {
@@ -19,6 +54,7 @@ const CATEGORY_CONFIG = {
 } as const;
 
 const cat = CATEGORY_CONFIG[category];
+const hasVerseGuideData = !!verseguideId || !!coordinates || !!navigation;
 ---
 
 <article class="attraction" style={`--cat-color: ${cat.color};`}>
@@ -43,6 +79,56 @@ const cat = CATEGORY_CONFIG[category];
       ? <h2 class="attraction__title"><a href={href} class="attraction__title-link">{title}</a></h2>
       : <h2 class="attraction__title">{title}</h2>
     }
+    
+    {/* VerseGuide integration - show only if we have VerseGuide data */}
+    {hasVerseGuideData
+      ? <div class="attraction__verseguide">
+          {verseguideId
+            ? <VerseGuideCite id={verseguideId} title={title} type={verseguideType} />
+            : null
+          }
+          
+          {/* Coordinates display */}
+          {coordinates && showCoordinates
+            ? <div class="attraction__coordinates">
+                <CoordinateDisplay
+                  x={coordinates.x}
+                  y={coordinates.y}
+                  z={coordinates.z}
+                  showAttribution={showAttribution}
+                  showPrecision={false}
+                />
+              </div>
+            : null
+          }
+          
+          {/* Navigation info */}
+          {navigation
+            ? <div class="attraction__navigation">
+                <TextAttribution
+                  dataType="navigation"
+                  locationName={title}
+                  showIcon={true}
+                />
+                {navigation.landingZones && navigation.landingZones.length > 0
+                  ? <p class="attraction__nav-item">
+                      <strong>Landing zones:</strong> {navigation.landingZones.join(', ')}
+                    </p>
+                  : null
+                }
+                {navigation.quantumRoutes && navigation.quantumRoutes.length > 0
+                  ? <p class="attraction__nav-item">
+                      <strong>Quantum routes:</strong> {navigation.quantumRoutes.join(', ')}
+                    </p>
+                  : null
+                }
+              </div>
+            : null
+          }
+        </div>
+      : null
+    }
+    
     <div class="attraction__text">
       <slot />
     </div>
@@ -135,6 +221,24 @@ const cat = CATEGORY_CONFIG[category];
     line-height: var(--line-height-snug);
   }
 
+  .attraction__verseguide {
+    margin: var(--space-2) 0 var(--space-3);
+  }
+
+  .attraction__coordinates {
+    margin: var(--space-2) 0;
+  }
+
+  .attraction__navigation {
+    margin: var(--space-2) 0;
+  }
+
+  .attraction__nav-item {
+    font-size: var(--text-body-xs);
+    margin: var(--space-1) 0 0 0;
+    color: var(--color-neutral-700);
+  }
+
   .attraction__title-link {
     color: inherit;
     text-decoration: none;
@@ -180,5 +284,20 @@ const cat = CATEGORY_CONFIG[category];
 
   .attraction__text :global(strong) {
     color: var(--color-neutral-900);
+  }
+
+  /* Responsive adjustments for VerseGuide data */
+  @media (max-width: 640px) {
+    .attraction__body {
+      padding: var(--space-4) var(--space-4);
+    }
+    
+    .attraction__coordinates :global(.coordinate-display) {
+      font-size: var(--text-body-xs);
+    }
+    
+    .attraction__nav-item {
+      font-size: var(--text-body-xs);
+    }
   }
 </style>

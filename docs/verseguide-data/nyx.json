@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "version": "1.0",
+    "source": "robertsspaceindustries.com/galactapedia",
+    "lastUpdated": "2026-10-24",
+    "system": "NYX"
+  },
+  "system": {
+    "name": "Nyx System",
+    "type": "Unclaimed System",
+    "description": "Nyx is an unclaimed planetary system that features a star surrounded by two asteroid belts and several celestial bodies. The system is known for its frontier nature and the People's Alliance settlement of Levski, carved into the largest asteroid in the Glaciem Ring. While Nyx I, Nyx II, and Nyx III explain the system's harsh reputation, the current live game features Levski on Delamar as the primary destination.",
+    "fromVerseGuide": true
+  },
+  "planets": [
+    {
+      "id": "NYX_I",
+      "name": "Nyx I",
+      "alias": "The Charred Core",
+      "type": "Terrestrial",
+      "description": "A stripped coreless world that explains part of Nyx's harsh reputation. The planet lacks a substantial atmosphere and is largely barren.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": []
+    },
+    {
+      "id": "NYX_II",
+      "name": "Nyx II",
+      "alias": "The Acid Clouds",
+      "type": "Terrestrial",
+      "description": "A planet shrouded in acid clouds that contributes to Nyx's dangerous reputation. The atmosphere is hostile to unprotected visitors.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": []
+    },
+    {
+      "id": "NYX_III",
+      "name": "Nyx III",
+      "alias": "The Ice Giant",
+      "type": "Terrestrial",
+      "description": "An ice giant that completes the trio of inhospitable worlds that give Nyx its frontier reputation. The planet is covered in frozen surfaces.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": []
+    },
+    {
+      "id": "NYX_DELAMAR",
+      "name": "Delamar",
+      "alias": "Levski Asteroid",
+      "type": "Asteroid",
+      "description": "The largest asteroid in the Glaciem Ring, Delamar has been transformed by the People's Alliance into the Levski settlement. Its rock-hewn tunnels, reused industrial infrastructure, and political history make it the primary destination in the Nyx system.",
+      "fromVerseGuide": true,
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "pois": [
+        {
+          "id": "levski-grand-barter",
+          "name": "Grand Barter",
+          "type": "market",
+          "category": "settlement",
+          "description": "The improvised market that best captures Levski's communal, make-do character.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        },
+        {
+          "id": "levski-conscientious-objects",
+          "name": "Conscientious Objects and Cordry's",
+          "type": "shop",
+          "category": "settlement",
+          "description": "Levski's anti-establishment weapons, armour, clothing and EVA culture shop.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        },
+        {
+          "id": "levski-cafe-musain",
+          "name": "Café Musain",
+          "type": "cafe",
+          "category": "settlement",
+          "description": "The dark local meeting place for a drink and a quieter read on Levski life.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        },
+        {
+          "id": "levski-anthony-tanaka",
+          "name": "Anthony Tanaka Memorial",
+          "type": "monument",
+          "category": "settlement",
+          "description": "The hand-carved statue and its layers of protest graffiti. The place to understand Levski's mix of idealism, anger and independence.",
+          "coordinates": { "x": 0, "y": 0, "z": 0 },
+          "fromVerseGuide": true,
+          "attribution": "full"
+        }
+      ],
+      "navigation": {
+        "landingZones": ["Levski Landing Pad"],
+        "fromVerseGuide": true
+      }
+    }
+  ],
+  "stations": [
+    {
+      "id": "peoples-service-station-alpha",
+      "name": "People's Service Station Alpha",
+      "type": "orbital-station",
+      "parentSystem": "NYX",
+      "description": "One of four People's Alliance stations offering restocking, rearming, refuelling and shopping. A safe haven in a system where safe havens are scarce.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    },
+    {
+      "id": "peoples-service-station-delta",
+      "name": "People's Service Station Delta",
+      "type": "orbital-station",
+      "parentSystem": "NYX",
+      "description": "One of four People's Alliance stations offering restocking, rearming, refuelling and shopping.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    },
+    {
+      "id": "peoples-service-station-theta",
+      "name": "People's Service Station Theta",
+      "type": "orbital-station",
+      "parentSystem": "NYX",
+      "description": "One of four People's Alliance stations offering restocking, rearming, refuelling and shopping.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    },
+    {
+      "id": "peoples-service-station-lambda",
+      "name": "People's Service Station Lambda",
+      "type": "orbital-station",
+      "parentSystem": "NYX",
+      "description": "One of four People's Alliance stations offering restocking, rearming, refuelling and shopping.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    },
+    {
+      "id": "qv-breaker-station",
+      "name": "QV Breaker Station",
+      "type": "orbital-station",
+      "parentSystem": "NYX",
+      "description": "A station in the Keeger Belt area.",
+      "coordinates": { "x": 0, "y": 0, "z": 0 },
+      "fromVerseGuide": true
+    }
+  ],
+  "belts": [
+    {
+      "id": "glaciem-ring",
+      "name": "Glaciem Ring (Nyx Belt Alpha)",
+      "type": "asteroid-belt",
+      "description": "The inner asteroid ring of the Nyx system, home to Delamar and the Levski settlement.",
+      "fromVerseGuide": true
+    },
+    {
+      "id": "keeger-belt",
+      "name": "Keeger Belt (Nyx Belt Beta)",
+      "type": "asteroid-belt",
+      "description": "The outer asteroid belt at the very edge of the system, cold and distant, suspected of hiding criminal strongholds.",
+      "fromVerseGuide": true
+    }
+  ],
+  "navigation": {
+    "jumpPoints": [
+      {
+        "from": "NYX",
+        "to": "PYRO",
+        "name": "Nyx-Pyro Jump Point",
+        "fromVerseGuide": true
+      },
+      {
+        "from": "NYX",
+        "to": "STANTON",
+        "name": "Stanton-Nyx Jump Point",
+        "fromVerseGuide": true
+      }
+    ]
+  },
+  "factions": [
+    {
+      "id": "peoples-alliance",
+      "name": "People's Alliance",
+      "type": "governing-body",
+      "description": "The People's Alliance runs the service stations and maintains order around Levski. They keep the order in this unclaimed system.",
+      "fromVerseGuide": true
+    }
+  ]
+}

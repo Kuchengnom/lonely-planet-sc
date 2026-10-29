@@ -1,0 +1,243 @@
+---
+interface POI {
+  title: string;
+  category: string;
+  coordinates: string;
+  difficulty: 'Easy' | 'Moderate' | 'Hard' | 'Extreme';
+  href: string;
+}
+
+interface Props {
+  title?: string;
+  pois: POI[];
+  showAttribution?: boolean;
+}
+
+const {
+  title = 'Points of Interest',
+  pois,
+  showAttribution = true,
+} = Astro.props;
+
+const CATEGORY_CONFIG = {
+  'natural-wonder': { label: 'Natural Wonder', color: 'var(--color-category-wonder)' },
+  'hidden-find':    { label: 'Hidden Find',    color: 'var(--color-category-hidden)' },
+  'settlement':     { label: 'Settlement',     color: 'var(--color-category-settlement)' },
+  'practical':      { label: 'Getting Around', color: 'var(--color-category-practical)' },
+  'urban-sight':    { label: 'Urban Sight',    color: 'var(--color-category-urban)' },
+} as const;
+
+const getCoordinateDisplay = (coordStr: string): { x: number; y: number; z: number } => {
+  // Parse "808.662 / 417.866 / 415.655" format
+  const parts = coordStr.split('/').map(p => parseFloat(p.trim()));
+  return {
+    x: parts[0] || 0,
+    y: parts[1] || 0,
+    z: parts[2] || 0,
+  };
+};
+
+const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
+const sourceHref = 'https://verseguide.com';
+const sourceLabel = 'View POI collection on VerseGuide';
+---
+
+<div class="poi-collection">
+  {title && <h3 class="poi-collection__title">{title}</h3>}
+  
+  <div class="poi-collection__list">
+    {pois.map((poi, index) => {
+      const cat = CATEGORY_CONFIG[poi.category] || { label: poi.category, color: 'var(--color-neutral-500)' };
+      const coords = getCoordinateDisplay(poi.coordinates);
+      return (
+        <a href={poi.href} class="poi-collection__item" aria-label={`${poi.title}, ${poi.difficulty} difficulty`}>
+          <div class="poi-collection__item-content">
+            <div class="poi-collection__item-header">
+              <span class="poi-collection__index">{index + 1}</span>
+              <span class="poi-collection__category" style={`--cat-color: ${cat.color};`}>
+                {cat.label}
+              </span>
+            </div>
+            <h4 class="poi-collection__name">{poi.title}</h4>
+            <div class="poi-collection__meta">
+              <span class="poi-collection__difficulty">{poi.difficulty}</span>
+              <span class="poi-collection__coords">
+                {coords.x.toFixed(2)}, {coords.y.toFixed(2)}, {coords.z.toFixed(2)}
+              </span>
+            </div>
+          </div>
+        </a>
+      );
+    })}
+  </div>
+  
+  {showAttribution && (
+    <div class="poi-collection__attribution">
+      <a
+        href={sourceHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="poi-collection__source-link"
+        title={sourceLabel}
+      >
+        <span class="poi-collection__source-icon" aria-hidden="true">📍</span>
+        <span class="poi-collection__source-text">POI data from VerseGuide</span>
+      </a>
+    </div>
+  )}
+</div>
+
+<style>
+  .poi-collection {
+    background: var(--color-surface-paper);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .poi-collection__title {
+    font-family: var(--font-display);
+    font-size: var(--text-heading-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-900);
+    margin: 0 0 var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  .poi-collection__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .poi-collection__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-white);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    text-decoration: none;
+    color: var(--color-neutral-900);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .poi-collection__item:hover {
+    border-color: var(--color-primary-600);
+    box-shadow: var(--shadow-sm);
+    transform: translateX(var(--space-1));
+  }
+
+  .poi-collection__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .poi-collection__item-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .poi-collection__index {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-600);
+    color: white;
+    font-family: var(--font-display);
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .poi-collection__category {
+    background: var(--cat-color);
+    color: white;
+    font-family: var(--font-display);
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    padding: var(--space-0-5) var(--space-2);
+    border-radius: var(--radius-full);
+  }
+
+  .poi-collection__name {
+    font-family: var(--font-display);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    margin: 0;
+  }
+
+  .poi-collection__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-body-xs);
+  }
+
+  .poi-collection__difficulty {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-700);
+    padding: var(--space-0-5) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .poi-collection__coords {
+    font-family: var(--font-mono);
+    color: var(--color-neutral-600);
+  }
+
+  .poi-collection__attribution {
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-neutral-200);
+  }
+
+  .poi-collection__source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .poi-collection__source-link:hover {
+    text-decoration: underline;
+  }
+
+  .poi-collection__source-icon {
+    font-size: 1em;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .poi-collection {
+      padding: var(--space-4);
+    }
+
+    .poi-collection__item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+    }
+
+    .poi-collection__meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-1);
+    }
+  }
+</style>

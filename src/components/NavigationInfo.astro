@@ -1,0 +1,345 @@
+---
+interface Step {
+  title: string;
+  description: string;
+  duration?: string;
+  distance?: string;
+  coordinates?: string;
+  landmark?: string;
+}
+
+interface Props {
+  title?: string;
+  summary?: string;
+  steps?: Step[];
+  showAttribution?: boolean;
+  showDifficulty?: boolean;
+  difficulty?: 'Easy' | 'Moderate' | 'Hard';
+  estimatedTime?: string;
+  totalDistance?: string;
+  startLandmark?: string;
+  endLandmark?: string;
+}
+
+const {
+  title = 'Navigation Guide',
+  summary,
+  steps = [],
+  showAttribution = true,
+  showDifficulty = true,
+  difficulty,
+  estimatedTime,
+  totalDistance,
+  startLandmark,
+  endLandmark,
+} = Astro.props;
+
+const sourceHref = 'https://verseguide.com';
+const sourceLabel = 'View route information on VerseGuide';
+---
+
+<div class="navigation-info">
+  <div class="navigation-info__header">
+    <h3 class="navigation-info__title">{title}</h3>
+    
+    {(showDifficulty && difficulty) && (
+      <span class="navigation-info__difficulty-badge">
+        {difficulty}
+      </span>
+    )}
+  </div>
+  
+  {summary && (
+    <p class="navigation-info__summary">
+      {summary}
+    </p>
+  )}
+  
+  {(estimatedTime || totalDistance || startLandmark) && (
+    <div class="navigation-info__meta">
+      {estimatedTime && (
+        <div class="navigation-info__meta-item">
+          <span class="navigation-info__meta-label">Duration</span>
+          <span class="navigation-info__meta-value">{estimatedTime}</span>
+        </div>
+      )}
+      
+      {totalDistance && (
+        <div class="navigation-info__meta-item">
+          <span class="navigation-info__meta-label">Distance</span>
+          <span class="navigation-info__meta-value">{totalDistance}</span>
+        </div>
+      )}
+      
+      {startLandmark && (
+        <div class="navigation-info__meta-item">
+          <span class="navigation-info__meta-label">From</span>
+          <span class="navigation-info__meta-value">{startLandmark}</span>
+        </div>
+      )}
+    </div>
+  )}
+  
+  {steps.length > 0 && (
+    <ol class="navigation-info__steps">
+      {steps.map((step, index) => (
+        <li class="navigation-info__step">
+          <div class="navigation-info__step-header">
+            <span class="navigation-info__step-number">{index + 1}</span>
+            <h4 class="navigation-info__step-title">{step.title}</h4>
+          </div>
+          
+          <p class="navigation-info__step-description">{step.description}</p>
+          
+          <div class="navigation-info__step-details">
+            {step.duration && (
+              <span class="navigation-info__step-detail">
+                <span class="navigation-info__step-detail-label">Time</span>
+                {step.duration}
+              </span>
+            )}
+            
+            {step.distance && (
+              <span class="navigation-info__step-detail">
+                <span class="navigation-info__step-detail-label">Dist</span>
+                {step.distance}
+              </span>
+            )}
+            
+            {step.landmark && (
+              <span class="navigation-info__step-detail">
+                <span class="navigation-info__step-detail-label">Near</span>
+                {step.landmark}
+              </span>
+            )}
+            
+            {step.coordinates && (
+              <span class="navigation-info__step-detail">
+                <span class="navigation-info__step-detail-label">Coords</span>
+                <code class="navigation-info__step-coords">{step.coordinates}</code>
+              </span>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  )}
+  
+  {showAttribution && (
+    <div class="navigation-info__attribution">
+      <a
+        href={sourceHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="navigation-info__source-link"
+        title={sourceLabel}
+      >
+        <span class="navigation-info__source-icon" aria-hidden="true">🧭</span>
+        <span class="navigation-info__source-text">Navigation data from VerseGuide</span>
+      </a>
+    </div>
+  )}
+</div>
+
+<style>
+  .navigation-info {
+    background: var(--color-surface-paper);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin: var(--space-5) 0;
+  }
+
+  .navigation-info__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .navigation-info__title {
+    font-family: var(--font-display);
+    font-size: var(--text-heading-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-neutral-900);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .navigation-info__difficulty-badge {
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-700);
+    font-family: var(--font-display);
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-bold);
+    padding: var(--space-0-5) var(--space-3);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  .navigation-info__summary {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: 0 0 var(--space-4);
+  }
+
+  .navigation-info__meta {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+    padding: var(--space-3);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-neutral-200);
+  }
+
+  .navigation-info__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-0-5);
+  }
+
+  .navigation-info__meta-label {
+    font-size: var(--text-body-xs);
+    color: var(--color-neutral-500);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  .navigation-info__meta-value {
+    font-family: var(--font-display);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+  }
+
+  .navigation-info__steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .navigation-info__step {
+    background: var(--color-white);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .navigation-info__step-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .navigation-info__step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-600);
+    color: white;
+    font-family: var(--font-display);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .navigation-info__step-title {
+    font-family: var(--font-display);
+    font-size: var(--text-body-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-neutral-900);
+    margin: 0;
+  }
+
+  .navigation-info__step-description {
+    font-family: var(--font-body);
+    font-size: var(--text-body-sm);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-neutral-700);
+    margin: var(--space-2) 0 var(--space-3);
+  }
+
+  .navigation-info__step-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .navigation-info__step-detail {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    background: var(--color-neutral-100);
+    padding: var(--space-0-5) var(--space-2);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-body-xs);
+  }
+
+  .navigation-info__step-detail-label {
+    color: var(--color-neutral-500);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .navigation-info__step-coords {
+    font-family: var(--font-mono);
+    background: var(--color-white);
+    padding: var(--space-0-5) var(--space-1);
+    border-radius: var(--radius-sm);
+    color: var(--color-neutral-800);
+  }
+
+  .navigation-info__attribution {
+    margin-top: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-neutral-200);
+  }
+
+  .navigation-info__source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary-600);
+    text-decoration: none;
+    font-size: var(--text-body-xs);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .navigation-info__source-link:hover {
+    text-decoration: underline;
+  }
+
+  .navigation-info__source-icon {
+    font-size: 1em;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 640px) {
+    .navigation-info {
+      padding: var(--space-4);
+    }
+
+    .navigation-info__meta {
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .navigation-info__step-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

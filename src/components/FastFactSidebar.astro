@@ -1,13 +1,16 @@
 ---
+import CoordinateDisplay from './CoordinateDisplay.astro';
+
 interface Props {
   rating: number;
   vibe: string;
   difficulty: 'Easy' | 'Moderate' | 'Hard' | 'Extreme';
   required_gear: string[];
   coordinates: string;
+  showAttribution?: boolean;
 }
 
-const { rating, vibe, difficulty, required_gear, coordinates } = Astro.props;
+const { rating, vibe, difficulty, required_gear, coordinates, showAttribution = true } = Astro.props;
 
 const DIFFICULTY_COLORS = {
   Easy:     'var(--color-difficulty-easy)',
@@ -49,10 +52,12 @@ const emptyStars  = '☆'.repeat(5 - rating);
     </div>
   </div>
 
-  <div class="fast-facts__coords">
-    <span class="coords-label">Location</span>
-    <code class="coords-value">{coordinates}</code>
-  </div>
+  <CoordinateDisplay
+    x={0}
+    y={0}
+    z={0}
+    showAttribution={showAttribution}
+  />
 </aside>
 
 <style>

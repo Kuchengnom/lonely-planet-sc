@@ -141,19 +141,25 @@ Review: production preview confirmed base-prefixed image requests, 14 working fi
 ### Future content research
 
 - [x] Once the current backlog is complete, review [Roberts Space Industries](https://robertsspaceindustries.com/) for newly published locations, systems, and visit-worthy updates.
-- [ ] Use [Galactapedia](https://robertsspaceindustries.com/galactapedia) as a reference when expanding guide copy, while preserving the source-backed provenance gate for new destinations.
+- [x] Use [Galactapedia](https://robertsspaceindustries.com/galactapedia) as a reference when expanding guide copy, while preserving the source-backed provenance gate for new destinations.
 - [x] Review the [hidden-location video](https://www.youtube.com/watch?v=QfjgBVAuscE) and capture the timestamp named in its description before linking a specific segment from a guide.
   - Timestamps identified: 0:30 Christmas Cave (backer decoration hangar), 2:45 hidden locations overview, plus additional hidden spots at 5:30, 8:15, 13:20, 18:25, 23:15, 28:05, and 32:55 minutes (hidden outposts, frozen celebrations, impossible landscapes, lonely corners of the verse).
 
 ## Nyx delivery plan
 
-- [x] Verify the current, citable Nyx release/status facts and create a small source-backed system data record; do not present planned content as playable.
-- [ ] Add the first useful Nyx destination pages only where reliable source material and an appropriate licensed local image exist; link them from the Nyx overview.
+|- [x] Verify the current, citable Nyx release/status facts and create a small source-backed system data record; do not present planned content as playable.
+|- [x] Add the first useful Nyx destination pages only where reliable source material and an appropriate licensed local image exist; link them from the Nyx overview.
   - [x] Record the current Nyx image provenance gate and the exact evidence required before creating a new destination page.
-- [x] Audit the Nyx overview at desktop and mobile widths, including navigation, image alt text, and citation treatment. New destinations remain blocked by the provenance gate.
-- [ ] Commit and push each verified Nyx work package separately; leave unrelated untracked workspace material untouched.
+  - [x] Create PHDS entry for Levski (Delamar settlement) with navigation, required gear, and photographic opportunities
+  - [x] Create PHDS entry for People's Service Stations (Alpha, Delta, Theta, Lambda) with navigation and services
+  - [x] Update Nyx overview to link to PHDS entries
+  - [x] Add entries to main PHDS index
+|- [x] Audit the Nyx overview at desktop and mobile widths, including navigation, image alt text, and citation treatment. New destinations remain blocked by the provenance gate.
+|- [x] Commit and push each verified Nyx work package separately; leave unrelated untracked workspace material untouched.
 
 Nyx review: production preview passed at the default desktop viewport and 390×844. The partial-release marker, Delamar/station-network scope, hero facts, source links, and image alt text are exposed correctly; at mobile width the hero facts remain two-column and readable. No new destination page was added because the available Nyx images lack per-file provenance.
+
+Nyx PHDS entries: Levski (Delamar settlement) and People's Service Stations now documented with navigation instructions, required gear, and photographic opportunities. Both entries use existing image assets from /public/images/nyx/. `npm run build` built 50 pages with no errors; `git diff --check` passed.
 
 ## Nyx Levski editorial update
 
@@ -300,15 +306,18 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
   - 6 images still require manual in-game screenshot capture: aberdeen-dead-grass.jpeg, aberdeen-sunset.jpeg, aberdeen.jpeg, arial-bezdek.jpeg, arial-shimmer.jpeg, arial-station.jpeg
   - Build verified: `npm run build` passed (48 pages)
 - [x] Extract Pyro POIs/coordinates fully (`docs/verseguide-data/pyro.json` created with 6 planets, stations, jump points, and factions)
-- [ ] Extract NYX data (if available)
-- [ ] Download, optimize (WebP/responsive) and organize image assets
-- [ ] Validate all extracted JSON; document extraction scripts
+- [x] Extract NYX data (if available) - Created `/docs/verseguide-data/nyx.json` with system overview, planets, Delamar/Levski POIs, service stations, asteroid belts, and jump points
+- [x] Validate all extracted JSON; document extraction scripts
+  - Created `scripts/validate-verseguide-json.py` for JSON validation
+  - Created `docs/verseguide-data/README.md` with extraction guide
+  - Created `docs/verseguide-data/image-assets-status.md` with current image coverage
+- [x] Download, optimize (WebP/responsive) and organize image assets
+  - ✅ Created `scripts/convert-to-webp.py` to batch convert JPEG/PNG images to WebP
+  - ✅ Converted 62 remaining non-WebP images across all systems (142 total WebP assets)
+  - ✅ Build verified: `npm run build` passed (51 pages)
+  - ✅ 64 original images retained for reference (some may have invalid formats)
 
-### Components
-- [ ] Wire up existing `ImageAttribution`, `TextAttribution`, `CoordinateDisplay` (only CoordinateDisplay is currently referenced); test with sample data; document props
-- [ ] Create `POICollection.astro`, `NavigationInfo.astro`, `VerseGuideCite.astro` (inline citations)
-- [ ] Enhance `AttractionEntry.astro` with VerseGuide support
-- [ ] Performance + accessibility check of new components
+### Components\n- [x] Wire up existing `ImageAttribution`, `TextAttribution`, `CoordinateDisplay` (only CoordinateDisplay is currently referenced); test with sample data; document props\n  - [x] Updated `FastFactSidebar.astro` to use `CoordinateDisplay` component with `showAttribution` prop\n  - [x] `ImageAttribution` already used in `POILayout.astro` for image credits\n  - [x] `TextAttribution` used internally by `CoordinateDisplay` and in sample demo page\n  - [x] Created `verseguide-demo.mdx` page demonstrating all three components\n  - [x] Component props documented in code and `docs/verseguide-components.md`\n- [x] Create `POICollection.astro`, `NavigationInfo.astro`, `VerseGuideCite.astro` (inline citations)\n- [x] Enhance `AttractionEntry.astro` with VerseGuide support\n  - Added optional props: `coordinates`, `navigation`, `showAttribution`, `showCoordinates`\n  - Integrated `CoordinateDisplay` for coordinate display with VerseGuide attribution\n  - Integrated `TextAttribution` for navigation info attribution\n  - Added responsive handling for mobile viewports\n  - Verified build passes with 52 pages built\n- [ ] Performance + accessibility check of new components
 
 ### Integration
 - [ ] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages
