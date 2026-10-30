@@ -334,7 +334,7 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
 - [x] Performance + accessibility check of new components
 
 ### Integration
-- [ ] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages
+- [x] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages
 - [ ] Enhance Pyro overview page
 - [x] Create NYX system page (overview done; planet/POI subpages and own screenshots still to do)
 - [ ] Mobile responsiveness + cross-browser testing

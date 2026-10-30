@@ -17,6 +17,10 @@ explorer_note: >-
 ---
 import AttractionEntry from '@components/AttractionEntry.astro'
 import TouristTip from '@components/TouristTip.astro'
+import CoordinateDisplay from '@components/CoordinateDisplay.astro'
+import TextAttribution from '@components/TextAttribution.astro'
+
+<CoordinateDisplay x={0} y={0} z={0} showAttribution={true} />
 
 <AttractionEntry number={1} title="Hurston — The Strip Mine" category="settlement" image="/images/microtech/canyon-river-aerial.jpeg" imageAlt="Lorville rising from the devastated Hurston savannah" href="/lonely-planet-sc/stanton/hurston/">
 
@@ -67,4 +71,4 @@ Stanton is a system of four radically different worlds, each with its own set of
 | **Crusader** (Daymar) | Toxic atmosphere, 78°C to -40°C swing | Full environmental suit, thermal regulation pack, visor cleaner |
 | **microTech** | Surface temperatures below -100°C | Thermal survival suit (-150°C), heated liner, anti-fog goggles |
 
-|For planet-specific gear recommendations, see the individual planet pages: [Hurston](/lonely-planet-sc/stanton/hurston/), [ArcCorp](/lonely-planet-sc/stanton/arccorp/), [Crusader](/lonely-planet-sc/stanton/crusader/), [microTech](/lonely-planet-sc/stanton/microtech/).
+For planet-specific gear recommendations, see the individual planet pages: [Hurston](/lonely-planet-sc/stanton/hurston/), [ArcCorp](/lonely-planet-sc/stanton/arccorp/), [Crusader](/lonely-planet-sc/stanton/crusader/), [microTech](/lonely-planet-sc/stanton/microtech/).
