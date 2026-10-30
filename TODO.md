@@ -317,7 +317,21 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
   - ✅ Build verified: `npm run build` passed (51 pages)
   - ✅ 64 original images retained for reference (some may have invalid formats)
 
-### Components\n- [x] Wire up existing `ImageAttribution`, `TextAttribution`, `CoordinateDisplay` (only CoordinateDisplay is currently referenced); test with sample data; document props\n  - [x] Updated `FastFactSidebar.astro` to use `CoordinateDisplay` component with `showAttribution` prop\n  - [x] `ImageAttribution` already used in `POILayout.astro` for image credits\n  - [x] `TextAttribution` used internally by `CoordinateDisplay` and in sample demo page\n  - [x] Created `verseguide-demo.mdx` page demonstrating all three components\n  - [x] Component props documented in code and `docs/verseguide-components.md`\n- [x] Create `POICollection.astro`, `NavigationInfo.astro`, `VerseGuideCite.astro` (inline citations)\n- [x] Enhance `AttractionEntry.astro` with VerseGuide support\n  - Added optional props: `coordinates`, `navigation`, `showAttribution`, `showCoordinates`\n  - Integrated `CoordinateDisplay` for coordinate display with VerseGuide attribution\n  - Integrated `TextAttribution` for navigation info attribution\n  - Added responsive handling for mobile viewports\n  - Verified build passes with 52 pages built\n- [ ] Performance + accessibility check of new components
+### Components
+- [x] Wire up existing `ImageAttribution`, `TextAttribution`, `CoordinateDisplay` (only CoordinateDisplay is currently referenced); test with sample data; document props
+  - [x] Updated `FastFactSidebar.astro` to use `CoordinateDisplay` component with `showAttribution` prop
+  - [x] `ImageAttribution` already used in `POILayout.astro` for image credits
+  - [x] `TextAttribution` used internally by `CoordinateDisplay` and in sample demo page
+  - [x] Created `verseguide-demo.mdx` page demonstrating all three components
+  - [x] Component props documented in code and `docs/verseguide-components.md`
+- [x] Create `POICollection.astro`, `NavigationInfo.astro`, `VerseGuideCite.astro` (inline citations)
+- [x] Enhance `AttractionEntry.astro` with VerseGuide support
+  - Added optional props: `coordinates`, `navigation`, `showAttribution`, `showCoordinates`
+  - Integrated `CoordinateDisplay` for coordinate display with VerseGuide attribution
+  - Integrated `TextAttribution` for navigation info attribution
+  - Added responsive handling for mobile viewports
+  - Verified build passes with 52 pages built
+- [x] Performance + accessibility check of new components
 
 ### Integration
 - [ ] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages

@@ -43,7 +43,7 @@ function resolveImagePath(path: string) {
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   return `${base}${cleanPath}`;
 }
-const imageUrl = resolveImagePath(image);
+const imageUrl = image ? resolveImagePath(image) : null;
 
 const CATEGORY_CONFIG = {
   'natural-wonder': { label: 'Natural Wonder', color: 'var(--color-category-wonder)' },

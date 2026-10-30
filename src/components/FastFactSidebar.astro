@@ -10,7 +10,12 @@ interface Props {
   showAttribution?: boolean;
 }
 
-const { rating, vibe, difficulty, required_gear, coordinates, showAttribution = true } = Astro.props;
+const { rating, vibe, difficulty, required_gear, showAttribution = true } = Astro.props;
+// Parse coordinates string "x, y, z" into numbers for CoordinateDisplay
+const parseCoordinates = (coords: string) => {
+  const parts = coords.split(',').map(s => parseFloat(s.trim()));
+  return parts.length === 3 ? { x: parts[0], y: parts[1], z: parts[2] } : { x: 0, y: 0, z: 0 };
+};
 
 const DIFFICULTY_COLORS = {
   Easy:     'var(--color-difficulty-easy)',
@@ -21,6 +26,7 @@ const DIFFICULTY_COLORS = {
 
 const filledStars = '★'.repeat(rating);
 const emptyStars  = '☆'.repeat(5 - rating);
+const coords = parseCoordinates(Astro.props.coordinates);
 ---
 
 <aside class="fast-facts">
@@ -53,9 +59,9 @@ const emptyStars  = '☆'.repeat(5 - rating);
   </div>
 
   <CoordinateDisplay
-    x={0}
-    y={0}
-    z={0}
+    x={coords.x}
+    y={coords.y}
+    z={coords.z}
     showAttribution={showAttribution}
   />
 </aside>

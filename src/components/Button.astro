@@ -25,16 +25,7 @@ const variantStyles: Record<Variant, string> = {
   outline: 'background: transparent; color: var(--color-primary-600); border: 2px solid var(--color-primary-600);',
   ghost: 'background: transparent; color: var(--color-primary-600); border: none;'
 }
-
-const hoverStyles: Record<Variant, string> = {
-  primary: 'background: var(--color-primary-600);',
-  glass: 'background: rgba(52, 47, 65, 0.7);',
-  secondary: 'background: var(--color-secondary-700);',
-  outline: 'background: var(--color-primary-50);',
-  ghost: 'background: var(--color-primary-50);'
-}
 ---
-
 {href ? (
   <a
     href={href}

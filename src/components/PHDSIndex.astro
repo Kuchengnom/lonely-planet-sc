@@ -26,10 +26,6 @@ const assetUrl = (path: string) => {
 // Derive filter options from the actual data
 const allTypes = Array.from(new Set(entries.map(e => e.type)));
 const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
-
-// Server-side local storage state
-const bookMarkedIds = new Set<string>();
-const visitedIds = new Set<string>();
 ---
 
 <div class="phds-index" data-entries={JSON.stringify(entries)}>
@@ -693,10 +689,10 @@ const visitedIds = new Set<string>();
 
       let visibleCount = 0;
       cards.forEach(card => {
-        const type = card.dataset.type;
-        const difficulty = card.dataset.difficulty;
+        const type = (card as HTMLElement).dataset.type;
+        const difficulty = (card as HTMLElement).dataset.difficulty;
         const matches = filter === 'all' || type === filter || difficulty === filter;
-        card.hidden = !matches;
+        (card as HTMLElement).hidden = !matches;
         if (matches) visibleCount++;
       });
 
@@ -711,8 +707,8 @@ const visitedIds = new Set<string>();
       const bookmarks = getStorage(BOOKMARK_KEY);
 
       cards.sort((a, b) => {
-        const aBookmarked = bookmarks[a.dataset.id] ? 1 : 0;
-        const bBookmarked = bookmarks[b.dataset.id] ? 1 : 0;
+        const aBookmarked = (bookmarks[(a as HTMLElement).dataset.id] ?? 0) ? 1 : 0;
+        const bBookmarked = (bookmarks[(b as HTMLElement).dataset.id] ?? 0) ? 1 : 0;
         return bBookmarked - aBookmarked;
       });
 
@@ -721,8 +717,8 @@ const visitedIds = new Set<string>();
 
     // Event delegation for filter clicks
     document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.phds-index__filter-btn');
-      if (btn) {
+      const btn = e.target as HTMLElement;
+      if (btn.closest('.phds-index__filter-btn')) {
         const filter = btn.dataset.filter;
         toggleFilter(btn, filter);
       }
@@ -730,29 +726,30 @@ const visitedIds = new Set<string>();
 
     // Mark a location visited only when the visitor explicitly chooses it.
     document.addEventListener('click', (e) => {
-      const toggle = e.target.closest('[data-visited-toggle]');
-      const card = toggle?.closest('.phds-index__card-shell');
-      if (toggle && card) {
+      const toggle = e.target as HTMLElement;
+      const card = toggle.closest('[data-visited-toggle]')?.closest('.phds-index__card-shell');
+      if (toggle.closest('[data-visited-toggle]') && card) {
         e.preventDefault();
-        markVisited(card.dataset.id);
+        markVisited((card as HTMLElement).dataset.id ?? '');
       }
     });
 
     // Click to toggle bookmark
     document.addEventListener('click', (e) => {
-      const card = e.target.closest('.phds-index__card-shell');
-      if (card && e.target.closest('.phds-index__card-indicator--bookmark')) {
+      const card = e.target as HTMLElement;
+      if (card.closest('.phds-index__card-shell') && (e.target as HTMLElement).closest('.phds-index__card-indicator--bookmark')) {
         e.preventDefault();
         e.stopPropagation();
-        toggleBookmark(card.dataset.id);
+        toggleBookmark(card.dataset.id ?? '');
       }
     }, true);
 
     // Reset filters
     document.addEventListener('click', (e) => {
-      if (e.target.closest('[data-reset]')) {
-        const btn = e.target.closest('[data-reset]');
-        btn.closest('.phds-index__filters')
+      const target = e.target as HTMLElement;
+      if (target.closest('[data-reset]')) {
+        const btn = target.closest('[data-reset]');
+        btn?.closest('.phds-index__filters')
           ?.querySelector('.phds-index__filter-btn[data-filter="all"]')
           ?.click();
       }
