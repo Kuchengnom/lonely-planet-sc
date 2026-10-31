@@ -19,40 +19,42 @@ explorer_note: >-
 import AttractionEntry from '@components/AttractionEntry.astro'
 import TouristTip from '@components/TouristTip.astro'
 import YouTubeEmbed from '@components/YouTubeEmbed.astro'
+import TextAttribution from '@components/TextAttribution.astro'
+import VerseGuideCredit from '@components/VerseGuideCredit.astro'
 
-<AttractionEntry number={1} title="Pyro I — The Hellscape" category="natural-wonder" image="/images/pyro/pyro-1-lava.webp" imageAlt="Active lava flows and volcanic vents on Pyro I's hostile surface" href="/lonely-planet-sc/pyro/pyro-1/">
+<AttractionEntry number={1} title="Pyro I — The Hellscape" category="natural-wonder" image="/images/pyro/pyro-1-lava.webp" imageAlt="Active lava flows and volcanic vents on Pyro I's hostile surface" href="/lonely-planet-sc/pyro/pyro-1/" showAttribution={true} coordinates={false}>
 
-The innermost world is a threat. Molten rock, corrosive atmosphere, and volcanic activity so constant that the surface changes faster than cartographers can map it. Home to some of the most profitable — and most dangerous — mining operations in the frontier. Mining sites tap sulfur crystals and rare earth metals in zones where thermal shielding is the difference between profit and becoming part of the geology. Check your insurance, update your will, and bring a spare EVA suit.
-
-</AttractionEntry>
-
-<AttractionEntry number={2} title="Pyro II — The Glass World" category="natural-wonder" image="/images/pyro/pyro-2-spine.webp" imageAlt="The volcanic Spine ridge cutting across Pyro II's obsidian landscape" href="/lonely-planet-sc/pyro/pyro-2/">
-
-Ancient lava flows have frozen into vast Glass Fields of razor-edged obsidian, and a ridge of volcanic spires — the Spine — cuts across the northern hemisphere like a giant's backbone. Pyro I's calmer sibling, but only just. Geologically restless and visually stunning — the light refracts through the obsidian in ways that shouldn't exist in nature, creating permanent false-sun horizons that confuse navigation systems and human judgment alike.
+The innermost world is a threat. Molten rock, corrosive atmosphere, and volcanic activity so constant that the surface changes faster than cartographers can map it. Home to some of the most profitable — and most dangerous — mining operations in the frontier. Mining sites tap sulfur crystals and rare earth metals in zones where thermal shielding is the difference between profit and becoming part of the geology. Check your insurance, update your will, and bring a spare EVA suit.<TextAttribution dataType="description" locationName="Pyro I — The Hellscape" />
 
 </AttractionEntry>
 
-<AttractionEntry number={3} title="Pyro III — The Garden" category="settlement" image="/images/pyro/pyro-3-serpents-rest.webp" imageAlt="Serpent's Rest Outpost nestled in Pyro III's habitable zone" href="/lonely-planet-sc/pyro/pyro-3/">
+<AttractionEntry number={2} title="Pyro II — The Glass World" category="natural-wonder" image="/images/pyro/pyro-2-spine.webp" imageAlt="The volcanic Spine ridge cutting across Pyro II's obsidian landscape" href="/lonely-planet-sc/pyro/pyro-2/" showAttribution={true} coordinates={false}>
 
-By Pyro standards, practically a resort. The atmosphere is thin enough to breathe at low altitude, and the Old Serpent Channel hosts the Garden — the system's closest thing to normal life. Serpent's Rest Outpost is the unofficial capital, where independent operators, refuelers, and traders gather between deep-space runs. The best hand-pressed coffee in Pyro is here, usually served alongside stories that get more elaborate with each retelling.
-
-</AttractionEntry>
-
-<AttractionEntry number={4} title="Pyro IV — The Salvage Yards" category="settlement" image="/images/pyro/pyro-4-salvage-yards.webp" imageAlt="Sprawling salvage yards and workshops on Pyro IV's dusty surface" href="/lonely-planet-sc/pyro/pyro-4/">
-
-The system's middle child. Temperate highlands, arid lowlands, and the Salvage Yards: a sprawling patchwork of scrap, workshops, and black-market trading posts where you can build an entire ship if you have enough time, money, and tolerance for things that might explode. The yards are a testament to Pyro's fundamental truth: nothing goes to waste that someone else can use. The tech here is questionable, but the prices are unbeatable.
+Ancient lava flows have frozen into vast Glass Fields of razor-edged obsidian, and a ridge of volcanic spires — the Spine — cuts across the northern hemisphere like a giant's backbone. Pyro I's calmer sibling, but only just. Geologically restless and visually stunning — the light refracts through the obsidian in ways that shouldn't exist in nature, creating permanent false-sun horizons that confuse navigation systems and human judgment alike.<TextAttribution dataType="description" locationName="Pyro II — The Glass World" />
 
 </AttractionEntry>
 
-<AttractionEntry number={5} title="Pyro V — The Frozen End" category="natural-wonder" image="/images/pyro/pyro-5-amber-lakes.webp" imageAlt="Amber Lakes of frozen methane catching Pyro V's red starlight" href="/lonely-planet-sc/pyro/pyro-5/">
+<AttractionEntry number={3} title="Pyro III — The Garden" category="settlement" image="/images/pyro/pyro-3-serpents-rest.webp" imageAlt="Serpent's Rest Outpost nestled in Pyro III's habitable zone" href="/lonely-planet-sc/pyro/pyro-3/" showAttribution={true} coordinates={false}>
 
-The system's cold, quiet terminus. Most ships stop here only because they have to. The Amber Lakes glow with frozen methane in the star's red light, creating permanent amber horizons that give the world its name. The Pole Station conducts research nobody else would do — the scientists there have been silent for months, which either means they're making breakthroughs or they've frozen to death. The Frozen City in the northern hemisphere raises questions nobody has answered yet.
+By Pyro standards, practically a resort. The atmosphere is thin enough to breathe at low altitude, and the Old Serpent Channel hosts the Garden — the system's closest thing to normal life. Serpent's Rest Outpost is the unofficial capital, where independent operators, refuelers, and traders gather between deep-space runs. The best hand-pressed coffee in Pyro is here, usually served alongside stories that get more elaborate with each retelling.<TextAttribution dataType="description" locationName="Pyro III — The Garden" />
 
 </AttractionEntry>
 
-<AttractionEntry number={6} title="Pyro VI — The Giant" category="natural-wonder" image="/images/pyro/pyro-6-rings.webp" imageAlt="Ammonia storm bands and ring system surrounding gas giant Pyro VI" href="/lonely-planet-sc/pyro/pyro-6/">
+<AttractionEntry number={4} title="Pyro IV — The Salvage Yards" category="settlement" image="/images/pyro/pyro-4-salvage-yards.webp" imageAlt="Sprawling salvage yards and workshops on Pyro IV's dusty surface" href="/lonely-planet-sc/pyro/pyro-4/" showAttribution={true} coordinates={false}>
 
-The outer system's dominant presence — a gas giant wrapped in ammonia storm bands, its Great Scarlet Spot visible from Pyro V on a clear day. Gas mining platforms float in the upper atmosphere, their crews working six-month shifts extracting fuel and ammonia for stations throughout the frontier. A spectacular ring system surrounds the planet, a graveyard of captured moons that disintegrate over geological time. Everything about it will kill you if you get too close. From a distance, though, it's intolerably beautiful.
+The system's middle child. Temperate highlands, arid lowlands, and the Salvage Yards: a sprawling patchwork of scrap, workshops, and black-market trading posts where you can build an entire ship if you have enough time, money, and tolerance for things that might explode. The yards are a testament to Pyro's fundamental truth: nothing goes to waste that someone else can use. The tech here is questionable, but the prices are unbeatable.<TextAttribution dataType="description" locationName="Pyro IV — The Salvage Yards" />
+
+</AttractionEntry>
+
+<AttractionEntry number={5} title="Pyro V — The Frozen End" category="natural-wonder" image="/images/pyro/pyro-5-amber-lakes.webp" imageAlt="Amber Lakes of frozen methane catching Pyro V's red starlight" href="/lonely-planet-sc/pyro/pyro-5/" showAttribution={true} coordinates={false}>
+
+The system's cold, quiet terminus. Most ships stop here only because they have to. The Amber Lakes glow with frozen methane in the star's red light, creating permanent amber horizons that give the world its name. The Pole Station conducts research nobody else would do — the scientists there have been silent for months, which either means they're making breakthroughs or they've frozen to death. The Frozen City in the northern hemisphere raises questions nobody has answered yet.<TextAttribution dataType="description" locationName="Pyro V — The Frozen End" />
+
+</AttractionEntry>
+
+<AttractionEntry number={6} title="Pyro VI — The Giant" category="natural-wonder" image="/images/pyro/pyro-6-rings.webp" imageAlt="Ammonia storm bands and ring system surrounding gas giant Pyro VI" href="/lonely-planet-sc/pyro/pyro-6/" showAttribution={true} coordinates={false}>
+
+The outer system's dominant presence — a gas giant wrapped in ammonia storm bands, its Great Scarlet Spot visible from Pyro V on a clear day. Gas mining platforms float in the upper atmosphere, their crews working six-month shifts extracting fuel and ammonia for stations throughout the frontier. A spectacular ring system surrounds the planet, a graveyard of captured moons that disintegrate over geological time. Everything about it will kill you if you get too close. From a distance, though, it's intolerably beautiful.<TextAttribution dataType="description" locationName="Pyro VI — The Giant" />
 
 </AttractionEntry>
 
@@ -150,3 +152,19 @@ For planet-specific gear recommendations, see the individual planet pages: [Pyro
 - Relevance: Background on why Pyro operates without law, and how the settlements in this guide came to be
 
 <YouTubeEmbed videoId="Q_y_pGb3-VQ" title="The Lore of Pyro | Star Citizen" />
+
+## Sources
+
+- [Pyro System on VerseGuide](https://verseguide.com/location/PYRO) — system overview, planets, navigation, and factions
+- [Pyro I on VerseGuide](https://verseguide.com/location/PYRO/I) — mining operations and hellscape terrain
+- [Pyro II on VerseGuide](https://verseguide.com/location/PYRO/II) — the Glass World and Spine ridge
+- [Pyro III on VerseGuide](https://verseguide.com/location/PYRO/III) — Serpent's Rest Outpost and the Garden
+- [Pyro IV on VerseGuide](https://verseguide.com/location/PYRO/IV) — Salvage Yards and frontier economy
+- [Pyro V on VerseGuide](https://verseguide.com/location/PYRO/V) — Amber Lakes and research stations
+- [Pyro VI on VerseGuide](https://verseguide.com/location/PYRO/VI) — gas mining platforms and ring system
+- [RSI Galactapedia: Pyro](https://robertsspaceindustries.com/galactapedia/system/pyro) — official system data
+- [RSI Galactapedia: Rough & Ready](https://robertsspaceindustries.com/galactapedia/faction/rough-ready) — the dominant criminal gang
+- [RSI Galactapedia: Pyrotechnic Amalgamated](https://robertsspaceindustries.com/galactapedia/corporation/pyrotechnic-amalgamated) — the system's original discoverers
+- [Pyro System on Star Citizen Wiki](https://starcitizen.tools/Pyro_system) — community-maintained data
+
+<VerseGuideCredit />
