@@ -342,7 +342,9 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
   - Fixed hash navigation offset conflict (scroll-padding-top and scroll-margin-top now 120px)
 
 ### Attribution & compliance
-- [ ] Image and text attribution system-wide; footer attribution (`VerseGuideCredit` exists, confirm it is used everywhere)
+- [x] Image and text attribution system-wide; footer attribution (`VerseGuideCredit` exists, confirm it is used everywhere)
+  - Added `VerseGuideCredit` to `verseguide-demo.mdx` (demonstration page)
+  - Existing usage in Pyro system pages verified: `pyro/index.mdx` and `pyro/phds/locations/sacrens-plot/index.mdx`
 - [ ] Review VerseGuide terms of use; write attribution guidelines; legal compliance review
 
 ### Launch
