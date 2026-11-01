@@ -2117,6 +2117,14 @@ const POIS = [
   }
 
   @media (max-width: 640px) {
+    /* Mobile 390px fix: stack hero routes vertically so all three destinations visible */
+    .hero__routes {
+      grid-auto-columns: 100%;
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      overflow-x: hidden;
+      padding-right: var(--space-6);
+    }
     .editions-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); }
     .site-footer__grid { grid-template-columns: 1fr 1fr; }
     .poi-grid { grid-template-columns: 1fr; }

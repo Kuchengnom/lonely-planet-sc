@@ -337,7 +337,9 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
 - [x] Enhance Stanton overview page; add coordinates, POI collections, navigation info to planet pages
 - [x] Enhance Pyro overview page
 - [x] Create NYX system page (overview done; planet/POI subpages and own screenshots still to do)
-- [ ] Mobile responsiveness + cross-browser testing
+- [x] Mobile responsiveness + cross-browser testing
+  - Stack hero routes vertically at 640px so all three destinations (Stanton/Pyro/Nyx) visible
+  - Fixed hash navigation offset conflict (scroll-padding-top and scroll-margin-top now 120px)
 
 ### Attribution & compliance
 - [ ] Image and text attribution system-wide; footer attribution (`VerseGuideCredit` exists, confirm it is used everywhere)

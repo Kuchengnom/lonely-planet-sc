@@ -9,12 +9,12 @@
 /* ── Anchor link behavior ───────────────────────── */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(16rem + 1rem); /* accommodate sticky header */
+  scroll-padding-top: 120px; /* matches the 60-64px header + buffer for scroll-spy */
 }
 
 /* Scroll anchor target offset */
 [id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 120px; /* matches scroll-padding-top for consistent navigation */
 }
 
 body {
