@@ -451,7 +451,7 @@ For each new tour, create one file `src/pages/tours/<slug>.mdx` and add an entry
 6. **a11y/perf**: hero under 70vh, 44px CTAs, no horizontal overflow at 390/1440, reduced-motion aware.
 
 ### Remaining tours to author
-- [ ] Hurston Levski Circuit — convert the existing 1h/2h/3-4h homepage planner into a single walkthrough; primary ship with cargo for Levski's stops.
+- [x] Hurston Levski Circuit — convert the existing 1h/2h/3-4h homepage planner into a single walkthrough; primary ship with cargo for Levski's stops. Expanded from 4 to 5 stops with full coverage: Teasa Spaceport → Workers District → M&V's Bar → Strip Mine Boundary (at sunset) → Central Business District. Includes comprehensive ship notes and image provenance.
 - [ ] Pyro I Volcanic Sweep — crater/claims sites; high risk; large cargo; reference pyro lore video.
 - [ ] ArcCorp Surface Underworld — Wala + Lyria + Area18; inspection/cargo focus.
 - [ ] Crusader Belt Survey — Daymar/Cellin/Yela photo/cargo run.
