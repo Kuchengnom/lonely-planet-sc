@@ -4,18 +4,18 @@ title: "Hurston Levski Circuit"
 system: "Stanton"
 region: "Hurston / Lorville"
 duration: "2-3 hours"
-stops: 4
+stops: 5
 difficulty: "Moderate"
 vibe: "Industrial"
-hero_image: "/images/hurston/central-tower.jpeg"
-lead: "A walking-and-driving circuit through Lorville and the strip-mine edge: spaceport, Workers District, M&V's Bar, and the mine boundary at sunset. Bring a mask, water, and UEC."
+hero_image: "/images/hurston/workers-district.jpeg"
+lead: "A walking circuit through Lorville's essential districts: spaceport arrival, Workers District, M&V's Bar, strip mine boundary at sunset, and a bonus look at the Central Tower. Bring a mask, water, and UEC."
 recommended_ship: "Cutlass Black (M)"
 alternative_ship: "Freelancer MAX (S)"
 crew: "2-4"
 cargo: "Medium hold — samples, provisions, camera gear"
 getting_there: "Land at Teasa Spaceport; metro south to the Workers District covers the first leg."
 explorer_author: "Sebastian"
-explorer_note: "Hurston is loud, dirty, and honest — the circuit works because the ugliness is the point."
+explorer_note: "Hurston is loud, dirty, and honest — the circuit works because the ugliness is the point. The best light is at sunset, when the pollution scatters into that rust-coloured glow."
 ---
 
 import TourSchedule from '../../components/TourSchedule.astro';
@@ -23,17 +23,28 @@ import TourStop from '../../components/TourStop.astro';
 
 # The Route
 
-<TourSchedule title="Hurston Levski Circuit" duration="2-3h" description="Spaceport to mine boundary, on foot where it matters." required_gear={["Filter mask", "Water (2+ liters)", "Camera", "UEC"]}>
-  <TourStop time="00:00" title="Teasa Spaceport Arrival" number={1} image="/images/hurston/central-tower.jpeg" imageAlt="Central tower at Lorville" route="Land → Teasa terminal → metro" gear="Filter mask" supplies="Water" description="Clear the pad, grab the metro south, and let the train do the first leg. Lorville hits you in layers." icon="🏁" />
-  <TourStop time="00:10" title="Workers District" number={2} image="/images/hurston/workers-district.jpeg" imageAlt="Lorville workers district" route="Leavsden Station → market blocks" gear="Filter mask" supplies="Water" description="Recycled air, diesel, the morning shift. Coffee from the platform kiosk, then start walking north." icon="🏭" />
-  <TourStop time="00:30" title="M&V's Bar" number={3} image="/images/hurston/mv-bar.jpeg" imageAlt="M&V's Bar" route="Leavsden Square → Workers District edge" supplies="UEC for drink" description="The door you almost walk past. Go at shift change when miners and haulers fill the room." icon="🍺" />
-  <TourStop time="00:45" title="Strip Mine Boundary" number={4} image="/images/hurston/strip-mine.jpeg" imageAlt="Hurston strip mine boundary" route="North through Workers District to the mine line" supplies="Camera, filter mask" description="The Central Tower and the rust-coloured sky at sunset. Best light, worst air." icon="⛏️" />
+<TourSchedule title="Hurston Levski Circuit" duration="2-3h" description="Spaceport to mine boundary, on foot where it matters — with time to pause and breathe." required_gear={["Filter mask", "Water (2+ liters)", "Camera", "UEC"]}>
+  <TourStop time="00:00" title="Teasa Spaceport Arrival" number={1} image="/images/hurston/workers-district.jpeg" imageAlt="Lorville arrival at Teasa Spaceport" route="Land → Teasa terminal → metro south" gear="Filter mask" supplies="Water" description="Clear the pad, grab the metro south, and let the train do the first leg. The air changes the moment you step out at Leavsden — recycled air, faint diesel, the murmur of people who've been working since dawn." icon="🏁" />
+  <TourStop time="00:10" title="Workers District" number={2} image="/images/hurston/leavsden-square.jpeg" imageAlt="Leavsden Square in the Workers District" route="Leavsden Station → market blocks" gear="Filter mask" supplies="Water" description="Recycled air, diesel, the morning shift. Grab coffee from the platform kiosk, then start walking north through the cramped plaza where miners, haulers, and failed entrepreneurs trade stories and complaints." icon="🏭" />
+  <TourStop time="00:30" title="M&V's Bar" number={3} image="/images/hurston/mv-bar.jpeg" imageAlt="M&V's Bar" route="Leavsden Square → Workers District edge" supplies="UEC for drink" description="The door you almost walk past, tucked between a clothing outlet and a security checkpoint. Go at shift change (roughly 6pm, if your schedule allows) when miners and haulers fill the room. The beer is local, the music is worse, and the conversations are loud, opinionated, and occasionally violent." icon="🍺" />
+  <TourStop time="00:45" title="The Strip Mine Boundary" number={4} image="/images/hurston/strip-mine.jpeg" imageAlt="Hurston strip mine boundary at sunset" route="North through Workers District to the mine line" supplies="Camera, filter mask" description="Walk to the strip mine boundary — exposed earth, industrial runoff, machinery the size of buildings. At sunset, the sky turns the color of rust and copper. The 'Hurston Glow' is a real thing, and it's as close to beautiful as this place gets." icon="⛏️" />
+  <TourStop time="01:00" title="Central Business District" number={5} image="/images/hurston/central-tower.jpeg" imageAlt="The Central Tower looms over Lorville" route="Mine boundary → Central Tower → Archibald Hurston Memorial Hall" supplies="UEC for entry (if applicable)" description="The Central Tower dominates everything — a monument to corporate ego built on the backs of people who can't afford the view from the top. Walk past it to the Archibald Hurston Memorial Hall, a shrine to the family that bought the planet. Photograph it from the Workers District for maximum effect." icon="🏢" />
 </TourSchedule>
 
 ## Ship & Cargo Notes
 
-- **Primary: Cutlass Black (M)** — forgiving landing in industrial zones; decent cargo for samples and spares.
-- **Alternative: Freelancer MAX (S)** — better approach speed, lighter hold.
-- Mask and water are non-optional; UEC for the bar.
-EOF
-echo done
+- **Primary: Cutlass Black (M)** — forgiving landing in industrial zones; decent cargo for samples and spares; decent firepower for unexpected encounters.
+- **Alternative: Freelancer MAX (S)** — better approach speed, lighter hold, easier to find landing space on crowded pads.
+- Mask and water are non-optional; the air is technically breathable but practically unpleasant.
+- UEC for drinks at M&V's and coffee at the platform kiosk.
+- If you plan to capture photos at sunset, bring a polarizing filter — the haze creates spectacular light.
+
+## Sources
+
+- Community route inspiration: see the homepage planner sections for 1h/2h/3-4h Hurston tours.
+- Coordinates for reference: Teasa Spaceport is at Lorville's southern edge; Leavsden Square anchors the Workers District; the strip mine boundary runs parallel to the perimeter gates.
+- Hurston POI pages: [Lorville Workers District](/lonely-planet-sc/stanton/hurston/), [MacIntyre & Victor's Bar](/lonely-planet-sc/stanton/hurston/).
+
+---
+
+*The above is a curated itinerary, not an official RSI route. Verify coordinates in-game before committing.*
