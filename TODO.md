@@ -345,7 +345,7 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
 - [x] Image and text attribution system-wide; footer attribution (`VerseGuideCredit` exists, confirm it is used everywhere)
   - Added `VerseGuideCredit` to `verseguide-demo.mdx` (demonstration page)
   - Existing usage in Pyro system pages verified: `pyro/index.mdx` and `pyro/phds/locations/sacrens-plot/index.mdx`
-- [ ] Review VerseGuide terms of use; write attribution guidelines; legal compliance review
+- [x] Review VerseGuide terms of use; write attribution guidelines; legal compliance review
 
 ### Launch
 - [ ] Final QA, performance optimization, monitoring, post-launch checklist

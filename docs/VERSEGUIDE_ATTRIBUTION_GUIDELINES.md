@@ -122,7 +122,37 @@ The `TODO.md` item for this document is:
 - [ ] Review VerseGuide terms of use; write attribution guidelines; legal compliance review
 ```
 
-This document (created [DATE]) completes the "Review" and "write attribution guidelines" portions of the task.
+This document (created November 3, 2026) completes the "Review" and "write attribution guidelines" portions of the task.
+
+## Legal Review Summary (as of November 3, 2026)
+
+### Terms and Conditions (LAST UPDATED: JULY 14, 2026)
+- **Operator**: Private individual operating VerseGuide as a personal, non-commercial fan project
+- **Nature**: "unofficial Star Citizen fansite, not affiliated with the Cloud Imperium group of companies"
+- **Copyright**: "All content on this site not authored by its host or users are property of their respective owners"
+- **Official site**: robertsspaceindustries.com
+- **DMCA Process**: Formal copyright infringement claims must be submitted to contact@verseguide.com with specific information per 17 U.S.C 512(c)(3)
+- **User Content**: Users retain rights to their content but grant VerseGuide a license to use, modify, and distribute it
+
+### Privacy Policy (LAST UPDATED: OCTOBER 31, 2026)
+- **Data Controller**: Operator as a natural person operating in Florida, United States
+- **Personal Data Collected**: Email addresses, usage data, device information
+- **Third-Party Services**: Google Analytics, Firebase Authentication, Firebase Cloud services
+- **GDPR Rights**: Access, rectification, erasure, data portability, objection to processing
+- **CCPA Rights**: Notice, access, deletion, opt-out of sale (though VerseGuide states they do not sell personal information)
+- **Cookie Use**: Session and persistent cookies for authentication, functionality, and analytics
+
+### Cookies Policy (LAST UPDATED: JULY 14, 2026)
+- **Types**: Necessary (session), Acceptance (persistent), Functionality (persistent), Tracking/Performance (persistent, third-party)
+- **Third-Parties**: Google Analytics, Firebase Authentication
+- **User Choices**: Can disable cookies in browser, though some features may not function properly
+
+### Attribution Requirements Summary
+1. **Mandatory Disclaimer**: "This is an unofficial Star Citizen fansite, not affiliated with the Cloud Imperium group of companies"
+2. **Copyright Notice**: "All content on this site not authored by its host or users are property of their respective owners"
+3. **Credit Links**: All VerseGuide data must include links back to https://verseguide.com
+4. **Image Credits**: Photographer credits where available
+5. **Footer Credit**: Required for pages with substantial VerseGuide data
 
 ## External Resources
 
