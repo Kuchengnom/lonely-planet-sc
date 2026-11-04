@@ -37,9 +37,10 @@ const getCoordinateDisplay = (coordStr: string): { x: number; y: number; z: numb
   };
 };
 
-const base = import.meta.env.BASE_URL + (import.meta.env.BASE_URL.endsWith('/') ? '' : '/');
 const sourceHref = 'https://verseguide.com';
 const sourceLabel = 'View POI collection on VerseGuide';
+
+type CategoryKey = keyof typeof CATEGORY_CONFIG;
 ---
 
 <div class="poi-collection">
@@ -47,7 +48,8 @@ const sourceLabel = 'View POI collection on VerseGuide';
   
   <div class="poi-collection__list">
     {pois.map((poi, index) => {
-      const cat = CATEGORY_CONFIG[poi.category] || { label: poi.category, color: 'var(--color-neutral-500)' };
+      const categoryKey = poi.category as CategoryKey;
+      const cat = CATEGORY_CONFIG[categoryKey] || { label: poi.category, color: 'var(--color-neutral-500)' };
       const coords = getCoordinateDisplay(poi.coordinates);
       return (
         <a href={poi.href} class="poi-collection__item" aria-label={`${poi.title}, ${poi.difficulty} difficulty`}>

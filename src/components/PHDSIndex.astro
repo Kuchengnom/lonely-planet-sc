@@ -615,19 +615,20 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
 
 <script>
   // Client-side interactivity: local storage, filtering, sorting
-  const PHDS_INDEX = (() => {
+  (() => {
     const BOOKMARK_KEY = 'phds_bookmarks';
     const VISIT_KEY = 'phds_visited';
 
-    function getStorage(key) {
+    function getStorage(key: string): Record<string, unknown> {
       try {
-        return JSON.parse(localStorage.getItem(key) || '{}');
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : {};
       } catch {
         return {};
       }
     }
 
-    function setStorage(key, value) {
+    function setStorage(key: string, value: Record<string, unknown>): void {
       try {
         localStorage.setItem(key, JSON.stringify(value));
       } catch {
@@ -635,7 +636,7 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       }
     }
 
-    function toggleBookmark(id) {
+    function toggleBookmark(id: string): void {
       const bookmarks = getStorage(BOOKMARK_KEY);
       if (bookmarks[id]) {
         delete bookmarks[id];
@@ -646,7 +647,7 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       updateIndicators();
     }
 
-    function markVisited(id) {
+    function markVisited(id: string): void {
       const visits = getStorage(VISIT_KEY);
       if (visits[id]) {
         delete visits[id];
@@ -657,13 +658,15 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       updateIndicators();
     }
 
-    function updateIndicators() {
+    function updateIndicators(): void {
       const bookmarks = getStorage(BOOKMARK_KEY);
       const visits = getStorage(VISIT_KEY);
       const cards = document.querySelectorAll('.phds-index__card-shell');
 
       cards.forEach(card => {
-        const id = card.dataset.id;
+        const element = card as HTMLElement;
+        const id = element.dataset.id;
+        if (!id) return;
         const bookmarkIcon = card.querySelector('.phds-index__card-indicator--bookmark');
         const visitedIcon = card.querySelector('.phds-index__card-indicator--visited');
         const visitedToggle = card.querySelector('[data-visited-toggle]');
@@ -676,7 +679,7 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       });
     }
 
-    function toggleFilter(btn, filter) {
+    function toggleFilter(btn: HTMLElement, filter: string): void {
       const cards = document.querySelectorAll('.phds-index__card-shell');
       const noResults = document.getElementById('phds-no-results');
 
@@ -689,10 +692,11 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
 
       let visibleCount = 0;
       cards.forEach(card => {
-        const type = (card as HTMLElement).dataset.type;
-        const difficulty = (card as HTMLElement).dataset.difficulty;
+        const element = card as HTMLElement;
+        const type = element.dataset.type;
+        const difficulty = element.dataset.difficulty;
         const matches = filter === 'all' || type === filter || difficulty === filter;
-        (card as HTMLElement).hidden = !matches;
+        element.hidden = !matches;
         if (matches) visibleCount++;
       });
 
@@ -701,14 +705,16 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       }
     }
 
-    function sortCards() {
+    function sortCards(): void {
       const grid = document.querySelector('.phds-index__grid');
       const cards = Array.from(grid?.querySelectorAll('.phds-index__card-shell') || []);
       const bookmarks = getStorage(BOOKMARK_KEY);
 
       cards.sort((a, b) => {
-        const aBookmarked = (bookmarks[(a as HTMLElement).dataset.id] ?? 0) ? 1 : 0;
-        const bBookmarked = (bookmarks[(b as HTMLElement).dataset.id] ?? 0) ? 1 : 0;
+        const elementA = a as HTMLElement;
+        const elementB = b as HTMLElement;
+        const aBookmarked = (bookmarks[elementA.dataset.id ?? ''] ?? 0) ? 1 : 0;
+        const bBookmarked = (bookmarks[elementB.dataset.id ?? ''] ?? 0) ? 1 : 0;
         return bBookmarked - aBookmarked;
       });
 
@@ -720,7 +726,7 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       const btn = e.target as HTMLElement;
       if (btn.closest('.phds-index__filter-btn')) {
         const filter = btn.dataset.filter;
-        toggleFilter(btn, filter);
+        if (filter) toggleFilter(btn, filter);
       }
     });
 
@@ -730,7 +736,8 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       const card = toggle.closest('[data-visited-toggle]')?.closest('.phds-index__card-shell');
       if (toggle.closest('[data-visited-toggle]') && card) {
         e.preventDefault();
-        markVisited((card as HTMLElement).dataset.id ?? '');
+        const element = card as HTMLElement;
+        markVisited(element.dataset.id ?? '');
       }
     });
 
@@ -740,7 +747,7 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       if (card.closest('.phds-index__card-shell') && (e.target as HTMLElement).closest('.phds-index__card-indicator--bookmark')) {
         e.preventDefault();
         e.stopPropagation();
-        toggleBookmark(card.dataset.id ?? '');
+        markVisited(card.dataset.id ?? '');
       }
     }, true);
 
@@ -749,9 +756,12 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       const target = e.target as HTMLElement;
       if (target.closest('[data-reset]')) {
         const btn = target.closest('[data-reset]');
-        btn?.closest('.phds-index__filters')
-          ?.querySelector('.phds-index__filter-btn[data-filter="all"]')
-          ?.click();
+        const resetBtn = btn?.closest('.phds-index__filters')
+          ?.querySelector('.phds-index__filter-btn[data-filter="all"]');
+        if (resetBtn) {
+          const event = new MouseEvent('click', { bubbles: true });
+          resetBtn.dispatchEvent(event);
+        }
       }
     });
 

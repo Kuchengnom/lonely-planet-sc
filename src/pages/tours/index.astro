@@ -3,7 +3,7 @@ import '../../styles/global.css';
 import SystemHeader from '../../components/SystemHeader.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const assetUrl = (p) => (p && !p.startsWith('http') ? `${base}${p.replace(/^\/+/, '')}` : p);
+const assetUrl = (p: string) => (p && !p.startsWith('http') ? `${base}${p.replace(/^\/+/, '')}` : p);
 
 const entries = [
   {

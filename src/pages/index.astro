@@ -541,8 +541,8 @@ const POIS = [
             if (!href || !href.startsWith('#')) return null;
             const target = document.getElementById(href.slice(1));
             if (!target) return null;
-            return { link, target, href };
-          }).filter(Boolean);
+            return { link: link as HTMLAnchorElement, target, href };
+          }).filter((a): a is NonNullable<typeof a> => a !== null);
 
           if (!anchors.length) return;
 

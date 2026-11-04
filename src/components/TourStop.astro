@@ -19,19 +19,19 @@ const stepNumber = number ?? 1;
 
 // Color cycling for step numbers
 const stepColors = [
-  { bg: 'var(--color-primary-600)', text: '#fff' },
-  { bg: 'var(--color-accent-emerald)', text: '#fff' },
-  { bg: 'var(--color-accent-terracotta)', text: '#fff' },
-  { bg: 'var(--color-accent-sand)', text: '#fff' },
-  { bg: 'var(--color-accent-lavender)', text: '#fff' },
-  { bg: 'var(--color-secondary-600)', text: '#fff' },
-  { bg: 'var(--color-accent-coral)', text: '#fff' },
-  { bg: 'var(--color-accent-sage)', text: '#fff' },
+  { bg: 'var(--color-primary-600)', text: '#fff' } as const,
+  { bg: 'var(--color-accent-emerald)', text: '#fff' } as const,
+  { bg: 'var(--color-accent-terracotta)', text: '#fff' } as const,
+  { bg: 'var(--color-accent-sand)', text: '#fff' } as const,
+  { bg: 'var(--color-accent-lavender)', text: '#fff' } as const,
+  { bg: 'var(--color-secondary-600)', text: '#fff' } as const,
+  { bg: 'var(--color-accent-coral)', text: '#fff' } as const,
+  { bg: 'var(--color-accent-sage)', text: '#fff' } as const,
 ];
 
 // Pick color based on index (will be overridden by parent)
 const colorIndex = stepNumber;
-const color = stepColors[parseInt(colorIndex) % stepColors.length];
+const color = stepColors[Number(colorIndex) % stepColors.length];
 ---
 
 <article class="step-card" data-step-index={colorIndex}>
