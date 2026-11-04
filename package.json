@@ -7,12 +7,13 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run type-check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "build:od": "astro build && node scripts/inline-pages.js",
     "sync:tokens": "node scripts/sync-tokens.js",
-    "test:scripts": "node --test scripts/inline-pages.test.js scripts/sync-tokens.test.js"
+    "test:scripts": "node --test scripts/inline-pages.test.js scripts/sync-tokens.test.js",
+    "type-check": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
