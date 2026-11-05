@@ -53,7 +53,7 @@ const CATEGORY_CONFIG = {
   'urban-sight':    { label: 'Urban Sight',    color: 'var(--color-category-urban)' },
 } as const;
 
-const cat = CATEGORY_CONFIG[category];
+const cat: { label: string; color: string } = CATEGORY_CONFIG[category];
 const hasVerseGuideData = !!verseguideId || !!coordinates || !!navigation;
 ---
 
