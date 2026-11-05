@@ -1,0 +1,111 @@
+---
+layout: '../../layouts/TourLayout.astro'
+title: "Pyro I Volcanic Sweep"
+system: "Pyro"
+region: "Pyro I Surface"
+duration: "4-6 hours"
+stops: 5
+difficulty: "Hard"
+vibe: "Dangerous"
+hero_image: "/images/pyro/pyro-1-lava.webp"
+lead: "A high-risk survey of Pyro I's most dramatic surface features — from molten lava rivers to sulfur pits, independent claims, crystal caves, and corporate mining operations. Bring heavy shielding, emergency beacons, and a ship with enough cargo to make the danger pay."
+recommended_ship: "Caterpillar (L)"
+alternative_ship: "Constellation Andromeda (L)"
+crew: "3-5 (pilot, engineer, cargo handlers recommended)"
+cargo: "Large hold — mineral samples, salvage parts, rare crystals"
+youtube_credit: "Community route inspiration: surface survey and landing notes."
+youtube_url: "https://youtu.be/i6-HPzuBeW8"
+youtube_start: 0
+getting_there: "Enter the Pyro system via the Stanton-Pyro jump point. Dock at Ruin Station for last-minute gear and intelligence before launching to Pyro I. Land at an independent claim or corporate mining zone — avoid the central volcanic zone where active flows make landing impossible."
+explorer_author: "Independent Surveyor, Ruin Station"
+explorer_note: "Pyro I's surface doesn't forgive mistakes. The heat, the acid air, the sudden eruptions — they all conspire to turn visitors into geological evidence. But the rewards are real: rare volcanic minerals, irradiated pearls from valakkars, and views that will rewrite your definition of 'apocalyptic beauty.' This route avoids the most dangerous active zones while giving you a complete survey of Pyro I's signature features."
+---
+
+import TourSchedule from '../../components/TourSchedule.astro';
+import TourStop from '../../components/TourStop.astro';
+
+# The Route
+
+<TourSchedule title="Pyro I Volcanic Sweep" duration="4-6h" description="Work across the equatorial belt, avoid the central volcanic zone, and land at stable mineral zones." required_gear={["Thermal Mining Suit", "Chemical Scrubber", "Emergency Beacon", "Seismometer", "Sample Crates"]}>
+  <TourStop
+    time="00:00"
+    title="The Molten Fields"
+    number={1}
+    image="/images/pyro/pyro-1-lava.webp"
+    imageAlt="Rivers of molten lava flowing across Pyro I's surface"
+    route="Equatorial belt, 45°N latitude — land on solidified basalt shelf"
+    gear="Thermal Mining Suit, Seismometer"
+    supplies="Sample Crates"
+    description="The entry point for most Pyro I surveys. The Molten Fields cover 40% of the surface — slow-moving rivers of lava that shift and crack like a living thing. Land on the basalt shelf where the surface has cooled enough to support weight, then use the seismometer to monitor for sudden flow shifts. This is the primary zone for sulfur and rare earth extraction."
+    icon="🔥"
+  />
+  <TourStop
+    time="01:30"
+    title="The Sulfur Pits"
+    number={2}
+    image="/images/pyro/pyro-1-sulfur.webp"
+    imageAlt="Yellow sulfur deposits around volcanic vents"
+    route="Follow the equatorial band west; sulfur concentration spikes at 120°W longitude"
+    gear="Thermal Mining Suit, Chemical Scrubber, Protective Mask"
+    supplies="Chemical extraction kit"
+    description="Where volcanic gases meet cooling lava, elemental sulfur forms in vibrant yellow to deep orange deposits. The pits are beautiful and lethal — the sulfur is mixed with hydrochloric and sulfuric acid at concentrations that dissolve unprotected metal in minutes. Miners here wear suits rated for extreme chemical exposure and carry emergency decontamination kits. The sulfur here is used in high-performance electronics manufacturing."
+    icon="Yellow"
+  />
+  <TourStop
+    time="03:00"
+    title="Independent Mining Claims"
+    number={3}
+    image="/images/pyro/pyro-1-claims.webp"
+    imageAlt="A makeshift mining settlement on the edge of a lava flow"
+    route="Look for the cluster of prefab shelters and salvaged life support units — approximately 200°E longitude"
+    gear="Standard EVA Suit (for approach), Communication Scanner"
+    supplies="Barter goods"
+    description="Between the corporate mining zones exist hundreds of independent claims — freelancers, prospectors, and criminal enterprises staking their own claims on the surface. These are not recognized by any government and exist because someone with a ship and a drill said 'this area is mine' and was willing to defend it. Do not enter a claim without permission. The claim owners defend their territory fiercely. Some trade; others shoot first. Barter goods are more reliable than UEC."
+    icon="⚠️"
+  />
+  <TourStop
+    time="04:30"
+    title="The Crystal Caves"
+    number={4}
+    image="/images/pyro/pyro-1-crystal.webp"
+    imageAlt="Massive crystal formations in a volcanic cave"
+    route="Descend through cooling lava tube to cave entrance at 65°S latitude — coordinate with local guide if possible"
+    gear="Thermal Mining Suit, Light Source, Rock Pick"
+    supplies="Crystal extraction tools"
+    description="Deep beneath Pyro I's surface, where magma has cooled slowly enough to form crystalline structures, exist chambers of staggering beauty. The crystals glow with reflected light from lava flows below, creating an effect like standing inside a living chandelier. The mining here is done with extreme care — a careless blast can shatter a formation worth more than a small spacecraft. The crystals are used in high-end optics and experimental regen technology."
+    icon="💎"
+  />
+  <TourStop
+    time="05:45"
+    title="Extreme Mining Operations"
+    number={5}
+    image="/images/pyro/pyro-1-mining.webp"
+    imageAlt="Heavy mining equipment operating near a lava flow"
+    route="Corporate mining zone — approach via designated landing pad (avoid restricted zones)"
+    gear="Corporate ID (if applicable), Survey Tools"
+    supplies="Mineral samples"
+    description="The major operations use massive automated machinery — thermal drones, robotic excavators, and chemical extraction facilities — operated remotely from orbit. The only humans on the surface are maintenance crews in heavily armored suits. The mining targets rare volcanic minerals used in high-performance electronics and armor plating. Access to these zones requires corporate sponsorship or negotiated access. The pay is high, the risk is higher, and the minerals are worth more than your ship."
+    icon="⚙️"
+  />
+</TourSchedule>
+
+## Ship & Cargo Notes
+
+- **Primary: Caterpillar (L)** — massive cargo capacity for sample returns, robust shielding against thermal and radiation exposure, redundant systems for emergency scenarios. The Caterpillar's modular design allows you to configure the hold for mineral samples, salvaged parts, or crystal collections.
+- **Alternative: Constellation Andromeda (L)** — excellent sensor suite for seismological monitoring, strong defensive capabilities for claim disputes, and comfortable crew quarters for the 6-hour surface survey.
+- Pack **sample crates** and **extraction tools**; keep **emergency beacon** and **seismometer** in the hold, not the suit.
+- If you plan to collect irradiated pearls from valakkars, add a secured containment box and radiation shielding. The pearls have unusual regenerative properties that researchers are eager to study.
+- **Cargo capacity note**: A fully loaded Caterpillar can return with 48 sample crates. At current Pyro I market rates (fluctuating), that's 240,000–360,000 UEC gross before expenses.
+
+## Sources
+
+- Community route inspiration and landing notes: see the reference video in the sidebar.
+- Coordinates for **The Molten Fields**: Equatorial belt, 45°N latitude (Pyro I, Hellscape region).
+- Coordinates for **The Sulfur Pits**: Equatorial band, 120°W longitude (sulfur concentration spikes).
+- Pyro I POI pages: [The Molten Fields](/lonely-planet-sc/pyro/pyro-1/), [The Sulfur Pits](/lonely-planet-sc/pyro/pyro-1/), [The Crystal Caves](/lonely-planet-sc/pyro/pyro-1/).
+- [Pyro I on Star Citizen Tools](https://starcitizen.tools/Pyro_I) — official survey data.
+- [RSI Galactapedia: Pyro I](https://robertsspaceindustries.com/galactapedia/system/pyro) — official system data.
+
+---
+
+*The above is a curated itinerary, not an official RSI route. Verify coordinates in-game before committing. Pyro I is designated a frontier zone with no law enforcement — your ship's weapons and your word are your only protection.*
