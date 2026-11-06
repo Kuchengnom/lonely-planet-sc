@@ -636,17 +636,6 @@ const allDifficulties = Array.from(new Set(entries.map(e => e.difficulty)));
       }
     }
 
-    function toggleBookmark(id: string): void {
-      const bookmarks = getStorage(BOOKMARK_KEY);
-      if (bookmarks[id]) {
-        delete bookmarks[id];
-      } else {
-        bookmarks[id] = true;
-      }
-      setStorage(BOOKMARK_KEY, bookmarks);
-      updateIndicators();
-    }
-
     function markVisited(id: string): void {
       const visits = getStorage(VISIT_KEY);
       if (visits[id]) {
