@@ -53,7 +53,8 @@ const CATEGORY_CONFIG = {
   'urban-sight':    { label: 'Urban Sight',    color: 'var(--color-category-urban)' },
 } as const;
 
-const cat: { label: string; color: string } = CATEGORY_CONFIG[category];
+// Type assertion is safe here because `category` is typed as a union of valid keys
+const cat = CATEGORY_CONFIG[category as keyof typeof CATEGORY_CONFIG];
 const hasVerseGuideData = !!verseguideId || !!coordinates || !!navigation;
 ---
 
