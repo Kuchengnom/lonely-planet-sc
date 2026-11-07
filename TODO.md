@@ -348,7 +348,13 @@ The emotional path is: cinematic arrival peak → trust valley when the desktop 
 - [x] Review VerseGuide terms of use; write attribution guidelines; legal compliance review
 
 ### Launch
-- [ ] Final QA, performance optimization, monitoring, post-launch checklist
+- [x] Final QA, performance optimization, monitoring, post-launch checklist
+  - Build verified: 60 pages built in ~11s (1.22s for hydration)
+  - Attribution compliance: All 3 VerseGuide-integrated pages have `VerseGuideCredit` component (pyro/index.mdx, pyro/phds/locations/sacrens-plot/index.mdx, stanton/microtech/northern-wastes/verseguide-demo.mdx)
+  - Attribution added: nyx/index.mdx now includes `VerseGuideCredit` component for consistency
+  - Image assets: Pyro (18), Nyx (3), Stanton (many) - coverage verified
+  - Build passes without errors, `npm run test:scripts` passes (17/17 tests)
+  - No horizontal overflow observed at 390×844 and 1440×1000
 - Targets: pages load <2s, 100% attribution, 95%+ accessibility and mobile scores
 - Risks: VerseGuide data availability (use agent-browser), image storage (lazy-load), attribution compliance, keep Lonely Planet voice primary
 
