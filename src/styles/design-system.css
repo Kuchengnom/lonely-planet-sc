@@ -49,8 +49,8 @@
     /* POI Category Colors */
     --color-category-wonder:      #059669;
     --color-category-hidden:      #7c3aed;
-    --color-category-settlement:  var(--color-primary-600);
-    --color-category-practical:   var(--color-secondary-600);
+    --color-category-settlement:  #1e3a8a;
+    --color-category-practical:   #b91c1c;
     --color-category-urban:       #0891b2;
 
     /* Difficulty Colors */

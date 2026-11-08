@@ -2,6 +2,7 @@
 import VerseGuideCite from './VerseGuideCite.astro';
 import TextAttribution from './TextAttribution.astro';
 import CoordinateDisplay from './CoordinateDisplay.astro';
+import { POI_TYPES } from '../config/poi-types';
 
 interface Props {
   number: number;
@@ -45,19 +46,21 @@ function resolveImagePath(path: string) {
 }
 const imageUrl = image ? resolveImagePath(image) : null;
 
-const CATEGORY_CONFIG = {
-  'natural-wonder': { label: 'Natural Wonder', color: 'var(--color-category-wonder)' },
-  'hidden-find':    { label: 'Hidden Find',    color: 'var(--color-category-hidden)' },
-  'settlement':     { label: 'Settlement',     color: 'var(--color-category-settlement)' },
-  'practical':      { label: 'Getting Around', color: 'var(--color-category-practical)' },
-  'urban-sight':    { label: 'Urban Sight',    color: 'var(--color-category-urban)' },
-} as const;
+// Map AttractionEntry categories to canonical POI types
+// settlement → urban-sight (same visual appearance)
+// practical → technical (same visual appearance)
+const CATEGORY_TO_POI_TYPE: Record<string, keyof typeof POI_TYPES> = {
+  'natural-wonder': 'natural-wonder',
+  'hidden-find': 'hidden-find',
+  'settlement': 'urban-sight',
+  'practical': 'technical',
+  'urban-sight': 'urban-sight',
+};
 
-// Type assertion is safe here because `category` is typed as a union of valid keys
-const cat = CATEGORY_CONFIG[category as keyof typeof CATEGORY_CONFIG];
+const poiType = CATEGORY_TO_POI_TYPE[category];
+const cat = POI_TYPES[poiType];
 const hasVerseGuideData = !!verseguideId || !!coordinates || !!navigation;
 ---
-
 <article class="attraction" style={`--cat-color: ${cat.color};`}>
   <div class="attraction__image-wrap">
     {imageUrl
