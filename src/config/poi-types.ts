@@ -5,7 +5,7 @@
  * All components that display POI types should import from here to ensure
  * consistency across the site.
  * 
- * The taxonomy includes 10 distinct types with associated:
+ * The taxonomy includes 17 distinct types with associated:
  * - label: Human-readable display name
  * - emoji: Visual icon for badges
  * - color: CSS custom property for background/border colors
@@ -21,7 +21,12 @@ export interface POITypeConfig {
  * Canonical POI type definitions
  * 
  * Type values: natural-wonder, easter-egg, urban-sight, technical, 
- *              photo-spot, anomaly, hidden-find, mystery, abandoned-site, observation-point
+ *              photo-spot, anomaly, hidden-find, mystery, abandoned-site, observation-point,
+ *              mining, hunting, exploration, mission, landing-zone, habitation, rest-stop,
+ *              practical, settlement
+ * 
+ * Note: Activity and facility types (mining, hunting, etc.) are included as POI variants
+ * to provide a unified taxonomy. Components map these to appropriate visual styles.
  */
 export const POI_TYPES: Record<string, POITypeConfig> = {
   'natural-wonder': {
@@ -73,6 +78,51 @@ export const POI_TYPES: Record<string, POITypeConfig> = {
     label: 'Observation Point',
     emoji: '🔭',
     color: '#7c3aed',
+  },
+  'mining': {
+    label: 'Mining',
+    emoji: '⛏️',
+    color: 'var(--color-secondary-600)',
+  },
+  'hunting': {
+    label: 'Hunting',
+    emoji: '🎯',
+    color: 'var(--color-secondary-500)',
+  },
+  'exploration': {
+    label: 'Exploration',
+    emoji: '🔭',
+    color: 'var(--color-primary-600)',
+  },
+  'mission': {
+    label: 'Mission',
+    emoji: '📋',
+    color: 'var(--color-success)',
+  },
+  'landing-zone': {
+    label: 'Landing Zone',
+    emoji: '🛬',
+    color: 'var(--color-primary-500)',
+  },
+  'habitation': {
+    label: 'Habitation',
+    emoji: '🏠',
+    color: 'var(--color-primary-400)',
+  },
+  'rest-stop': {
+    label: 'Rest Stop',
+    emoji: '☕',
+    color: 'var(--color-primary-300)',
+  },
+  'practical': {
+    label: 'Practical',
+    emoji: '🛠️',
+    color: 'var(--color-difficulty-easy)',
+  },
+  'settlement': {
+    label: 'Settlement',
+    emoji: '🏙️',
+    color: 'var(--color-primary-600)',
   },
 } as const;
 

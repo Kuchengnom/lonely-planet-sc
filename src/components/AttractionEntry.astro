@@ -7,7 +7,7 @@ import { POI_TYPES } from '../config/poi-types';
 interface Props {
   number: number;
   title: string;
-  category: 'natural-wonder' | 'hidden-find' | 'settlement' | 'practical' | 'urban-sight';
+  category: keyof typeof POI_TYPES;
   image?: string;
   imageAlt?: string;
   href?: string;
@@ -46,19 +46,7 @@ function resolveImagePath(path: string) {
 }
 const imageUrl = image ? resolveImagePath(image) : null;
 
-// Map AttractionEntry categories to canonical POI types
-// settlement → urban-sight (same visual appearance)
-// practical → technical (same visual appearance)
-const CATEGORY_TO_POI_TYPE: Record<string, keyof typeof POI_TYPES> = {
-  'natural-wonder': 'natural-wonder',
-  'hidden-find': 'hidden-find',
-  'settlement': 'urban-sight',
-  'practical': 'technical',
-  'urban-sight': 'urban-sight',
-};
-
-const poiType = CATEGORY_TO_POI_TYPE[category];
-const cat = POI_TYPES[poiType];
+const cat = POI_TYPES[category];
 const hasVerseGuideData = !!verseguideId || !!coordinates || !!navigation;
 ---
 <article class="attraction" style={`--cat-color: ${cat.color};`}>
